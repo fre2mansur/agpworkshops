@@ -1,0 +1,101 @@
+.sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: auto;
+    z-index: 1002;
+    border-top: 0;
+  }
+
+  .no-focus:focus{
+    border: none !important;
+    box-shadow: none;
+  }
+
+@media only screen and (min-width:1200px){
+.sidebarNav{
+  position: fixed;
+  top:7rem;
+  height: 100vh;
+  } 
+.sidebarNav::after{
+  content: '\00a0';
+  position: absolute;
+  top:-7rem;
+  left:100%;
+  height: 100vh;
+  display: block;
+  background-color: $logo-green;
+  border-radius: 10px; 
+  box-sizing: border-box;
+  width: calc(100vw - 99.9vw);
+  opacity: 0.5;
+}}
+
+
+
+  .navbar-toggler{
+    font-size: 1rem;
+  }
+
+  .cmt-5{
+    margin-top:3rem !important;
+  }
+
+  .b-edge-shadow {
+    -webkit-box-shadow: 0 8px 10px -12px rgba(149,193,31,0.5);
+    -moz-box-shadow: 0 8px 20px -12px rgba(149,193,31,0.5);
+         box-shadow: 0 8px 20px -12px rgba(149,193,31,0.5);
+         transition: box-shadow 0.2s ease;
+  }
+.b-edge-no-shadow{
+  -webkit-box-shadow: 0 8px 10px -50px rgba(149,193,31,0.5);
+  -moz-box-shadow: 0 8px 20px -50px rgba(149,193,31,0.5);
+       box-shadow: 0 8px 20px -50px rgba(149,193,31,0.5);
+       transition: box-shadow 0.2s ease;
+}
+
+.sidebar{
+  align-items: flex-start !important;
+  ul{flex-direction:column!important; list-style: none !important; border: none; line-height: 2.25rem; text-transform: uppercase;  
+    li{
+      a{color:$primary;} a:hover{color:$logo-green;text-decoration: none;transition: all .2s ease-in-out} a:focus{color:$logo-green;}
+      ul{line-height: 1.75rem;padding-left: 1rem;}
+    }
+  }
+
+}
+
+h1{
+  color:$primary;
+}
+
+.logo-green{color:$logo-green;}
+
+.p-2{
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.p-3{
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+.divider {
+  width: calc(100vw - 99.9vw);
+  height: 100%;
+  background: radial-gradient(circle, $logo-green 88%, $white 100% );
+  opacity: 0.5;
+  background-repeat: repeat;
+}
+
+.sidebar{.active{color:$logo-green !important;}}
+
+.dropdown-menu{
+  border:none;
+  padding:.5rem .5rem;
+}
