@@ -1,13 +1,14 @@
-
-Theme Name: AGP | Workshops
-Theme URI: http://AGP | Workshops.com
-Author: Kshitij Bhatt
-Author URI: http://www.github.com/kshitijbhatt
-GitHub Theme URI: kshitijbhatt/AGP | Workshops
-Description: A custom WordPress theme build on top of Understrap 0.8.2 by Holger Koenemann
-Version: 0.8.2
-License: AGP | Workshops WordPress Theme, Copyright 2013-2017 Holger Koenemann
-AGP | Workshops is distributed under the terms of the GNU GPL version 2
+#Initials
+-Theme Name: AGP | Workshops
+-Theme URI: http://AGP | Workshops.com
+-Author: Kshitij Bhatt
+-Author URI: http://www.github.com/kshitijbhatt
+-GitHub Theme URI: kshitijbhatt/AGP | Workshops
+-Description: A custom WordPress theme build on top of Understrap 0.8.2 by Holger Koenemann
+-Version: 0.8.2
+-License: AGP | Workshops WordPress Theme based on Understrap by Holger Koenemann, 
+          > Copyright 2013-2017 Holger Koenemann
+          AGP | Workshops is distributed under the terms of the GNU GPL version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: AGP | Workshops
 Tags: one-column, custom-menu, featured-images, theme-options, translation-ready
