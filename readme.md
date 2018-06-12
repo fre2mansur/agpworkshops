@@ -1,4 +1,4 @@
-#Initials
+## Initials
 -Theme Name: AGP | Workshops
 -Theme URI: http://AGP | Workshops.com
 -Author: Kshitij Bhatt
