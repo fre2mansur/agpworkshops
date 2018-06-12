@@ -16,23 +16,6 @@
 - This theme, like WordPress, is licensed under the GPL.
 - AGP | Workshops is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 
-## Resource Licenses:
-- [Font Awesome:](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License)
-- [Bootstrap](http://getbootstrap.com) & [License](https://github.com/twbs/bootstrap/blob/master/LICENSE) | Code licensed under MIT, documentation under CC BY 3.0.
-- [Owl Carousel 2](http://www.owlcarousel.owlgraphic.com/) & [License]( https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE) | Code licensed under MIT
-and of course
-- [jQuery](https://jquery.org) | Code licensed under MIT
-- [WP Bootstrap Navwalker by Edward McIntyre](https://github.com/twittem/wp-bootstrap-navwalker) | GNU GPL
-- [Understrap Website](http://understrap.com) | (http://understrap.com)
-
-- [Child Theme Project](https://github.com/holger1411/understrap-child)
-
-## License
-UnderStrap WordPress Theme, Copyright 2013-2017 Holger Koenemann
-UnderStrap is distributed under the terms of the GNU GPL version 2
-
-http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
-
 ## Changelog
             > We will be updating changelog every monday for the team to work on together
 
@@ -111,11 +94,19 @@ The front-page slider is widget driven. Simply add more than one widget to widge
 
 [1] Visit [http://browsersync.io](http://browsersync.io) for more information on Browser Sync
 
-Licenses & Credits
-=
-- Font Awesome: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-- Bootstrap: http://getbootstrap.com | https://github.com/twbs/bootstrap/blob/master/LICENSE (Code licensed under MIT documentation under CC BY 3.0.)
-- Owl Carousel 2: http://www.owlcarousel.owlgraphic.com/ | https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE (Code licensed under MIT)
+## Licenses & Credits
+- [Font Awesome:](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License)
+- [Bootstrap](http://getbootstrap.com) & [License](https://github.com/twbs/bootstrap/blob/master/LICENSE) | Code licensed under MIT, documentation under CC BY 3.0.
+- [Owl Carousel 2](http://www.owlcarousel.owlgraphic.com/) & [License]( https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE) | Code licensed under MIT
 and of course
-- jQuery: https://jquery.org | (Code licensed under MIT)
-- WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
+- [jQuery](https://jquery.org) | Code licensed under MIT
+- [WP Bootstrap Navwalker by Edward McIntyre](https://github.com/twittem/wp-bootstrap-navwalker) | GNU GPL
+- [Understrap Website](http://understrap.com) | (http://understrap.com)
+
+- [Child Theme Project](https://github.com/holger1411/understrap-child)
+
+## License
+UnderStrap WordPress Theme, Copyright 2013-2017 Holger Koenemann
+UnderStrap is distributed under the terms of the GNU GPL version 2
+
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
