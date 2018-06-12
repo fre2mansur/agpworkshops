@@ -116,9 +116,9 @@ add_filter( 'woocommerce_register_post_type_product', 'custom_post_type_label_wo
 
 function custom_post_type_label_woo( $args ){
     $labels = array(
-        'name'               =>  'Workshops',
-        'singular_name'      =>  'Workshop',
-        'menu_name'          =>  'Workshops', 'Admin menu name',
+        'name'               =>  'Workshops_Woo',
+        'singular_name'      =>  'Workshop_woo',
+        'menu_name'          =>  'Workshops_woo', 'Admin menu name',
         'add_new'            =>  'Create Workshop',
 		'add_new_item'       =>  'Create New Workshop',
         'edit'               =>  'Edit Workshops',
@@ -143,7 +143,7 @@ if('product' === get_post_type()){
 	return "Title";}
 return $input;
 }
-add_filter('enter_title_here', 'custom_post_title');
+add_filter('enter_title_here', 'custom_post_title'); 
 
 
 /* Customize Product Categories Labels */
@@ -269,7 +269,7 @@ function alter_user_list( $result, $user, $field, $post_id ) {
 	$result = $user->first_name .' '. $user->last_name;
 	return  $result;
 }
-add_filter("acf/fields/user/result/name=unite-name", 'alter_user_list', 10, 4);
+add_filter("acf/fields/user/result/name=unit_name", 'alter_user_list', 10, 4);
 
 /*
 	==============================
@@ -318,4 +318,3 @@ function agp_theme_color_settings() {
 	require_once( get_template_directory() . '/inc/admin_menu_templates/agp_themecolor.php' );
 
 }
-

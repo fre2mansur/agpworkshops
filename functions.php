@@ -70,11 +70,8 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
-function alter_specific_user_field($result, $user, $field, $post_id) {
+/**
+ * Load AGP Workshops post type
 
-
-    $result = $user->user_email;
-
-    return $result;
-}
-add_filter("acf/fields/user/result/key=unite-name", 'alter_specific_user_field', 10, 4);
+*/
+require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php';

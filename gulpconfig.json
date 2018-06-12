@@ -1,6 +1,6 @@
 {
   "browserSyncOptions" : {
-    "proxy": "dragonslayer/agpworkshops",
+    "proxy": "dragonslayer/agpworkshops/",
     "notify": false
   },
   "browserSyncWatchFiles" : [
