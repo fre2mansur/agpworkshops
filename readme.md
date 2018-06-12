@@ -1,33 +1,31 @@
 ## Initials
--Theme Name: AGP | Workshops
--Theme URI: http://AGP | Workshops.com
--Author: Kshitij Bhatt
--Author URI: http://www.github.com/kshitijbhatt
--GitHub Theme URI: kshitijbhatt/AGP | Workshops
--Description: A custom WordPress theme build on top of Understrap 0.8.2 by Holger Koenemann
--Version: 0.8.2
--License: AGP | Workshops WordPress Theme based on Understrap by Holger Koenemann, 
+- Theme Name: AGP | Workshops
+- Theme URI: http://AGP | Workshops.com
+- Author: Kshitij Bhatt
+- Author URI: http://www.github.com/kshitijbhatt
+-  GitHub Theme URI: kshitijbhatt/AGP | Workshops
+- Description: A custom WordPress theme build on top of Understrap 0.8.2 by Holger Koenemann
+- Version: 0.8.2
+- License: AGP | Workshops WordPress Theme based on Understrap by Holger Koenemann, 
           > Copyright 2013-2017 Holger Koenemann
           AGP | Workshops is distributed under the terms of the GNU GPL version 2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: AGP | Workshops
-Tags: one-column, custom-menu, featured-images, theme-options, translation-ready
+- License URI: http://www.gnu.org/licenses/gpl-2.0.html
+- Text Domain: AGP | Workshops
+- Tags: one-column, custom-menu, featured-images, theme-options, translation-ready
 
-This theme, like WordPress, is licensed under the GPL.
-AGP | Workshops is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+- This theme, like WordPress, is licensed under the GPL.
+- AGP | Workshops is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 
-Resource Licenses:
-Font Awesome: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-Bootstrap: http://getbootstrap.com | https://github.com/twbs/bootstrap/blob/master/LICENSE (Code licensed under MIT, documentation under CC BY 3.0.)
-Owl Carousel 2: http://www.owlcarousel.owlgraphic.com/ | https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE (Code licensed under MIT)
+## Resource Licenses:
+- [Font Awesome:] {http://fontawesome.io/license} (Font: SIL OFL 1.1, CSS: MIT License)
+- [Bootstrap:] {http://getbootstrap.com} https://github.com/twbs/bootstrap/blob/master/LICENSE (Code licensed under MIT, documentation under CC BY 3.0.)
+- [Owl Carousel 2:] {http://www.owlcarousel.owlgraphic.com/} https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE (Code licensed under MIT)
 and of course
-jQuery: https://jquery.org | (Code licensed under MIT)
-WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
+- [jQuery:] {https://jquery.org} (Code licensed under MIT)
+- [WP Bootstrap Navwalker by Edward McIntyre] https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
+- [Website] {http://understrap.com} (http://understrap.com)
 
-
-Website: [http://understrap.com](http://understrap.com)
-
-Child Theme Project: [https://github.com/holger1411/understrap-child](https://github.com/holger1411/understrap-child)
+- [Child Theme Project] {https://github.com/holger1411/understrap-child}
 
 ## License
 UnderStrap WordPress Theme, Copyright 2013-2017 Holger Koenemann
