@@ -26,10 +26,10 @@ function custom_agp_workshops() {
 		"not_found" 	=> __( "No Workshop(s) found", "AGP | Workshops" ),
 		"not_found_in_trash" 		=> __( "No Workshop(s) found in Trash", "AGP | Workshops" ),
 		"parent_item_colon" 		=> __( "Unit:", "AGP | Workshops" ),
-		"featured_image" 			=> __( "Featured image for this Workshop", "AGP | Workshops" ),
-		"set_featured_image" 		=> __( "Set featured image for this Workshop", "AGP | Workshops" ),
-		"remove_featured_image" 	=> __( "Remove featured image for this Workshop", "AGP | Workshops" ),
-		"use_featured_image" 		=> __( "Use as featured image for this workshop", "AGP | Workshops" ),
+		"featured_image" 			=> __( "Featured image ", "AGP | Workshops" ),
+		"set_featured_image" 		=> __( "Set featured image", "AGP | Workshops" ),
+		"remove_featured_image" 	=> __( "Remove featured image ", "AGP | Workshops" ),
+		"use_featured_image" 		=> __( "Use as featured image ", "AGP | Workshops" ),
 		"archives" 					=> __( "Workshop Archive", "AGP | Workshops" ),
 		"insert_into_item" 			=> __( "Insert into workshop", "AGP | Workshops" ),
 		"uploaded_to_this_item" 	=> __( "Upload to this workshop", "AGP | Workshops" ),
@@ -61,7 +61,7 @@ function custom_agp_workshops() {
 		"query_var"					 => true,
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-editor-paste-word",
-		"supports"					 => array( "title", "custom-fields", "post-formats","filter" ),
+		"supports"					 => array( "title", "custom-fields", "post-formats","filter",'thumbnail' ),
 		"taxonomies"				 => array( "post_tag", "workshop_category" ),
 	);
 

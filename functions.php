@@ -70,8 +70,4 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
-/**
- * Load AGP Workshops post type
 
-*/
-require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php';
