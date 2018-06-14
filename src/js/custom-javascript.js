@@ -26,9 +26,10 @@ function classCheck(){
 }
 })(jQuery);
 
+
+
 jQuery(document).ready(function($) {
   var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
- console.log("Working");
   jQuery('.sidebar ul li a').each(function() {
    if (this.href === path) {
     $(this).addClass('active');

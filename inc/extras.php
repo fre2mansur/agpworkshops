@@ -115,6 +115,28 @@ if ( ! function_exists ( 'understrap_post_nav' ) ) {
 */
 require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php';
 
+/**
+	* Remove dashboard widgets for non admin users
+*/
+// disable default dashboard widgets
+
+add_action('admin_init', 'disable_default_dashboard_widgets');
+
+function disable_default_dashboard_widgets() {
+	
+	remove_meta_box('dashboard_right_now', 'dashboard', 'core');
+	remove_meta_box('dashboard_activity', 'dashboard', 'core');
+	remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
+	remove_meta_box('dashboard_incoming_links', 'dashboard', 'core');
+	remove_meta_box('dashboard_plugins', 'dashboard', 'core');
+
+	remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
+	remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
+	remove_meta_box('dashboard_primary', 'dashboard', 'core');
+	remove_meta_box('dashboard_secondary', 'dashboard', 'core');
+}
+
+
 
 // Remove product data tabs
 
@@ -284,6 +306,14 @@ add_filter("acf/fields/user/result/name=unit_name", 'alter_user_list', 10, 4);
 
 */
 
+add_action('wp_dashboard_setup', 'custom_dashboard_widgets');
+  
+function custom_dashboard_widgets() {
+	
+	require_once(get_template_directory() . '/inc/admin_menu_templates/dashboard.php');
+	global $wp_meta_boxes;
+}
+
 function agp_add_admin_page() {
 	
 	//Generate Menu Page
@@ -306,11 +336,16 @@ function agp_custom_settings(){
 	register_setting('agp-settings-group', 'twitter');
 	register_setting('agp-settings-group', 'linkedin');
 	register_setting('agp-settings-group', 'instagram');
+	register_setting('agp-settings-group', 'googleanalytics');
+	register_setting('agp-settings-group', 'pixelanalytics');
 	add_settings_section('agp-social-options', 'Social Links' , 'agp_social_options', 'agp_settings');
 	add_settings_field('Facebook-Link', 'Facebook', 'agp_facebook_link', 'agp_settings', 'agp-social-options');
+	add_settings_field('Twitter-Link', 'Twitter', 'agp_twitter_link', 'agp_settings', 'agp-social-options');
 	add_settings_field('Instagram-Link', 'Instagram', 'agp_insta_link', 'agp_settings', 'agp-social-options');
 	add_settings_field('LinkedIn-Link', 'LinkedIn', 'agp_linkedin_link', 'agp_settings', 'agp-social-options');
-	add_settings_field('Twitter-Link', 'Twitter', 'agp_twitter_link', 'agp_settings', 'agp-social-options');
+	
+	add_settings_field( 'Google_Analytics-Link', 'Google Analytics', 'agp_google_analytics_link','agp_settings', 'agp-social-options' );
+	add_settings_field( 'pixel_analytics-Link', 'Pixel Analytics', 'agp_pixel_analytics_link','agp_settings', 'agp-social-options' );
 }
 
 

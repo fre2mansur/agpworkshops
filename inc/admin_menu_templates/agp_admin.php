@@ -1,4 +1,4 @@
-<div>
+<div class="wrap">
 <?php settings_errors(); 
 
     function agp_social_options(){
@@ -7,22 +7,31 @@
     }
         function agp_facebook_link(){
             $facebook = esc_attr(get_option('facebook'));
-            echo '<input type="text" name="facebook" value="'.$facebook.'" placeholder=" "  />';
+            echo '<input class="regular-text" type="url" name="facebook" value="'.$facebook.'" placeholder=" "  />';
     }
 
     function agp_insta_link(){
         $insta = esc_attr(get_option('instagram'));
-        echo '<input type="text" name="instagram" value="'.$insta.'" placeholder=" "  />';
+        echo '<input class="regular-text" type="url" name="instagram" value="'.$insta.'" placeholder=" "  />';
     }
 
     function agp_linkedin_link(){
     $linkedin = esc_attr(get_option('linkedin'));
-    echo '<input type="text" name="linkedin" value="'.$linkedin.'" placeholder=" "  />';
+    echo '<input class="regular-text" type="url" name="linkedin" value="'.$linkedin.'" placeholder=" "  />';
     }
 
     function agp_twitter_link(){
     $twitter = esc_attr(get_option('twitter'));
-    echo '<input type="text" name="twittera" value="'.$twitter.'" placeholder=" "  />';
+    echo '<input class="regular-text" type="url" name="twitter" value="'.$twitter.'" placeholder=" "  />';
+    }
+    
+    function agp_google_analytics_link(){
+        $googleanalytics = get_option('googleanalytics');
+        echo '<textarea name="googleanalytics" rows="8" >'.$googleanalytics.'</textarea>';
+    }
+    function agp_pixel_analytics_link(){
+        $pixelanalytics = get_option('pixelanalytics');
+        echo '<textarea name="pixelanalytics" rows="8" >'.$pixelanalytics.'</textarea>';
     }
 
 
@@ -40,6 +49,12 @@
  onclick="location.href='<?php print get_option( 'facebook'); ?>'" type="button">
         Facebook
 </button> -->
-
+<style>
+    textarea{
+        width:80% !important;
+    }
+</style>
 </div>
+
+
 
