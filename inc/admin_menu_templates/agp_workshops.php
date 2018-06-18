@@ -61,7 +61,7 @@ function custom_agp_workshops() {
 		"query_var"					 => true,
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-editor-paste-word",
-		"supports"					 => array( "title", "custom-fields", "post-formats","filter",'thumbnail' ),
+		"supports"					 => array( "title", "custom-fields", "post-formats", "filter", "thumbnail" ),
 		"taxonomies"				 => array( "post_tag", "workshop_category" ),
 	);
 

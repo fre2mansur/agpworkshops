@@ -34,7 +34,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'understrap' ); ?></a>
 
-		<nav class="navbar navbar-expand-xl navbar-light sticky-top bg-white p-3" role="navigation" id="navbar">
+		<nav class="navbar navbar-expand-xl navbar-light sticky-top bg-white p-3 border-bottoms" role="navigation" id="navbar">
 		<?php if ( 'container' == $container ) : ?>
 			<div class="container" >
 		<?php endif; ?>

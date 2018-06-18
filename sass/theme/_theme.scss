@@ -99,3 +99,16 @@ h1{
   border:none;
   padding:.5rem .5rem;
 }
+
+/*
+  Admin Specific styles
+*/
+#wpwrap{
+  background-color: #f1f1f1;
+}
+#admin-cards{
+  font-size: 1em;
+  .simple-dash-icons{
+  font-size: 2em;
+}
+}
