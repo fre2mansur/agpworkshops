@@ -1,5 +1,3 @@
-<div class="wrap">
-    
 <?php settings_errors(); 
 
     function agp_social_options(){
@@ -28,11 +26,11 @@
     
     function agp_google_analytics_link(){
         $googleanalytics = get_option('googleanalytics');
-        echo '<textarea name="googleanalytics" rows="8" >'.$googleanalytics.'</textarea>';
+        echo '<textarea  class="regular-text" name="googleanalytics" rows="8" >'.$googleanalytics.'</textarea>';
     }
     function agp_pixel_analytics_link(){
         $pixelanalytics = get_option('pixelanalytics');
-        echo '<textarea name="pixelanalytics" rows="8" >'.$pixelanalytics.'</textarea>';
+        echo '<textarea  class="regular-text" name="pixelanalytics" rows="8" >'.$pixelanalytics.'</textarea>';
     }
 
 
@@ -48,9 +46,3 @@
  onclick="location.href='<?php print get_option( 'facebook'); ?>'" type="button">
         Facebook
 </button> -->
-<style>
-    textarea{
-        width:100% !important;
-    }
-</style>
-</div>

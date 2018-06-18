@@ -108,6 +108,9 @@ h1{
 }
 #admin-cards{
   font-size: 1em;
+  .card{
+    max-width: 100%;
+  }
   .simple-dash-icons{
   font-size: 2em;
 }
