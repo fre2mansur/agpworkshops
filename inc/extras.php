@@ -116,6 +116,11 @@ if ( ! function_exists ( 'understrap_post_nav' ) ) {
 require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php';
 
 /**
+ * Load AGP Facilitators post type
+
+*/
+require get_template_directory() . '/inc/admin_menu_templates/agp_facilitators.php';
+/**
 	* Remove dashboard widgets for non admin users
 */
 // disable default dashboard widgets
