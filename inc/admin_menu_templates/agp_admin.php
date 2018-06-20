@@ -1,12 +1,11 @@
 <?php
 
 //Generate Menu Page
-add_menu_page( 'Agp Theme Options', 'AGP Setting', 'manage_options', 'agp_settings', 'agp_theme_create_page', '
-dashicons-admin-generic', 72 );
+add_menu_page( 'Agp Theme Options', 'Marketing', 'manage_options', 'agp_settings', 'agp_theme_create_page', '
+dashicons-admin-generic', 50 );
 
 //Generate Sub menu pages
 add_submenu_page( 'agp_settings', 'Agp Theme Options', 'General Settings', 'manage_options', 'agp_settings', 'agp_theme_create_page' );
-add_submenu_page( 'agp_settings', 'Agp color Options', 'Color Settings', 'manage_options', 'agp_settings_color', 'agp_theme_color_settings');
 
 
 //Activate custom settings
@@ -35,9 +34,4 @@ function agp_custom_settings(){
 function agp_theme_create_page() {
 	//generation of our admin page
 	require_once( get_template_directory() . '/inc/admin_menu_templates/general_settings.php' );
-}
-function agp_theme_color_settings() {
-	//generation of our admin page
-	require_once( get_template_directory() . '/inc/admin_menu_templates/agp_themecolor.php' );
-
 }
