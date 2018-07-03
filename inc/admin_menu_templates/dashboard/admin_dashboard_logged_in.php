@@ -58,11 +58,11 @@
                   <div class="card-body">
                     <div class="justify-content-between d-flex">
                       <div class="align-self-center">
-                        <i class="icon-exclamation text-danger simple-dash-icons float-left"></i>
+                        <i class="icon-ghost text-danger simple-dash-icons float-left"></i>
                       </div>
                       <div class="text-right">
                         <h3><?php $count_posts = wp_count_posts( 'agp_workshop' )->draft; print $count_posts; ?></h3>
-                        <span>Inactive Workshop</span>
+                        <span>Authorize Google</span>
                       </div>
                     </div>
                   </div>
@@ -72,18 +72,21 @@
 
 </div>
 <div class=" card-group">
-                <div class="card col-xl-8 col-12 mr-3">
+                <div class = "col-xl-6 col-12 m-0 p-0 pr-xl-3">
+                <div class="card">
                
                 <?php require_once( get_template_directory() . '/inc/admin_menu_templates/dashboard/sales_charts.php'); ?>
                
                 </div>
-
-                <div class="card col-xl-4 col-lg-8 col-md-6 col-12 ml-3">
+                </div>
+                <div class="col-xl-6 col-12 m-0 p-0 pl-xl-3">
+                <div class="card">
                
-                  <?php require_once( get_template_directory() . '/inc/admin_menu_templates/dashboard/registration_charts.php'); ?>
+                  <?php require_once( get_template_directory() . '/inc/admin_menu_templates/dashboard/enquiries_chart.php'); ?>
                 
                 </div>
- </div> 
+                </div>
+</div> 
 
 <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-6 col-12" >
@@ -103,6 +106,11 @@
             </div> 
 
 </div>
+
+
+
+
+
 <script>
 		jQuery(document).ready(function($) {
             $('#welcome-panel').after($('#admin-cards').show());

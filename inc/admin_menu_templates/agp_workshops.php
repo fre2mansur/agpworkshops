@@ -70,7 +70,6 @@ function custom_agp_workshops() {
 
 add_action( 'init', 'custom_agp_workshops' );
 
-
 /*
 	====================
 	Custom Taxonomy Type
