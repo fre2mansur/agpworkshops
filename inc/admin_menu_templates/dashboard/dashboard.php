@@ -1,6 +1,5 @@
 <?php 
 
-require_once(get_template_directory() . '/vendor/autoload.php');
 
 
 add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
