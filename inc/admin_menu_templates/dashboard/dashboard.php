@@ -29,3 +29,11 @@ if ( in_array( 'unit_mentor', (array) $user->roles ) ) {
 		
 	}
 
+	if ( in_array( 'unit_promoter', (array) $user->roles ) ) {
+	
+		add_action( 'admin_footer',"create_workshop_help_function");
+		function create_workshop_help_function(){
+			require_once( get_template_directory() . '/inc/admin_menu_templates/dashboard/units_dashboard/agp_unit_statistics.php' );
+		
+		}
+	}

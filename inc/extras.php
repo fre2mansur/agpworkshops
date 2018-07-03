@@ -341,3 +341,10 @@ function add_inr_currency( $currencies ) {
  
     return $currencies;
 }
+
+// Understanding auto field population
+
+add_filter( 'gform_field_value_date', 'populate_date' );
+function populate_date( $value ) {
+   return '10/10/2010';
+}
