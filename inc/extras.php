@@ -296,8 +296,8 @@ add_action( 'admin_head', 'replace_admin_menu_icons_css' );
 
 require get_template_directory() . '/inc/custom-walker.php';
 
-/* Altering admin user list --Mansur */
-// Kshitij - Watching updates
+/* Altering admin user list */
+
 function alter_user_list( $result, $user, $field, $post_id ) {
 	$result = $user->first_name .' '. $user->last_name;
 	return  $result;
@@ -342,9 +342,13 @@ function add_inr_currency( $currencies ) {
     return $currencies;
 }
 
-// Understanding auto field population
 
-add_filter( 'gform_field_value_date', 'populate_date' );
-function populate_date( $value ) {
-   return '10/10/2010';
-}
+/*
+	======================================
+	Custom post type for registration form
+	======================================
+
+*/
+	
+	require get_template_directory() . '/inc/registration/registrationform.php';
+	
