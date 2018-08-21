@@ -5,7 +5,7 @@
     "license": "GPL-2.0",
     "minimum-stability": "stable",
     "require": {
-        "google/apiclient": "2.0"
+       
     },
     "keywords": ["wordpress","theme","bootstrap"],
     "homepage": "https://github.com/holger1411/understrap"
