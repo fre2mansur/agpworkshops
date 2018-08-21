@@ -121,6 +121,11 @@ require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php'
 */
 require get_template_directory() . '/inc/admin_menu_templates/agp_facilitators.php';
 /**
+ * Load AGP Registration Form post type
+
+*/
+require get_template_directory() . '/inc/extras-mansur.php';
+/**
 	* Remove dashboard widgets for non admin users
 */
 // disable default dashboard widgets
@@ -341,14 +346,3 @@ function add_inr_currency( $currencies ) {
  
     return $currencies;
 }
-
-
-/*
-	======================================
-	Custom post type for registration form
-	======================================
-
-*/
-	
-	require get_template_directory() . '/inc/registration/registrationform.php';
-	
