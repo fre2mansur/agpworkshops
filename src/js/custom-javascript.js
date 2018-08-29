@@ -1,39 +1,74 @@
 var $ = jQuery;
-(function($){
-  window.onload = function(){classCheck()};
-   
-    var navbar = document.getElementById("navbar");
-    var content = document.getElementById("main");
-    var sticky = navbar.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-      content.classList.add("cmt-5");
-    navbar.classList.add("sticky");
-    navbar.classList.add("b-edge-shadow");
-    navbar.classList.add("p-2");
-    navbar.classList.remove("b-edge-no-shadow");
-    navbar.classList.remove("p-3");
-  } else {
-    content.classList.remove("cmt-5");
-    navbar.classList.remove("sticky");
-    navbar.classList.remove("p-2");
-    navbar.classList.add("b-edge-no-shadow");
-    navbar.classList.add("p-3");
-  }
- }
-function classCheck(){
-  window.onscroll = function() {myFunction()};
-}
-})(jQuery);
+var ham = document.querySelectorAll(".ham");
+var menuBtn = document.querySelectorAll(".menu-btn");
+var search = document.getElementById("search-box");
+var header = document.querySelector('.mobile-menu-parent');
 
 
+var windowWidth = $(window).width();
 
-$(document).ready(function() {
-  var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-  $('.sidebar ul li a').each(function() {
-   if (this.href === path) {
-    $(this).addClass('active');
-   }
-  });
+
+$("#mobilemenu").on('show.bs.collapse', function(){
+  header.classList.toggle('active-mobile');
+})
+
+$("#mobilemenu").on('shown.bs.collapse', function(){
+        ham[0].classList.toggle('active-mobile'); ham[1].classList.toggle('active-mobile'); 
  });
+$("#mobilemenu").on('hidden.bs.collapse', function(){
+        ham[0].classList.toggle('active-mobile');
+        ham[1].classList.toggle('active-mobile');
+        header.classList.toggle('active-mobile'); 
+        $('#collapseOne').removeClass('show');
+});
+
+/*
+Mobile Drop Down
+*/
+var triggers = Array.from(document.querySelectorAll('[data-toggle="collapseDropDown"]'));
+
+window.addEventListener('click', function (ev) {
+  var elm = ev.target;
+  if (triggers.includes(elm)) {
+    var selector = elm.getAttribute('data-target');
+    collapse(selector, 'toggle');
+  }
+}, false);
+
+
+var fnmap = {
+  'toggle': 'toggle',
+  'show': 'add',
+  'hide': 'remove' };
+
+var collapse = function collapse(selector, cmd) {
+  var targets = Array.from(document.querySelectorAll(selector));
+  targets.forEach(function (target) {
+    target.classList[fnmap[cmd]]('show');
+  });
+  
+};
+
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+    if (windowWidth < 768){
+    if (scroll > 100) {
+        $('.logo').addClass("resize");
+    } 
+      else {
+        $('.logo').removeClass("resize");
+    }
+    } else {
+      if (scroll > 100){
+        $('.logo').addClass("desktop-resize");
+        $('#nav-left li').addClass("resize");
+        $('#nav-right li').addClass("resize");
+    } 
+      else {
+      $('.logo').removeClass("desktop-resize");
+      $('#nav-right li').removeClass("resize");
+      $('#nav-left li').removeClass("resize");
+    }
+    }
+});
+

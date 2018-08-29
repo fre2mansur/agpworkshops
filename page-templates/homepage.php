@@ -1,13 +1,13 @@
 <?php
 /**
- * Template Name: Full Width Page
+ * Template Name: Home page
  *
  * Template for displaying a page without sidebar even if a sidebar widget is published.
  *
  * @package understrap
  */
 
-get_header('agp');
+get_header('sticky');
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
