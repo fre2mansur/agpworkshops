@@ -70,13 +70,13 @@ $container = get_theme_mod( 'understrap_container_type' );
   <!-- The WordPress Menu goes here -->
   <?php wp_nav_menu(
 					array(
-						'theme_location'  => 'primary',
+						'theme_location'  => 'mobile',
 						'container_class' => 'container-fluid bg-white collapse navbar-collapse d-md-none',
 						'container_id'    => 'mobilemenu',
 						'menu_class'      => 'navbar-nav mx-auto text-capital text-center pt-3',
 						'fallback_cb'     => '',
 						'menu_id'         => 'main-menu',
-						'walker'          => new custom_WP_Bootstrap_Navwalker(),
+						'walker'          => new mobile_nav_walker(),
 					)
         ); ?>
         

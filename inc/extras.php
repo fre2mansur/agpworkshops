@@ -294,7 +294,7 @@ add_action( 'admin_head', 'replace_admin_menu_icons_css' );
 	Custom Sidebar Navigation Walker
 */
 
-require get_template_directory() . '/inc/custom-walker.php';
+require get_template_directory() . '/inc/mobile-nav-walker.php';
 
 /* Altering admin user list */
 

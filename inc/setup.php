@@ -45,7 +45,8 @@ if ( ! function_exists ( 'understrap_setup' ) ) {
 		register_nav_menus( array(
 			'primary' => __( 'Primary Menu', 'understrap' ),
 			'secondary' => __( 'Secondary Menu', 'understrap' ),
-		) );
+			'mobile' => __( 'Mobile Menu', 'understrap' ),
+		));
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
