@@ -4021,13 +4021,13 @@ $(window).scroll(function() {
     } else {
       if (scroll > 100){
         $('.logo').addClass("desktop-resize");
-        $('#nav-left li').addClass("resize");
-        $('#nav-right li').addClass("resize");
+        $('#nav-left li a').addClass("resize");
+        $('#nav-right li a').addClass("resize");
     } 
       else {
       $('.logo').removeClass("desktop-resize");
-      $('#nav-right li').removeClass("resize");
-      $('#nav-left li').removeClass("resize");
+      $('#nav-right li a').removeClass("resize");
+      $('#nav-left li a').removeClass("resize");
     }
     }
 });

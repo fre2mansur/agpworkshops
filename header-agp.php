@@ -31,44 +31,38 @@ $container = get_theme_mod( 'understrap_container_type' );
   <!-- Mobile Menu   -->
   <nav class="mobile-menu-parent sticky-top navbar-default shadow bg-white flex-row d-block d-md-none" id="header-menu">
     <div class="d-flex justify-content-around align-items-center p-2 w-100" >  
-    <button class="menu-btn navbar-toggler d-inline-flex px-1 d-md-none" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
+      <button class="menu-btn navbar-toggler d-inline-flex px-1 d-md-none" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30" >
-  <path
-        class="line top"
-        d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
-  <path
-        class="line middle"
-        d="m 70,50 h -40" />
-  <path
-        class="line bottom"
-        d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
-</svg>
- </button>
-      
-      <div class="logo"></a></div>
-      
-    <button class="menu-btn navbar-toggler d-inline-flex px-1 justify-content-end d-md-none" type="button"  onclick="toggleMenu();" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
+          <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+          <path class="line middle" d="m 70,50 h -40" />
+          <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+        </svg>
+      </button>
+
+      <!-- Your site title as branding in the menu -->
+      <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+            $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
+              min-width:135px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
+      ?>
+      <?php if ( ! has_custom_logo() ) { ?>
+        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+      <?php } else { ?>
+        <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
+      <?php } ?>
+
+      <button class="menu-btn navbar-toggler d-inline-flex px-1 justify-content-end d-md-none" type="button"  onclick="toggleMenu();" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30">
-  <path
-        class="line top"
-        d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
-  <path
-        class="line middle"
-        d="m 70,50 h -40" />
-  <path
-        class="line bottom"
-        d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
-</svg>
+          <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+          <path class="line middle" d="m 70,50 h -40" />
+          <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+        </svg>
       </button>   
     </div>
-<!--     <span class="mobile-search container">
-          
-      <input type="text" name="search" placeholder="Search" id="search-box" class="">
-           
-    </span> -->
+    <!--<span class="mobile-search container"><input type="text" name="search" placeholder="Search" id="search-box" class=""></span> -->
 
-  <!-- The WordPress Menu goes here -->
-  <?php wp_nav_menu(
+    <!-- The Mobile Menu goes here -->
+    <?php wp_nav_menu(
 					array(
 						'theme_location'  => 'mobile',
 						'container_class' => 'container-fluid bg-white collapse navbar-collapse d-md-none',
@@ -79,74 +73,54 @@ $container = get_theme_mod( 'understrap_container_type' );
 						'walker'          => new mobile_nav_walker(),
 					)
         ); ?>
-        
 
-    <!-- <div class="container-fluid bg-white collapse navbar-collapse d-md-none " id="mobilemenu">
-      <ul class="navbar-nav mx-auto text-capital text-center pt-3 ">
-        <li class="nav-item dropdown-item"><a href="" class="nav-link">about us</a></li>
-        <li class="nav-item dropdown-item"><a href="" class="nav-link">blog</a></li>
-        <li class="nav-item dropdown-item"><a href="" class="nav-link">faq</a></li>
-        <li class="nav-item active" >
-          <a href="#" class="nav-link side-arrow " data-toggle="collapseDropDown"  data-target=".collapseDropDown"  data-text="CollapseDropDown"> <span data-toggle="collapseDropDown"  data-target=".collapseDropDown"  data-text="CollapseDropDown">Workshop</span></a>
-          <div id="collapseOne" class="collapseDropDown">
-            <ul class="navbar-nav dropdown-menu mx-auto text-capital text-center">
-                <li class="nav-item dropdown-item"><a href="" class="nav-link">Art & Craft</a></li>
-              <li class="nav-item dropdown-item"><a href="" class="nav-link">Building & Architecture</a></li>
-              <li class="nav-item dropdown-item"><a href="" class="nav-link">Energy</a></li>
-              <li class="nav-item dropdown-item"><a href="" class="nav-link">Sustainability</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item dropdown-item"><a href="" class="nav-link">contact us</a></li>
-      </ul>
-    </div> -->
   </nav>
-  
   <!-- Mobile menu ends -->
+
   <!-- Desktop Menu Starts -->
   <nav class="navbar d-none d-md-flex sticky-top shadow-sm navbar-light bg-white py-0">
     <div class="container">
-    <div class="" id="nav-left">
-      <ul class="nav">
-          <li class="nav-item px-lg-2">
-              <a class="nav-link " href="#">About Us</a>
-          </li>
-          <li class="nav-item px-lg-2">
-              <a class="nav-link" href="#">Blog</a>
-          </li>
-          <li class="nav-item px-lg-2">
-              <a class="nav-link" href="#">FAQ</a>
-          </li>
-      </ul>
-    </div>
+      <!-- The Left Menu goes here -->
+      <?php 
+        wp_nav_menu(
+          array(
+            'theme_location'  => 'left',
+            'container_class' => '',
+            'container_id'    => 'nav-left',
+            'menu_class'      => 'nav', //Ul class
+            'menu_id'         => 'main-menu',
+            'fallback_cb'     => '',
+            'walker'          => new understrap_WP_Bootstrap_Navwalker(),
+          ) 
+        );
+      ?>
     
-    <a class="navbar-brand mx-auto" href="#"><div id="logo" class="logo"></div></a>
-    
-    <div class="" id="nav-right">
-      <ul class="nav ml-auto">
-          <li class="nav-item px-lg-2 dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Workshops
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Arts & Craft</a>
-          <a class="dropdown-item" href="#">Building & Architecture</a>
-          <a class="dropdown-item" href="#">Energy</a>
-          <a class="dropdown-item" href="#">Sustainability</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Others</a>
-        </div>
-          </li>
-        <li class="nav-item px-lg-2">
-              <a class="nav-link" href="#">Contact Us</a>
-        </li>
-        <li class="nav-item px-lg-2">
-            <a class="nav-link" href="#"><span class="fa fa-search"></span></a>
-        </li>
-      </ul>
+      <!-- Your site title as branding in the menu -->
+      <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+            $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
+              min-width:135px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
+      ?>
+      <?php if ( ! has_custom_logo() ) { ?>
+        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+      <?php } else { ?>
+        <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
+      <?php } ?>
+      
+      <!-- The Right Menu goes here -->
+      <?php 
+        wp_nav_menu(
+          array(
+            'theme_location'  => 'right',
+            'container_class' => '',
+            'container_id'    => 'nav-right',
+            'menu_class'      => 'nav ml-auto', //Ul class
+            'menu_id'         => 'right-menu',
+            'fallback_cb'     => '',
+            'walker'          => new understrap_WP_Bootstrap_Navwalker(),
+          ) 
+        );
+      ?>
     </div>
-    </div>
-    <!-- Mobile -->
-</nav>
-<!-- Desktop Menu Ends -->
-<!--   </main> -->
+  </nav>
+  <!-- Desktop Menu Ends -->
