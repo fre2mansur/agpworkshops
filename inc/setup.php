@@ -43,9 +43,10 @@ if ( ! function_exists ( 'understrap_setup' ) ) {
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary' => __( 'Primary Menu', 'understrap' ),
-			'secondary' => __( 'Secondary Menu', 'understrap' ),
-		) );
+			'left' => __( 'Left Menu', 'understrap' ),
+			'right' => __( 'Right Menu', 'understrap' ),
+			'mobile' => __( 'Mobile Menu', 'understrap' ),
+		));
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
