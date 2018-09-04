@@ -4051,3 +4051,24 @@ $(window).scroll(function() {
     }
 });
 
+//Homepage Gallery Script
+jQuery.fn.random = function() {
+  var randomIndex = Math.floor(Math.random() * 12);  
+  return jQuery(this[randomIndex]);
+};
+var prev;
+var timer = window.setInterval(function () {
+  if(prev){
+      prev.mouseleave();
+  }
+  prev = $('.card-img-overlay').random().mouseenter();
+console.log(prev);
+}, 1000);
+
+$('.card-img-overlay').hover(function(){
+  $(this).addClass('card-img-overlay-hover');
+  
+;}, function(){
+  $(this).removeClass('card-img-overlay-hover');
+  
+})

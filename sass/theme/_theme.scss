@@ -369,3 +369,38 @@ overflow:hidden;
   position: relative;
 }
 }
+
+/*Slider Scss starts*/
+.no-radius{
+  .card-group{
+    .card{
+      border-radius:0;
+      border:none;
+      display: flex;
+      flex: 0 0 25%;
+      img{
+        border-radius:0;
+        object-fit:cover;
+        min-height:135px;
+        max-height:135px !important;
+      }
+      .card-img-overlay-hover{
+          height:100%;
+          width:100%;
+          background-color:rgba(50,50,50,0.5);
+          transition:all .2s ease-in-out;
+        .card-title{
+          display:block;
+          cursor:none;
+          @media only screen and (max-width:1024px){
+          font-size:1.5vw;
+        }
+        }
+        
+      }
+      .card-title{
+          display:none;
+        }
+    }
+  }
+}

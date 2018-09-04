@@ -16,9 +16,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 
 		<div class="row">
-
-
-						<?php while ( have_posts() ) : the_post(); ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
 						<?php get_template_part( 'loop-templates/content', 'page' ); ?>
 
@@ -32,7 +30,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						?>
 
 					<?php endwhile; // end of the loop. ?>
-			
+					
 
 		</div><!-- .row end -->
 
