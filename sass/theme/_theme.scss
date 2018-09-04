@@ -1,5 +1,40 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
 $border-green:rgba(115, 216, 124, 0.5);
+html{
+   
+  // margin-right: calc(100vw - 100%);
+  transition:all 0.2s ease-in-out;
+}
+body {
+margin: 0;
+padding: 0;
+// display:grid;
+// justify-content:center;
+// align-items:center;
+height:100%;
+// overflow-Y:scroll;
+}
+/*
+  Admin Specific styles
+*/
+#wpwrap{
+  background-color: #f1f1f1;
+}
+#admin-cards{
+  font-size: 1em;
+  .card{
+    max-width: 100%;
+  }
+  .simple-dash-icons{
+  font-size: 2em;
+}
+}
+#adminmenu {
+  li{
+    color:white;
+  }
+}
+/* Admin specific styles end */
 
 *{
   margin:0;
@@ -174,12 +209,13 @@ nav{
 
 .collapseDropDown {
   display: block;
-  max-height: 0px;
+  max-height: 0;
   overflow: hidden;
   transition: all .5s cubic-bezier(0, 1, 0, 1);
-&.show {
+  &.showCollapse {
+    // display: inherit;
     max-height: 99em;
-    transition: all .5s ease-in-out;
+    transition: max-height .5s ease-in-out !important;
   }
 }
 

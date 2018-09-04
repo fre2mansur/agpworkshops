@@ -4017,13 +4017,13 @@ window.addEventListener('click', function (ev) {
 
 var fnmap = {
   'toggle': 'toggle',
-  'show': 'add',
+  'showCollapse': 'add',
   'hide': 'remove' };
 
 var collapse = function collapse(selector, cmd) {
   var targets = Array.from(document.querySelectorAll(selector));
   targets.forEach(function (target) {
-    target.classList[fnmap[cmd]]('show');
+    target.classList[fnmap[cmd]]('showCollapse');
   });
   
 };
