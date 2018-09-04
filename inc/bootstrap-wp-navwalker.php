@@ -80,6 +80,8 @@ class understrap_WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 			*/
 			if ( $args->has_children && $depth === 0 ) {
 				$class_names .= ' dropdown';
+			} elseif ( $depth > 0 ) {
+				$class_names .= ' dropdown-item';
 			} elseif ( $args->has_children && $depth > 0 ) {
 				$class_names .= ' dropdown-submenu';
 			}
