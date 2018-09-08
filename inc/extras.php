@@ -323,11 +323,6 @@ function custom_dashboard_widgets() {
 	require_once(get_template_directory() . '/inc/admin_menu_templates/dashboard/dashboard.php');
 	
 }
-add_action( 'admin_menu', 'agp_add_admin_page' );
-function agp_add_admin_page() {
-	
-	require_once( get_template_directory() . '/inc/admin_menu_templates/agp_admin.php' );
-}
 
 
 // Indian Currency in Gravity Forms
