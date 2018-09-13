@@ -6,20 +6,27 @@
  *
  * @package understrap  
  */
-get_header('sticky'); ?>
+get_header('agp'); ?>
 <?php
+
+/** Get Quick Details  */
+$quick_data = get_field('quick_details');
+$what = $quick_data['what'];
+$why = $quick_data['why'];
+$who = $quick_data['whom'];
+$how = $quick_data['how'];
 
 /** Get Workshop Intro and Description */
 $brief_intro = get_field('brief_intro');
 $workshop_description = get_field('workshop_description');
 
 /** Get Workshop Schedule Type */
-$select_the_schedule_type = get_field('select_the_schedule_type');
+$get_the_schedule_type = get_field('select_the_schedule_type');
 $number_of_days = get_field('number_of_days');
 $number_of_weeks = get_field('number_of_weeks');
 
 /** Get Workshop Daily Schedule */
-$single_day = get_field('single_day');
+$one_day_content = get_field('single_day');
 $two_days_content = get_field('two_days_content');
 $three_days_content = get_field('three_days_content');
 $four_days_content = get_field('four_days_content');
@@ -52,54 +59,137 @@ $payment_details_with_accommodation = get_field('payment_details_with_accommodat
 $fees_without_accommodation = get_sub_field('fees_without_accommodation');
 $payment_without_accommodation = get_sub_field('payment_without_accommodation');
 $payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
-
 ?>
 
-	<div id="primary">
-		<div id="content" role="main">
+<div class="container">
+	<?php while ( have_posts() ) : the_post(); ?>
+			<h1><?php the_title(); ?></h1>
+			<div class="row">
+				<div class="col-md-3">
+					<h3>What</h3>
+					<?php echo $what; ?>
+				</div>
+				<div class="col-md-3">
+					<h3>Why</h3>
+					<?php echo $why; ?>
+				</div>
+				<div class="col-md-3">
+					<h3>Who</h3>
+					<?php echo $who; ?>
+				</div>
+				<div class="col-md-3">
+					<h3>How</h3>
+					<?php echo $how; ?>
+				</div>
+			</div>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<div class="row">
+				<div class="col-md-9">
+					<h1>Details</h1>
+					<?php echo $brief_intro; ?>
+					<?php echo $workshop_description; ?>
 
-				<h1><?php the_title(); ?></h1>
-				<?php the_content(); ?>
+					
+					<?php 
+					$title = "<h1>Schedule</h1>";
+					if($get_the_schedule_type == "daily"){
+						$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
+						foreach($days as $day){
+							if($day == $number_of_days && $day != 'one_day') {
+								$day_content = get_field($day."_content");
+								echo $title;
+								$i = 1; foreach($day_content as $content) {
+									if($content){
+										echo "<h4>DAY ".$i++."</h4>";
+										echo $content;
+									}
+								}
+								
+							}
+						} 
+					} else {
+						$all_weeks = array('two_week','three_week','four_week');
+						foreach($all_weeks as $week){
+							if($week == $number_of_weeks) {
+								$week_content = get_field($week."s_content");
+								echo $title;
+								$i = 1; foreach($week_content as $content) {
+									if($content){
+										echo "<h4>WEEK ".$i++."</h4>";
+										echo $content;
+									}
+								}
+							}
+						}
+					} ?>
 
+					<h1>Facilitators</h1>
+					<div class="row">
+						<?php 
+						$facilitators = get_field('facilitators');
+						foreach($facilitators as $post){?>
+							<div class="col-md-3">
+								<div>
+								<img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($post->ID,'full');?>">
+								</div>
+								<?php echo $post->post_title; ?>
+							</div>
+						<?php } ?>
+					</div>
+
+					<h1>Organizing Unit</h1>
+					<div class="row">
+						<?php 
+						$units = get_field('unit_name'); ?>
+							<div class="col-md-3">
+								<?php echo $units; ?>
+							</div>
+					</div>
+
+				</div> <!--col-md-9-->
+				<div class="col-md-3">
+					<?php dynamic_sidebar( 'right-sidebar' ); ?>
+				</div>
+				
+			</div>
+		<?php 
+
+	// check for rows (parent repeater)
+	if( have_rows($payment_group) ): ?>
+		<div id="to-do-lists">
+		<?php 
+
+		// loop through rows (parent repeater)
+		while( have_rows($payment_group) ): the_row(); ?>
+			<div>
 				<?php 
 
-				// check for rows (parent repeater)
-				if( have_rows($payment_group) ): ?>
-					<div id="to-do-lists">
+				// check for rows (sub repeater)
+				if( have_rows('fees_with_accommodation') ): ?>
+					<ul>
 					<?php 
 
-					// loop through rows (parent repeater)
-					while( have_rows($payment_group) ): the_row(); ?>
-						<div>
-							<?php 
+					// loop through rows (sub repeater)
+					while( have_rows('fees_with_accommodation') ): the_row();
 
-							// check for rows (sub repeater)
-							if( have_rows('fees_with_accommodation') ): ?>
-								<ul>
-								<?php 
+						// display each item as a list - with a class of completed ( if completed )
+						?>
+						<li> <?php the_sub_field('payment_with_accommodation'); ?> </li>
+						<li> <?php the_sub_field('payment_details_with_accommodation'); ?> </li>
+					<?php endwhile; ?>
+					</ul>
+				<?php endif; //if( get_sub_field('items') ): ?>
+			</div>	
 
-								// loop through rows (sub repeater)
-								while( have_rows('fees_with_accommodation') ): the_row();
+		<?php endwhile; // while( has_sub_field('to-do_lists') ): ?>
+		</div>
+	<?php endif; // if( get_field('to-do_lists') ): ?>
 
-									// display each item as a list - with a class of completed ( if completed )
-									?>
-									<li> <?php the_sub_field('payment_with_accommodation'); ?> </li>
-                                    <li> <?php the_sub_field('payment_details_with_accommodation'); ?> </li>
-								<?php endwhile; ?>
-								</ul>
-							<?php endif; //if( get_sub_field('items') ): ?>
-						</div>	
+<?php endwhile; // end of the loop. ?>
 
-					<?php endwhile; // while( has_sub_field('to-do_lists') ): ?>
-					</div>
-				<?php endif; // if( get_field('to-do_lists') ): ?>
+	</div>
 
-			<?php endwhile; // end of the loop. ?>
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
 
 
 
