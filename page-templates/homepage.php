@@ -13,9 +13,9 @@ global $wpdb;
 $get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
 $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table", OBJECT_K );
 ?>
-<div class="wrapper pt-1" id="full-width-page-wrapper ">
-	<div class="<?php echo esc_attr( $container ); ?>" id="content">
-		<!--Gallery Starts-->
+
+<div class="<?php echo esc_attr( $container ); ?>" id="content">
+<!--Gallery Starts-->
 		<?php if($gallery){ ?>
 		<div class="row">
 			<div class="d-none px-3 d-md-block w-100">
@@ -23,10 +23,10 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table", OBJECT
 					<div class="card-group text-center">
 						<?php foreach($gallery as $image) { ?>
 							<div class="card bg-dark text-white">
-								<img src="<?php echo $image->Image; ?>" alt="" class="card-img">
+								<img src="<?php echo $image->src; ?>" alt="" class="card-img">
 								<div class="card-img-overlay">
 									<div class="card-img-overlay h-100 d-flex flex-column justify-content-center align-items-center">
-										<h6 class="card-title"><?php echo $image->Title; ?></h6>
+										<h6 class="card-title"><?php echo $image->title; ?></h6>
 									</div>
 								</div>
 							</div>
@@ -152,19 +152,5 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table", OBJECT
     top: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
-
 <?php get_footer(); ?>
