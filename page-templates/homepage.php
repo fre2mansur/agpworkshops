@@ -61,7 +61,8 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table", OBJECT
 					}
 				} ?>
 			</ul>
-			<div id="portfoliolist" class="card-deck">
+			<div id="portfoliolist">
+				<div id="accordion" class="card-deck">
 				<?php  global $post;
 				$args = array( 'post_type' => 'agp_workshop','posts_per_page' => '10' );
 				$loop = new WP_Query( $args );
@@ -113,6 +114,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table", OBJECT
 						</div>
 					</div> 
 				<?php endwhile;?>
+				</div>
 			</div>
 		</div><!--workshop ends-->
 	</div><!-- Container end -->
