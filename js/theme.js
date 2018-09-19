@@ -4062,7 +4062,6 @@ var timer = window.setInterval(function () {
       prev.mouseleave();
   }
   prev = $('.card-img-overlay').random().mouseenter();
-console.log(prev);
 }, 1000);
 
 $('.card-img-overlay').hover(function(){
