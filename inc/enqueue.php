@@ -18,8 +18,8 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
 		wp_enqueue_script( 'jquery');
 
 		//Hoem page Portfolio assets
-		wp_enqueue_script( 'jquery-mixitup', get_template_directory_uri() . '/js/jquery.mixitup.min.js', array(), '1.0.0', false );
-   		wp_enqueue_script( 'jquery-filter', get_template_directory_uri() . '/js/filter.js',array(), '1.0.0', false );
+		wp_enqueue_script( 'jquery-mixitup', get_template_directory_uri() . '/js/jquery.mixitup.min.js', array(), '1.0.0', true );
+   		wp_enqueue_script( 'jquery-filter', get_template_directory_uri() . '/js/filter.js',array(), '1.0.0', true );
 		
 		$js_version = $theme_version . '.' . filemtime(get_template_directory() . '/js/theme.min.js');
 		wp_enqueue_script( 'understrap-scripts', get_template_directory_uri() . '/js/theme.min.js', array(), $js_version, true );

@@ -4053,7 +4053,7 @@ $(window).scroll(function() {
 
 //Homepage Gallery Script
 jQuery.fn.random = function() {
-  var randomIndex = Math.floor(Math.random() * 12);  
+  var randomIndex = Math.floor(Math.random() * 5);  
   return jQuery(this[randomIndex]);
 };
 var prev;
