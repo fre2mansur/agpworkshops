@@ -61,8 +61,8 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					}
 				} ?>
 			</ul>
-			<div id="portfoliolist">
-				<div id="accordion">
+			<!-- <div id="portfoliolist"> -->
+				<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$args = array( 'post_type' => 'agp_workshop','posts_per_page' => '10' );
 				$loop = new WP_Query( $args );
@@ -79,9 +79,9 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					$tax = '';                  
 					endif; 
 					?>
-					<div style="width:33%" class="card portfolio <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
+					<div class="card portfolio <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
 						<img src="<?php the_post_thumbnail_url(); ?>" alt="" class="card-img-top">
-						<div class="card-body pt-3 pb-0">
+						<div class="card-body">
 							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
 								<div class="d-flex justify-content-between header">
 									<h5 class="card-title"><?php the_title()?></h5>
@@ -92,14 +92,14 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 							</a>
 							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post->ID, 'workshop_category' ); ?></h6>
 							<div class="collapse my-2" id="workshop_<?php echo the_ID(); ?>"  data-parent="#accordion">
-								<p class="card-text"><?php echo get_field('brief_intro');?></p>
+								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
 									<a href="<?php the_permalink(); ?>">Know more</a>
 									<a href="#" class="ml-5">Register now</a>
 								</div>     
 							</div>
 							<hr class="p-0 m-0 mt-2">
-							<div class="footer d-flex justify-content-between">
+							<div class="footer d-flex justify-content-between m-0">
 							<?php $date = get_field('date_selector'); ?>
 								<div class="py-3">
 									<span class="mr-auto">Starts - </span>
@@ -115,7 +115,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					</div> 
 				<?php endwhile;?>
 				</div>
-			</div>
+			<!-- </div> -->
 		</div><!--workshop ends-->
 
 		
