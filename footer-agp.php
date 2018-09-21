@@ -14,17 +14,30 @@ $container = get_theme_mod( 'understrap_container_type' );
     
         <div class="footer-top navbar">
             <div class="<?php echo esc_attr( $container ); ?>">
-                <ul class="nav flex-row">
-                    <li class="nav-item"><a class="nav-link" href="">Terms</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-                </ul>
+            <?php 
+                wp_nav_menu(
+                array(
+                    'theme_location'  => 'footer',
+                    'container_class' => '',
+                    'menu_class'      => 'nav flex-row', //Ul class
+                    'menu_id'         => 'footer-menu',
+                    'fallback_cb'     => '',
+                    'walker'          => new understrap_WP_Bootstrap_Navwalker(),
+                ) 
+                );
+            ?>
                 <div class="flex-row ml-md-auto">
                    Follow US &#160;&#160;&mdash;&mdash;&#160;&#160;
                    <span class="social">
-                   <a href=""><i class="fa fa-facebook"></i></a>
-                   <a href=""><i class="fa fa-instagram"></i></a>
-                   <a href=""><i class="fa fa-linkedin"></i></a> 
+                    <?php if(get_option('facebook')) { ?>
+                        <a target="_blank" href="<?php echo get_option('facebook'); ?>"><i class="fa fa-facebook"></i></a>
+                    <?php } if(get_option('twitter')) { ?>
+                        <a target="_blank" href="<?php echo get_option('twitter'); ?>"><i class="fa fa-twitter"></i></a>
+                    <?php } if(get_option('instagram')) {?>
+                        <a target="_blank" href="<?php echo get_option('instagram'); ?>"><i class="fa fa-instagram"></i></a>
+                    <?php } if(get_option('linkedin')) {?>
+                        <a target="_blank"href="<?php echo get_option('linkedin'); ?>"><i class="fa fa-linkedin"></i></a>
+                    <?php } ?>
                     </span>
                 </div>
             </div>
