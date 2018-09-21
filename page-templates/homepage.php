@@ -38,7 +38,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 		<?php } ?>
 
 		<!--workshop portfolio-->
-		<div class="workshops">
+		<!-- <div class="workshops">
 			<h2>Latest Workshops</h2>
 			
 			<ul id="filters" class="list-unstyled nav m-3">
@@ -116,7 +116,209 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 				<?php endwhile;?>
 				</div>
 			</div>
-		</div><!--workshop ends-->
+		</div> -->
+
+<div class="card-columns" id="accordion">
+      
+      <div class="card" id="headingOne">
+     <img src="https://picsum.photos/320/220" alt="" class="card-img-top">
+      <div class="card-body">
+        <a class="decoration-none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
+        <div class="d-flex justify-content-between header">
+         <h5 class="card-title">Exploring Auroville Architecture</h5>
+         <a class="collapsed" data-toggle="collapse" href="#collapseExample" role="button" name="header" aria-expanded="false" aria-controls="collapseExample" >
+          <span class="arrow"></span>
+         </a>
+        </div> 
+        </a>
+         <h6 class="card-subtitle text-muted mb-2 pb-2">Building and architecture</h6>
+         <div class="collapse my-2" id="collapseExample" aria-labelledby="headingOne" data-parent="#accordion">
+           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.ome quick example text to build on the card title and make up the bulk of the card's content.ome quick example text to build on the card title and make up the bulk of the card's content.ome quick example text to build on the card title and make up the bulk of the card's content.ome quick example text to build on the card title and make up the bulk of the card's content.ome quick example text to build on the card title and make up the bulk of the card's content.ome quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <div class="d-flex justify-content-start mb-3">
+           <a href="#">Know more</a>
+           <a href="#" class="ml-5">Register now</a>
+           </div>     
+         </div>
+        <hr class="p-0 m-0 mt-2">
+    <div class="footer d-flex justify-content-between">
+      <div class="py-3">
+      <span class="mr-auto">Starts - </span>
+      <strong>24 OCT 2018</strong>
+      </div>
+      <span class="line border border-gray mx-auto"></span>
+      <div class="py-3 pl-2">
+      <span class="mr-auto">Ends -</span>
+      <strong>30 OCT 2018</strong>
+      </div>
+    </div>
+  </div>
+   </div>
+      <div class="card" id="headingTwo">
+     <img src="https://picsum.photos/320/320" alt="" class="card-img-top">
+      <div class="card-body pb-1">
+        <a class="decoration-none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" >
+        <div class="d-flex justify-content-between header">
+          <h5 class="card-title">Earth and Bamboo</h5>
+          <a class="collapsed" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" >
+            <span class="arrow"></span>
+          </a>
+        </div>  
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted pb-2">Building and architecture</h6>
+        <div class="collapse my-2" id="collapseExample2" aria-labelledby="headingTwo" data-parent="#accordion">
+           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <div class="d-flex justify-content-start mb-3">
+           <a href="#">Know more</a>
+           <a href="#" class="ml-5">Register now</a>
+           </div>
+          </div>
+       <hr class="p-0 m-0 mt-2">
+          <div class="footer d-flex justify-content-between">
+            <div class="py-3">
+            <span class="mr-auto">Starts - </span>
+            <strong>24 OCT 2018</strong>
+            </div>
+            <span class="line border border-gray mx-auto"></span>
+            <div class="py-3 pl-2">
+            <span class="mr-auto">Ends -</span>
+            <strong>30 OCT 2018</strong>
+            </div>
+          </div>
+    
+      </div>
+  </div>
+      <div class="card"  id="headingThree">
+     <img src="https://picsum.photos/320/240" alt="" class="card-img-top">
+      <div class="card-body pb-1">
+        <a class="decoration-none" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+          <div class="d-flex justify-content-between header">
+          <h5 class="card-title">Some other workshop name</h5>  
+          <a class="collapsed" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3"><span class="arrow"></span>
+          </a>
+          </div>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted pb-2">Art & Craft</h6>
+        <div class="collapse my-2" id="collapseExample3" aria-labelledby="headingThree" data-parent="#accordion">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <div class="d-flex justify-content-start mb-3">
+           <a href="#">Know more</a>
+           <a href="#" class="ml-5">Register now</a>
+           </div>
+         </div>
+         <hr class="p-0 m-0 mt-2">
+          <div class="footer d-flex justify-content-between">
+            <div class="py-3">
+            <span class="mr-auto">Starts - </span>
+            <strong>24 OCT 2018</strong>
+            </div>
+            <span class="line border border-gray mx-auto"></span>
+            <div class="py-3 pl-2">
+            <span class="mr-auto">Ends -</span>
+            <strong>30 OCT 2018</strong>
+            </div>
+          </div>    
+  </div>
+   </div>
+      <div class="card "  id="headingFour">
+     <img src="https://picsum.photos/290/240" alt="" class="card-img-top">
+      <div class="card-body pb-1">
+        <a class="decoration-none" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
+          <div class="d-flex justify-content-between header">
+          <h5 class="card-title">Some other workshop name</h5>  
+          <a class="collapsed" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4"><span class="arrow"></span>
+          </a>
+          </div>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted pb-2">Art & Craft</h6>
+        <div class="collapse my-2" id="collapseExample4" aria-labelledby="headingThree" data-parent="#accordion">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <div class="d-flex justify-content-start mb-3">
+           <a href="#">Know more</a>
+           <a href="#" class="ml-5">Register now</a>
+           </div>
+         </div>
+         <hr class="p-0 m-0 mt-2">
+          <div class="footer d-flex justify-content-between">
+            <div class="py-3">
+            <span class="mr-auto">Starts - </span>
+            <strong>24 OCT 2018</strong>
+            </div>
+            <span class="line border border-gray mx-auto"></span>
+            <div class="py-3 pl-2">
+            <span class="mr-auto">Ends -</span>
+            <strong>30 OCT 2018</strong>
+            </div>
+          </div>    
+  </div>
+   </div>
+       <div class="card"  id="headingFive">
+     <img src="https://picsum.photos/320/350" alt="" class="card-img-top">
+      <div class="card-body pb-1">
+        <a class="decoration-none" data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample5">
+          <div class="d-flex justify-content-between header">
+          <h5 class="card-title">Some other workshop name</h5>  
+          <a class="collapsed" data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample5"><span class="arrow"></span>
+          </a>
+          </div>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted pb-2">Art & Craft</h6>
+        <div class="collapse my-2" id="collapseExample5" aria-labelledby="headingThree" data-parent="#accordion">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <div class="d-flex justify-content-start mb-3">
+           <a href="#">Know more</a>
+           <a href="#" class="ml-5">Register now</a>
+           </div>
+         </div>
+         <hr class="p-0 m-0 mt-2">
+          <div class="footer d-flex justify-content-between">
+            <div class="py-3">
+            <span class="mr-auto">Starts - </span>
+            <strong>24 OCT 2018</strong>
+            </div>
+            <span class="line border border-gray mx-auto"></span>
+            <div class="py-3 pl-2">
+            <span class="mr-auto">Ends -</span>
+            <strong>30 OCT 2018</strong>
+            </div>
+          </div>    
+  </div>
+   </div>
+       <div class="card"  id="headingSix">
+     <img src="https://picsum.photos/240/240" alt="" class="card-img-top">
+      <div class="card-body pb-1">
+        <a class="decoration-none" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample6">
+          <div class="d-flex justify-content-between header">
+          <h5 class="card-title">Some other workshop name</h5>  
+          <a class="collapsed" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample6"><span class="arrow"></span>
+          </a>
+          </div>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted pb-2">Art & Craft</h6>
+        <div class="collapse my-2" id="collapseExample6" aria-labelledby="headingThree" data-parent="#accordion">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+           <div class="d-flex justify-content-start mb-3">
+           <a href="#">Know more</a>
+           <a href="#" class="ml-5">Register now</a>
+           </div>
+         </div>
+         <hr class="p-0 m-0 mt-2">
+          <div class="footer d-flex justify-content-between">
+            <div class="py-3">
+            <span class="mr-auto">Starts - </span>
+            <strong>24 OCT 2018</strong>
+            </div>
+            <span class="line border border-gray mx-auto"></span>
+            <div class="py-3 pl-2">
+            <span class="mr-auto">Ends -</span>
+            <strong>30 OCT 2018</strong>
+            </div>
+          </div>    
+  </div>
+   </div>
+      
+    </div> 
+
+		<!--workshop ends-->
 
 		
 
