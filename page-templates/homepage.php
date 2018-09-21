@@ -61,7 +61,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					}
 				} ?>
 			</ul>
-			<!-- <div id="portfoliolist"> -->
+			<div id="portfoliolist">
 				<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$args = array( 'post_type' => 'agp_workshop','posts_per_page' => '10' );
@@ -115,7 +115,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					</div> 
 				<?php endwhile;?>
 				</div>
-			<!-- </div> -->
+			</div>
 		</div><!--workshop ends-->
 
 		
