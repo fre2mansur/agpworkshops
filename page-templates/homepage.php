@@ -123,4 +123,4 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 	
 	</div><!-- Container end -->
 </div><!-- Wrapper end -->
-<?php get_footer(); ?>
+<?php get_footer('agp'); ?>

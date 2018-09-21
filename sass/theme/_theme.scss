@@ -436,3 +436,32 @@ overflow:hidden;
     position: relative;
     top: 0;
 }
+
+/*Footer*/
+.footer {
+	margin-top: 20px;
+
+  .footer-top {
+    .social {
+      color: #202126;
+      font-size: 15px;
+      a {
+        padding:2px;
+      }
+    }
+    background: #fff;
+    border-top: 1px solid #D5D5D5;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 20px;
+    color: #717171;
+  }
+  .footer-bottom {
+    background: #202126;
+    color: #D5D5D5;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 26px;
+  }
+}
