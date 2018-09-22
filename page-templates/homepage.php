@@ -24,12 +24,12 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 						<?php foreach($gallery as $image) { ?>
 							<div class="card bg-dark text-white">
 								<img src="<?php echo $image->src; ?>" alt="" class="card-img">
-								<div class="card-img-overlay">
+								<!-- <div class="card-img-overlay">
 									<div class="card-img-overlay h-100 d-flex flex-column justify-content-center align-items-center">
 										<h6 class="card-title"><?php echo $image->title; ?></h6>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						<?php } ?>
 					</div>
 				</div>
