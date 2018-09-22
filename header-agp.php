@@ -63,7 +63,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     <?php wp_nav_menu(
 					array(
 						'theme_location'  => 'mobile',
-						'container_class' => 'container-fluid bg-white collapse navbar-collapse d-md-none',
+						'container_class' => 'container-fluid bg-white collapse navbar-collapse d-lg-none',
 						'container_id'    => 'mobilemenu',
 						'menu_class'      => 'navbar-nav mx-auto text-capital text-center pt-3',
 						'fallback_cb'     => '',
