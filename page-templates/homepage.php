@@ -15,6 +15,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 ?>
 
 <div class="<?php echo esc_attr( $container ); ?>" id="homepageContent">
+
 <!--Gallery Starts-->
 		<?php if($gallery){ ?>
 		<div class="row">
@@ -121,5 +122,10 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 				</div>
 			</div> 
 		 </div> 
+
+
+
+</div>
 <!-- Wrapper end -->
+
 <?php get_footer('agp'); ?>
