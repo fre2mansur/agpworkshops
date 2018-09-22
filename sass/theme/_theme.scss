@@ -466,5 +466,7 @@ overflow:hidden;
 .homepage-card-container{
 
   @extend .container-fluid;
+  @media only screen and (max-width:960px) {
   width:75%;
+  }
 }
