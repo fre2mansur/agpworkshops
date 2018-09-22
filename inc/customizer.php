@@ -72,7 +72,7 @@ if ( ! function_exists( 'understrap_theme_customize_register' ) ) {
 					'type'        => 'select',
 					'choices'     => array(
 						'container'       => __( 'Fixed width container', 'understrap' ),
-						'homepage-card-container' => __( 'Full width container', 'understrap' ),
+						'container-fluid' => __( 'Full width container', 'understrap' ),
 					),
 					'priority'    => '10',
 				)
