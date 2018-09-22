@@ -464,5 +464,7 @@ overflow:hidden;
 }
 
 .homepage-card-container{
+
   @extend .container-fluid;
+  width:75%;
 }
