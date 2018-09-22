@@ -125,6 +125,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 		<!-- </div> -->
 
 <!-- Testing masonry layout without portfolio -->
+<div class="container">
 <div class="card-columns" id="accordion">
       
       <div class="card" id="headingOne">
@@ -331,6 +332,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 
 	
 	</div><!-- Container end -->
+</div>
 </div>
 
 <!-- Wrapper end -->
