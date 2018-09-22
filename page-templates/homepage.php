@@ -62,7 +62,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 				} ?>
 			</ul>
 			<div id="portfoliolist">  -->
-			<div class="card-columns" id="accordion">
+			<div class="card-columns my-5" id="accordion">
 				<?php  global $post;
 				$args = array( 
           'post_type' => 'agp_workshop',
@@ -85,7 +85,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					endif; 
 					?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
-						<img src="<?php the_post_thumbnail_url(); ?>" alt="" class="card-img-top">
+						<img class="card-img-top" src="<?php the_post_thumbnail_url(); ?>" alt="" >
 						<div class="card-body">
 							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
 								<div class="d-flex justify-content-between header">
@@ -120,8 +120,9 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					</div> 
 				<?php endwhile;?>
 				</div>
+        </div>
 			<!-- </div> -->
-		<!-- </div> --> -->
+		<!-- </div> -->
 
 <!-- Testing masonry layout without portfolio -->
 <div class="card-columns" id="accordion">
