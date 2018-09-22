@@ -14,7 +14,7 @@ $get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
 $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT 12", OBJECT_K);
 ?>
 
-<div class="<?php //echo esc_attr( $container ); ?> homepage-card-container" id="content">
+<div class="<?php echo esc_attr( $container ); ?>" id="content">
 <!--Gallery Starts-->
 		<?php if($gallery){ ?>
 		<div class="row">
