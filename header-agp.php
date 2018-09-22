@@ -41,7 +41,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
             $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
-              min-width:135px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
+              min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
       <?php if ( ! has_custom_logo() ) { ?>
         <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
@@ -49,7 +49,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
       <?php } ?>
 
-      <button class="menu-btn navbar-toggler d-inline-flex px-1 justify-content-end d-md-none" type="button"  onclick="toggleMenu();" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
+      <button class="menu-btn navbar-toggler d-inline-flex px-1 justify-content-end d-md-none" type="button"  onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30">
           <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
           <path class="line middle" d="m 70,50 h -40" />
