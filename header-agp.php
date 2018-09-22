@@ -77,7 +77,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
   <!-- Desktop Menu Starts -->
   <nav class="navbar d-none d-md-flex sticky-top shadow-sm navbar-light bg-white py-0">
-    <div class="container">
+    <div <?php echo esc_attr( $container ); ?>>
       <!-- The Left Menu goes here -->
       <?php 
         wp_nav_menu(
