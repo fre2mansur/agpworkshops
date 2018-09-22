@@ -83,7 +83,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         wp_nav_menu(
           array(
             'theme_location'  => 'left',
-            'container_class' => '',
+            'container_class' => 'ml-auto',
             'container_id'    => 'nav-left',
             'menu_class'      => 'nav', //Ul class
             'menu_id'         => 'main-menu',
@@ -110,7 +110,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         wp_nav_menu(
           array(
             'theme_location'  => 'right',
-            'container_class' => '',
+            'container_class' => 'mr-auto',
             'container_id'    => 'nav-right',
             'menu_class'      => 'nav ml-auto', //Ul class
             'menu_id'         => 'right-menu',
