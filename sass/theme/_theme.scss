@@ -462,3 +462,7 @@ overflow:hidden;
     padding: 26px;
   }
 }
+
+.homepage-card-container{
+  @extend .container-fluid;
+}

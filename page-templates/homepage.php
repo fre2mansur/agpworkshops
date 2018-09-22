@@ -38,7 +38,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 		<?php } ?>
 </div>
 		<!--workshop portfolio-->
-		<div class="workshops container-fluid">
+		<div class="workshops homepage-card-container">
 			<h2>Latest Workshops</h2>
 			
 			<ul id="filters" class="list-unstyled nav m-3">
