@@ -142,7 +142,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						<?php 
 						$units = get_field('unit_name'); ?>
 							<div class="col-md-3">
-								<?php echo $units; ?>
+								<?php var_dump($units); ?>
 							</div>
 					</div>
 
@@ -155,6 +155,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 		<?php 
 
 	// check for rows (parent repeater)
+	$payment_group = "unit_name";
 	if( have_rows($payment_group) ): ?>
 		<div id="to-do-lists">
 		<?php 
@@ -194,4 +195,4 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 
 <?php 
-get_footer(); ?>
+get_footer('agp'); ?>
