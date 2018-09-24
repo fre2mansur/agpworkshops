@@ -127,23 +127,27 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<div class="row">
 						<?php 
 						$facilitators = get_field('facilitators');
-						foreach($facilitators as $post){?>
+						foreach($facilitators as $fac){?>
 							<div class="col-md-3">
 								<div>
-								<img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($post->ID,'full');?>">
+								<img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($fac->ID,'full');?>">
 								</div>
-								<?php echo $post->post_title; ?>
+								<?php echo $fac->post_title; ?>
 							</div>
 						<?php } ?>
 					</div>
 
 					<h1>Organizing Unit</h1>
 					<div class="row">
-						<?php 
-						$units = get_field('unit_name'); ?>
+						<?php $units = get_field('unit_name');
+					 	foreach($units as $user){?>
 							<div class="col-md-3">
-								<?php echo $units; ?>
+								<div>
+								<img class="img-fluid" src="<?php echo get_avatar_url($user->ID,'full');?>">
+								</div>
+								<?php echo $user->display_name; ?>
 							</div>
+						<?php } ?>
 					</div>
 
 				</div> <!--col-md-9-->
