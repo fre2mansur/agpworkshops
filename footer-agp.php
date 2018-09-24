@@ -13,7 +13,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="footer">
     
         <div class="footer-top navbar">
-            <div class="<?php echo esc_attr( $container ); ?>">
+            <div class="<?php echo esc_attr( $container ); ?> justify-content-center justify-content-md-start">
             <?php 
                 wp_nav_menu(
                 array(
