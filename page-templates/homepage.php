@@ -103,18 +103,18 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 									<a href="#" class="ml-5">Register now</a>
 								</div>     
 							</div>
-							<hr class="p-0 m-0 mt-2">
-							<div class="footer d-flex justify-content-between m-0">
-							<?php $date = get_field('date_selector'); ?>
-								<div class="py-3">
-									<span class="mr-auto">Starts - </span>
-									<strong><?php echo $date['start_date'];?></strong>
-								</div>
-								<span class="line border border-gray mx-auto"></span>
-								<div class="py-3 pl-2">
-									<span class="mr-auto">Ends -</span>
-									<strong><?php echo $date['end_date'];?></strong>
-								</div>
+						</div>
+						<hr class="p-0 m-0 mt-2">
+						<div class="footer d-flex justify-content-between m-0 px-4">
+						<?php $date = get_field('date_selector'); ?>
+							<div class="py-3">
+								<span class="mr-auto">Starts - </span>
+								<strong><?php echo $date['start_date'];?></strong>
+							</div>
+							<span class="line border border-gray mx-auto"></span>
+							<div class="py-3 pl-2">
+								<span class="mr-auto">Ends -</span>
+								<strong><?php echo $date['end_date'];?></strong>
 							</div>
 						</div>
 					</div> 
