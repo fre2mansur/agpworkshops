@@ -373,10 +373,11 @@ overflow:hidden;
 
 .brownline-before{
   position: relative;
+  margin-left: 25px;
  &::before{
   content:" ";
-  margin-right:25px;
-  left:0;
+  position: absolute;
+  left:calc(-26px - 25px);
   top:50%;
   vertical-align: middle;
   min-height: 3px;
