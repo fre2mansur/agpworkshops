@@ -39,7 +39,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 		<?php } ?>
 		<!--workshop portfolio-->
 		<div class="workshops my-3">
-			<h2>Latest Workshops</h2>
+			<div class="h2 brownline-before">Latest Workshops</div>
 			
 			<ul id="filters" class="list-unstyled nav m-3">
 				<?php  $terms = get_terms('workshop_category',array("order"=>"ASC"));

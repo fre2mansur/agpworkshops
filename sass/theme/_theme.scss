@@ -370,6 +370,20 @@ overflow:hidden;
   width: 260px;
   position: relative;
 }
+
+.brownline-before{
+  position: relative;
+ &::before{
+  content:" ";
+  position: absolute;
+  left:calc(-26px - 25px);
+  top:50%;
+  vertical-align: middle;
+  min-height: 3px;
+  min-width: 26px;
+  background: #D7BE69;
+ }
+}
 }
 
 /*Slider Scss starts*/
