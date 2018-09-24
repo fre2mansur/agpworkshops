@@ -221,6 +221,8 @@ nav{
   > ul {
     > li {
       line-height:2.75rem;
+      min-width: 128.5px;
+      text-align: center;
     }
     a{
       transition:all 0.5s linear;
@@ -462,4 +464,3 @@ overflow:hidden;
     padding: 26px;
   }
 }
-
