@@ -20,8 +20,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php wp_head(); ?>
-	<?php print get_option( 'googleanalytics'); ?>
-	<?php print get_option( 'pixelanalytics'); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -29,9 +27,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="hfeed site" id="page">  
 
   <!-- Mobile Menu   -->
-  <nav class="mobile-menu-parent sticky-top navbar-default shadow bg-white flex-row d-block d-md-none" id="header-menu">
+  <nav class="mobile-menu-parent sticky-top navbar-default shadow bg-white flex-row d-block d-lg-none" id="header-menu">
     <div class="d-flex justify-content-around align-items-center p-2 w-100" >  
-      <button class="menu-btn navbar-toggler d-inline-flex px-1 d-md-none" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
+      <button class="menu-btn navbar-toggler d-inline-flex px-1" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30" >
           <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
           <path class="line middle" d="m 70,50 h -40" />
@@ -43,7 +41,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
             $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
-              min-width:135px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
+              min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
       <?php if ( ! has_custom_logo() ) { ?>
         <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
@@ -51,7 +49,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
       <?php } ?>
 
-      <button class="menu-btn navbar-toggler d-inline-flex px-1 justify-content-end d-md-none" type="button"  onclick="toggleMenu();" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
+      <button class="menu-btn navbar-toggler d-inline-flex px-1 justify-content-end" type="button"  onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30">
           <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
           <path class="line middle" d="m 70,50 h -40" />
@@ -65,7 +63,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     <?php wp_nav_menu(
 					array(
 						'theme_location'  => 'mobile',
-						'container_class' => 'container-fluid bg-white collapse navbar-collapse d-md-none',
+						'container_class' => 'container-fluid bg-white collapse navbar-collapse d-lg-none',
 						'container_id'    => 'mobilemenu',
 						'menu_class'      => 'navbar-nav mx-auto text-capital text-center pt-3',
 						'fallback_cb'     => '',
@@ -78,14 +76,14 @@ $container = get_theme_mod( 'understrap_container_type' );
   <!-- Mobile menu ends -->
 
   <!-- Desktop Menu Starts -->
-  <nav class="navbar d-none d-md-flex sticky-top shadow-sm navbar-light bg-white py-0">
-    <div class="container">
+  <nav class="navbar d-none d-lg-flex sticky-top shadow-sm navbar-light bg-white py-0">
+    <div class="<?php echo esc_attr( $container ); ?>">
       <!-- The Left Menu goes here -->
       <?php 
         wp_nav_menu(
           array(
             'theme_location'  => 'left',
-            'container_class' => '',
+            'container_class' => 'ml-auto',
             'container_id'    => 'nav-left',
             'menu_class'      => 'nav', //Ul class
             'menu_id'         => 'main-menu',
@@ -99,7 +97,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
             $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
-              min-width:135px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
+              min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
       <?php if ( ! has_custom_logo() ) { ?>
         <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
@@ -112,7 +110,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         wp_nav_menu(
           array(
             'theme_location'  => 'right',
-            'container_class' => '',
+            'container_class' => 'mr-auto',
             'container_id'    => 'nav-right',
             'menu_class'      => 'nav ml-auto', //Ul class
             'menu_id'         => 'right-menu',
