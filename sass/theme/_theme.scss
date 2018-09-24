@@ -168,11 +168,7 @@ a{
 .container strong{color:rgba(0,0,0,0.4);}
 
 @media only screen and (max-width:576px) {
-
-  column-gap: 30px !important;
-  .card{
-    margin-bottom: 30px !important;
-  }
+  
   .card-body .footer{font-size:12.5px !important;}
   
   
@@ -274,6 +270,12 @@ nav{
   #logo {
     width: 260px;
     position: relative;
+  }
+  .card-columns{
+    column-gap: 30px !important;
+    .card{
+      margin-bottom: 30px !important;
+    }
   }
 }
 
