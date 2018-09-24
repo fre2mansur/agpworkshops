@@ -13,7 +13,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="footer">
     
         <div class="footer-top navbar">
-            <div class="<?php echo esc_attr( $container ); ?>">
+            <div class="<?php echo esc_attr( $container ); ?> justify-content-center justify-content-md-start">
                 <ul class="nav flex-row">
                     <li class="nav-item"><a class="nav-link" href="">Terms</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Privacy</a></li>
