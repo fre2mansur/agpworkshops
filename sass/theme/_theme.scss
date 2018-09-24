@@ -371,9 +371,19 @@ overflow:hidden;
   position: relative;
 }
 
+.workshops{
+  margin-top: 60px;
+}
+#filters{
+  span.nav-link{
+    padding-left:1px !important;
+    padding-right:29px !important;
+    padding-top:30px !important;
+    padding-bottom:50px !important;
+  }
+}
 .brownline-before{
   position: relative;
-  margin-left: 51px;
  &::before{
   content:" ";
   position: absolute;

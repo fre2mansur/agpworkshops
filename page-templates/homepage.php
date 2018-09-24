@@ -38,10 +38,10 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
     	</div><!-- .row end -->
 		<?php } ?>
 		<!--workshop portfolio-->
-		<div class="workshops my-3">
+		<div class="workshops">
 			<div class="h2 brownline-before">Latest Workshops</div>
 			
-			<ul id="filters" class="list-unstyled nav m-3">
+			<ul id="filters" class="list-unstyled nav ">
 				<?php  $terms = get_terms('workshop_category',array("order"=>"ASC"));
 				$data_filter = '';
 				$dt = '';
@@ -50,7 +50,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 						$dt=rtrim($data_filter,", ");
 				}
 				$count = count($terms);
-					echo '<li class="nav-item"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
+					echo '<li class="nav-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
 				if ( $count > 0 ){
 
 					foreach ( $terms as $term ) {
