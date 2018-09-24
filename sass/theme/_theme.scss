@@ -375,8 +375,8 @@ overflow:hidden;
   position: relative;
  &::before{
   content:" ";
-  position: absolute;
-  left:calc(-26px - 25px);
+  margin-right:25px;
+  left:0;
   top:50%;
   vertical-align: middle;
   min-height: 3px;
