@@ -38,10 +38,10 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
     	</div><!-- .row end -->
 		<?php } ?>
 		<!--workshop portfolio-->
-		<div class="workshops my-3">
-			<h2>Latest Workshops</h2>
+		<div class="workshops">
+			<div class="h2 brownline-before">Latest Workshops</div>
 			
-			<ul id="filters" class="list-unstyled nav m-3">
+			<ul id="filters" class="list-unstyled nav ">
 				<?php  $terms = get_terms('workshop_category',array("order"=>"ASC"));
 				$data_filter = '';
 				$dt = '';
@@ -50,7 +50,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 						$dt=rtrim($data_filter,", ");
 				}
 				$count = count($terms);
-					echo '<li class="nav-item"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
+					echo '<li class="nav-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
 				if ( $count > 0 ){
 
 					foreach ( $terms as $term ) {
@@ -103,18 +103,18 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 									<a href="#" class="ml-5">Register now</a>
 								</div>     
 							</div>
-							<hr class="p-0 m-0 mt-2">
-							<div class="footer d-flex justify-content-between m-0">
-							<?php $date = get_field('date_selector'); ?>
-								<div class="py-3">
-									<span class="mr-auto">Starts - </span>
-									<strong><?php echo $date['start_date'];?></strong>
-								</div>
-								<span class="line border border-gray mx-auto"></span>
-								<div class="py-3 pl-2">
-									<span class="mr-auto">Ends -</span>
-									<strong><?php echo $date['end_date'];?></strong>
-								</div>
+						</div>
+						<hr class="p-0 m-0 mt-2">
+						<div class="footer d-flex justify-content-between m-0 px-4">
+						<?php $date = get_field('date_selector'); ?>
+							<div class="py-3">
+								<span class="mr-auto">Starts - </span>
+								<strong><?php echo $date['start_date'];?></strong>
+							</div>
+							<span class="line border border-gray mx-auto"></span>
+							<div class="py-3 pl-2">
+								<span class="mr-auto">Ends -</span>
+								<strong><?php echo $date['end_date'];?></strong>
 							</div>
 						</div>
 					</div> 

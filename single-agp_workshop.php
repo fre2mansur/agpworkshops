@@ -12,9 +12,9 @@ get_header('agp'); ?>
 /** Get Quick Details  */
 $quick_data = get_field('quick_details');
 $what = $quick_data['what'];
+$where = $quick_data['where'];
 $why = $quick_data['why'];
-$who = $quick_data['whom'];
-$how = $quick_data['how'];
+// $how = $quick_data['how'];
 
 /** Get Workshop Intro and Description */
 $brief_intro = get_field('brief_intro');
@@ -70,17 +70,14 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<?php echo $what; ?>
 				</div>
 				<div class="col-md-3">
-					<h3>Why</h3>
+					<h3>Where</h3>
+					<?php echo $where; ?>
+				</div>
+				<div class="col-md-3">
+					<h3>why</h3>
 					<?php echo $why; ?>
 				</div>
-				<div class="col-md-3">
-					<h3>Who</h3>
-					<?php echo $who; ?>
-				</div>
-				<div class="col-md-3">
-					<h3>How</h3>
-					<?php echo $how; ?>
-				</div>
+
 			</div>
 
 			<div class="row">
@@ -126,24 +123,28 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<h1>Facilitators</h1>
 					<div class="row">
 						<?php 
-						$facilitators = get_field('facilitators');
-						foreach($facilitators as $post){?>
+						$facilitators = get_field('facilitators'); 
+						foreach($facilitators as $fac){?>
 							<div class="col-md-3">
 								<div>
-								<img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($post->ID,'full');?>">
+								<img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($fac->ID,'full');?>">
 								</div>
-								<?php echo $post->post_title; ?>
+								<?php echo $fac->post_title; ?>
 							</div>
 						<?php } ?>
 					</div>
 
 					<h1>Organizing Unit</h1>
 					<div class="row">
-						<?php 
-						$units = get_field('unit_name'); ?>
+						<?php $units = get_field('unit_name'); //Unit is a user type field
+					 	foreach($units as $unit){?>
 							<div class="col-md-3">
-								<?php echo $units; ?>
+								<div>
+								<img class="img-fluid" src="<?php echo get_avatar_url($unit->ID,'full');?>">
+								</div>
+								<?php echo $unit->display_name; ?>
 							</div>
+						<?php } ?>
 					</div>
 
 				</div> <!--col-md-9-->
