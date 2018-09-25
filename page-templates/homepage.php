@@ -18,7 +18,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 
 <!--Gallery Starts-->
 		<?php if($gallery){ ?>
-		<div class="row">
+		<div class="row margin-negative-60 margin-bottom-60">
 			<div class="d-none px-3 d-md-block w-100">
 				<div class="no-radius">
 					<div class="card-group text-center">
