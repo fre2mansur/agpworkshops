@@ -114,12 +114,12 @@ if ( wp_is_mobile() ) {
     
       <!-- Your site title as branding in the menu -->
       <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
-            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full',['class'=>"d-lg-inline-block d-none"] );
+            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
               min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
       <?php if ( ! has_custom_logo() ) { ?>
-        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto " title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
       <?php } else { ?>
         <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
       <?php } ?>
