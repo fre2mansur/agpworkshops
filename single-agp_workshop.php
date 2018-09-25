@@ -123,7 +123,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<h1>Facilitators</h1>
 					<div class="row">
 						<?php 
-						$facilitators = get_field('facilitators');
+						$facilitators = get_field('facilitators'); 
 						foreach($facilitators as $fac){?>
 							<div class="col-md-3">
 								<div>
@@ -136,13 +136,13 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 					<h1>Organizing Unit</h1>
 					<div class="row">
-						<?php $units = get_field('unit_name');
-					 	foreach($units as $user){?>
+						<?php $units = get_field('unit_name'); //Unit is a user type field
+					 	foreach($units as $unit){?>
 							<div class="col-md-3">
 								<div>
-								<img class="img-fluid" src="<?php echo get_avatar_url($user->ID,'full');?>">
+								<img class="img-fluid" src="<?php echo get_avatar_url($unit->ID,'full');?>">
 								</div>
-								<?php echo $user->display_name; ?>
+								<?php echo $unit->display_name; ?>
 							</div>
 						<?php } ?>
 					</div>
