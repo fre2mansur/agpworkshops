@@ -241,29 +241,30 @@ nav{
     
 }
 
-#nav-left{
-  ul{
-    li{
-          border-right: 0.5px solid $border-green ;
-      
-          
-    }
-  }
-}
-
-#nav-right{
-  ul {
-    li{
-      border-left:0.5px solid $border-green ;
-      
-    }
-  }
-}
 
 
 
 
 @media screen and (min-width: 992px) {
+  #nav-left{
+    ul{
+      li{
+            border-right: 0.5px solid $border-green ;
+        
+            
+      }
+    }
+  }
+  
+  #nav-right{
+    ul {
+      li{
+        border-left:0.5px solid $border-green ;
+        
+      }
+    }
+  }
+  
   #logo {
     width: 260px;
     position: relative;

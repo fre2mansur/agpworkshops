@@ -91,6 +91,11 @@ if ( wp_is_mobile() ) {
             $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
               min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
+            <?php if ( ! has_custom_logo() ) { ?>
+        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto d-lg-none " title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+      <?php } else { ?>
+        <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto d-lg-none" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
+      <?php } ?>
    
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#desktopNavbar" aria-controls="desktopNavbar" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -119,9 +124,9 @@ if ( wp_is_mobile() ) {
               min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
       <?php if ( ! has_custom_logo() ) { ?>
-        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto " title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto d-none d-lg-inline-block " title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
       <?php } else { ?>
-        <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
+        <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto d-none d-lg-inline-block" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
       <?php } ?>
       
       <!-- The Right Menu goes here -->
