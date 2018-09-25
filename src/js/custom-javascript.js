@@ -58,18 +58,7 @@ $(window).scroll(function() {
       else {
         $('.logo').removeClass("resize");
     }
-    } else {
-      if (scroll > 100){
-        $('.logo').addClass("desktop-resize");
-        $('#nav-left li a').addClass("resize");
-        $('#nav-right li a').addClass("resize");
     } 
-      else {
-      $('.logo').removeClass("desktop-resize");
-      $('#nav-right li a').removeClass("resize");
-      $('#nav-left li a').removeClass("resize");
-    }
-    }
 });
 
 // //Homepage Gallery Script
