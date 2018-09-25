@@ -93,7 +93,4 @@ $(window).scroll(function() {
   
 // })
 
-$(window).load(function(){
-  $("#understrap-styles-css").attr("media","all");
-})
 
