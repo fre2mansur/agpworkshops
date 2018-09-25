@@ -3,7 +3,7 @@ $border-green:rgba(115, 216, 124, 0.5);
 html{
    
   // margin-right: calc(100vw - 100%);
-  transition:all 0.2s ease-in-out;
+  transition:all ease-in-out;
 }
 body {
 margin: 0;
@@ -226,11 +226,8 @@ nav{
   > ul {
     > li {
       line-height:2.75rem;
-     @media screen and (min-width:1200px){
-       min-width: 128.5px;
-       text-align: center;
-       
-    } 
+      min-width: 128.5px;
+      text-align: center;
   }
     a{
       transition:all 0.5s linear;

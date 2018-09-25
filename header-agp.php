@@ -85,16 +85,26 @@ if ( wp_is_mobile() ) {
   ?>
 
   <!-- Desktop Menu Starts -->
-  <nav class="navbar d-none d-lg-flex sticky-top shadow-sm navbar-light bg-white py-0">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm navbar-light bg-white py-0">
+  <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full',['class'=>"d-lg-none"] );
+            $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
+              min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
+      ?>
+   
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#desktopNavbar" aria-controls="desktopNavbar" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="navbar-collapse collapse">
+    <ul class="navbar-nav container-fluid">
       <!-- The Left Menu goes here -->
       <?php 
         wp_nav_menu(
           array(
             'theme_location'  => 'left',
-            'container_class' => 'ml-auto',
+            'container_class' => 'ml-lg-auto',
             'container_id'    => 'nav-left',
-            'menu_class'      => 'nav', //Ul class
+            'menu_class'      => 'navbar-nav', //Ul class
             'menu_id'         => 'main-menu',
             'fallback_cb'     => '',
             'walker'          => new understrap_WP_Bootstrap_Navwalker(),
@@ -104,7 +114,7 @@ if ( wp_is_mobile() ) {
     
       <!-- Your site title as branding in the menu -->
       <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
-            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+            $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full',['class'=>"d-lg-inline-block d-none"] );
             $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
               min-width:235px; width:50%; vertical-align:middle; transition: all 0.2s linear;';
       ?>
@@ -119,9 +129,9 @@ if ( wp_is_mobile() ) {
         wp_nav_menu(
           array(
             'theme_location'  => 'right',
-            'container_class' => 'mr-auto',
+            'container_class' => 'mr-lg-auto',
             'container_id'    => 'nav-right',
-            'menu_class'      => 'nav ml-auto', //Ul class
+            'menu_class'      => 'navbar-nav', //Ul class
             'menu_id'         => 'right-menu',
             'fallback_cb'     => '',
             'walker'          => new understrap_WP_Bootstrap_Navwalker(),
