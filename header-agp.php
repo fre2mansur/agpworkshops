@@ -96,10 +96,13 @@ if ( wp_is_mobile() ) {
       <?php } else { ?>
         <a rel='home' href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand mx-auto d-lg-none" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"> <div id="logo" style='<?php echo $style; ?>'></div></a>
       <?php } ?>
-   
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#desktopNavbar" aria-controls="desktopNavbar" aria-expanded="true" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <button class="menu-btn navbar-toggler d-inline-flex px-1" type="button" onclick="" data-toggle="collapse" data-target="#desktopNavbar" aria-controls="desktopNavbar" aria-expanded="false" aria-label="Toggle navigation" >
+        <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30" >
+          <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+          <path class="line middle" d="m 70,50 h -40" />
+          <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+        </svg>
+      </button>
     <div class="navbar-collapse collapse" id="desktopNavbar">
     <ul class="navbar-nav container-fluid">
       <!-- The Left Menu goes here -->
