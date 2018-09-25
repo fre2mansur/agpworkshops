@@ -27,6 +27,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="hfeed site" id="page">  
 
   <!-- Mobile Menu   -->
+  <?php
+if ( wp_is_mobile() ) {
+  
+  /* Display and echo mobile specific stuff here */
+  ?>
   <nav class="mobile-menu-parent sticky-top navbar-default shadow bg-white flex-row d-block d-lg-none" id="header-menu">
     <div class="d-flex justify-content-around align-items-center p-2 w-100" >  
       <button class="menu-btn navbar-toggler d-inline-flex px-1" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
@@ -74,6 +79,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 
   </nav>
   <!-- Mobile menu ends -->
+<?php
+}else {
+
+  ?>
 
   <!-- Desktop Menu Starts -->
   <nav class="navbar d-none d-lg-flex sticky-top shadow-sm navbar-light bg-white py-0">
@@ -122,3 +131,8 @@ $container = get_theme_mod( 'understrap_container_type' );
     </div>
   </nav>
   <!-- Desktop Menu Ends -->
+<?php
+}
+?>
+
+
