@@ -92,3 +92,8 @@ $(window).scroll(function() {
 //   $(this).removeClass('card-img-overlay-hover');
   
 // })
+
+$(window).load(function(){
+  $("#understrap-styles-css").attr("media","all");
+})
+
