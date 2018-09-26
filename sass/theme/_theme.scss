@@ -3,7 +3,7 @@ $border-green:rgba(115, 216, 124, 0.5);
 html{
    
   // margin-right: calc(100vw - 100%);
-  transition:all 0.2s ease-in-out;
+  transition:all ease-in-out;
 }
 body {
 margin: 0;
@@ -226,11 +226,8 @@ nav{
   > ul {
     > li {
       line-height:2.75rem;
-     @media screen and (min-width:1200px){
-       min-width: 128.5px;
-       text-align: center;
-       
-    } 
+      min-width: 128.5px;
+      text-align: center;
   }
     a{
       transition:all 0.5s linear;
@@ -244,29 +241,30 @@ nav{
     
 }
 
-#nav-left{
-  ul{
-    li{
-          border-right: 0.5px solid $border-green ;
-      
-          
-    }
-  }
-}
-
-#nav-right{
-  ul {
-    li{
-      border-left:0.5px solid $border-green ;
-      
-    }
-  }
-}
 
 
 
 
 @media screen and (min-width: 992px) {
+  #nav-left{
+    ul{
+      li{
+            border-right: 0.5px solid $border-green ;
+        
+            
+      }
+    }
+  }
+  
+  #nav-right{
+    ul {
+      li{
+        border-left:0.5px solid $border-green ;
+        
+      }
+    }
+  }
+  
   #logo {
     width: 260px;
     position: relative;
@@ -275,7 +273,7 @@ nav{
     
     .card{
       margin-bottom: 30px !important;
-      img{
+      .card-top-img{
         min-height:190px;
       }
     }
@@ -374,6 +372,7 @@ nav{
 .dropdown-menu{
 min-width:max-content;
 overflow:hidden;
+text-align: inherit;
 }
 
 
@@ -505,4 +504,13 @@ overflow:hidden;
     text-align: center;
     padding: 26px;
   }
+}
+
+
+.margin-bottom-60{
+  margin-bottom:60px !important;
+}
+
+.margin-negative-60{
+  margin-top:-60px !important;
 }

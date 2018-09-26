@@ -14,11 +14,11 @@ $get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
 $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT 12", OBJECT_K);
 ?>
 
-<div class="<?php echo esc_attr( $container ); ?>">
+<div class="<?php echo esc_attr( $container ); ?> ">
 
 <!--Gallery Starts-->
 		<?php if($gallery){ ?>
-		<div class="row">
+		<div class="row margin-negative-60 margin-bottom-60">
 			<div class="d-none px-3 d-md-block w-100">
 				<div class="no-radius">
 					<div class="card-group text-center">
@@ -85,7 +85,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					endif; 
 					?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
-						<img src="<?php the_post_thumbnail_url(); ?>" alt="" class="card-img-top">
+						<?php the_post_thumbnail('medium_large', ['class' =>"card-img-top"]); ?>
 						<div class="card-body pb-0">
 							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
 								<div class="d-flex justify-content-between header">
