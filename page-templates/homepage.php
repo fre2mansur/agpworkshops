@@ -85,7 +85,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
 					endif; 
 					?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
-						<?php the_post_thumbnail('medium_large', ['class' =>"card-img-top", 'role' =>"button", 'aria-expanded'=>"false", 'aria-controls'=>"<?php echo 'workshop_'.the_ID(); ?>"]); ?>
+						<?php $workshopID = "workshop_".the_ID(); the_post_thumbnail('medium_large', ['class' =>"card-img-top", 'role' =>"button", 'aria-expanded'=>"false", 'aria-controls'=>$workshopID,]); ?>
 						<div class="card-body pb-0">
 							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
 								<div class="d-flex justify-content-between header">
