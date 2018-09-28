@@ -102,7 +102,7 @@ if ( wp_is_mobile() ) {
             </button>
             
             <div class="navbar-collapse collapse" id="desktopNavbar">
-            <ul class="navbar-nav container-fluid">
+            <ul class="navbar-nav container-fluid p-0">
               <!-- The Left Menu goes here -->
               <?php 
                 wp_nav_menu(
