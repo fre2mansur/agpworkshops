@@ -38,7 +38,7 @@ $gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY
     	</div><!-- .row end -->
 		<?php } ?>
 		<!--workshop portfolio-->
-		<div class="workshops">
+		<div class="workshops <?Php if ( wp_is_mobile() ) {echo "margin-bottom-60";} ?>">
 			<div class="h2 brownline-before">Latest Workshops</div>
 			
 			<ul id="filters" class="list-unstyled nav ">
