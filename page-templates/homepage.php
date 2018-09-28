@@ -11,7 +11,7 @@ get_header('agp');
 $container = get_theme_mod( 'understrap_container_type' );
 global $wpdb;
 $get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
-$gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT 12", OBJECT_K);
+$gallery = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT %d",array('12')),OBJECT_K);
 ?>
 
 <div class="<?php echo esc_attr( $container ); ?> ">
