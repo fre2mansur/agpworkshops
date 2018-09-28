@@ -341,3 +341,5 @@ function add_inr_currency( $currencies ) {
  
     return $currencies;
 }
+
+// Disable wordpress emoji and speed up the page
