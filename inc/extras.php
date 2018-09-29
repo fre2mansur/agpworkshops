@@ -343,3 +343,16 @@ function add_inr_currency( $currencies ) {
 }
 
 // Disable wordpress emoji and speed up the page
+
+
+// Create a querry for homepage slider
+
+function homepageSliderGalleryImages_querry (){
+
+	global $wpdb;
+	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
+	global $homepageSliderGalleryImages; 
+	$homepageSliderGalleryImages = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT %d" ,array('12')),OBJECT_K);
+
+	return $homepageSliderGalleryImages;
+}
