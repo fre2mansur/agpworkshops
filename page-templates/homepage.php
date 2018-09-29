@@ -38,7 +38,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     	</div><!-- .row end -->
 		<?php } ?>
 		<!--workshop portfolio-->
-		<div class="workshops <?Php if ( wp_is_mobile() ) {echo "margin-top-60";} ?>">
+		<div class="workshops">
 			<div class="h2 brownline-before">Latest Workshops</div>
 			
 			<ul id="filters" class="list-unstyled nav ">
