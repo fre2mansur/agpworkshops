@@ -108,15 +108,66 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 						<hr class="p-0 m-0 mt-2">
 						<div class="footer d-flex justify-content-between m-0 px-4">
-						<?php $date = get_field('date_selector'); ?>
+						<?php ?>
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
-								<strong><?php echo $date['start_date'];?></strong>
+								<strong><?php
+									
+									$today = date('d/m/Y');
+									if(get_field('workshop_repeat')) {
+										if( have_rows('date_repeater') ):
+											$startDates = null;			
+											// loop through the rows of data
+										   while ( have_rows('date_repeater') ) : the_row();
+									   
+											   // display a sub field value
+											  if( get_sub_field('start_date')){
+												  $startDates = array(get_sub_field('start_date'));
+												  foreach($startDates as $startDate){
+													 
+														 echo $startDate."<br>";
+													
+												  };
+											  };
+											   
+											   endwhile;
+											  									   
+									   endif;
+									}
+									else {$date = get_field('date_selector'); echo $date['start_date'];}
+								;
+								
+								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
-								<strong><?php echo $date['end_date'];?></strong>
+								<strong><?php 
+								if(get_field('workshop_repeat')) {
+									if( have_rows('date_repeater') ):
+										$endDates = null;			
+										// loop through the rows of data
+									   while ( have_rows('date_repeater') ) : the_row();
+								   
+										   // display a sub field value
+										  if( get_sub_field('end_date')){
+											  $endDates = array(get_sub_field('end_date'));
+											  foreach($endDates as $startDate){
+												 
+													 echo $startDate."<br>";
+												
+											  };
+										  };
+										   
+										   endwhile;
+																				 
+								   endif;
+								}
+								else {$date = get_field('date_selector'); echo $date['end_date'];}
+							;
+								
+								
+								?></strong>
 							</div>
 						</div>
 					</div> 
