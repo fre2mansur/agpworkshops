@@ -64,17 +64,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
-				$today = date('d/m/Y');
 				$args = array( 
           'post_type' => 'agp_workshop',
-		  'posts_per_page' => '9',
-		  'meta_query' => array(
-			array(
-				'key' => 'start_date',
-				'value' => $today,
-				'compare' => '>'
-			),
-		),    
+          'posts_per_page' => '9',
           'post_status' => 'publish' );
 
         $workshop_query = null;  
