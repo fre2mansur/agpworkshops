@@ -112,28 +112,19 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
-									
+									$get_the_workshop_type = get_field('workshop_repeat');
 									$today = date('d/m/Y');
-									if(get_field('workshop_repeat')) {
-										if( have_rows('date_repeater') ):
-											$startDates = null;			
-											// loop through the rows of data
-										   while ( have_rows('date_repeater') ) : the_row();
-									   
-											   // display a sub field value
-											  if( get_sub_field('start_date')){
-												  $startDates = array(get_sub_field('start_date'));
-												  foreach($startDates as $startDate){
-													 
-														 echo $startDate."<br>";
-													
-												  };
-											  };
-											   
-											   endwhile;
-											  									   
-									   endif;
+									
+									if($get_the_workshop_type){
+										$dates = get_field('date_repeater'); 
+										foreach($dates as $date){
+											
+											$startDate = $date['start_date'];
+											echo($startDate)."<br>";
+											
+										}
 									}
+
 									else {$date = get_field('date_selector'); echo $date['start_date'];}
 								;
 								
@@ -142,29 +133,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
-								<strong><?php 
-								if(get_field('workshop_repeat')) {
-									if( have_rows('date_repeater') ):
-										$endDates = null;			
-										// loop through the rows of data
-									   while ( have_rows('date_repeater') ) : the_row();
-								   
-										   // display a sub field value
-										  if( get_sub_field('end_date')){
-											  $endDates = array(get_sub_field('end_date'));
-											  foreach($endDates as $startDate){
-												 
-													 echo $startDate."<br>";
-												
-											  };
-										  };
-										   
-										   endwhile;
-																				 
-								   endif;
+								<strong><?php
+								$get_the_schedule_type = get_field('select_the_schedule_type');
+
+								if($get_the_schedule_type == "daily"){
+									$days = get_field_object('number_of_days');
+									$daysChoices = $days['choices'];
+									$daysCount = count($daysChoices);
+									$dates = get_field('date_repeater'); 
+									$get_the_workshop_type = get_field('workshop_repeat');
+									if($get_the_workshop_type){
+										$dates = get_field('date_repeater'); 
+										foreach($dates as $date){
+											
+											$endDate = $date['end_date'];
+											echo($endDate)."<br>";
+											
+										}
+									}								
 								}
 								else {$date = get_field('date_selector'); echo $date['end_date'];}
-							;
 								
 								
 								?></strong>
