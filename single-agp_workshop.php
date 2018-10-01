@@ -78,9 +78,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 .row.offset > .col-md-4 {
 	max-width: 29.33333%;
 }
-.workshop-single h2 {
-	margin-left: -8.33333%;
-}
+
 .card .facilitator-details {
 	padding: 10px;
 
@@ -93,147 +91,124 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 	max-height: 200px !important;
 }
 </style>
+<?php while ( have_posts() ) : the_post(); ?>
 
+<!-- What where we -->
+<div class="<?php echo esc_attr( $container ); ?> who-where-what">
+	<h2 class="brownline-before mb-5"><?php the_title(); ?></h2>
+	<div class="offset-1">
+		<div class="row">
+			<div class="col-lg-4">
+				<h3>What</h3>
+				<p><?php echo $what; ?></p>
+			</div>
+			<div class="col-lg-4">
+				<h3>Where</h3>
+				<p><?php echo $where; ?></p>
+			</div>
+			<div class="col-lg-4">
+				<h3>Why</h3>
+				<p><?php echo $why; ?></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fluid banner -->
+<div class="single-banner">
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/hero.jpg">
+</div>
+
+<!-- All details with sidebar -->
 <div class="<?php echo esc_attr( $container ); ?> workshop-single">
-	<?php while ( have_posts() ) : the_post(); ?>
-			<div class="row">
-				<div class="col-md-8 offset-md-1">
-					<h2 class="brownline-before mb-5"><?php the_title(); ?></h2>
-				</div>
-			</div>
-			<div class="row offset">
-				<div class="col-md-4 offset-md-1">
-					<h3>What</h3>
-					<p><?php echo $what; ?></p>
-				</div>
-				<div class="col-md-4">
-					<h3>Where</h3>
-					<p><?php echo $where; ?></p>
-				</div>
-				<div class="col-md-4">
-					<h3>Why</h3>
-					<p><?php echo $why; ?></p>
-				</div>
+	<div class="row">
+		<div class="col-md-8">
+
+			<!-- Details -->
+			<h2 class="brownline-before my-5">Details</h2>
+			<div class="offset-1">
+				<?php echo $brief_intro; ?>
+				<?php echo $workshop_description; ?>
 			</div>
 
-			
-			<div class="row">
-				<div class="col-md-8 offset-md-1">
-					<h2 class="brownline-before my-5">Details</h2>
-					<?php echo $brief_intro; ?>
-					<?php echo $workshop_description; ?>
-				
-
-					
-					<?php 
-					$title = '<h2 class="brownline-before my-5">Schedule</h2>';
-					if($get_the_schedule_type == "daily"){
-						$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
-						foreach($days as $day){
-							if($day == $number_of_days && $day != 'one_day') {
-								$day_content = get_field($day."_content");
-								echo $title;
-								$i = 1; foreach($day_content as $content) {
-									if($content){
+			<!-- Shedule	 -->
+			<?php $title = '<h2 class="brownline-before my-5">Schedule</h2>';
+				if($get_the_schedule_type == "daily"){
+					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
+					foreach($days as $day){
+						if($day == $number_of_days && $day != 'one_day') {
+							$day_content = get_field($day."_content");
+							echo $title;
+							$i = 1; foreach($day_content as $content) {
+								if($content){
+									echo '<div class="offset-1">';
 										echo "<h4>Day ".$i++."</h4>";
 										echo $content;
-									}
+									echo '</div>';
 								}
-								
 							}
-						} 
-					} else {
-						$all_weeks = array('two_week','three_week','four_week');
-						foreach($all_weeks as $week){
-							if($week == $number_of_weeks) {
-								$week_content = get_field($week."s_content");
-								echo $title;
-								$i = 1; foreach($week_content as $content) {
-									if($content){
+							
+						}
+					} 
+				} else {
+					$all_weeks = array('two_week','three_week','four_week');
+					foreach($all_weeks as $week){
+						if($week == $number_of_weeks) {
+							$week_content = get_field($week."s_content");
+							echo $title;
+							$i = 1; foreach($week_content as $content) {
+								if($content){
+									echo '<div class="offset-1">';
 										echo "<h4>Week ".$i++."</h4>";
 										echo $content;
-									}
+									echo '</div>';
 								}
 							}
 						}
-					} ?>
-
-					<h2 class="brownline-before my-5">Facilitators</h2>
-					<div class="card-columns card-img-h-200">
-						<?php 
-						$facilitators = get_field('facilitators');
-						foreach($facilitators as $fac){?>
-							<div class="card">
-								<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top h-200"]); ?>
-								<div class="facilitator-details">
-								<h5><?php echo $fac->post_title; ?></h5>
-								<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
-								</div>
+					}
+				} 
+			?>
+			
+			<!-- Facilitators -->
+			<h2 class="brownline-before my-5">Facilitators</h2>
+			<div class="offset-1">
+				<div class="card-columns card-img-h-200">
+					<?php $facilitators = get_field('facilitators');
+					foreach($facilitators as $fac){?>
+						<div class="card">
+							<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top h-200"]); ?>
+							<div class="facilitator-details">
+							<h5><?php echo $fac->post_title; ?></h5>
+							<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
 							</div>
-						<?php } ?>
-					</div>
-
-					<h2 class="brownline-before my-5">Organizing Unit</h2>
-					<div class="row">
-						<?php $units = get_field('unit_name');
-					 	foreach($units as $user){?>
-							<div class="col-md-3">
-								<div class="card">
-								<img class="card-img-top" src="<?php echo get_avatar_url($user->ID,'full');?>">
-								<h5 class="card-title"><?php echo $user->display_name; ?></h5>
-								<p class="card-text"><small class="text-muted">Unit of the facilitator</small></p>
-								</div>
-								
-							</div>
-						<?php } ?>
-					</div>
-
-				</div> <!--col-md-9-->
-				<div class="col-md-3">
-					<?php dynamic_sidebar( 'right-sidebar' ); ?>
+						</div>
+					<?php } ?>
 				</div>
-				
 			</div>
-		<?php 
 
-	// check for rows (parent repeater)
-	if( have_rows($payment_group) ): ?>
-		<div id="to-do-lists">
-		<?php 
+			<!-- Organizing Unit -->
+			<h2 class="brownline-before my-5">Organizing Unit</h2>
+			<div class="offset-1">
+				<?php $units = get_field('unit_name');
+					foreach($units as $user){?>
+						<div class="media mb-3">
+							<img class="align-self-center mr-3" src="<?php echo get_avatar_url($user->ID,'full');?>" alt="Generic placeholder image">
+							<div class="media-body">
+								<h5 class="mt-0"><?php echo $user->display_name; ?></h5>
+								<p class="mb-0"><?php  echo $user->description; ?></p>
+							</div>
+						</div>
+					<?php } 
+				?>
+			</div>
+					
 
-		// loop through rows (parent repeater)
-		while( have_rows($payment_group) ): the_row(); ?>
-			<div>
-				<?php 
-
-				// check for rows (sub repeater)
-				if( have_rows('fees_with_accommodation') ): ?>
-					<ul>
-					<?php 
-
-					// loop through rows (sub repeater)
-					while( have_rows('fees_with_accommodation') ): the_row();
-
-						// display each item as a list - with a class of completed ( if completed )
-						?>
-						<li> <?php the_sub_field('payment_with_accommodation'); ?> </li>
-						<li> <?php the_sub_field('payment_details_with_accommodation'); ?> </li>
-					<?php endwhile; ?>
-					</ul>
-				<?php endif; //if( get_sub_field('items') ): ?>
-			</div>	
-
-		<?php endwhile; // while( has_sub_field('to-do_lists') ): ?>
+		</div> <!--col-md-8-->
+		<div class="col-md-3">
+			<?php dynamic_sidebar( 'right-sidebar' ); ?>
 		</div>
-	<?php endif; // if( get_field('to-do_lists') ): ?>
+	</div><!--row-->
+</div>
 
 <?php endwhile; // end of the loop. ?>
-
-	</div>
-
-
-
-
-
-<?php 
-get_footer(); ?>
+<?php get_footer('agp'); ?>
