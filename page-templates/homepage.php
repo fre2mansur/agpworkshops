@@ -9,20 +9,20 @@
 
 get_header('agp');
 $container = get_theme_mod( 'understrap_container_type' );
-global $wpdb;
-$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
-$gallery = $wpdb->get_results( "SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT 12", OBJECT_K);
+
 ?>
 
 <div class="<?php echo esc_attr( $container ); ?> ">
 
 <!--Gallery Starts-->
-		<?php if($gallery){ ?>
-		<div class="row margin-negative-60 margin-bottom-60">
-			<div class="d-none px-3 d-md-block w-100">
+		<?php
+		homepageSliderGalleryImages_querry();
+		if($homepageSliderGalleryImages){ ?>
+		<div class="row ">
+			<div class="margin-negative-60 margin-bottom-60 d-none px-3 d-md-block w-100">
 				<div class="no-radius">
 					<div class="card-group text-center">
-						<?php foreach($gallery as $image) { ?>
+						<?php foreach($homepageSliderGalleryImages as $image) { ?>
 							<div class="card bg-dark text-white">
 								<?php $attachmentImage = $image->attachment_id; echo wp_get_attachment_image($attachmentImage, "medium","", ['class' =>"card-img"]) ?>
 								<div class="card-img-overlay">
