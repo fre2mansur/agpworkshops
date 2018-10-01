@@ -132,21 +132,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								$get_the_schedule_type = get_field('select_the_schedule_type');
-
-								if($get_the_schedule_type == "daily"){
-									$days = get_field_object('number_of_days');
-									$daysChoices = $days['choices'];
-									$daysCount = count($daysChoices);
-									$dates = get_field('date_repeater'); 
-										$initialDates = $dates[0];
-										$endDate = $initialDates['end_date'];
-										// $endDate = date('d/m/Y',strtotime($startDate.'+'.$daysCount.'days'));
-										echo $endDate;
-
-
-									
-								}
-								else {$date = get_field('date_selector'); echo $date['end_date'];}
+								$date = get_field('date_selector');
+								echo $date['end_date'];
 							;
 								
 								
