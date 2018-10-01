@@ -136,13 +136,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 								$get_the_schedule_type = get_field('select_the_schedule_type');
 
+								if($get_the_workshop_type){
 								if($get_the_schedule_type == "daily"){
 									$days = get_field_object('number_of_days');
 									$daysChoices = $days['choices'];
 									$daysCount = count($daysChoices);
 									$dates = get_field('date_repeater'); 
 									$get_the_workshop_type = get_field('workshop_repeat');
-									if($get_the_workshop_type){
+									
 										$dates = get_field('date_repeater'); 
 										foreach($dates as $date){
 											
@@ -151,8 +152,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 											
 										}
 									}								
-									else {$date = get_field('date_selector'); echo $date['end_date'];}
 								}
+								else {$date = get_field('date_selector'); echo $date['end_date'];}
 								
 								
 								?></strong>
