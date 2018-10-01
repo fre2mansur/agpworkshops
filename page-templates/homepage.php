@@ -64,9 +64,25 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
+				$get_the_workshop_type = get_field('workshop_repeat');		
+				if($get_the_workshop_type){
+					$dates = get_field('date_repeater'); 
+					foreach($dates as $date){
+						
+						global $startDate; 
+						$startDate = $date['start_date'];
+					
+					}
+				}
+
+				else {
+					$date = get_field('date_selector');
+					$startDate = $date['start_date'];}
 				$args = array( 
           'post_type' => 'agp_workshop',
-          'posts_per_page' => '10',
+		  'posts_per_page' => '9',
+		  'meta_key' => $startDate,
+		  'orderby' => 'meta_value',
           'post_status' => 'publish' );
 
         $workshop_query = null;  
@@ -126,7 +142,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 									}
 
 									else {$date = get_field('date_selector'); echo $date['start_date'];}
-								;
 								
 								?></strong>
 							</div>
