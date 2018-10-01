@@ -8,7 +8,7 @@
  */
 get_header('agp'); ?>
 <?php
-
+$container = get_theme_mod( 'understrap_container_type' );
 /** Get Quick Details  */
 $quick_data = get_field('quick_details');
 $what = $quick_data['what'];
@@ -60,35 +60,73 @@ $fees_without_accommodation = get_sub_field('fees_without_accommodation');
 $payment_without_accommodation = get_sub_field('payment_without_accommodation');
 $payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
+<style>
+.workshop-single h3 {
+	font-size: 24px;
+	color: #707070;
+}
+.workshop-single h4 {
+	font-size: 18px;
+	color: #707070;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+.workshop-single p {
+	font-size: 16px;
+	color: #707070;
+}
+.row.offset > .col-md-4 {
+	max-width: 29.33333%;
+}
+.workshop-single h2 {
+	margin-left: -8.33333%;
+}
+.card .facilitator-details {
+	padding: 10px;
 
-<div class="container">
+}
+.card .facilitator-details h5 {
+	font-size: 15px;
+	color: #707070;
+}
+.h-200 {
+	max-height: 200px !important;
+}
+</style>
+
+<div class="<?php echo esc_attr( $container ); ?> workshop-single">
 	<?php while ( have_posts() ) : the_post(); ?>
-			<h1><?php the_title(); ?></h1>
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-8 offset-md-1">
+					<h2 class="brownline-before mb-5"><?php the_title(); ?></h2>
+				</div>
+			</div>
+			<div class="row offset">
+				<div class="col-md-4 offset-md-1">
 					<h3>What</h3>
-					<?php echo $what; ?>
+					<p><?php echo $what; ?></p>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<h3>Where</h3>
-					<?php echo $where; ?>
+					<p><?php echo $where; ?></p>
 				</div>
-				<div class="col-md-3">
-					<h3>why</h3>
-					<?php echo $why; ?>
+				<div class="col-md-4">
+					<h3>Why</h3>
+					<p><?php echo $why; ?></p>
 				</div>
-
 			</div>
 
+			
 			<div class="row">
-				<div class="col-md-9">
-					<h1>Details</h1>
+				<div class="col-md-8 offset-md-1">
+					<h2 class="brownline-before my-5">Details</h2>
 					<?php echo $brief_intro; ?>
 					<?php echo $workshop_description; ?>
+				
 
 					
 					<?php 
-					$title = "<h1>Schedule</h1>";
+					$title = '<h2 class="brownline-before my-5">Schedule</h2>';
 					if($get_the_schedule_type == "daily"){
 						$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
 						foreach($days as $day){
@@ -97,7 +135,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 								echo $title;
 								$i = 1; foreach($day_content as $content) {
 									if($content){
-										echo "<h4>DAY ".$i++."</h4>";
+										echo "<h4>Day ".$i++."</h4>";
 										echo $content;
 									}
 								}
@@ -112,7 +150,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 								echo $title;
 								$i = 1; foreach($week_content as $content) {
 									if($content){
-										echo "<h4>WEEK ".$i++."</h4>";
+										echo "<h4>Week ".$i++."</h4>";
 										echo $content;
 									}
 								}
@@ -120,43 +158,32 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						}
 					} ?>
 
-					<h1>Facilitators</h1>
-					<div class="row">
+					<h2 class="brownline-before my-5">Facilitators</h2>
+					<div class="card-columns card-img-h-200">
 						<?php 
-<<<<<<< HEAD
-						$facilitators = get_field('facilitators'); 
-=======
 						$facilitators = get_field('facilitators');
->>>>>>> 4a51bd88e342ff3c6143937587ff0793c41371ab
 						foreach($facilitators as $fac){?>
-							<div class="col-md-3">
-								<div>
-								<img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($fac->ID,'full');?>">
+							<div class="card">
+								<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top h-200"]); ?>
+								<div class="facilitator-details">
+								<h5><?php echo $fac->post_title; ?></h5>
+								<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
 								</div>
-								<?php echo $fac->post_title; ?>
 							</div>
 						<?php } ?>
 					</div>
 
-					<h1>Organizing Unit</h1>
+					<h2 class="brownline-before my-5">Organizing Unit</h2>
 					<div class="row">
-<<<<<<< HEAD
-						<?php $units = get_field('unit_name'); //Unit is a user type field
-					 	foreach($units as $unit){?>
-							<div class="col-md-3">
-								<div>
-								<img class="img-fluid" src="<?php echo get_avatar_url($unit->ID,'full');?>">
-								</div>
-								<?php echo $unit->display_name; ?>
-=======
 						<?php $units = get_field('unit_name');
 					 	foreach($units as $user){?>
 							<div class="col-md-3">
-								<div>
-								<img class="img-fluid" src="<?php echo get_avatar_url($user->ID,'full');?>">
+								<div class="card">
+								<img class="card-img-top" src="<?php echo get_avatar_url($user->ID,'full');?>">
+								<h5 class="card-title"><?php echo $user->display_name; ?></h5>
+								<p class="card-text"><small class="text-muted">Unit of the facilitator</small></p>
 								</div>
-								<?php echo $user->display_name; ?>
->>>>>>> 4a51bd88e342ff3c6143937587ff0793c41371ab
+								
 							</div>
 						<?php } ?>
 					</div>
