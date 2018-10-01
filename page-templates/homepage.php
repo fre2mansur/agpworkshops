@@ -151,8 +151,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 											
 										}
 									}								
+									else {$date = get_field('date_selector'); echo $date['end_date'];}
 								}
-								else {$date = get_field('date_selector'); echo $date['end_date'];}
 								
 								
 								?></strong>
