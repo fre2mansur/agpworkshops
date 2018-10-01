@@ -66,7 +66,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 				$args = array( 
           'post_type' => 'agp_workshop',
-          'posts_per_page' => '9',
+          'posts_per_page' => '10',
           'post_status' => 'publish' );
 
         $workshop_query = null;  
@@ -117,12 +117,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									if($get_the_workshop_type){
 										$dates = get_field('date_repeater'); 
-										foreach($dates as $date){
-											
-											$startDate = $date['start_date'];
-											echo($startDate)."<br>";
-											
-										}
+										$initialDates = $dates[0];
+										$startDate = $initialDates['start_date'];
+										echo $startDate;
 									}
 
 									else {$date = get_field('date_selector'); echo $date['start_date'];}
@@ -136,24 +133,21 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 								$get_the_schedule_type = get_field('select_the_schedule_type');
 
-								if($get_the_workshop_type){
 								if($get_the_schedule_type == "daily"){
 									$days = get_field_object('number_of_days');
 									$daysChoices = $days['choices'];
 									$daysCount = count($daysChoices);
 									$dates = get_field('date_repeater'); 
-									$get_the_workshop_type = get_field('workshop_repeat');
+										$initialDates = $dates[0];
+										$endDate = $initialDates['end_date'];
+										// $endDate = date('d/m/Y',strtotime($startDate.'+'.$daysCount.'days'));
+										echo $endDate;
+
+
 									
-										$dates = get_field('date_repeater'); 
-										foreach($dates as $date){
-											
-											$endDate = $date['end_date'];
-											echo($endDate)."<br>";
-											
-										}
-									}								
 								}
 								else {$date = get_field('date_selector'); echo $date['end_date'];}
+							;
 								
 								
 								?></strong>
