@@ -88,7 +88,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						endif;
 						
 						$dates = get_field('date_selector'); 
-						if($dates){
+						
 						foreach($dates as $date){
 					
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -141,9 +141,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 						</div>
 					</div> 
-					<?php 
-									}	
-							} endwhile;?>
+					<?php }
+				endwhile;?>
 				</div>
 			</div> 
 		 </div> 
