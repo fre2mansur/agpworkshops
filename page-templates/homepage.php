@@ -97,10 +97,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
 						<div class="card-body pb-0">
-							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php $randPostIDsForAccordion; ?>" >
+							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 								<div class="d-flex justify-content-between header">
 									<h5 class="card-title"><?php the_title()?></h5>
-									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php $randPostIDsForAccordion; ?>" >
+									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 										<span class="arrow"></span>
 									</a>
 								</div> 
