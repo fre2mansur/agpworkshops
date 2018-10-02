@@ -86,6 +86,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					$get_the_workshop_type = get_field('workshop_repeat');
 					if($get_the_workshop_type){
 						$dates = get_field('date_repeater'); 
+						if($dates){
 						foreach($dates as $date){
 							
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -121,7 +122,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-
+									echo $date;
 									// else {
 									// $date = get_field('date_selector'); echo $date['start_date'];
 								
@@ -141,7 +142,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 						</div>
 					</div> 
-				<?php 	}
+					<?php 	
+									}
+				}
 								}
 								else{
 ?>
