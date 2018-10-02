@@ -69,7 +69,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  'posts_per_page' => 9,
 		  'meta_key' => 'date_selector',
 		  'orderby' => 'meta_value_num',
-		  'order' => 'ASC',
+		  
           'post_status' => 'publish' );
 
         $workshop_query = null;  
@@ -90,7 +90,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('date_selector'); 
+						$dates = get_field('select_date'); 
 						
 						foreach($dates as $date){
 					
