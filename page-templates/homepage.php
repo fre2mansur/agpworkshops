@@ -87,7 +87,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('date_repeater'); 
+						$dates = get_field('date_selector'); 
 						if($dates){
 						foreach($dates as $date){
 					
