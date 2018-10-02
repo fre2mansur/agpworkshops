@@ -67,7 +67,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => '10',
-		  'meta_key' => 'date_repeater',
           'post_status' => 'publish' );
 
         $workshop_query = null;  
@@ -143,11 +142,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 				<?php 	}
-								
-							}
-							else{
-								?>
-								<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
+								}
+								else{
+?>
+					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
 						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $post->ID?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
@@ -175,7 +173,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
-									$date = get_field('date_selector'); echo $date['start_date'];
+									echo json_encode($date);
+
+									// else {
+									// $date = get_field('date_selector'); echo $date['start_date'];
 								
 								?></strong>
 							</div>
@@ -186,14 +187,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 								$get_the_schedule_type = get_field('select_the_schedule_type');
 								$date = get_field('date_selector');
 								echo $date['end_date'];
+							;
 								
 								
 								?></strong>
 							</div>
 						</div>
 					</div> 
-							<?php }
-								 endwhile;?>
+<?php 								} endwhile;?>
 				</div>
 			</div> 
 		 </div> 
