@@ -66,7 +66,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 				$args = array( 
           'post_type' => 'agp_workshop',
-		  'posts_per_page' => '10',
+		  'posts_per_page' => '9',
           'post_status' => 'publish' );
 
         $workshop_query = null;  
