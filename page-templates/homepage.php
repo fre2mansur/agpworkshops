@@ -67,6 +67,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => 9,
+		  'meta_key' => 'date_selector',
+		  'orderby' => 'meta_value_num',
+		  'order' => 'ASC',
           'post_status' => 'publish' );
 
         $workshop_query = null;  
@@ -125,8 +128,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									echo $date;
-									// else {
-									// $date = get_field('date_selector'); echo $date['start_date'];
+									
 								
 								?></strong>
 							</div>
@@ -135,6 +137,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
+								$get_the_schedule_type = get_field('select_the_schedule_type');
+								$number_of_weeks = get_field('number_of_weeks');
+								if($get_the_schedule_type == "daily"){				
+																		
+								}
 								
 								
 								?></strong>
