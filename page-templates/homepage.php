@@ -120,7 +120,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
-									echo json_encode($date);
+									
 
 									// else {
 									// $date = get_field('date_selector'); echo $date['start_date'];
