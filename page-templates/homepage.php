@@ -71,7 +71,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 
         $workshop_query = null;  
 				$workshop_query = new WP_Query( $args );
-				while ( $workshop_query->have_posts() ) : $workshop_query->the_post(); 
+				
+				while ( $workshop_query->have_posts() ) :
+
+					$workshop_query->the_post(); 
 					$terms = get_the_terms( $post->ID, 'workshop_category' );   
 			        if ( $terms && ! is_wp_error( $terms ) ) : 
 						$links = array();
@@ -80,15 +83,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 						}
 						$tax_links = join( " ", str_replace(' ', '-', $links));          
 						$tax = strtolower($tax_links);
-					else :  
-					$tax = '';                  
-					endif;
-					$get_the_workshop_type = get_field('workshop_repeat');
-					if($get_the_workshop_type){
+						else :  
+							$tax = '';                  
+						endif;
+						
 						$dates = get_field('date_repeater'); 
 						if($dates){
 						foreach($dates as $date){
-							
+					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -145,7 +147,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									<?php 
 									}	
 				}
-								}
+								
 								else{
 ?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
