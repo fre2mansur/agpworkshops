@@ -146,20 +146,20 @@ $container = get_theme_mod( 'understrap_container_type' );
 								else{
 ?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
-						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $post->ID?>">
+						<a class="d-block" href="#workshop_<?php echo $post->ID;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $post->ID?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
 						<div class="card-body pb-0">
-							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
+							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
 								<div class="d-flex justify-content-between header">
 									<h5 class="card-title"><?php the_title()?></h5>
-									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
+									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo the_ID() ; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
 										<span class="arrow"></span>
 									</a>
 								</div> 
 							</a>
 							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post->ID, 'workshop_category' ); ?></h6>
-							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
+							<div class="collapse my-2" id="workshop_<?php echo the_ID(); ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
 									<a href="<?php the_permalink(); ?>">Know more</a>
