@@ -93,14 +93,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 					
 					?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
-						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $post->ID?>">
+						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
 						<div class="card-body pb-0">
-							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
+							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php $randPostIDsForAccordion; ?>" >
 								<div class="d-flex justify-content-between header">
 									<h5 class="card-title"><?php the_title()?></h5>
-									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
+									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php $randPostIDsForAccordion; ?>" >
 										<span class="arrow"></span>
 									</a>
 								</div> 
