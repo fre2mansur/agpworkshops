@@ -135,7 +135,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									$startDates = get_sub_field('start_date');
-									echo $startDates;
+									echo (types_render_field('start_date',array('raw' => true)));
 								
 								?></strong>
 							</div>
