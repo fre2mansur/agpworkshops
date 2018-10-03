@@ -138,7 +138,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-									print_r (date('d/m/Y', strtotime($startDate)));
+									echo $startDate;
 									
 									
 								?></strong>
