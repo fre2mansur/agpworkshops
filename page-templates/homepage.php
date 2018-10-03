@@ -65,6 +65,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$today = strtotime('now');
+			
+
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
@@ -138,7 +140,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									$startDate = get_sub_field('start_date');
 									echo $startDate;
-								
+									
+									echo strtotime($startDate);
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
