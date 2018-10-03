@@ -70,8 +70,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
-				  'meta_key' => '_thumbnail_id',
-				  'meta_value' => '1957',
+				  'meta_key' => 'start_date_wp',
+				  
 		  		'orderby' => 'DESC',
 		  
           		'post_status' => 'publish' );
@@ -140,8 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									$startDate = get_sub_field('start_date');
 									echo $startDate;
-									foreach($startDate as $startDa){
-									echo strtotime($startDate);}
+									
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
