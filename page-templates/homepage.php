@@ -64,14 +64,20 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
-				$startDateRaw = get_sub_field('start_date',false,false);
+				$today = strtotime('now');
 				$args = array( 
-          'post_type' => 'agp_workshop',
-		  'posts_per_page' => 9,
-		  'meta_key' => 'start_date_repeater',
-		  'orderby' => 'meta_value_num',
+          		'post_type' => 'agp_workshop',
+		  		'posts_per_page' => 9,
+		  		'meta_query'=>array(
+					  array(
+						  'key' => '%_start_date',
+						  'compare' => '>',
+						  'value' => $today
+					  )
+				  ),
+		  		'orderby' => 'meta_value_num',
 		  
-          'post_status' => 'publish' );
+          		'post_status' => 'publish' );
 
         $workshop_query = null;  
 				$workshop_query = new WP_Query( $args );
@@ -100,7 +106,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 								
-							
+					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -154,7 +160,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								elseif($get_the_schedule_type == "weekly"){
 
 								}
-								
+								$startDateRaw = get_sub_field('start_date',false,false);
 								echo date('d/m/Y', strtotime($startDateRaw. ' + 3 days')); 
 								
 								?></strong>
