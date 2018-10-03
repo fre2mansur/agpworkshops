@@ -151,7 +151,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									$field = get_field_object('daily');
 									$value = $field['value'];
 									$label = $field['choices'][ $value ];
-									var_dump($label);
+									echo $label;
 								}
 								elseif($get_the_schedule_type == "weekly"){
 
