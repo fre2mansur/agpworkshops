@@ -135,9 +135,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									echo $date;
+									
 									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-								
+									print_r('d/m/Y', strtotime($startDate));
+
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
