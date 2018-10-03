@@ -71,12 +71,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  'meta_query' => array(
 			  array(
 				  'key' => 'start_date_wp',
-				  'compare' => '<',
+				  'compare' => '>',
 				  'value'=> $today
 
 			  )
 		  ),
-		  'orderby' => 'ASC',
+		  'orderby' => 'meta_value_num',
 		  
           'post_status' => 'publish' );
 
@@ -98,13 +98,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						// $dates = get_field('start_date_repeater'); 
+						$dates = get_field('start_date_repeater'); 
 						
-						// foreach($dates as $date){
-							if( have_rows('start_date_repeater') ){
-
-								// loop through the rows of data
-							   while ( have_rows('start_date_repeater') ) : the_row();
+					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -138,9 +134,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									$startDate = get_sub_field('start_date');
-									echo $startDate;
-
+									
+									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
+									print_r('m/d/Y', strtotime($startDate));
+									
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
@@ -148,19 +145,18 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_sub_field('end_date');
-								echo $endDate;
+								$get_the_schedule_type = get_field('select_the_schedule_type');
+								$number_of_weeks = get_field('number_of_weeks');
+								if($get_the_schedule_type == "daily"){				
+																		
+								}
 								
 								
 								?></strong>
 							</div>
 						</div>
 					</div> 
-					<?php
-					endwhile;
-							} 
-					// }
-				endwhile;?>
+					<?php 	endwhile;?>
 				</div>
 			</div> 
 		 </div> 
