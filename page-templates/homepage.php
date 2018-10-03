@@ -65,12 +65,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$today = strtotime('now');
+				$startDateRaw = get_sub_field('start_date',false,false);
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
 		  		'meta_query'=>array(
 					  array(
-						  'key' => 'start_date_repeater_0_start_date',
+						  'key' => $startDateRaw,
 						  'compare' => '>',
 						  'value' => $today
 					  )
