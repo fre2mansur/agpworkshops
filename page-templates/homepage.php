@@ -70,9 +70,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
-				  'meta_key' => 'start_date_wp',
+				'meta_key' => 'start_date_wp',
+				'meta_compare' => '>',
+				'meta_value' => $today,
 				  
-		  		'orderby' => 'DESC',
+		  		'orderby' => 'ASC',
 		  
           		'post_status' => 'publish' );
 
