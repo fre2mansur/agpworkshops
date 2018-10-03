@@ -140,8 +140,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									$startDate = get_sub_field('start_date');
 									echo $startDate;
-									
-									echo strtotime($startDate);
+									foreach($startDate as $startDa){
+									echo strtotime($startDate);}
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
