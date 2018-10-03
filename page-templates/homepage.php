@@ -66,12 +66,18 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 				$args = array( 
           'post_type' => 'agp_workshop',
-          'posts_per_page' => '10',
+		  'posts_per_page' => 9,
+		  'meta_key' => 'date_selector',
+		  'orderby' => 'meta_value_num',
+		  
           'post_status' => 'publish' );
 
         $workshop_query = null;  
 				$workshop_query = new WP_Query( $args );
-				while ( $workshop_query->have_posts() ) : $workshop_query->the_post(); 
+				
+				while ( $workshop_query->have_posts() ) :
+
+					$workshop_query->the_post(); 
 					$terms = get_the_terms( $post->ID, 'workshop_category' );   
 			        if ( $terms && ! is_wp_error( $terms ) ) : 
 						$links = array();
@@ -80,25 +86,33 @@ $container = get_theme_mod( 'understrap_container_type' );
 						}
 						$tax_links = join( " ", str_replace(' ', '-', $links));          
 						$tax = strtolower($tax_links);
-					else :  
-					$tax = '';                  
-					endif; 
+						else :  
+							$tax = '';                  
+						endif;
+						
+						$dates = get_field('select_date'); 
+						
+						foreach($dates as $date){
+					
+							$randomGenerator = mt_rand(123506, 9999999);
+							$randPostIDsForAccordion = $post->ID * $randomGenerator;
+					
 					?>
 					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
-						<a class="d-block" href="#workshop_<?php echo $post->ID;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $post->ID?>">
+						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
 						<div class="card-body pb-0">
-							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
+							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 								<div class="d-flex justify-content-between header">
 									<h5 class="card-title"><?php the_title()?></h5>
-									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo the_ID(); ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo the_ID(); ?>" >
+									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 										<span class="arrow"></span>
 									</a>
 								</div> 
 							</a>
 							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post->ID, 'workshop_category' ); ?></h6>
-							<div class="collapse my-2" id="workshop_<?php echo the_ID(); ?>"  data-parent="#accordion">
+							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
 									<a href="<?php the_permalink(); ?>">Know more</a>
@@ -113,65 +127,29 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									$today = date('d/m/Y');
-									if(get_field('workshop_repeat')) {
-										if( have_rows('date_repeater') ):
-											$startDates = null;			
-											// loop through the rows of data
-										   while ( have_rows('date_repeater') ) : the_row();
-									   
-											   // display a sub field value
-											  if( get_sub_field('start_date')){
-												  $startDates = array(get_sub_field('start_date'));
-												  foreach($startDates as $startDate){
-													 
-														 echo $startDate."<br>";
-													
-												  };
-											  };
-											   
-											   endwhile;
-											  									   
-									   endif;
-									}
-									else {$date = get_field('date_selector'); echo $date['start_date'];}
-								;
+									echo $date;
+									
 								
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
-								<strong><?php 
-								if(get_field('workshop_repeat')) {
-									if( have_rows('date_repeater') ):
-										$endDates = null;			
-										// loop through the rows of data
-									   while ( have_rows('date_repeater') ) : the_row();
-								   
-										   // display a sub field value
-										  if( get_sub_field('end_date')){
-											  $endDates = array(get_sub_field('end_date'));
-											  foreach($endDates as $startDate){
-												 
-													 echo $startDate."<br>";
-												
-											  };
-										  };
-										   
-										   endwhile;
-																				 
-								   endif;
+								<strong><?php
+								
+								$get_the_schedule_type = get_field('select_the_schedule_type');
+								$number_of_weeks = get_field('number_of_weeks');
+								if($get_the_schedule_type == "daily"){				
+																		
 								}
-								else {$date = get_field('date_selector'); echo $date['end_date'];}
-							;
 								
 								
 								?></strong>
 							</div>
 						</div>
 					</div> 
-				<?php endwhile;?>
+					<?php }
+				endwhile;?>
 				</div>
 			</div> 
 		 </div> 
