@@ -64,15 +64,19 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
-				$today = strtotime('now');
 			
-
+			
+				$today = strtotime('now');
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
-				'meta_key' => 'start_date_wp',
-				'meta_compare' => '>',
-				'meta_value' => $today,
+				'meta_query'	=> array(
+					array(
+						'key' => 'start_date_wp',
+						'compare' => '>',
+						'value' => $today
+					)
+				),
 				  
 		  		'orderby' => 'ASC',
 		  
