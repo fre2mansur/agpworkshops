@@ -97,6 +97,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$startDates = get_sub_field('start_date');
 								foreach ($dates as $startDates => $value) {
 									echo $value;
+									var_dump($value);
 								}
 					
 							$randomGenerator = mt_rand(123506, 9999999);
