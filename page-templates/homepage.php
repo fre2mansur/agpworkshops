@@ -64,24 +64,21 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
-			
-			
-				$today = date('Ymd');
-				print_r($today);
+				$today = date(Ymd);
 				$args = array( 
-          		'post_type' => 'agp_workshop',
-		  		'posts_per_page' => 9,
-				'meta_query'	=> array(
-					array(
-						'key' => 'start_date_wp',
-						'compare' => '>',
-						'value' => $today
-					)
-				),
-				  
-		  		'orderby' => 'DESC',
+          'post_type' => 'agp_workshop',
+		  'posts_per_page' => 9,
+		  'meta_query' => array(
+			  array(
+				  'key' => 'start_date_wp',
+				  'compare' => '>',
+				  'value'=> $today
+
+			  )
+		  ),
+		  'orderby' => 'meta_value_num',
 		  
-          		'post_status' => 'publish' );
+          'post_status' => 'publish' );
 
         $workshop_query = null;  
 				$workshop_query = new WP_Query( $args );
@@ -101,7 +98,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('start_date_repeater'); 
+						$dates = get_field('select_date'); 
+						
+						foreach($dates as $date){
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
@@ -136,26 +135,29 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
+									echo $date;
 									
-									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-									echo $startDate;
-									
-									
+								
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
-								$endDate = get_sub_field('end_date');
-								echo $endDate;
+								
+								$get_the_schedule_type = get_field('select_the_schedule_type');
+								$number_of_weeks = get_field('number_of_weeks');
+								if($get_the_schedule_type == "daily"){				
+																		
+								}
+								
+								
 								?></strong>
 							</div>
 						</div>
 					</div> 
-					<?php 
-						endwhile;	
-				?>
+					<?php }
+				endwhile;?>
 				</div>
 			</div> 
 		 </div> 
