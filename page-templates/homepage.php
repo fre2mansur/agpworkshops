@@ -67,6 +67,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 			
 				$today = strtotime('now');
+				echo strtotime("now"), "\n";
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
