@@ -65,19 +65,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$today = strtotime('now');
-				$startDateRaw = get_sub_field('start_date',false,false);
-				echo $today . $startDateRaw;
+				
+				echo $today;
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
-		  		'meta_query'=>array(
-					  array(
-						  'key' => $startDateRaw,
-						  'compare' => '>',
-						  'value' => $today
-					  )
-				  ),
-		  		'orderby' => 'meta_value_num',
 		  
           		'post_status' => 'publish' );
 
@@ -162,7 +154,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								elseif($get_the_schedule_type == "weekly"){
 
 								}
-
+								$startDateRaw = get_sub_field('start_date',false,false);
 								echo date('d/m/Y', strtotime($startDateRaw. ' + 3 days')); 
 								
 								?></strong>
