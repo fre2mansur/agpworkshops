@@ -64,6 +64,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
+				$startDateRaw = get_sub_field('start_date',false,false);
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => 9,
@@ -99,7 +100,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 								
-					
+							
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -147,17 +148,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 								$get_the_schedule_type = get_field('select_the_schedule_type');
 								$number_of_weeks = get_field('number_of_weeks');
 								if($get_the_schedule_type == "daily"){				
+
 									
-									$field = get_field_object('daily');
-									$value = $field['value'];
-									$label = $field['choices'][ $value ];
-									echo $label;
 								}
 								elseif($get_the_schedule_type == "weekly"){
 
 								}
-								$startDateRaw = get_sub_field('start_date',false,false);
-								echo date('d-m-Y', strtotime($startDateRaw. ' + 3 days')); 
+								
+								echo date('d/m/Y', strtotime($startDateRaw. ' + 3 days')); 
 								
 								?></strong>
 							</div>
