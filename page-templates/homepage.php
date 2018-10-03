@@ -65,15 +65,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
 			
-				$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-				
+			
 				$today = strtotime('now');
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
 				'meta_query'	=> array(
 					array(
-						'key' => $startDate,
+						'key' => 'start_date_wp',
 						'compare' => '>',
 						'value' => $today
 					)
@@ -137,7 +136,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									
+									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
 									print_r (date('d/m/Y', strtotime($startDate)));
 									
 									
