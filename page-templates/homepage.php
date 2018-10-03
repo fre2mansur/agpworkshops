@@ -71,7 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  'meta_query' => array(
 			  array(
 				  'key' => 'start_date_wp',
-				  'compare' => '<=',
+				  'compare' => '>',
 				  'value'=> $today
 
 			  )
@@ -98,12 +98,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('start_date_repeater'); 
-						if( have_rows('start_date_repeater') ){
-							while ( have_rows('start_date_repeater') ) : the_row();
+						// $dates = get_field('start_date_repeater'); 
+						
+						// foreach($dates as $date){
+							if( have_rows('start_date_repeater') ){
 
-							foreach($dates as $date){
-					
+								// loop through the rows of data
+							   while ( have_rows('start_date_repeater') ) : the_row();
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -137,10 +138,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									
-									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-									
-									print_r(date('d/m/Y', strtotime($startDate)));
+									$startDate = get_sub_field('start_date');
+									echo $startDate;
 
 								?></strong>
 							</div>
@@ -160,9 +159,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 						</div>
 					</div> 
-					<?php }
+					<?php
 					endwhile;
-						}
+							} 
+					// }
 				endwhile;?>
 				</div>
 			</div> 
