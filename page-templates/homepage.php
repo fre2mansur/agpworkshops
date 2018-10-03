@@ -146,7 +146,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									$startDate = get_sub_field('start_date');
 									echo $startDate;
-									$postStartDate = get_post_meta($post, 'start_date_wp',false);
+									
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
