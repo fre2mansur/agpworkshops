@@ -74,12 +74,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 				'meta_query'	=> array(
 					array(
 						'key' => 'start_date_wp',
-						'compare' => '<=',
+						'compare' => '>=',
 						'value' => $today
 					)
 				),
 				  
-		  		'orderby' => 'ASC',
+		  		'orderby' => 'DESC',
 		  
           		'post_status' => 'publish' );
 
