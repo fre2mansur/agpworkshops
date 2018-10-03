@@ -95,10 +95,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 						if(have_rows('start_date_repeater')){
 							while ( have_rows('start_date_repeater') ) : the_row();
 							$startDates = get_sub_field('start_date');
-								foreach ($dates as $startDates => $value) {
-									echo $value;
-									var_dump($value);
-								}
+								
+									
+									var_dump($startDates);
+								
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
