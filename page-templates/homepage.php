@@ -162,7 +162,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								elseif($get_the_schedule_type == "weekly"){
 
 								}
-								$startDateRaw = get_sub_field('start_date',false,false);
+
 								echo date('d/m/Y', strtotime($startDateRaw. ' + 3 days')); 
 								
 								?></strong>
