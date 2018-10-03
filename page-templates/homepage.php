@@ -94,10 +94,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 						if(have_rows('start_date_repeater')){
 							while ( have_rows('start_date_repeater') ) : the_row();
-							$startDates = get_sub_field('start_date');
+							
 								
 									
-									var_dump($startDates);
+									
 								
 					
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -134,7 +134,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									
+									$startDates = get_sub_field('start_date');
+									echo $startDates;
 								
 								?></strong>
 							</div>
