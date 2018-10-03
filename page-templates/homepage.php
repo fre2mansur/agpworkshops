@@ -134,8 +134,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									$startDates = get_sub_field('start_date');
-									echo $startDates;
+									$startDate = get_sub_field('start_date');
+									echo $startDate;
 								
 								?></strong>
 							</div>
@@ -144,12 +144,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$get_the_schedule_type = get_field('select_the_schedule_type');
-								$number_of_weeks = get_field('number_of_weeks');
-								if($get_the_schedule_type == "daily"){				
+								// $get_the_schedule_type = get_field('select_the_schedule_type');
+								// $number_of_weeks = get_field('number_of_weeks');
+								// if($get_the_schedule_type == "daily"){				
 																		
-								}
-								
+								// }
+								$startDateRaw = get_sub_field('start_date',false,false);
+								echo date('d-m-Y', strtotime($startDateRaw. ' + 3 days')); 
 								
 								?></strong>
 							</div>
