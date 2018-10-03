@@ -406,8 +406,8 @@ function homepageSliderGalleryImages_querry (){
 
 
 /*
-    in this example I have a repeater field named "colors"
-    one of the rows of this repeater is named "color"
+    in this example I have a repeater field named "start_date_repeater"
+    one of the rows of this repeater is named "start_date"
     and I want to be able to search, sort and filter by this field
 */
  
@@ -417,7 +417,7 @@ add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
  
 function convert_start_to_standard_wp_meta($post_id) {
    
-  // pick a new meta_key to hold the values of the color field
+  // pick a new meta_key to hold the values of the start_date field
   // I generally name this field by suffixing _wp to the field name
   // as this makes it easy for me to remember this field name
   // also note, that this is not an ACF field and will not
@@ -470,6 +470,6 @@ function convert_start_to_standard_wp_meta($post_id) {
     15 lines of code and now instead of dealing with complicated filters
     and "LIKE" queries and modifying the WHERE portion of the query
     and slowing down our site, instead we can simply use the
-    color_wp meta key in a simple more simple WP_Query()
+    start_date_wp meta key in a simple more simple WP_Query()
    
 */
