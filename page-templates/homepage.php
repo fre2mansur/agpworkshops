@@ -136,7 +136,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									$startDate = get_sub_field('start_date');
+									$startDate = get_post_meta( $post_id,'start_date_wp',true);
 									echo $startDate;
 									
 								?></strong>
