@@ -129,7 +129,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									echo $date;
+									print_r($date);
 									
 								
 								?></strong>
