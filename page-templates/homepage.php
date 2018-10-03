@@ -135,8 +135,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									$startDates = get_sub_field('start_date');
-									echo (types_render_field('start_date',array('raw' => true)));
-								
+									$dumpableVar = types_render_field('start_date',array('raw' => true));
+									var_dump($dumpableVar);
 								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
