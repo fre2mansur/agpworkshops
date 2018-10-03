@@ -67,6 +67,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 			
 				$today = date('Ymd');
+				print $today;
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
