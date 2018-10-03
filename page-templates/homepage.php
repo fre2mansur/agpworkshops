@@ -99,8 +99,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 						endif;
 						
 						$dates = get_field('start_date_repeater'); 
-						
-						foreach($dates as $date){
+						if( have_rows('start_date_repeater') ){
+							while ( have_rows('repeater_field_name') ) : the_row();
+
+							foreach($dates as $date){
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
@@ -137,6 +139,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
+									
 									print_r(date('d/m/Y', strtotime($startDate)));
 
 								?></strong>
@@ -158,6 +161,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 					<?php }
+					endwhile;
+						}
 				endwhile;?>
 				</div>
 			</div> 
