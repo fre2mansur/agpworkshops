@@ -92,7 +92,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						
 						$dates = get_field('start_date_repeater'); 
 						if(have_rows('start_date_repeater')){
-							while ( have_rows('start_date_repeater') ) : the_row();
+							while ( have_rows('start_date_repeater') ) :
 
 								foreach($dates as $date){
 					
@@ -151,7 +151,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 					<?php }
-					endwhile;	
+						endwhile;	
 					}
 				endwhile;?>
 				</div>
