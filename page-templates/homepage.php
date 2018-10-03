@@ -68,13 +68,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
-		  		'meta_query'=>array(
-					  array(
-						  'key' => 'start_date',
-						  'compare' => '>',
-						  'value' => $today
-					  )
-				  ),
+		  		'meta_key' => 'start_date_repeater',
 		  		'orderby' => 'meta_value_num',
 		  
           		'post_status' => 'publish' );
