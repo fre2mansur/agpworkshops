@@ -67,7 +67,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => 9,
-		  'meta_key' => 'date_selector',
+		  'meta_key' => 'start_date_repeater',
 		  'orderby' => 'meta_value_num',
 		  
           'post_status' => 'publish' );
@@ -90,8 +90,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('select_date'); 
-						
+						$dates = get_field('start_date_repeater'); 
+						if($dates){
 						foreach($dates as $date){
 					
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -149,6 +149,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 					<?php }
+						}
 				endwhile;?>
 				</div>
 			</div> 
