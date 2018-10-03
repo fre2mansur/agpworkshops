@@ -70,7 +70,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  		'posts_per_page' => 9,
 		  		'meta_query'=>array(
 					  array(
-						  'key' => '%_start_date',
+						  'key' => 'start_date',
 						  'compare' => '>',
 						  'value' => $today
 					  )
