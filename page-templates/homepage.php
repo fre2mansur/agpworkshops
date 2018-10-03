@@ -66,7 +66,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 			
 			
-				
+				$today = date('Ymd');
+				print_r($today);
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
@@ -74,7 +75,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					array(
 						'key' => 'start_date_wp',
 						'compare' => '>=',
-						'value' => date('Ymd')
+						'value' => $today,
 					)
 				),
 				  
