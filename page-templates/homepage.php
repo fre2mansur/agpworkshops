@@ -66,6 +66,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 				$today = strtotime('now');
 				$startDateRaw = get_sub_field('start_date',false,false);
+				echo $today $startDateRaw;
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
