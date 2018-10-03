@@ -64,7 +64,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
-				$today = date(Ymd);
+				$today = date('Ymd');
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => 9,
@@ -98,7 +98,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('select_date'); 
+						$dates = get_field('start_date_repeater'); 
 						
 						foreach($dates as $date){
 					
@@ -136,7 +136,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									echo $date;
-									
+									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
 								
 								?></strong>
 							</div>
