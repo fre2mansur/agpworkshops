@@ -136,10 +136,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									$startDates = get_post_meta( $post->ID,'start_date_wp',true);
-									foreach($startDates as $startDate){
+									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
 									print_r (date('d/m/Y', strtotime($startDate)));
-									}
+									
 									
 								?></strong>
 							</div>
