@@ -144,19 +144,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
-								
-								$get_the_schedule_type = get_field('select_the_schedule_type');
-								$number_of_weeks = get_field('number_of_weeks');
-								if($get_the_schedule_type == "daily"){				
-
-									
-								}
-								elseif($get_the_schedule_type == "weekly"){
-
-								}
-								$startDateRaw = get_sub_field('start_date',false,false);
-								echo date('d/m/Y', strtotime($startDateRaw. ' + 3 days')); 
-								
+								$endDate = get_sub_field('end_date');
+								echo $endDate;
 								?></strong>
 							</div>
 						</div>
