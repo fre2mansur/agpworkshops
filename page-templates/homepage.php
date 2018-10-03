@@ -67,13 +67,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 			
 				$today = strtotime('now');
+				$startDate = get_post_meta( $post->ID,'start_date_wp',true);
+				$startDateConverted = (strtotime($startDate));
 				echo strtotime("now"), "\n";
 				$args = array( 
           		'post_type' => 'agp_workshop',
 		  		'posts_per_page' => 9,
 				'meta_query'	=> array(
 					array(
-						'key' => 'start_date_wp',
+						'key' => $startDateConverted,
 						'compare' => '>',
 						'value' => $today
 					)
@@ -135,10 +137,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
+									echo $startDate;
 									
 									
-									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-									print_r (strtotime($startDate));
 									
 									
 								?></strong>
