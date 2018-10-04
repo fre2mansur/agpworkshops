@@ -70,9 +70,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  'posts_per_page' => 9,
 		  'meta_query' => array(
 			  array(
-				  'key' => 'start_date_wp',
+				  'key' => $today,
 				  'compare' => '<',
-				  'value'=> $today
+				  'value'=> 'start_date_wp'
 
 			  )
 		  ),
