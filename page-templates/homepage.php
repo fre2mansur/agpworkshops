@@ -152,11 +152,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$get_the_schedule_type = get_field('select_the_schedule_type');
-								$number_of_weeks = get_field('number_of_weeks');
-								if($get_the_schedule_type == "daily"){				
+								$endDate = get_post_meta( $post->ID,'end_date_wp',true);
+								print_r(date('d/m/Y', strtotime($endDate)));
+								
+
+								// $get_the_schedule_type = get_field('select_the_schedule_type');
+								// $number_of_weeks = get_field('number_of_weeks');
+								// if($get_the_schedule_type == "daily"){				
 																		
-								}
+								// }
 								
 								
 								?></strong>
