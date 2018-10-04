@@ -106,8 +106,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 						endif;
 						
 						$dates = get_field('start_date_repeater'); 
+						if(have_rows('start_date_repeater')):
+							while(have_rows('start_date_repeater')) :
+								the_rows();
+							
 						
-					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -155,19 +158,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 								$endDate = get_post_meta( $post->ID,'end_date_wp',true);
 								print_r(date('d/m/Y', strtotime($endDate)));
 								
-
-								// $get_the_schedule_type = get_field('select_the_schedule_type');
-								// $number_of_weeks = get_field('number_of_weeks');
-								// if($get_the_schedule_type == "daily"){				
-																		
-								// }
-								
 								
 								?></strong>
 							</div>
 						</div>
 					</div> 
-					<?php 	endwhile;?>
+					<?php 
+					endwhile;
+					endif;
+				endwhile;?>
 				</div>
 			</div> 
 		 </div> 
