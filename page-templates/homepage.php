@@ -71,7 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  'meta_query' => array(
 			  array(
 				  'key' => $today,
-				  'compare' => '<',
+				  'compare' => '>',
 				  'value'=> 'start_date_wp'
 
 			  )
