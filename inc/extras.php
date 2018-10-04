@@ -414,6 +414,7 @@ function homepageSliderGalleryImages_querry (){
 // create a function that will convert this repeater during the acf/save_post action
 // priority of 20 to run after ACF is done saving the new values
 add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
+add_filter('acf/save_post', 'convert_end_to_standard_wp_meta', 20);
  
 function convert_start_to_standard_wp_meta($post_id) {
    
