@@ -144,9 +144,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									
-									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
-									print_r(date('d/m/Y', strtotime($startDate)));
+									$startDate = get_sub_field('start_date');
+									// $startDate = get_post_meta( $post->ID,'start_date_wp',true);
+									// print_r(date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
 							</div>
@@ -155,8 +155,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $post->ID,'end_date_wp',true);
-								print_r(date('d/m/Y', strtotime($endDate)));
+								$endDate = get_sub_field('end_date');
+								// $endDate = get_post_meta( $post->ID,'end_date_wp',true);
+								// print_r(date('d/m/Y', strtotime($endDate)));
 								
 								
 								?></strong>
