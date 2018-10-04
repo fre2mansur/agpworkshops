@@ -477,7 +477,7 @@ function convert_start_to_standard_wp_meta($post_id) {
 
 function convert_end_to_standard_wp_meta($post_id) {
    
-	// pick a new meta_key to hold the values of the start_date field
+	// pick a new meta_key to hold the values of the end)date field
 	// I generally name this field by suffixing _wp to the field name
 	// as this makes it easy for me to remember this field name
 	// also note, that this is not an ACF field and will not
