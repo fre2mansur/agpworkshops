@@ -145,6 +145,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									$startDate = get_sub_field('start_date');
+									echo $startDate;
 									// $startDate = get_post_meta( $post->ID,'start_date_wp',true);
 									// print_r(date('d/m/Y', strtotime($startDate)));
 									
@@ -156,6 +157,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 								
 								$endDate = get_sub_field('end_date');
+								echo $endDate;
 								// $endDate = get_post_meta( $post->ID,'end_date_wp',true);
 								// print_r(date('d/m/Y', strtotime($endDate)));
 								
