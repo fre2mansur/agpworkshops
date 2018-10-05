@@ -66,8 +66,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 				$today = date('Ymd');
 				$args = array( 
-          'post_type' => 'agp_workshop',
-		  'posts_per_page' => 9,
+
 		  'meta_query' => array(
 			  'relation' => 'AND',
 			  array(
@@ -91,7 +90,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
         $workshop_query = null;  
-				$workshop_query = new WP_Query( $args );
+				$workshop_query = new WP_Meta_Query( $args );
 				
 				while ( $workshop_query->have_posts() ) :
 
