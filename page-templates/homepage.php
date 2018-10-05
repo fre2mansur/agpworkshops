@@ -66,7 +66,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  global $post;
 				$today = date('Ymd');
 				$args = array( 
-
+          'post_type' => 'agp_workshop',
+		  'posts_per_page' => 9,
 		  'meta_query' => array(
 			  'relation' => 'AND',
 			  array(
@@ -90,15 +91,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
         $workshop_query = null;  
-				$workshop_query = $wpdb->get_results( $wpdb->prepare("SELECT * from $wpdb->postmeta WHERE meta_key Like %s ORDER BY '%s' ASC",array('start_date_wp','meta_value')),ARRAY_A);
-				
-				foreach ($workshop_query as $post) {
-						$post = get_post($post->post_id);
-					
-							$randomGenerator = mt_rand(123506, 9999999);
-							$randPostIDsForAccordion = $post->ID * $randomGenerator;
-					
-					?>
+				$workshop_query =  $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE %s ORDER BY %s ASC",'start_date_wp','meta_value'
+                    ),ARRAY_A
+					);
+				var_dump($workshop_query);	
+
+		  ?>
+
+
 					<div class="card " data-cat="">
 						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
@@ -133,8 +135,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 									$startDates = get_post_meta( $post->ID,'start_date_wp',false);
 									foreach ($startDates as $startDate) {
 										# code...
-										print_r(date('d/m/Y', strtotime($startDate)));
 									}
+									print_r(date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
 							</div>
@@ -160,7 +162,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 					<?php	
-				}
+					
 			?>
 				</div>
 			</div> 
