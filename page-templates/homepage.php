@@ -66,27 +66,27 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  
 				
 				
-				$args = array( 
-          'post_type' => 'agp_workshop',
-		  'posts_per_page' => 9,
-		  'meta_query' => array(
-			  'relation' => 'AND',
-			  array(
-				  'key' => 'start_date_wp',
-				  'compare' => '>=',
-				  'value'=> $today
+		// 		$args = array( 
+        //   'post_type' => 'agp_workshop',
+		//   'posts_per_page' => 9,
+		//   'meta_query' => array(
+		// 	  'relation' => 'AND',
+		// 	  array(
+		// 		  'key' => 'start_date_wp',
+		// 		  'compare' => '>=',
+		// 		  'value'=> $today
 
-			  ),
-			  array(
-				  'key' => 'end_date_wp',
-				  'compare' => '>=',
-				  'value' => $today
-			  )
-		  ),
-		  'orderby' => 'meta_value',
-		  'order' => 'ASC',
+		// 	  ),
+		// 	  array(
+		// 		  'key' => 'end_date_wp',
+		// 		  'compare' => '>=',
+		// 		  'value' => $today
+		// 	  )
+		//   ),
+		//   'orderby' => 'meta_value',
+		//   'order' => 'ASC',
 		  
-          'post_status' => 'publish' );
+        //   'post_status' => 'publish' );
 
 		  $today = date('Ymd');
 				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' AND (meta_value > '$today' or meta_value = '$today') ORDER BY meta_value ASC LIMIT 9" );
