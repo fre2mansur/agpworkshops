@@ -71,7 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         $workshop_query = null;  
 				$workshop_query =  $wpdb->get_results(
                    
-                        "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value' ASC"
+                        "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value'"
                    
 					);
 				foreach ($workshop_query as $post) {
@@ -115,11 +115,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									// the_sub_field('start_date');
 								
-									$startDates = get_post_meta( $post->ID,'start_date_wp',false);
-									foreach ($startDates as $startDate) {
-										# code...
-									}
-									print_r(date('d/m/Y', strtotime($startDate)));
+									// $startDates = get_post_meta( $post->ID,'start_date_wp',false);
+									
+									// print_r(date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
 							</div>
@@ -128,8 +126,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $post->ID,'end_date_wp',true);
-								print_r(date('d/m/Y', strtotime($endDate)));
+								// $endDate = get_post_meta( $post->ID,'end_date_wp',true);
+								// print_r(date('d/m/Y', strtotime($endDate)));
 								//  the_sub_field('end_date');
 							
 
