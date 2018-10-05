@@ -89,8 +89,8 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
        
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9" );
-
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY $wpdb->postmet.meta_value ASC LIMIT 9" );
+		  		
 				foreach($workshops as $post){
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
