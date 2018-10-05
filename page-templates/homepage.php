@@ -108,7 +108,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 				
-					
+							$startDate = get_post_meta( $post->ID,'start_date_wp',false);
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -144,7 +144,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									// the_sub_field('start_date');
 								
-									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
+									
 									print_r(date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
