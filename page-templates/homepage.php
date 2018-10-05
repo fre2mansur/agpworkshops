@@ -106,6 +106,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						endif;
 						
 						$dates = get_field('start_date_repeater'); 
+						var_dump($dates);
 						if(have_rows('start_date_repeater')):
 							while(have_rows('start_date_repeater')):the_row();
 					
