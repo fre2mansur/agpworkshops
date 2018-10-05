@@ -444,9 +444,8 @@ function convert_start_to_standard_wp_meta($post_id) {
       the_row();
        
       // get the value of this row
-      $startDates = get_sub_field('start_date',false,false);
-	  
-	  foreach($startDates as $startDate){
+      $startDate = get_sub_field('start_date',false,false);
+       
       // see if this value has already been saved
       // note that I am using isset rather than in_array
       // the reason for this is that isset is faster than in_array
@@ -463,8 +462,7 @@ function convert_start_to_standard_wp_meta($post_id) {
        
       // add it to the values we've already saved
       $saved_values[$startDate] = $startDate;
-	}
-	  
+       
     } // end while have rows
   } // end if have rows
 } // end function
@@ -479,7 +477,7 @@ function convert_start_to_standard_wp_meta($post_id) {
 
 function convert_end_to_standard_wp_meta($post_id) {
    
-	// pick a new meta_key to hold the values of the end)date field
+	// pick a new meta_key to hold the values of the end_date field
 	// I generally name this field by suffixing _wp to the field name
 	// as this makes it easy for me to remember this field name
 	// also note, that this is not an ACF field and will not

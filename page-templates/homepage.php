@@ -107,9 +107,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						
 						$dates = get_field('start_date_repeater'); 
 						var_dump($dates);
-						if(have_rows('start_date_repeater')):
-							while(have_rows('start_date_repeater')):the_row();
-					
+
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
@@ -173,9 +171,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 					<?php	
 					endwhile;
-				endif; 	
-
-				endwhile;?>
+?>
 				</div>
 			</div> 
 		 </div> 
