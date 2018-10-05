@@ -68,20 +68,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => 9,
-		  'meta_query' => array(
-			  'relation' => 'AND',
-			  array(
-				  'key' => 'start_date_wp',
-				  'compare' => '>=',
-				  'value'=> $today
-
-			  ),
-			  array(
-				  'key' => 'end_date_wp',
-				  'compare' => '>=',
-				  'value' => $today
-			  )
-		  ),
 		  'orderby' => 'meta_value',
 		  'order' => 'ASC',
 		  
@@ -171,7 +157,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 					<?php	
 					endwhile;
-?>
+		?>
 				</div>
 			</div> 
 		 </div> 
