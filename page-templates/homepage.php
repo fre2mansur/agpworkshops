@@ -90,29 +90,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
         $workshop_query = null;  
-				$workshop_query = $wpdb->get_results();
+				$workshop_query = $wpdb->get_results( $wpdb->prepare("SELECT * from $wpdb->postmeta WHERE meta_key Like %s ORDER BY '%s' ASC",array('start_date_wp','meta_value')),ARRAY_A);
 				
-				while ( $workshop_query->have_posts() ) :
-
-					$workshop_query->the_post(); 
-					$terms = get_the_terms( $post->ID, 'workshop_category' );   
-			        if ( $terms && ! is_wp_error( $terms ) ) : 
-						$links = array();
-						foreach ( $terms as $term ) {
-							$links[] = $term->term_id;
-						}
-						$tax_links = join( " ", str_replace(' ', '-', $links));          
-						$tax = strtolower($tax_links);
-						else :  
-							$tax = '';                  
-						endif;
-				
+				foreach ($workshop_query as $post) {
+						$post = get_post($post->post_id);
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
 					?>
-					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
+					<div class="card " data-cat="">
 						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
@@ -173,7 +160,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 					<?php	
-					endwhile;
+				}
 			?>
 				</div>
 			</div> 
