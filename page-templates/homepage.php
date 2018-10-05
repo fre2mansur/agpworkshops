@@ -88,20 +88,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
           'post_status' => 'publish' );
 
-	   
-				  //$str = "20181108,20181109";
-				  //$arrayDATE = explode(',', $str);
 
-				  //var_dump($arrayDATE);
-
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'workshop_date' ORDER BY meta_value ASC LIMIT 9" );
+       
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'workshop_dates_wp' ORDER BY meta_value ASC LIMIT 9" );
 		  		$postStartDate = null;
 				foreach($workshops as $post){
-					$workshop_dates = explode(',', $post->meta_value);
-					$start_date = $workshop_dates[0];
-					$end_date = $workshop_dates[1];
-
-					
+						$workshopDates = $post->meta_value;
+				 		$arrayWorkshopDate = explode(',', $workshopDates);
+ 				 		
+						$workshopStartDate = $arrayWorkshopDate[0];
+						$workshopEndDate = $arrayWorkshopDate[1];
 
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
@@ -138,12 +134,17 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<?php ?>
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
+
 								<strong><?php echo $start_date; ?></strong>
+
+
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
+
 								<strong><?php echo $start_date; ?></strong>
+
 							</div>
 						</div>
 					</div> 
