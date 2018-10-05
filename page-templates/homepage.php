@@ -89,7 +89,7 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
        
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY $wpdb->postmeta . 'meta_value' ASC" );
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC" );
 
 				foreach($workshops as $postFancy){
 						echo $postFancy->post_id ."<br>";
