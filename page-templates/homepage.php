@@ -63,30 +63,71 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</ul>
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
-				<?php  
+				<?php  global $post;
+				$today = date('Ymd');
+				$args = array( 
+          'post_type' => 'agp_workshop',
+		  'posts_per_page' => 9,
+		  'meta_query' => array(
+			  'relation' => 'AND',
+			  array(
+				  'key' => 'start_date_wp',
+				  'compare' => '>=',
+				  'value'=> $today
 
-				$workshops = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value'" );
-				//var_dump($workshops);
-				foreach($workshops as $post){
+			  ),
+			  array(
+				  'key' => 'end_date_wp',
+				  'compare' => '>=',
+				  'value' => $today
+			  )
+		  ),
+		  'orderby' => 'meta_value',
+		  'order' => 'ASC',
+		  
+          'post_status' => 'publish' );
+
+        $workshop_query = null;  
+				$workshop_query = new WP_Query( $args );
 				
-					$post   = get_post($post->post_id); 
+				while ( $workshop_query->have_posts() ) :
+
+					$workshop_query->the_post(); 
+					$terms = get_the_terms( $post->ID, 'workshop_category' );   
+			        if ( $terms && ! is_wp_error( $terms ) ) : 
+						$links = array();
+						foreach ( $terms as $term ) {
+							$links[] = $term->term_id;
+						}
+						$tax_links = join( " ", str_replace(' ', '-', $links));          
+						$tax = strtolower($tax_links);
+						else :  
+							$tax = '';                  
+						endif;
+						
+						$dates = get_field('start_date_repeater'); 
+						
+					
+							$randomGenerator = mt_rand(123506, 9999999);
+							$randPostIDsForAccordion = $post->ID * $randomGenerator;
+					
 					?>
-					<div class="card">
-						<a class="d-block" href="#workshop_<?php echo @$randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
+					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
+						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
 						<div class="card-body pb-0">
-							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo @$randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
+							<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 								<div class="d-flex justify-content-between header">
 									<h5 class="card-title"><?php the_title()?></h5>
-									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo @$randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
+									<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 										<span class="arrow"></span>
 									</a>
 								</div> 
 							</a>
 							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post->ID, 'workshop_category' ); ?></h6>
-							<div class="collapse my-2" id="workshop_<?php echo @$randPostIDsForAccordion; ?>"  data-parent="#accordion">
-								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro', $post));?></p>
+							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
+								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
 									<a href="<?php the_permalink(); ?>">Know more</a>
 									<a href="#" class="ml-5">Register now</a>
@@ -100,10 +141,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									$startDate = get_sub_field('start_date');
-									echo $startDate;
-									// $startDate = get_post_meta( $post->ID,'start_date_wp',true);
-									// print_r(date('d/m/Y', strtotime($startDate)));
+									
+									$startDate = get_post_meta( $post->ID,'start_date_wp',true);
+									print_r(date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
 							</div>
@@ -112,10 +152,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								// $endDate = get_post_meta( $post->ID,'end_date_wp',true);
-								// print_r(date('d/m/Y', strtotime($endDate)));
-								$endDate = get_sub_field('end_date');
-								echo $endDate;
+								$endDate = get_post_meta( $post->ID,'end_date_wp',true);
+								print_r(date('d/m/Y', strtotime($endDate)));
+								
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
 								// $number_of_weeks = get_field('number_of_weeks');
@@ -127,42 +166,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								?></strong>
 							</div>
 						</div>
-					</div>  
-				<?php  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				
-			?>
+					</div> 
+					<?php 	endwhile;?>
 				</div>
 			</div> 
 		 </div> 
