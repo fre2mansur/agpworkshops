@@ -88,15 +88,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
           'post_status' => 'publish' );
 
-	   
-				  $str = "20181108,20181109";
-				  $arrayDATE = explode(',', $str);
-
-				  var_dump($arrayDATE);
-
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' or meta_key LIKE 'end_date_wp' ORDER BY meta_value ASC LIMIT 9" );
+       
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9" );
 		  		$postStartDate = null;
 				foreach($workshops as $post){
+						$postStartDate = $post->meta_value;
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
