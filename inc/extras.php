@@ -420,7 +420,7 @@ function date_repeater_ACF_converter($post_id) {
 		convert_workshop_start_and_end_date_to_standard_wp_meta($post_id);
 		convert_start_date_to_standard_wp_meta($post_id);
 		convert_end_date_to_standard_wp_meta($post_id);
-		//convert_end_to_standard_wp_meta($post_id);
+		
 	}
 }
 
