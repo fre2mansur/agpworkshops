@@ -413,8 +413,30 @@ function homepageSliderGalleryImages_querry (){
  
 // create a function that will convert this repeater during the acf/save_post action
 // priority of 20 to run after ACF is done saving the new values
-add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
-add_filter('acf/save_post', 'convert_end_to_standard_wp_meta', 20);
+
+// foreach ($dates as $date) {
+// 	add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
+// 	add_filter('acf/save_post', 'convert_end_to_standard_wp_meta', 20);
+// }
+function repeat_fiter($post_id) {
+	$dates = get_field('start_date_repeater', $post_id); 
+	var_dump($dates);
+	foreach ($dates as $value) {
+		convert_start_to_standard_wp_meta($post_id);
+	}
+
+}
+add_filter('acf/save_post', 'repeat_fiter', 20);
+// $post_id = '2088';
+// $dates = get_field('start_date_repeater', $post_id); 
+// foreach ($dates as $value) {
+// 	convert_start_to_standard_wp_meta($post_id);
+// 	//add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
+// 	//var_dump($dates);
+// }
+
+
+
  
 function convert_start_to_standard_wp_meta($post_id) {
    
@@ -458,7 +480,7 @@ function convert_start_to_standard_wp_meta($post_id) {
       // note that we are using false for the 4th parameter
       // this means that this meta key is not unique
       // and can have more then one value
-      add_post_meta($post_id, $meta_key, $startDate, true);
+      add_post_meta($post_id, $meta_key, $startDate, false);
        
       // add it to the values we've already saved
       $saved_values[$startDate] = $startDate;
