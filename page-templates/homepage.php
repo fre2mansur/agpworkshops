@@ -96,9 +96,12 @@ $container = get_theme_mod( 'understrap_container_type' );
                         "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE %s ORDER BY %s ASC",'start_date_wp','meta_value'
                     ),ARRAY_A
 					);
-				var_dump($workshop_query);	
+				foreach ($workshop_query as $post) {
 
-		  ?>
+					$post = get_post($post->post_id);
+
+					# code...
+				?>
 
 
 					<div class="card " data-cat="">
@@ -161,8 +164,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 						</div>
 					</div> 
-					<?php	
+
 					
+					<?php	
+				}
 			?>
 				</div>
 			</div> 
