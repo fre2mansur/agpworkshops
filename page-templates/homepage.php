@@ -65,6 +65,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$today = date('Ymd');
+				
 				$args = array( 
           'post_type' => 'agp_workshop',
 		  'posts_per_page' => 9,
@@ -89,7 +90,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
         $workshop_query = null;  
 				$workshop_query = new WP_Query( $args );
-				
+				var_dump($workshop_query);
 				while ( $workshop_query->have_posts() ) :
 
 					$workshop_query->the_post(); 
