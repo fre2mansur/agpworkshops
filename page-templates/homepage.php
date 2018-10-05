@@ -62,7 +62,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				} ?>
 			</ul>
 			<div id="portfoliolist">
-			<div class="card-columns-error" id="accordion">
+			<div class="card-columns" id="accordion">
 				<?php  global $post;
 				$today = date('Ymd');
 				
@@ -93,22 +93,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 				foreach($workshops as $postFancy){
 						echo $postFancy->post_id ."<br>";
-				}
-				while ( $workshop_query->have_posts() ) :
-
-					$workshop_query->the_post(); 
-					$terms = get_the_terms( $post->ID, 'workshop_category' );   
-			        if ( $terms && ! is_wp_error( $terms ) ) : 
-						$links = array();
-						foreach ( $terms as $term ) {
-							$links[] = $term->term_id;
-						}
-						$tax_links = join( " ", str_replace(' ', '-', $links));          
-						$tax = strtolower($tax_links);
-						else :  
-							$tax = '';                  
-						endif;
-						
 						$dates = get_field('start_date_repeater'); 
 						
 					
@@ -171,7 +155,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 						</div>
 					</div> 
-					<?php 	endwhile;?>
+								<?php 	};?>
 				</div>
 			</div> 
 		 </div> 
