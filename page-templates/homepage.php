@@ -142,8 +142,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Starts - </span>
 								<strong><?php
 									
-									$startDate = get_sub_field('start_date');
-									echo $startDate;
+									the_sub_field('start_date');
+								
 									// $startDate = get_post_meta( $post->ID,'start_date_wp',true);
 									// print_r(date('d/m/Y', strtotime($startDate)));
 									
@@ -156,8 +156,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								
 								// $endDate = get_post_meta( $post->ID,'end_date_wp',true);
 								// print_r(date('d/m/Y', strtotime($endDate)));
-								$endDate = get_sub_field('end_date');
-								echo $endDate;
+								 the_sub_field('end_date');
+							
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
 								// $number_of_weeks = get_field('number_of_weeks');
