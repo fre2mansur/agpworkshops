@@ -418,8 +418,8 @@ function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
 	foreach ($repeaterDates as $dateValue) {
 		convert_workshop_start_and_end_date_to_standard_wp_meta($post_id);
-		convert_start_to_standard_wp_meta($post_id);
-		convert_end_to_standard_wp_meta($post_id);
+		convert_start_date_to_standard_wp_meta($post_id);
+		convert_end_date_to_standard_wp_meta($post_id);
 		//convert_end_to_standard_wp_meta($post_id);
 	}
 }
@@ -549,7 +549,7 @@ function convert_start_date_to_standard_wp_meta($post_id) {
 
 
 
-function convert_end_to_standard_wp_meta($post_id) {
+function convert_end_date_to_standard_wp_meta($post_id) {
    
 	// pick a new meta_key to hold the values of the start_date field
 	// I generally name this field by suffixing _wp to the field name
