@@ -62,7 +62,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				} ?>
 			</ul>
 			<div id="portfoliolist">
-			<div class="card-columns" id="accordion">
+			<div class="card-columns-error" id="accordion">
 				<?php  global $post;
 				$today = date('Ymd');
 				
@@ -89,10 +89,10 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
        
-				$workshop_query = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value' ASC" );
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value' ASC" );
 
-				foreach($workshop_query as $post){
-						echo $post->$post_id ."<br>";
+				foreach($workshops as $post){
+						echo $post->post_id ."<br>";
 				}
 				while ( $workshop_query->have_posts() ) :
 
