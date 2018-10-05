@@ -141,7 +141,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $post,'end_date_wp',true);
+								$endDate = get_post_meta( $post,'end_date_wp',false);
 								print_r(date('d/m/Y', strtotime($endDate)));
 								
 
