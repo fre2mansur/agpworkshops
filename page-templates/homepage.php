@@ -63,30 +63,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</ul>
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
-				<?php  global $post;
-				$today = date('Ymd');
-				$args = array( 
-          'post_type' => 'agp_workshop',
-		  'posts_per_page' => 9,
-		  'meta_query' => array(
-			  'relation' => 'AND',
-			  array(
-				  'key' => 'start_date_wp',
-				  'compare' => '>=',
-				  'value'=> $today
-
-			  ),
-			  array(
-				  'key' => 'end_date_wp',
-				  'compare' => '>=',
-				  'value' => $today
-			  ),
-			  
-		  ),
-		  'orderby' => 'meta_value',
-		  'order' => 'ASC',
-		  
-		  'post_status' => 'publish' );
+		
+		<?php
 		  
 
 
@@ -100,6 +78,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					$post = get_post($post->post_id);
 
+					$randomGenerator = mt_rand(123506, 999999999);
+					$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					# code...
 				?>
 
