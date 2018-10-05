@@ -432,7 +432,7 @@ function convert_start_to_standard_wp_meta($post_id) {
   // also note, that this is not an ACF field and will not
   // appear when editing posts, it is just a db field that we
   // will use for searching
-  $meta_key = 'workshop_date_wp';
+  $meta_key = 'workshop_dates_wp';
    
   // the next step is to delete any values already stored
   // so that we can update it with new values
