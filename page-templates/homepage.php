@@ -59,6 +59,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						$termname = str_replace(' ', '-', $termname);
 						echo '<li class="nav-item"><span class="filter nav-link" data-filter=".'.$termname.'">'.$term->name.'</span</li>';
 					}
+					var_dump($workshop_query);
 				} ?>
 			</ul>
 			<div id="portfoliolist">
@@ -90,7 +91,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 
         $workshop_query = null;  
 				$workshop_query = new WP_Query( $args );
-				var_dump($workshop_query);
 				while ( $workshop_query->have_posts() ) :
 
 					$workshop_query->the_post(); 
