@@ -97,7 +97,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						
 					
 							$randomGenerator = mt_rand(123506, 9999999);
-							$randPostIDsForAccordion = $post->ID * $randomGenerator;
+							$randPostIDsForAccordion = $post->post_id * $randomGenerator;
 					
 					?>
 					<div class="card " data-cat="">
