@@ -105,8 +105,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$tax = '';                  
 						endif;
 						
-						$dates = get_field('start_date_repeater'); 
-						var_dump($dates);
+
 
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
