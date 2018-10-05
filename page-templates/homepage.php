@@ -97,7 +97,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						
 					
 							$randomGenerator = mt_rand(123506, 9999999);
-							$randPostIDsForAccordion = $post->post_id * $randomGenerator;
+							$randPostIDsForAccordion = $post * $randomGenerator;
 					
 					?>
 					<div class="card " data-cat="">
@@ -113,7 +113,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									</a>
 								</div> 
 							</a>
-							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post->post_id, 'workshop_category' ); ?></h6>
+							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post, 'workshop_category' ); ?></h6>
 							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
@@ -130,7 +130,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									$startDate = get_post_meta( $post->post_id,'start_date_wp',true);
+									$startDate = get_post_meta( $post,'start_date_wp',true);
 									print_r(date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
@@ -140,7 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $post->post_id,'end_date_wp',true);
+								$endDate = get_post_meta( $post,'end_date_wp',true);
 								print_r(date('d/m/Y', strtotime($endDate)));
 								
 
