@@ -142,7 +142,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 								
 								$endDate = get_post_meta( $post,'end_date_wp',false);
-								print_r(date('d/m/Y', strtotime($endDate)));
+								var_dump ($endDate);
+								// print_r(date('d/m/Y', strtotime($endDate)));
 								
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
