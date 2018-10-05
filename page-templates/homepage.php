@@ -89,7 +89,7 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
        
-				$workshops = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE '%s' ORDER BY meta_value ASC LIMIT 9",array('start_date_wp')),OBJECT_K);
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE '%s' ORDER BY meta_value ASC LIMIT 9",array('start_date_wp'),OBJECT_K);
 		  		$postStartDate = null;
 				foreach($workshops as $post){
 					
