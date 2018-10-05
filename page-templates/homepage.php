@@ -90,8 +90,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 
        
 				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9" );
-		  	
+		  		$postStartDate = null;
 				foreach($workshops as $post){
+						$postStartDate = $post->meta_key;
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
@@ -130,8 +131,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									$startDate = $post->meta_value;
-									echo date('d/m/Y', strtotime($startDate)));
+									
+									echo date('d/m/Y', strtotime($postStartDate));
 									
 								?></strong>
 							</div>
