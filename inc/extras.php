@@ -414,29 +414,15 @@ function homepageSliderGalleryImages_querry (){
 // create a function that will convert this repeater during the acf/save_post action
 // priority of 20 to run after ACF is done saving the new values
 
-// foreach ($dates as $date) {
-// 	add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
-// 	add_filter('acf/save_post', 'convert_end_to_standard_wp_meta', 20);
-// }
-function repeat_fiter($post_id) {
-	$dates = get_field('start_date_repeater', $post_id); 
-	var_dump($dates);
-	foreach ($dates as $value) {
+function date_repeater_ACF_converter($post_id) {
+	$repeaterDates = get_field('start_date_repeater', $post_id);
+	foreach ($repeaterDates as $dateValue) {
 		convert_start_to_standard_wp_meta($post_id);
+		convert_end_to_standard_wp_meta($post_id);
 	}
-
 }
-add_filter('acf/save_post', 'repeat_fiter', 20);
-// $post_id = '2088';
-// $dates = get_field('start_date_repeater', $post_id); 
-// foreach ($dates as $value) {
-// 	convert_start_to_standard_wp_meta($post_id);
-// 	//add_filter('acf/save_post', 'convert_start_to_standard_wp_meta', 20);
-// 	//var_dump($dates);
-// }
 
-
-
+add_filter('acf/save_post', 'date_repeater_ACF_converter', 20);
  
 function convert_start_to_standard_wp_meta($post_id) {
    
@@ -499,7 +485,7 @@ function convert_start_to_standard_wp_meta($post_id) {
 
 function convert_end_to_standard_wp_meta($post_id) {
    
-	// pick a new meta_key to hold the values of the end)date field
+	// pick a new meta_key to hold the values of the start_date field
 	// I generally name this field by suffixing _wp to the field name
 	// as this makes it easy for me to remember this field name
 	// also note, that this is not an ACF field and will not
@@ -539,7 +525,7 @@ function convert_end_to_standard_wp_meta($post_id) {
 		// note that we are using false for the 4th parameter
 		// this means that this meta key is not unique
 		// and can have more then one value
-		add_post_meta($post_id, $meta_key, $endDate, true);
+		add_post_meta($post_id, $meta_key, $endDate, false);
 		 
 		// add it to the values we've already saved
 		$saved_values[$endDate] = $endDate;
