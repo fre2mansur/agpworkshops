@@ -92,9 +92,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 
         $workshop_query = null;  
 				$workshop_query =  $wpdb->get_results(
-                    $wpdb->prepare(
-                        "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE %s ORDER BY %s ASC",'start_date_wp','meta_value'
-                    ),ARRAY_A
+                   
+                        "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value' ASC"
+                   
 					);
 				foreach ($workshop_query as $post) {
 
