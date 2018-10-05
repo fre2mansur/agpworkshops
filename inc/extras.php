@@ -418,7 +418,7 @@ function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
 	foreach ($repeaterDates as $dateValue) {
 		convert_start_to_standard_wp_meta($post_id);
-		convert_end_to_standard_wp_meta($post_id);
+		//convert_end_to_standard_wp_meta($post_id);
 	}
 }
 
@@ -452,12 +452,13 @@ function convert_start_to_standard_wp_meta($post_id) {
       the_row();
        
       // get the value of this row
-      $startDate = get_sub_field('start_date',false,false);
+	  $startDate = get_sub_field('start_date',false,false);
+	  $endDate = get_sub_field('end_date',false,false);
        
       // see if this value has already been saved
       // note that I am using isset rather than in_array
       // the reason for this is that isset is faster than in_array
-      if (isset($saved_values[$startDate])) {
+      if (isset($saved_values[$startDate]) and isset($saved_values[$endDate])) {
         // no need to save this one we already have it
         continue;
       }
@@ -466,7 +467,7 @@ function convert_start_to_standard_wp_meta($post_id) {
       // note that we are using false for the 4th parameter
       // this means that this meta key is not unique
       // and can have more then one value
-      add_post_meta($post_id, $meta_key, $startDate, false);
+      add_post_meta($post_id, $meta_key, $startDate.",".$endDate, false);
        
       // add it to the values we've already saved
       $saved_values[$startDate] = $startDate;
