@@ -444,8 +444,9 @@ function convert_start_to_standard_wp_meta($post_id) {
       the_row();
        
       // get the value of this row
-      $startDate = get_sub_field('start_date',false,false);
-       
+      $startDates = get_sub_field('start_date',false,false);
+	  
+	  foreach($startDates as $startDate){
       // see if this value has already been saved
       // note that I am using isset rather than in_array
       // the reason for this is that isset is faster than in_array
@@ -462,7 +463,8 @@ function convert_start_to_standard_wp_meta($post_id) {
        
       // add it to the values we've already saved
       $saved_values[$startDate] = $startDate;
-       
+	}
+	  
     } // end while have rows
   } // end if have rows
 } // end function
