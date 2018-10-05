@@ -90,7 +90,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
         $workshop_query = null;  
-				$workshop_query = new WP_Meta_Query( $args );
+				$workshop_query = $wpdb->get_results();
 				
 				while ( $workshop_query->have_posts() ) :
 
