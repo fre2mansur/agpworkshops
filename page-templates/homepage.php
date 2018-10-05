@@ -94,8 +94,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 				foreach($workshops as $post){
 						$workshopDates = $post->meta_value;
 				 		$arrayWorkshopDate = explode(',', $workshopDates);
- 				 		var_dump($arrayWorkshopDate);
-						
+ 				 		
+						$workshopStartDate = $arrayWorkshopDate[0];
+						$workshopEndDate = $arrayWorkshopDate[1];
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
@@ -135,7 +136,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									echo date('d/m/Y', strtotime($postStartDate));
+									echo date('d/m/Y', strtotime($workshopStartDate));
 									
 								?></strong>
 							</div>
@@ -144,8 +145,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $post,'end_date_wp',true);
-								print_r(date('d/m/Y', strtotime($endDate)));
+								echo date('d/m/Y', strtotime($workshopEndDate)));
 								
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
