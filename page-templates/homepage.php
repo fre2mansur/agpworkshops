@@ -89,18 +89,20 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
 	   
-				  $str = "20181108,20181109";
-				  $arrayDATE = explode(',', $str);
+				  //$str = "20181108,20181109";
+				  //$arrayDATE = explode(',', $str);
 
-				  var_dump($arrayDATE);
+				  //var_dump($arrayDATE);
 
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' or meta_key LIKE 'end_date_wp' ORDER BY meta_value ASC LIMIT 9" );
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'workshop_date' ORDER BY meta_value ASC LIMIT 9" );
 		  		$postStartDate = null;
 				foreach($workshops as $post){
-				echo $post->meta_value;
-					//var_dump($post->meta_key['meta_value']);
+					$workshop_dates = explode(',', $post->meta_value);
+					$start_date = $workshop_dates[0];
+					$end_date = $workshop_dates[1];
 
-						$postStartDate = $post->meta_key;
+					
+
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
@@ -136,31 +138,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<?php ?>
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
-								<strong><?php
-									
-									
-									
-									echo date('d/m/Y', strtotime($postStartDate));
-									
-								?></strong>
+								<strong><?php echo $start_date; ?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
-								<strong><?php
-								
-								$endDate = get_post_meta( $post,'end_date_wp',true);
-								print_r(date('d/m/Y', strtotime($endDate)));
-								
-
-								// $get_the_schedule_type = get_field('select_the_schedule_type');
-								// $number_of_weeks = get_field('number_of_weeks');
-								// if($get_the_schedule_type == "daily"){				
-																		
-								// }
-								
-								
-								?></strong>
+								<strong><?php echo $start_date; ?></strong>
 							</div>
 						</div>
 					</div> 

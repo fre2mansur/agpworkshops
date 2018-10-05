@@ -417,14 +417,13 @@ function homepageSliderGalleryImages_querry (){
 function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
 	foreach ($repeaterDates as $dateValue) {
-		convert_start_to_standard_wp_meta($post_id);
-		//convert_end_to_standard_wp_meta($post_id);
+		convert_date_to_standard_wp_meta($post_id);
 	}
 }
 
 add_filter('acf/save_post', 'date_repeater_ACF_converter', 20);
  
-function convert_start_to_standard_wp_meta($post_id) {
+function convert_date_to_standard_wp_meta($post_id) {
    
   // pick a new meta_key to hold the values of the start_date field
   // I generally name this field by suffixing _wp to the field name
@@ -432,7 +431,7 @@ function convert_start_to_standard_wp_meta($post_id) {
   // also note, that this is not an ACF field and will not
   // appear when editing posts, it is just a db field that we
   // will use for searching
-  $meta_key = 'start_date_wp';
+  $meta_key = 'workshop_date';
    
   // the next step is to delete any values already stored
   // so that we can update it with new values
@@ -470,7 +469,7 @@ function convert_start_to_standard_wp_meta($post_id) {
       add_post_meta($post_id, $meta_key, $startDate.",".$endDate, false);
        
       // add it to the values we've already saved
-      $saved_values[$startDate] = $startDate;
+      $saved_values[$bothDate] = $startDate.",".$endDate;
        
     } // end while have rows
   } // end if have rows
