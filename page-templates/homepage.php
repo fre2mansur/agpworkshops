@@ -92,12 +92,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9" );
 		  	
 				foreach($workshops as $post){
-						$postID = $postID->post_id;
+						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
 					
 							$randomGenerator = mt_rand(123506, 9999999);
-							$randPostIDsForAccordion = $postID * $randomGenerator;
+							$randPostIDsForAccordion = $post * $randomGenerator;
 					
 					?>
 					<div class="card " data-cat="">
@@ -113,7 +113,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									</a>
 								</div> 
 							</a>
-							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $postID, 'workshop_category' ); ?></h6>
+							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post, 'workshop_category' ); ?></h6>
 							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
@@ -131,7 +131,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									$startDate = $post->meta_value;
-									echo date('d/m/Y', strtotime($startDate));
+									echo date('d/m/Y', strtotime($startDate)));
 									
 								?></strong>
 							</div>
@@ -140,7 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $postID,'end_date_wp',true);
+								$endDate = get_post_meta( $post,'end_date_wp',true);
 								print_r(date('d/m/Y', strtotime($endDate)));
 								
 
