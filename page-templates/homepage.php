@@ -63,7 +63,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</ul>
 			<div id="portfoliolist">
 			<div class="card-columns" id="accordion">
-				<?php  global $post;
+				<?php  
 				$today = date('Ymd');
 				
 				$args = array( 
@@ -89,10 +89,10 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
        
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC" );
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9" );
 
-				foreach($workshops as $postFancy){
-						echo $postFancy->post_id ."<br>";
+				foreach($workshops as $post){
+						$post = $post->post_id ."<br>";
 						$dates = get_field('start_date_repeater'); 
 						
 					
@@ -100,7 +100,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							$randPostIDsForAccordion = $post->ID * $randomGenerator;
 					
 					?>
-					<div class="card <?php echo $tax; ?>" data-cat="<?php echo $tax;?>">
+					<div class="card " data-cat="">
 						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
