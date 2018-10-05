@@ -89,8 +89,12 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
         $workshop_query = null;  
-				$workshop_query = new WP_Query( $args );
-				var_dump($workshop_query);
+				$workshop_query = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY 'meta_value' ASC" );
+
+				foreach($workshop_query as $post){
+
+					var_dump($post);
+				}
 				while ( $workshop_query->have_posts() ) :
 
 					$workshop_query->the_post(); 
