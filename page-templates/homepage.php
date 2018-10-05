@@ -89,14 +89,10 @@ $container = get_theme_mod( 'understrap_container_type' );
           'post_status' => 'publish' );
 
        
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9");
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'start_date_wp' ORDER BY meta_value ASC LIMIT 9" );
 		  		$postStartDate = null;
 				foreach($workshops as $post){
-						$workshopDates = $post->meta_value;
-				 		$arrayWorkshopDate = explode(',', $workshopDates);
- 				 		
-						$workshopStartDate = $arrayWorkshopDate[0];
-						$workshopEndDate = $arrayWorkshopDate[1];
+						$postStartDate = $post->meta_value;
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
@@ -136,7 +132,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									echo $workshopStartDate;
+									echo date('d/m/Y', strtotime($postStartDate));
 									
 								?></strong>
 							</div>
@@ -145,7 +141,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								echo $workshopEndDate;
+								$endDate = get_post_meta( $post,'end_date_wp',true);
+								print_r(date('d/m/Y', strtotime($endDate)));
 								
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
