@@ -100,6 +100,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
 				$workshopEndDates = get_post_meta( $post,'end_date_wp',false);
+				
 				foreach($workshops as $post){
 						$workshopStartDate = $post->meta_value;
 						$post = $post->post_id;
