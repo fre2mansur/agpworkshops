@@ -99,11 +99,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
-				$workshopEndDates = get_post_meta( $postId,'end_date_wp',true);
+				$workshopEndDates = get_post_meta( $post,'end_date_wp',true);
 				
 				foreach($workshops as $post){
-						$workshopStartDate = $postId->meta_value;
-						$postId = $postId->post_id;
+						$workshopStartDate = $post->meta_value;
+						$postId = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 					
 					
