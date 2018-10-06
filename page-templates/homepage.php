@@ -99,7 +99,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
-				$workshopEndDates = get_post_meta( $post,'end_date_wp',false);
+				$workshopEndDates = get_post_meta( $post,'end_date_wp',true);
 				
 				foreach($workshops as $post){
 						$workshopStartDate = $post->meta_value;
