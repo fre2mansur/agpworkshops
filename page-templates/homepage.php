@@ -105,9 +105,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						$workshopStartDate = $post->meta_value;
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
-						if( have_rows('start_date_repeater') ):
-							while( have_rows('start_date_repeater') ): the_row();
-						
+					
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $post * $randomGenerator;
@@ -170,8 +168,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 				<?php 
-				endwhile;
-			endif;
+	
 			};?>
 				</div>
 			</div> 
