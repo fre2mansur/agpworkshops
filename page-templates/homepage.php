@@ -89,7 +89,14 @@ $container = get_theme_mod( 'understrap_container_type' );
         //   'post_status' => 'publish' );
 
 		  $today = date('Ymd');
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  WHERE meta_key LIKE 'start_date_wp' AND (meta_value > '$today' or meta_value = '$today' AND $wpdb->posts.post_status = 'publish') ORDER BY meta_value ASC LIMIT 9" );
+		  $metakey = start_date_wp;
+				$workshops = $wpdb->get_results(
+					$wpdb->prepare("SELECT * FROM $wpdb->postmeta 
+					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
+					WHERE meta_key LIKE %s 
+					AND (meta_value > '$today' or meta_value = '$today' AND $wpdb->posts.post_status = 'publish') 
+					ORDER BY meta_value ASC LIMIT 9", $metakey ));
+					
 		  		$postStartDate = null;
 				foreach($workshops as $post){
 						$postStartDate = $post->meta_value;
