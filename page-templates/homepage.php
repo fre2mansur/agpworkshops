@@ -105,6 +105,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 						$workshopStartDate = $post->meta_value;
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
+						if( have_rows('start_date_repeater') ):
+							while( have_rows('start_date_repeater') ): the_row();
 						
 					
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -142,7 +144,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									echo date('d-m-Y', strtotime($workshopStartDate));
+									echo the_sub_field('start_date');
 									
 								?></strong>
 							</div>
@@ -151,7 +153,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-									echo date('d-m-Y', strtotime($workshopEndDates));
+									echo the_sub_field('end_date');
 								
 								// print_r(date('d/m/Y', strtotime($endDate)));
 								
@@ -167,7 +169,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 						</div>
 					</div> 
-				<?php 	};?>
+				<?php 
+				endwhile;
+			endif;
+			};?>
 				</div>
 			</div> 
 		 </div> 
