@@ -141,8 +141,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									
-									echo the_sub_field('start_date');
+									$starDate = the_sub_field('start_date');
+									var_dump($starDate); 
 									
 								?></strong>
 							</div>
