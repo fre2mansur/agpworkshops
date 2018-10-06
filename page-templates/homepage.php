@@ -142,7 +142,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									echo date('d/m/Y', strtotime($workshopStartDate));
+									echo date('d-m-Y', strtotime($workshopStartDate));
 									
 								?></strong>
 							</div>
@@ -151,8 +151,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
+									echo date('d-m-Y', strtotime($workshopEndDates));
 								
-								var_dump ($endDate);
 								// print_r(date('d/m/Y', strtotime($endDate)));
 								
 
