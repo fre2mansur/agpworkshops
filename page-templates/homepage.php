@@ -94,7 +94,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 					$wpdb->prepare("SELECT * FROM $wpdb->postmeta 
 					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
 					WHERE meta_key LIKE %s 
-					AND (meta_value > '$today' or meta_value = '$today' AND $wpdb->posts.post_status = 'publish') 
+					AND (meta_value > '$today' or meta_value = '$today')
+					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 
 		  		$postStartDate = null;
