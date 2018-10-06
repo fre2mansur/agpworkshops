@@ -91,16 +91,17 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  $today = date('Ymd');
 		  $metakey = 'start_date_wp';
 				$workshops = $wpdb->get_results(
-					$wpdb->prepare("SELECT * FROM $wpdb->postmeta 
+					$wpdb->prepare(
+				   "SELECT * FROM $wpdb->postmeta 
 					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
 					WHERE meta_key LIKE %s 
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
-
-		  		$postStartDate = null;
+		  		$workshopStartDate = null;
+				$workshopEndDates = get_post_meta( $post,'end_date_wp',false);
 				foreach($workshops as $post){
-						$postStartDate = $post->meta_value;
+						$workshopStartDate = $post->meta_value;
 						$post = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
 						
@@ -140,7 +141,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									echo date('d/m/Y', strtotime($postStartDate));
+									echo date('d/m/Y', strtotime($workshopStartDate));
 									
 								?></strong>
 							</div>
@@ -149,7 +150,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-								$endDate = get_post_meta( $post,'end_date_wp',false);
+								
 								var_dump ($endDate);
 								// print_r(date('d/m/Y', strtotime($endDate)));
 								
