@@ -89,22 +89,24 @@ $container = get_theme_mod( 'understrap_container_type' );
         //   'post_status' => 'publish' );
 
 		  $today = date('Ymd');
-		  $metakey = 'start_date_wp';
+		  $metaStartkey = 'start_date_wp';
+		  $metaEndKey ='end_date_wp';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->postmeta 
 					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
-					WHERE meta_key LIKE %s 
+					WHERE meta_key = %s 
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
-					ORDER BY meta_value ASC LIMIT 9", $metakey ));
+					AND meta_key = %s
+					ORDER BY meta_value ASC LIMIT 9", $metaStartkey, $metaEndKey ));
 		  		$workshopStartDate = null;
 				$workshopEndDate = null ;
 				  foreach($workshops as $post){
-					  $workshopStartDate = get_post_meta( $post,'start_date_wp',true);
-					  $workshopEndDate = get_post_meta( $post,'end_date_wp',true);
+					  $workshopStartDate = get_post_meta( $post,'start_date_wp',false);
+					  $workshopEndDate = get_post_meta( $post,'end_date_wp',false);
+					  $dates = get_field('start_date_repeater'); 
 						$postId = $post->post_id;
-						$dates = get_field('start_date_repeater'); 
 			
 					
 							$randomGenerator = mt_rand(123506, 9999999);
