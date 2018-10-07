@@ -445,12 +445,19 @@ function convert_start_to_standard_wp_meta($post_id) {
   // because having the same value to search and filter by
   // would be pointless
   $saved_values = array();
+  
+  //delete all records from wp_workshop_dates based on post_id
    
   // now we'll look at the repeater and save any values
   if (have_rows('start_date_repeater', $post_id)) {
     while (have_rows('start_date_repeater', $post_id)) {
-      the_row();
-       
+	  the_row();
+	  
+
+		// insert query for workshp dates for each iterating reord of the loop.
+	   
+	  
+
       // get the value of this row
       $startDate = get_sub_field('start_date',false,false);
        

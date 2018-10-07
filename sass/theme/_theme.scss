@@ -517,3 +517,21 @@ text-align: inherit;
 .margin-negative-60{
   margin-top:-60px !important;
 }
+
+
+.workshop-container{
+  display:flex;
+  justify-content:space-evenly;
+  flex-wrap:wrap;
+  margin: 0 auto;
+}
+
+.workshop-card{
+  margin: 1rem;
+  max-width: 315px;
+  width: 315px;
+  border:1px solid rgba(9,8,9,.125);
+  border-radius:2%;
+  padding:0;
+  display:table;
+}

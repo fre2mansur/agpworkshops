@@ -62,7 +62,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				} ?>
 			</ul>
 			<div id="portfoliolist">
-			<div class="card-columns" id="accordion">
+			<div class="workshop-container" id="accordion">
 				<?php  
 				
 				
@@ -90,29 +90,27 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		  $today = date('Ymd');
 		  $metakey = 'start_date_wp';
-		  $metaEndKey = 'end_date_wp';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->postmeta 
 					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
-					WHERE meta_key LIKE %s OR meta_key LIKE %s
+					WHERE meta_key LIKE %s 
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
-					GROUP BY $wpdb->posts.ID
-					ORDER BY meta_value ASC LIMIT 9", $metakey, $metaEndKey ));
-					
+					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
-				
-
+				 
 				  foreach($workshops as $post){
-					$postId = $post->ID;
+					$postId = $post->post_id;
 					$workshopStartDate = $post->meta_value;
 					$workshopEndDate = get_post_meta($postId, 'end_date_wp', false);
+					$endDateArrayCount = count($workshopEndDate);   
+					echo $endDateArrayCount;
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
 					
 					?>
-					<div class="card " data-cat="">
+					<div class="workshop-card" data-cat="">
 						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
@@ -179,6 +177,4 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div>
 <!-- Wrapper end -->
 
-<?php 
-
-get_footer('agp'); ?>
+<?php get_footer('agp'); ?>
