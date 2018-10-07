@@ -92,8 +92,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  $metakey = 'start_date_wp';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
-				   "SELECT * FROM $wpdb->post 
-					INNER JOIN $wpdb->postmeta ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)  
+				   "SELECT * FROM $wpdb->postmeta 
+					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
 					WHERE meta_key LIKE %s 
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
@@ -172,10 +172,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 			</div> 
 		 </div> 
-		<?php var_dump($workshops); ?>
+
 
 
 </div>
 <!-- Wrapper end -->
 
-<?php get_footer('agp'); ?>
+<?php 
+var_dump($workshops);
+get_footer('agp'); ?>
