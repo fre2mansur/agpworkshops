@@ -105,7 +105,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						$workshopStartDate = $post->meta_value;
 						$postId = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
-					
+					    var_dump($dates);
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
@@ -141,8 +141,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									
-									var_dump($dates[0]); 
+									echo date('d-m-Y', strtotime($workshopStartDate));
+									 
 									
 								?></strong>
 							</div>
