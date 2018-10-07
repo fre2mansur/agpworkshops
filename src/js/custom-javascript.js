@@ -91,7 +91,7 @@ $container.masonry({
   fitWidth: true,
   itemSelector: '.workshop-card',
   horizontalOrder: true,
-  gutter: 2
+  gutter: 10
 
 });
 
