@@ -100,11 +100,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
 				$workshopEndDates = get_post_meta( $post,'end_date_wp',true);
+				$dates = get_field('start_date_repeater'); 
 				
 				foreach($workshops as $post){
 						$workshopStartDate = $post->meta_value;
 						$postId = $post->post_id;
-						$dates = get_field('start_date_repeater'); 
 					
 					
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -142,7 +142,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									var_dump($dates); 
+									var_dump($dates['start_date']); 
 									
 								?></strong>
 							</div>
