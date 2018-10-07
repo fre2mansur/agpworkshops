@@ -100,9 +100,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
 				 
-				  if( have_rows('start_date_repeater') ):
-				  while( have_rows('start_date_repeater') ): the_row(); 
 				  foreach($workshops as $post){
+					if( have_rows('start_date_repeater') ):
+					while( have_rows('start_date_repeater') ): the_row(); 
 					  $workshopStartDate = $post->meta_value;
 					  $workshopEndDates = get_post_meta( $post,'end_date_wp',true);
 						$postId = $post->post_id;
@@ -169,9 +169,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 				<?php 
-			}
 		endwhile;
 		endif;?>
+			}
 				</div>
 			</div> 
 		 </div> 
