@@ -537,7 +537,7 @@ text-align: inherit;
 
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 992px) {
  .workshop-card{
   max-width: 300px;
   width: 300px;
