@@ -90,14 +90,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		  $today = date('Ymd');
 		  $metakey = 'start_date_wp';
+		  $metaEndKey = 'end_date_wp';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->postmeta 
 					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
-					WHERE meta_key LIKE %s 
+					WHERE meta_key LIKE %s OR meta_key LIKE %s
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
-					ORDER BY meta_value ASC LIMIT 9", $metakey ));
+					ORDER BY meta_value ASC LIMIT 9", $metakey, $metaEndKey ));
+					
 		  		$workshopStartDate = null;
 				
 
