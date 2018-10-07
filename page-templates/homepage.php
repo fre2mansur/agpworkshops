@@ -92,14 +92,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  $metakey = 'start_date_wp';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
-				   "SELECT * FROM $wpdb->postmeta 
-					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
+				   "SELECT * FROM $wpdb->post 
+					INNER JOIN $wpdb->postmeta ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)  
 					WHERE meta_key LIKE %s 
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
-			var_dump($workshops);	
+				
 
 				  foreach($workshops as $post){
 					$postId = $post->ID;
@@ -172,7 +172,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 			</div> 
 		 </div> 
-
+		<?php var_dump($workshops); ?>
 
 
 </div>
