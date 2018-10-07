@@ -101,8 +101,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  		$workshopStartDate = null;
 				 
 				  if( have_rows('start_date_repeater') ):
+				  while( have_rows('start_date_repeater') ): the_row(); 
 				  foreach($workshops as $post){
-					while( have_rows('repeater_field_name') ): the_row(); 
 					  $workshopStartDate = $post->meta_value;
 					  $workshopEndDates = get_post_meta( $post,'end_date_wp',true);
 						$postId = $post->post_id;
@@ -169,8 +169,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 				<?php 
-				endwhile;
 			}
+		endwhile;
 		endif;?>
 				</div>
 			</div> 
