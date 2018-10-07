@@ -98,7 +98,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 					WHERE meta_key = %s 
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
-					AND meta_key = %s
+					OR meta_key = %s
+					AND (meta_value > '$today' or meta_value = '$today')
 					ORDER BY meta_value ASC LIMIT 9", $metaStartkey, $metaEndKey ));
 		  		$workshopStartDate = null;
 				$workshopEndDate = null ;
