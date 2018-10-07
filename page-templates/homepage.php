@@ -105,7 +105,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					  $workshopEndDates = get_post_meta( $post,'end_date_wp',true);
 						$postId = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
-					    var_dump($dates);
+					   
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
