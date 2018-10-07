@@ -98,6 +98,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					WHERE meta_key LIKE %s OR meta_key LIKE %s
 					AND (meta_value > '$today' or meta_value = '$today')
 					AND $wpdb->posts.post_status = 'publish'
+					GROUP BY $wpdb->posts.ID
 					ORDER BY meta_value ASC LIMIT 9", $metakey, $metaEndKey ));
 					
 		  		$workshopStartDate = null;
