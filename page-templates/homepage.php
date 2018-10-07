@@ -99,12 +99,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
-				  
+				 
+				  if( have_rows('start_date_repeater') ):
 				  foreach($workshops as $post){
+					while( have_rows('repeater_field_name') ): the_row(); 
 					  $workshopStartDate = $post->meta_value;
 					  $workshopEndDates = get_post_meta( $post,'end_date_wp',true);
 						$postId = $post->post_id;
-						$dates = get_field('start_date_repeater'); 
 					   
 					
 							$randomGenerator = mt_rand(123506, 9999999);
@@ -141,7 +142,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 									
-									echo date('d-m-Y', strtotime($workshopStartDate));
+									// echo date('d-m-Y', strtotime($workshopStartDate));
 									 
 									
 								?></strong>
@@ -168,8 +169,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div> 
 				<?php 
-	
-			};?>
+				endwhile;
+			}
+		endif;?>
 				</div>
 			</div> 
 		 </div> 
