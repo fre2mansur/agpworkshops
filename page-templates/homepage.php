@@ -99,13 +99,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 					AND $wpdb->posts.post_status = 'publish'
 					ORDER BY meta_value ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
-				$workshopEndDates = get_post_meta( $post,'end_date_wp',true);
-				
-				foreach($workshops as $post){
-						$workshopStartDate = $post->meta_value;
+				$workshopEndDate = null ;
+				  foreach($workshops as $post){
+					  $workshopStartDate = get_post_meta( $post,'start_date_wp',true);
+					  $workshopEndDate = get_post_meta( $post,'end_date_wp',true);
 						$postId = $post->post_id;
 						$dates = get_field('start_date_repeater'); 
-					    var_dump($dates);
+			
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
@@ -151,7 +151,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-									echo the_sub_field('end_date');
+									echo  date('d-m-Y', strtotime($workshopEndDate));
 								
 								// print_r(date('d/m/Y', strtotime($endDate)));
 								
