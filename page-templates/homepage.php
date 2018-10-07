@@ -170,8 +170,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 				<?php 
 		endwhile;
-		endif;?>
-			}
+	endif;
+}?>
 				</div>
 			</div> 
 		 </div> 
