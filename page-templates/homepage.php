@@ -103,10 +103,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 				  foreach($workshops as $post){
 					$postId = $post->post_id;
 					$workshopStartDate = $post->meta_value;
-					$workshopEndDate = get_post_meta($postId, 'end_date_wp', true);
+					$workshopEndDate = get_post_meta($postId, 'end_date_wp', false);
 					//   $workshopStartDate = $post->meta_value;
-					   
-					
+					$endDateArrayCount = count($workshopEndDate);   
+					echo $endDateArrayCount;
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
 					
@@ -152,7 +152,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-									echo date('d/m/Y', strtotime($workshopEndDate));
+									// echo date('d/m/Y', strtotime($workshopEndDate));
 								
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
