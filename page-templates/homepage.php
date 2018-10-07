@@ -142,7 +142,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 									
 									
-									var_dump($dates); 
+									var_dump($dates[0]); 
 									
 								?></strong>
 							</div>
