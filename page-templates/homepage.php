@@ -102,7 +102,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				 
 				  foreach($workshops as $post){
 					$workshopStartDate = $post->meta_value;
-					$workshopEndDate = $post->get_post_meta($postId, 'end_date_wp', $single);
+					$workshopEndDate = get_post_meta($postId, 'end_date_wp', $single);
 					//   $workshopStartDate = $post->meta_value;
 						$postId = $post->post_id;
 					   
