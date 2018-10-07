@@ -534,4 +534,8 @@ text-align: inherit;
   border-radius:2%;
   padding:0;
   display:table;
+  @media screen and (min-width: 992px) {
+    max-width: 300px;
+    width: 300px;
+  }
 }
