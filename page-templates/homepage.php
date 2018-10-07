@@ -101,14 +101,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
-					if( have_rows('start_date_repeater') ):
-					while( have_rows('start_date_repeater') ): the_row(); 
-						global $workshopStartDate;
-						global $workshopEndDate;
-						$workshopStartDate[] = get_sub_field('start_date');
-						$workshopEndDate[] = get_sub_field('end_date');
-					endwhile;
-					endif;
+					$workshopStartDate = $post->meta_value;
+					$workshopEndDate = $post->get_post_meta($postId, 'end_date_wp', $single);
 					//   $workshopStartDate = $post->meta_value;
 						$postId = $post->post_id;
 					   
@@ -147,7 +141,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<strong><?php
 									
 
-									print_r($workshopStartDate);
+									echo $workshopStartDate;
 									// echo date('d-m-Y', strtotime($workshopStartDate));
 									 
 									
@@ -158,7 +152,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-									print_r($workshopEndDate);
+									echo $workshopEndDate;
 								
 								// print_r(date('d/m/Y', strtotime($endDate)));
 								
