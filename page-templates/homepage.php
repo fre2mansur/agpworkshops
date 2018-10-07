@@ -101,10 +101,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
-					$postId = $post->post_id;
+					$postId = $post->ID;
 					$workshopStartDate = $post->meta_value;
 					$workshopEndDate = get_post_meta($postId, 'end_date_wp', false);
-					//   $workshopStartDate = $post->meta_value;
 					$endDateArrayCount = count($workshopEndDate);   
 					echo $endDateArrayCount;
 							$randomGenerator = mt_rand(123506, 9999999);
