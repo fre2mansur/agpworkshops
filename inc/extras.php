@@ -487,12 +487,12 @@ function save_start_end_date_In_custom_table($post_id) {
 		   'post_id' => $post_id)		   
 	 	  );
 		
-	   	$wpdb->insert( $tablename, array(
-		   'post_id' => $post_id, 
-		   'start_date' => $startDate,
-		   'end_date' => $endDate ),
-		   array( '%s', '%s', '%s') 
-	   );
+	//    	$wpdb->insert( $tablename, array(
+	// 	   'post_id' => $post_id, 
+	// 	   'start_date' => $startDate,
+	// 	   'end_date' => $endDate ),
+	// 	   array( '%s', '%s', '%s') 
+	//    );
 		
        
       // add it to the values we've already saved
