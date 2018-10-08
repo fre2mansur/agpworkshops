@@ -416,12 +416,11 @@ function homepageSliderGalleryImages_querry (){
 
 function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
+
 	global $wpdb;
+	$tablename = $wpdb->prefix.'workshop_dates';
 	$wpdb->delete( $tablename, array(
-		'post_id' => $post_id, 
-		'start_date' => $startDate,
-		'end_date' => $endDate ),
-		array( '%s', '%s', '%s') 
+		'post_id' => $post_id) 
 		);
 	save_start_end_date_In_custom_table($post_id);
 }
@@ -481,14 +480,9 @@ function save_start_end_date_In_custom_table($post_id) {
       // and can have more then one value
 	  //   add_post_meta($post_id, $meta_key, $startDate, false);
 
-		global $wpdb;
-		$tablename = $wpdb->prefix.'workshop_dates';
 		
 		global $wpdb;
 		$tablename = $wpdb->prefix.'workshop_dates';
-	  
-
-		
 	   	$wpdb->insert( $tablename, array(
 		   'post_id' => $post_id, 
 		   'start_date' => $startDate,
