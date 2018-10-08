@@ -479,7 +479,7 @@ function save_start_end_date_In_custom_table($post_id) {
 
 		global $wpdb;
 		$tablename = $wpdb->prefix.'workshop_dates';
-		if (isset($post_id)) {
+		if ( FALSE === get_post_status($post_id)) {
 		global $wpdb;
 		$tablename = $wpdb->prefix.'workshop_dates';
 	  
