@@ -89,15 +89,16 @@ $container = get_theme_mod( 'understrap_container_type' );
          		//  'post_status' => 'publish' );
 
 		  $today = date('Ymd');
+		  $customTableName = $wpdb->prefix.'workshop_dates';
 		  $postStatus = 'publish';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->posts
-					INNER JOIN $wpdb->prefix workshop_dates AS workshop_dates 
+					INNER JOIN  $customTableName AS workshop_dates 
 					ON ($wpdb->posts.ID = workshop_dates.post_id) 
 					WHERE (end_date > $today OR end_date = $today)
 					AND $wpdb->posts.post_status = $postStatus
-					ORDER BY start_date ASC LIMIT 9", $today, $postStatus ));
+					ORDER BY start_date ASC LIMIT 9", $customTableName, $today, $postStatus ));
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
