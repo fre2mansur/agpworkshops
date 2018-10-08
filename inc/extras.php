@@ -418,7 +418,7 @@ function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
 	foreach ($repeaterDates as $dateValue) {
 		convert_date_to_standard_wp_meta($post_id);
-	}
+}
 }
 
 add_filter('acf/save_post', 'date_repeater_ACF_converter', 20);
@@ -431,7 +431,9 @@ function convert_date_to_standard_wp_meta($post_id) {
   // also note, that this is not an ACF field and will not
   // appear when editing posts, it is just a db field that we
   // will use for searching
+
   $meta_key = 'workshop_date';
+
    
   // the next step is to delete any values already stored
   // so that we can update it with new values
@@ -458,13 +460,12 @@ function convert_date_to_standard_wp_meta($post_id) {
 	  
 
       // get the value of this row
-	  $startDate = get_sub_field('start_date',false,false);
-	  $endDate = get_sub_field('end_date',false,false);
+      $startDate = get_sub_field('start_date',false,false);
        
       // see if this value has already been saved
       // note that I am using isset rather than in_array
       // the reason for this is that isset is faster than in_array
-      if (isset($saved_values[$startDate]) and isset($saved_values[$endDate])) {
+      if (isset($saved_values[$startDate])) {
         // no need to save this one we already have it
         continue;
       }
@@ -473,10 +474,12 @@ function convert_date_to_standard_wp_meta($post_id) {
       // note that we are using false for the 4th parameter
       // this means that this meta key is not unique
       // and can have more then one value
-      add_post_meta($post_id, $meta_key, $startDate.",".$endDate, false);
+      add_post_meta($post_id, $meta_key, $startDate, false);
        
       // add it to the values we've already saved
+
       $saved_values[$bothDate] = $startDate.",".$endDate;
+
        
     } // end while have rows
   } // end if have rows

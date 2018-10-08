@@ -88,22 +88,20 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
         //   'post_status' => 'publish' );
 
-		  $today = date('Ymd');
-		  $metakey = 'start_date_wp';
-				$workshops = $wpdb->get_results(
-					$wpdb->prepare(
-				   "SELECT * FROM $wpdb->postmeta 
-					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
-					WHERE meta_key LIKE %s 
-					AND (meta_value > '$today' or meta_value = '$today')
-					AND $wpdb->posts.post_status = 'publish'
-					ORDER BY meta_value ASC LIMIT 9", $metakey ));
-		  		$workshopStartDate = null;
-				 
-				  foreach($workshops as $post){
-					$postId = $post->post_id;
-					$workshopStartDate = $post->meta_value;
-					$workshopEndDate = get_post_meta($postId, 'end_date_wp', false);
+
+       
+				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'workshop_dates_wp' ORDER BY meta_value ASC LIMIT 9" );
+		  		$postStartDate = null;
+				foreach($workshops as $post){
+						$workshopDates = $post->meta_value;
+				 		$arrayWorkshopDate = explode(',', $workshopDates);
+ 				 		
+						$workshopStartDate = $arrayWorkshopDate[0];
+						$workshopEndDate = $arrayWorkshopDate[1];
+
+						$post = $post->post_id;
+						$dates = get_field('start_date_repeater'); 
+						
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
@@ -136,31 +134,17 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<?php ?>
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
-								<strong><?php
-									
 
-									
-									echo date('d-m-Y', strtotime($workshopStartDate));
-									 
-									
-								?></strong>
+								<strong><?php echo $start_date; ?></strong>
+
+
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
-								<strong><?php
-								
-									// echo date('d/m/Y', strtotime($workshopEndDate));
-								
 
-								// $get_the_schedule_type = get_field('select_the_schedule_type');
-								// $number_of_weeks = get_field('number_of_weeks');
-								// if($get_the_schedule_type == "daily"){				
-																		
-								// }
-								
-								
-								?></strong>
+								<strong><?php echo $start_date; ?></strong>
+
 							</div>
 						</div>
 					</div> 
