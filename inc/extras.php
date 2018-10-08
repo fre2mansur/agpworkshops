@@ -507,16 +507,16 @@ function save_start_end_date_In_custom_table($post_id) {
 */
 
 // Join for searching metadata
-function AGP_joinWorkshopDates_to_WPQuery($joinWorkshopDates) {
-	global $wpdb;
-	$customTable = $wpdb->prefix."workshop_dates";
+// function AGP_joinWorkshopDates_to_WPQuery($joinWorkshopDates) {
+// 	global $wpdb;
+// 	$customTable = $wpdb->prefix."workshop_dates";
 
-    if('!is_admin'){
-        $joinWorkshopDates .= "LEFT JOIN $customTable ON $wpdb->posts.ID = $customTable.post_id ";
-    }
+//     if('!is_admin'){
+//         $joinWorkshopDates .= "LEFT JOIN $customTable ON $wpdb->posts.ID = $customTable.post_id ";
+//     }
 
-	return $joinWorkshopDates;
+// 	return $joinWorkshopDates;
 
 	
-}
-add_filter('posts_join', 'AGP_joinWorkshopDates_to_WPQuery');
+// }
+// add_filter('posts_join', 'AGP_joinWorkshopDates_to_WPQuery');

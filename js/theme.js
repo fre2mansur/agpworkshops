@@ -4073,7 +4073,7 @@ $container.masonry({
   gutter: 25
 
 });
-
+$(window).on( 'load', function() {
 var deferreds = [];
 $('img').each(function() {
     if (!this.complete) {
@@ -4088,7 +4088,7 @@ $.when.apply($, deferreds).done(function() {
 		$container.masonry('layout');
 	}, 0);
 });
-
+});
 
  $(".collapse").on('show.bs.collapse', function(){
    setTimeout(function() {
