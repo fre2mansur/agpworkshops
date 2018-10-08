@@ -62,56 +62,54 @@ $container = get_theme_mod( 'understrap_container_type' );
 				} ?>
 			</ul>
 			<div id="portfoliolist">
-			<div class="card-columns" id="accordion">
+			<div class="workshop-container" id="accordion">
 				<?php  
-				$today = date('Ymd');
 				
-				$args = array( 
-          'post_type' => 'agp_workshop',
-		  'posts_per_page' => 9,
-		  'meta_query' => array(
-			  'relation' => 'AND',
-			  array(
-				  'key' => 'start_date_wp',
-				  'compare' => '>=',
-				  'value'=> $today
+				
+		// 		$args = array( 
+        //   'post_type' => 'agp_workshop',
+		//   'posts_per_page' => 9,
+		//   'meta_query' => array(
+		// 	  'relation' => 'AND',
+		// 	  array(
+		// 		  'key' => 'start_date_wp',
+		// 		  'compare' => '>=',
+		// 		  'value'=> $today
 
-			  ),
-			  array(
-				  'key' => 'end_date_wp',
-				  'compare' => '>=',
-				  'value' => $today
-			  )
-		  ),
-		  'orderby' => 'meta_value',
-		  'order' => 'ASC',
+		// 	  ),
+		// 	  array(
+		// 		  'key' => 'end_date_wp',
+		// 		  'compare' => '>=',
+		// 		  'value' => $today
+		// 	  )
+		//   ),
+		//   'orderby' => 'meta_value',
+		//   'order' => 'ASC',
 		  
-          'post_status' => 'publish' );
+        //   'post_status' => 'publish' );
 
-	   
-				  //$str = "20181108,20181109";
-				  //$arrayDATE = explode(',', $str);
-
-				  //var_dump($arrayDATE);
-
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'workshop_date' ORDER BY meta_value ASC LIMIT 9" );
-		  		$postStartDate = null;
-				foreach($workshops as $post){
-					$workshop_dates = explode(',', $post->meta_value);
-					$start_date = $workshop_dates[0];
-					$end_date = $workshop_dates[1];
-
-					
-
-						$post = $post->post_id;
-						$dates = get_field('start_date_repeater'); 
-						
+		  $today = date('Ymd');
+		  $metakey = 'start_date_wp';
+				$workshops = $wpdb->get_results(
+					$wpdb->prepare(
+				   "SELECT * FROM $wpdb->postmeta 
+					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
+					WHERE meta_key LIKE %s 
+					AND (meta_value > '$today' or meta_value = '$today')
+					AND $wpdb->posts.post_status = 'publish'
+					ORDER BY meta_value ASC LIMIT 9", $metakey ));
+		  		$workshopStartDate = null;
+				 
+				  foreach($workshops as $post){
+					$postId = $post->post_id;
+					$workshopStartDate = $post->meta_value;
+					$workshopEndDate = get_post_meta($postId, 'end_date_wp', false);
 					
 							$randomGenerator = mt_rand(123506, 9999999);
-							$randPostIDsForAccordion = $post * $randomGenerator;
+							$randPostIDsForAccordion = $postId * $randomGenerator;
 					
 					?>
-					<div class="card " data-cat="">
+					<div class="workshop-card" data-cat="">
 						<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 						<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 						</a>
@@ -124,7 +122,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									</a>
 								</div> 
 							</a>
-							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $post, 'workshop_category' ); ?></h6>
+							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
 							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
@@ -138,16 +136,37 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<?php ?>
 							<div class="py-3">
 								<span class="mr-auto">Starts - </span>
-								<strong><?php echo $start_date; ?></strong>
+								<strong><?php
+									
+
+									
+									echo date('d-m-Y', strtotime($workshopStartDate));
+									 
+									
+								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
-								<strong><?php echo $start_date; ?></strong>
+								<strong><?php
+								
+									// echo date('d/m/Y', strtotime($workshopEndDate));
+								
+
+								// $get_the_schedule_type = get_field('select_the_schedule_type');
+								// $number_of_weeks = get_field('number_of_weeks');
+								// if($get_the_schedule_type == "daily"){				
+																		
+								// }
+								
+								
+								?></strong>
 							</div>
 						</div>
 					</div> 
-				<?php 	};?>
+				<?php 
+		
+}?>
 				</div>
 			</div> 
 		 </div> 
