@@ -97,7 +97,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					ON ($wpdb->posts.ID = workshop_dates.post_id) 
 					WHERE (end_date > $today OR end_date = $today)
 					AND $wpdb->posts.post_status = $postStatus
-					ORDER BY start_date ASC LIMIT 9", $postStatus,$today ));
+					ORDER BY start_date ASC LIMIT 9", $today, $postStatus ));
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
