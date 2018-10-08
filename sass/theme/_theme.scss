@@ -402,10 +402,11 @@ text-align: inherit;
 }
 .brownline-before{
   position: relative;
+  padding-left: 40px;
  &::before{
   content:" ";
   position: absolute;
-  left:calc(-26px - 25px);
+  left:calc(-0px - 0px);
   top:50%;
   vertical-align: middle;
   min-height: 3px;
@@ -544,8 +545,52 @@ text-align: inherit;
 }
 
 @include media-breakpoint-down(md){
- .workshop-card{
-  max-width: 290px;
-  width: 100%;
- }
+  .workshop-card{
+    max-width: 290px;
+    width: 100%;
+   }
+}
+
+
+
+/*Agp-single page*/
+.content-offset {
+  margin-left: 7rem;
+  @include media-breakpoint-down(lg){
+    margin-left: 3rem;
+  }
+}
+
+
+.workshop-single h3 {
+	font-size: 24px;
+	color: #707070;
+}
+.workshop-single h4 {
+	font-size: 18px;
+	color: #707070;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+.workshop-single p {
+	font-size: 16px;
+	color: #707070;
+}
+
+.workshop-single .facilitator-details {
+	padding: 10px;
+
+}
+.workshop-single .facilitator-details h5 {
+	font-size: 15px;
+	color: #707070;
+}
+.h-200 {
+	max-height: 200px !important;
+}
+.single-banner img {
+	max-height:360px;
+}
+.row.offset > .col-md-4 {
+	max-width: 29.33333%;
 }
