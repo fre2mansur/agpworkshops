@@ -550,6 +550,7 @@ function save_start_end_date_In_custom_table($post_id) {
 
 add_filter( 'wp_nav_menu_items','add_search_box', 10, 2 );
 function add_search_box( $items, $args ) {
+	if( $args->theme_location == 'right' )
     $items .= '<li class="menu-item nav-item nav-search dropdown-item d-flex justify-content-center align-items-center">' . get_search_form( false ) . '</li>';
     return $items;
 }
