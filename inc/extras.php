@@ -434,17 +434,27 @@ function save_start_end_date_In_custom_table($post_id) {
   // will use for searching
   $meta_key = 'start_date_wp';
    
-  // the next step is to delete any values already stored
-  // so that we can update it with new values
-  // and we don't need to worry about removing a value
+     // the next step is to delete any values already stored
+    // so that we can update it with new values
+   // and we don't need to worry about removing a value
   // when it's deleted from the ACF repeater
-  delete_post_meta($post_id, $meta_key);
+ //  delete_post_meta($post_id, $meta_key);
    
   // create an array to hold values that are already added
   // this way we won't add the same meta value more than once
   // because having the same value to search and filter by
   // would be pointless
   $saved_values = array();
+  
+  global $wpdb;
+  $tablename = $wpdb->prefix.'workshop_dates';
+
+	 $wpdb->delete( $tablename, array(
+	 'post_id' => $post_id, 
+	 'start_date' => $startDate,
+	 'end_date' => $endDate ),
+	 array( '%s', '%s', '%s') 
+ );
   
   //delete all records from wp_workshop_dates based on post_id
    
@@ -478,7 +488,7 @@ function save_start_end_date_In_custom_table($post_id) {
 		global $wpdb;
 		$tablename = $wpdb->prefix.'workshop_dates';
 
-	   $wpdb->insert( $tablename, array(
+	   	$wpdb->insert( $tablename, array(
 		   'post_id' => $post_id, 
 		   'start_date' => $startDate,
 		   'end_date' => $endDate ),
