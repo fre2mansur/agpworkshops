@@ -86,9 +86,9 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 
 	<!-- Fluid banner -->
-	<div class="single-banner my-5">
+	<figure class="single-banner my-5">
 		<?php the_post_thumbnail('full', ['class' =>"img-fluid w-100"]); ?>
-	</div>
+	</figure>
 
 	<!-- All details with sidebar -->
 	<div class="row">

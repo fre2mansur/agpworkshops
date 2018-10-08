@@ -21,7 +21,7 @@ min-height: 100%;
 }
 
 .push-footer{
-  min-height: 100%;
+  min-height: 99vh;
 }
 
 /*
@@ -559,6 +559,9 @@ text-align: inherit;
   @include media-breakpoint-down(lg){
     margin-left: 3rem;
   }
+  @include media-breakpoint-down(sm){
+    margin: auto;
+  }
 }
 
 
@@ -589,7 +592,9 @@ text-align: inherit;
 	max-height: 200px !important;
 }
 .single-banner img {
-	max-height:360px;
+  max-height:360px;
+  object-fit: cover;
+  object-position: center;
 }
 .row.offset > .col-md-4 {
 	max-width: 29.33333%;
