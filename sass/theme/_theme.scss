@@ -599,3 +599,19 @@ text-align: inherit;
 .row.offset > .col-md-4 {
 	max-width: 29.33333%;
 }
+
+.workshop-description{
+  h1{
+    font-size: calc(.75 * 2.5rem);
+  }
+  h2{
+    font-size: calc(.75 * 2rem);
+  }
+  h3{
+    font-size: calc(.75 * 1.75rem);
+  }
+  h4{
+    font-size: calc(.75 * 1.5rem);
+  }
+
+}

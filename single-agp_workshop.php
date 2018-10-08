@@ -98,7 +98,9 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 			<h2 class="brownline-before my-5">Details</h2>
 			<div class="content-offset">
 				<?php echo $brief_intro; ?>
+				<article class="workshop-description">
 				<?php echo $workshop_description; ?>
+				</article>
 			</div>
 
 			<!-- Shedule	 -->
