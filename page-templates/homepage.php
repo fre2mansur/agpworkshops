@@ -93,9 +93,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->posts
-					INNER JOIN $wpdb->workshop_dates ON ($wpdb->posts.post_id = $wpdb->workshop_dates.ID) 
+					INNER JOIN $wpdb->prefix.'workshop_dates' AS 'workshop_dates' 
+					ON ($wpdb->posts.ID = workshop_dates.post_id) 
 					AND $wpdb->posts.post_status = $postStatus
-					ORDER BY start_date ASC LIMIT 9", $postStatus ));
+					WHERE (end_date > $today OR end_date = $today)
+					ORDER BY start_date ASC LIMIT 9", $postStatus,$today ));
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
