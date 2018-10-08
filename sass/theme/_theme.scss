@@ -588,8 +588,11 @@ text-align: inherit;
 	font-size: 15px;
 	color: #707070;
 }
-.h-200 {
-	max-height: 200px !important;
+
+figure .facilitaor-avatar{
+  max-height: 200px;
+  object-fit: cover;
+  object-position: center;
 }
 .single-banner img {
   max-height:360px;
