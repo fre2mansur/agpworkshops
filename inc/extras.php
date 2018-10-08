@@ -423,10 +423,7 @@ function date_repeater_ACF_converter($post_id) {
 		'end_date' => $endDate ),
 		array( '%s', '%s', '%s') 
 		);
-	foreach ($repeaterDates as $dateValue) {
-		save_start_end_date_In_custom_table($post_id);
-		
-	}
+	save_start_end_date_In_custom_table($post_id);
 }
 
 add_filter('acf/save_post', 'date_repeater_ACF_converter', 20);
