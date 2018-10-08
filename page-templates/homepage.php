@@ -93,7 +93,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->posts
-					INNER JOIN $wpdb->prefix.'workshop_dates' AS 'workshop_dates' 
+					INNER JOIN $wpdb->prefix'workshop_dates' AS 'workshop_dates' 
 					ON ($wpdb->posts.ID = workshop_dates.post_id) 
 					AND $wpdb->posts.post_status = $postStatus
 					WHERE (end_date > $today OR end_date = $today)
