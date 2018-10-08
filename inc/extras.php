@@ -416,6 +416,7 @@ function homepageSliderGalleryImages_querry (){
 
 function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
+	global $wpdb;
 	$wpdb->delete( $tablename, array(
 		'post_id' => $post_id, 
 		'start_date' => $startDate,
