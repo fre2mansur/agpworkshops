@@ -399,12 +399,32 @@ function homepageSliderGalleryImages_querry (){
 	global $wpdb;
 	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
 	global $homepageSliderGalleryImages; 
-	$homepageSliderGalleryImages = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT %d" ,array('12')),OBJECT_K);
+	$homepageSliderGalleryImages = $wpdb->get_results( 
+		$wpdb->prepare(
+			"SELECT * FROM $get_plugin_gallery_table 
+			ORDER BY RAND() LIMIT %d" 
+			,array('12')),
+			OBJECT_K);
 
 	return $homepageSliderGalleryImages;
 }
 
-
+// Custom querry to get and sort all posts by Start and End Date
+function queryPost_With_Dates () {
+	global $wpdb;
+	$today = date('Ymd');
+	$customTable = $wpdb->prefix.'workshop_dates';
+	global $workshops;
+	$metakey = 'publish';
+		  $workshops = $wpdb->get_results(
+			  $wpdb->prepare(
+			 "SELECT * FROM $customTable 
+			  INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
+			  WHERE post_status LIKE %s 
+			  AND (end_date > $today OR end_date = $today)
+			  ORDER BY start_date ASC LIMIT 9", $metakey ));
+	return 	$workshops;	
+}
 /*
     in this example I have a repeater field named "start_date_repeater"
     one of the rows of this repeater is named "start_date"

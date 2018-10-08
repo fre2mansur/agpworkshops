@@ -88,17 +88,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
         //   'post_status' => 'publish' );
 
-		  $today = date('Ymd');
-		  $customTable = $wpdb->prefix.'workshop_dates';
-		  $metakey = 'publish';
-				$workshops = $wpdb->get_results(
-					$wpdb->prepare(
-				   "SELECT * FROM $customTable 
-					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
-					WHERE post_status LIKE %s 
-					AND (end_date > $today OR end_date = $today)
-					ORDER BY start_date ASC LIMIT 9", $metakey ));
-		  		$workshopStartDate = null;
+		queryPost_With_Dates(); //this function resturns the variable $workshops
 				 
 				  foreach($workshops as $post){
 					$postId = $post->post_id;
