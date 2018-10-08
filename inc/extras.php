@@ -446,15 +446,7 @@ function save_start_end_date_In_custom_table($post_id) {
   // would be pointless
   $saved_values = array();
   
-  global $wpdb;
-  $tablename = $wpdb->prefix.'workshop_dates';
 
-	 $wpdb->delete( $tablename, array(
-	 'post_id' => $post_id, 
-	 'start_date' => $startDate,
-	 'end_date' => $endDate ),
-	 array( '%s', '%s', '%s') 
- );
   
   //delete all records from wp_workshop_dates based on post_id
    
@@ -487,13 +479,25 @@ function save_start_end_date_In_custom_table($post_id) {
 
 		global $wpdb;
 		$tablename = $wpdb->prefix.'workshop_dates';
-
+		if (isset($post_id)) {
+		global $wpdb;
+		$tablename = $wpdb->prefix.'workshop_dates';
+	  
+		   $wpdb->update( $tablename, array(
+		   'post_id' => $post_id, 
+		   'start_date' => $startDate,
+		   'end_date' => $endDate ),
+		   array( '%s', '%s', '%s') 
+	   );
+		}
+		else{
 	   	$wpdb->insert( $tablename, array(
 		   'post_id' => $post_id, 
 		   'start_date' => $startDate,
 		   'end_date' => $endDate ),
 		   array( '%s', '%s', '%s') 
 	   );
+		}
        
       // add it to the values we've already saved
       $saved_values[$startDate] = $startDate;
