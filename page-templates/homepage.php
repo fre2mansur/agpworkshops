@@ -93,7 +93,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
 				   "SELECT * FROM $wpdb->posts
-					INNER JOIN $wpdb->workshop_dates ON ($wpdb->workshop_dates.post_id = $wpdb->posts.ID) 
+					INNER JOIN $wpdb->workshop_dates ON ($wpdb->posts.post_id = $wpdb->workshop_dates.ID) 
 					AND $wpdb->posts.post_status = $postStatus
 					ORDER BY start_date ASC LIMIT 9", $postStatus ));
 		  		$workshopStartDate = null;
