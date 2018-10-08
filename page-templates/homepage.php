@@ -102,10 +102,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
-					$postId = $post->post_id;
-					$workshopStartDate = $post->meta_value;
-					$workshopEndDate = get_post_meta($postId, 'end_date_wp', false);
-					
+					$postId = $post->post_id;		
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
 					
@@ -141,7 +138,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 
 									
-									echo date('d-m-Y', strtotime($workshopStartDate));
+									
 									 
 									
 								?></strong>
@@ -150,16 +147,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
-								
-									// echo date('d/m/Y', strtotime($workshopEndDate));
-								
 
-								// $get_the_schedule_type = get_field('select_the_schedule_type');
-								// $number_of_weeks = get_field('number_of_weeks');
-								// if($get_the_schedule_type == "daily"){				
-																		
-								// }
-								
 								
 								?></strong>
 							</div>
