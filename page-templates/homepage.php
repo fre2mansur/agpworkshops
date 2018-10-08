@@ -123,7 +123,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</div> 
 							</a>
 							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
-							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
+							<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex justify-content-start mb-3">
 									<a href="<?php the_permalink(); ?>">Know more</a>
@@ -131,7 +131,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</div>     
 							</div>
 						</div>
-						<hr class="p-0 m-0 mt-2">
+						<hr class="p-0 pt-2 m-0 ">
 						<div class="footer d-flex justify-content-between m-0 px-4">
 						<?php ?>
 							<div class="py-3">
