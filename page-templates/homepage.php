@@ -135,8 +135,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<div class="footer d-flex justify-content-between m-0 px-4">
 						<?php ?>
 							<div class="py-3">
-								<span class="mr-auto">Starts - </span>
-								<strong><?php
+								<span class="mr-auto d-block d-lg-inline-block ">Starts - </span>
+								<strong class= "d-block d-lg-inline-block "><?php
 									
 
 									
@@ -147,8 +147,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
-								<span class="mr-auto">Ends -</span>
-								<strong><?php
+								<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
+								<strong class= "d-block d-lg-inline-block "><?php
 								
 									echo date('d-m-Y', strtotime($workshopEndDate));
 								

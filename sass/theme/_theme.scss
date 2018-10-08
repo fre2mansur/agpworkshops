@@ -21,7 +21,7 @@ min-height: 100%;
 }
 
 .push-footer{
-  min-height: 99vh;
+  min-height: 100%;
 }
 
 /*
@@ -543,9 +543,9 @@ text-align: inherit;
 
 }
 
-@media screen and (max-width: 992px) {
+@include media-breakpoint-down(md){
  .workshop-card{
-  max-width: 300px;
+  max-width: 290px;
   width: 100%;
  }
 }

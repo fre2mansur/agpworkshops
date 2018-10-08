@@ -112,6 +112,7 @@ $.when.apply($, deferreds).done(function() {
 });
 
 
+
  $(".collapse").on('shown.bs.collapse', function(){
    setTimeout(function() {
 		$container.masonry('layout');
