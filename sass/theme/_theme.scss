@@ -528,8 +528,8 @@ text-align: inherit;
 
 .workshop-card{
   margin-bottom: 15px;
-  max-width: 315px;
-  width: 315px;
+  max-width: 350px;
+  width: 100%;
   border:1px solid rgba(9,8,9,.125);
   border-radius:2%;
   padding:0;
@@ -540,6 +540,6 @@ text-align: inherit;
 @media screen and (max-width: 992px) {
  .workshop-card{
   max-width: 300px;
-  width: 300px;
+  width: 100%;
  }
 }

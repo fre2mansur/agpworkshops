@@ -66,43 +66,45 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  
 				
 				
-				// $args = array( 
-         		//  'post_type' => 'agp_workshop',
-		 		//  'posts_per_page' => 9,
-		 		//  'meta_query' => array(
-			 	//  'relation' => 'AND',
-			 	//  array(
-				//   'key' => 'start_date_wp',
-				//   'compare' => '>=',
-				//   'value'=> $today
+		// 		$args = array( 
+        //   'post_type' => 'agp_workshop',
+		//   'posts_per_page' => 9,
+		//   'meta_query' => array(
+		// 	  'relation' => 'AND',
+		// 	  array(
+		// 		  'key' => 'start_date_wp',
+		// 		  'compare' => '>=',
+		// 		  'value'=> $today
 
-			 	//  ),
-			  	// array(
-				//   'key' => 'end_date_wp',
-				//   'compare' => '>=',
-				//   'value' => $today
-			 	//  )
-		 		//  ),
-		 		// 'orderby' => 'meta_value',
-		 		// 'order' => 'ASC',
+		// 	  ),
+		// 	  array(
+		// 		  'key' => 'end_date_wp',
+		// 		  'compare' => '>=',
+		// 		  'value' => $today
+		// 	  )
+		//   ),
+		//   'orderby' => 'meta_value',
+		//   'order' => 'ASC',
 		  
-         		//  'post_status' => 'publish' );
+        //   'post_status' => 'publish' );
 
 		  $today = date('Ymd');
-		  $customTableName = $wpdb->prefix.'workshop_dates';
-		  
+		  $customTable = $wpdb->prefix.'workshop_dates';
+		  $metakey = 'publish';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
-				   "SELECT * FROM $wpdb->posts
-					INNER JOIN  $customTableName AS workshop_dates 
-					ON ($wpdb->posts.ID = workshop_dates.post_id) 
-					WHERE $wpdb->posts.post_status = %s
+				   "SELECT * FROM $customTable 
+					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
+					WHERE post_status LIKE %s 
 					AND (end_date > $today OR end_date = $today)
-					ORDER BY start_date ASC LIMIT 9", array('publish') ));
+					ORDER BY post_id ASC LIMIT 9", $metakey ));
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
-					$postId = $post->post_id;		
+					$postId = $post->post_id;
+					$workshopStartDate = $post->start_date;
+					$workshopEndDate = $post->end_date;
+					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
 					
@@ -138,7 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 
 									
-									
+									echo date('d-m-Y', strtotime($workshopStartDate));
 									 
 									
 								?></strong>
@@ -147,7 +149,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<div class="py-3 pl-2">
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
+								
+									echo date('d/m/Y', strtotime($workshopEndDate));
+								
 
+								// $get_the_schedule_type = get_field('select_the_schedule_type');
+								// $number_of_weeks = get_field('number_of_weeks');
+								// if($get_the_schedule_type == "daily"){				
+																		
+								// }
+								
 								
 								?></strong>
 							</div>
@@ -155,8 +166,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 				<?php 
 		
-								}
-				?>
+}?>
 				</div>
 			</div> 
 		 </div> 
