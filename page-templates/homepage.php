@@ -96,8 +96,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				   "SELECT * FROM $wpdb->posts
 					INNER JOIN  $customTableName AS workshop_dates 
 					ON ($wpdb->posts.ID = workshop_dates.post_id) 
-					WHERE (end_date > $today OR end_date = $today)
-					AND $wpdb->posts.post_status = $postStatus
+					WHERE $wpdb->posts.post_status = $postStatus
+					AND (end_date > $today OR end_date = $today)
 					ORDER BY start_date ASC LIMIT 9", $customTableName, $today, $postStatus ));
 		  		$workshopStartDate = null;
 				 
