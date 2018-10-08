@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
-<div class="<?php echo esc_attr( $container ); ?> min-height">
+<div class="<?php echo esc_attr( $container ); ?> push-footer">
 
 <!--Gallery Starts-->
 		<?php
