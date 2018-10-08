@@ -66,38 +66,36 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php  
 				
 				
-		// 		$args = array( 
-        //   'post_type' => 'agp_workshop',
-		//   'posts_per_page' => 9,
-		//   'meta_query' => array(
-		// 	  'relation' => 'AND',
-		// 	  array(
-		// 		  'key' => 'start_date_wp',
-		// 		  'compare' => '>=',
-		// 		  'value'=> $today
+				// $args = array( 
+         		//  'post_type' => 'agp_workshop',
+		 		//  'posts_per_page' => 9,
+		 		//  'meta_query' => array(
+			 	//  'relation' => 'AND',
+			 	//  array(
+				//   'key' => 'start_date_wp',
+				//   'compare' => '>=',
+				//   'value'=> $today
 
-		// 	  ),
-		// 	  array(
-		// 		  'key' => 'end_date_wp',
-		// 		  'compare' => '>=',
-		// 		  'value' => $today
-		// 	  )
-		//   ),
-		//   'orderby' => 'meta_value',
-		//   'order' => 'ASC',
+			 	//  ),
+			  	// array(
+				//   'key' => 'end_date_wp',
+				//   'compare' => '>=',
+				//   'value' => $today
+			 	//  )
+		 		//  ),
+		 		// 'orderby' => 'meta_value',
+		 		// 'order' => 'ASC',
 		  
-        //   'post_status' => 'publish' );
+         		//  'post_status' => 'publish' );
 
 		  $today = date('Ymd');
-		  $metakey = 'start_date_wp';
+		  $postStatus = 'publish';
 				$workshops = $wpdb->get_results(
 					$wpdb->prepare(
-				   "SELECT * FROM $wpdb->postmeta 
-					INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $wpdb->postmeta.post_id)  
-					WHERE meta_key LIKE %s 
-					AND (meta_value > '$today' or meta_value = '$today')
-					AND $wpdb->posts.post_status = 'publish'
-					ORDER BY meta_value ASC LIMIT 9", $metakey ));
+				   "SELECT * FROM $wpdb->posts
+					INNER JOIN $wpdb->workshop_dates ON ($wpdb->workshop_dates.post_id = $wpdb->posts.ID) 
+					AND $wpdb->posts.post_status = $postStatus
+					ORDER BY start_date ASC LIMIT 9", $postStatus ));
 		  		$workshopStartDate = null;
 				 
 				  foreach($workshops as $post){
@@ -166,7 +164,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 				<?php 
 		
-}?>
+								}
+				?>
 				</div>
 			</div> 
 		 </div> 
