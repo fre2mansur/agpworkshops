@@ -112,7 +112,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 									</a>
 								</div> 
 							</a>
-							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
+							<?php $categories = get_the_terms( $postId, 'workshop_category'); 
+							foreach ( $categories as $category){
+									$categoryName = $category->slug;
+							 }?>
+							<h6 class="card-subtitle mb-2 pb-2 catColor-<?php echo $categoryName; ?>"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
 							<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex mb-3 justify-content-between">
