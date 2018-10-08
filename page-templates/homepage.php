@@ -150,7 +150,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span class="mr-auto">Ends -</span>
 								<strong><?php
 								
-									echo date('d/m/Y', strtotime($workshopEndDate));
+									echo date('d-m-Y', strtotime($workshopEndDate));
 								
 
 								// $get_the_schedule_type = get_field('select_the_schedule_type');
