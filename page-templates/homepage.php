@@ -131,7 +131,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</div>     
 							</div>
 						</div>
-						<hr class="p-0 pt-2 m-0 ">
+						<hr class="p-0 m-0 ">
 						<div class="footer d-flex justify-content-between m-0 px-4">
 						<?php ?>
 							<div class="py-3">

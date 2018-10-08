@@ -94,7 +94,7 @@ $container.masonry({
   gutter: 25
 
 });
-$(window).on( 'load', function() {
+$(document).ready(function() {
 var deferreds = [];
 $('img').each(function() {
     if (!this.complete) {
