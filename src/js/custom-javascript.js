@@ -58,18 +58,7 @@ $(window).scroll(function() {
       else {
         $('.logo').removeClass("resize");
     }
-    } else {
-      if (scroll > 100){
-        $('.logo').addClass("desktop-resize");
-        $('#nav-left li a').addClass("resize");
-        $('#nav-right li a').addClass("resize");
     } 
-      else {
-      $('.logo').removeClass("desktop-resize");
-      $('#nav-right li a').removeClass("resize");
-      $('#nav-left li a').removeClass("resize");
-    }
-    }
 });
 
 // //Homepage Gallery Script
@@ -92,3 +81,57 @@ $(window).scroll(function() {
 //   $(this).removeClass('card-img-overlay-hover');
   
 // })
+
+
+var $container = jQuery('.workshop-container');
+
+$container.masonry({
+  
+  columnWidth: '.workshop-card',
+  fitWidth: true,
+  itemSelector: '.workshop-card',
+  horizontalOrder: true,
+  gutter: 25
+
+});
+
+var deferreds = [];
+$('img').each(function() {
+    if (!this.complete) {
+        var deferred = $.Deferred();
+        $(this).one('load', deferred.resolve);
+        deferreds.push(deferred);
+    }
+});
+$.when.apply($, deferreds).done(function() {
+    /* things to do when all images loaded */
+  setTimeout(function() {
+		$container.masonry('layout');
+	}, 0);
+});
+
+
+ $(".collapse").on('show.bs.collapse', function(){
+   setTimeout(function() {
+		$container.masonry('layout');
+	}, 0);
+ });
+ $(".collapse").on('shown.bs.collapse', function(){
+   setTimeout(function() {
+		$container.masonry('layout');
+	}, 0);
+ });
+
+ $(".collapse").on('hide.bs.collapse', function(){
+   setTimeout(function() {
+		$container.masonry('layout');
+	}, 0);
+ });
+
+
+ $(".collapse").on('hidden.bs.collapse', function(){
+   setTimeout(function() {
+		$container.masonry('layout');
+	}, 0);
+ });
+

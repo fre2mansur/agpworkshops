@@ -341,3 +341,202 @@ function add_inr_currency( $currencies ) {
  
     return $currencies;
 }
+
+// Disable wordpress emoji and speed up the page
+
+/**
+ * Disable the emoji's
+ */
+ function disable_emojis() {
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+	add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
+   }
+   add_action( 'init', 'disable_emojis' );
+   
+   /**
+	* Filter function used to remove the tinymce emoji plugin.
+	* 
+	* @param array $plugins 
+	* @return array Difference betwen the two arrays
+	*/
+   function disable_emojis_tinymce( $plugins ) {
+	if ( is_array( $plugins ) ) {
+	return array_diff( $plugins, array( 'wpemoji' ) );
+	} else {
+	return array();
+	}
+   }
+   
+   /**
+	* Remove emoji CDN hostname from DNS prefetching hints.
+	*
+	* @param array $urls URLs to print for resource hints.
+	* @param string $relation_type The relation type the URLs are printed for.
+	* @return array Difference betwen the two arrays.
+	*/
+   function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+	if ( 'dns-prefetch' == $relation_type ) {
+	/** This filter is documented in wp-includes/formatting.php */
+	$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+   
+   $urls = array_diff( $urls, array( $emoji_svg_url ) );
+	}
+   
+   return $urls;
+   }
+
+// Create a querry for homepage slider
+
+function homepageSliderGalleryImages_querry (){
+
+	global $wpdb;
+	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
+	global $homepageSliderGalleryImages; 
+	$homepageSliderGalleryImages = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT %d" ,array('12')),OBJECT_K);
+
+	return $homepageSliderGalleryImages;
+}
+
+
+/*
+    in this example I have a repeater field named "start_date_repeater"
+    one of the rows of this repeater is named "start_date"
+    and I want to be able to search, sort and filter by this field
+*/
+ 
+// create a function that will convert this repeater during the acf/save_post action
+// priority of 20 to run after ACF is done saving the new values
+
+function date_repeater_ACF_converter($post_id) {
+	$repeaterDates = get_field('start_date_repeater', $post_id);
+	foreach ($repeaterDates as $dateValue) {
+		convert_start_to_standard_wp_meta($post_id);
+		convert_end_to_standard_wp_meta($post_id);
+	}
+}
+
+add_filter('acf/save_post', 'date_repeater_ACF_converter', 20);
+ 
+function convert_start_to_standard_wp_meta($post_id) {
+   
+  // pick a new meta_key to hold the values of the start_date field
+  // I generally name this field by suffixing _wp to the field name
+  // as this makes it easy for me to remember this field name
+  // also note, that this is not an ACF field and will not
+  // appear when editing posts, it is just a db field that we
+  // will use for searching
+  $meta_key = 'start_date_wp';
+   
+  // the next step is to delete any values already stored
+  // so that we can update it with new values
+  // and we don't need to worry about removing a value
+  // when it's deleted from the ACF repeater
+  delete_post_meta($post_id, $meta_key);
+   
+  // create an array to hold values that are already added
+  // this way we won't add the same meta value more than once
+  // because having the same value to search and filter by
+  // would be pointless
+  $saved_values = array();
+  
+  //delete all records from wp_workshop_dates based on post_id
+   
+  // now we'll look at the repeater and save any values
+  if (have_rows('start_date_repeater', $post_id)) {
+    while (have_rows('start_date_repeater', $post_id)) {
+	  the_row();
+	  
+
+		// insert query for workshp dates for each iterating reord of the loop.
+	   
+	  
+
+      // get the value of this row
+      $startDate = get_sub_field('start_date',false,false);
+       
+      // see if this value has already been saved
+      // note that I am using isset rather than in_array
+      // the reason for this is that isset is faster than in_array
+      if (isset($saved_values[$startDate])) {
+        // no need to save this one we already have it
+        continue;
+      }
+       
+      // not already save, so add it using add_post_meta()
+      // note that we are using false for the 4th parameter
+      // this means that this meta key is not unique
+      // and can have more then one value
+      add_post_meta($post_id, $meta_key, $startDate, false);
+       
+      // add it to the values we've already saved
+      $saved_values[$startDate] = $startDate;
+       
+    } // end while have rows
+  } // end if have rows
+} // end function
+ 
+/*
+    15 lines of code and now instead of dealing with complicated filters
+    and "LIKE" queries and modifying the WHERE portion of the query
+    and slowing down our site, instead we can simply use the
+    start_date_wp meta key in a simple more simple WP_Query()
+   
+*/
+
+function convert_end_to_standard_wp_meta($post_id) {
+   
+	// pick a new meta_key to hold the values of the start_date field
+	// I generally name this field by suffixing _wp to the field name
+	// as this makes it easy for me to remember this field name
+	// also note, that this is not an ACF field and will not
+	// appear when editing posts, it is just a db field that we
+	// will use for searching
+	$meta_key = 'end_date_wp';
+	 
+	// the next step is to delete any values already stored
+	// so that we can update it with new values
+	// and we don't need to worry about removing a value
+	// when it's deleted from the ACF repeater
+	delete_post_meta($post_id, $meta_key);
+	 
+	// create an array to hold values that are already added
+	// this way we won't add the same meta value more than once
+	// because having the same value to search and filter by
+	// would be pointless
+	$saved_values = array();
+	 
+	// now we'll look at the repeater and save any values
+	if (have_rows('start_date_repeater', $post_id)) {
+	  while (have_rows('start_date_repeater', $post_id)) {
+		the_row();
+		 
+		// get the value of this row
+		$endDate = get_sub_field('end_date',false,false);
+		 
+		// see if this value has already been saved
+		// note that I am using isset rather than in_array
+		// the reason for this is that isset is faster than in_array
+		if (isset($saved_values[$endDate])) {
+		  // no need to save this one we already have it
+		  continue;
+		}
+		 
+		// not already save, so add it using add_post_meta()
+		// note that we are using false for the 4th parameter
+		// this means that this meta key is not unique
+		// and can have more then one value
+		add_post_meta($post_id, $meta_key, $endDate, false);
+		 
+		// add it to the values we've already saved
+		$saved_values[$endDate] = $endDate;
+		 
+	  } // end while have rows
+	} // end if have rows
+} // end function

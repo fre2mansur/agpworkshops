@@ -1,8 +1,15 @@
 <?php 
 
 
+if (is_admin()) {
+	$screen = get_current_screen();
+	if ($screen -> id == "dashboard"){
+		add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
+	}
+}
 
-add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
+
+
 
 function load_admin_styles() {
 		// Bail if not viewing the main dashboard page
