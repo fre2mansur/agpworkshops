@@ -125,9 +125,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
 							<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
-								<div class="d-flex justify-content-start mb-3">
-									<a href="<?php the_permalink(); ?>">Know more</a>
-									<a href="#" class="ml-5">Register now</a>
+								<div class="d-flex mb-3 justify-content-between">
+									<a class="btn btn-outline-success d-inline-flex" href="<?php the_permalink(); ?>">Know more</a>
+									<a class="btn btn-outline-info d-inline-flex" href="#" >Register now</a>
 								</div>     
 							</div>
 						</div>
