@@ -7,7 +7,7 @@
  * @package understrap
  */
 
-get_header('agp');
+get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 
 ?>
@@ -170,4 +170,4 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div>
 <!-- Wrapper end -->
 
-<?php get_footer('agp'); ?>
+<?php get_footer(); ?>

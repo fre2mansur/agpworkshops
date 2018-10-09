@@ -148,6 +148,18 @@ if ( wp_is_mobile() ) {
             </div>
   </nav>
   <!-- Desktop Menu Ends -->
+
+  <!-- Search - trigger added from filter for right menu -->
+  <div class="collapse clearfix" id="search_drawer">
+    <div class="header-search d-flex justify-content-center">
+      <form class="form-inline" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <div class="form-group">
+            <input name="s" type="text" class="form-control form-control-lg border-0" value="<?php the_search_query(); ?>" placeholder="<?php esc_attr_e( 'Search &hellip;', 'understrap' ); ?>">
+            <button type="submit" class="btn bg-white form-control-lg"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
 <?php
 }
 ?>
