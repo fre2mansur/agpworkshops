@@ -85,7 +85,7 @@ if ( wp_is_mobile() ) {
   ?>
 
   <!-- Desktop Menu Starts -->
-  <nav class="navbar navbar-expand-lg sticky-top shadow-sm navbar-light bg-white py-0 margin-bottom-60">
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm navbar-light bg-white py-0">
             <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
                       $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full',['class'=>"d-lg-none"] );
                       $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
@@ -145,10 +145,25 @@ if ( wp_is_mobile() ) {
               ?>
 
             </div>
+            
   </nav>
   <!-- Desktop Menu Ends -->
+
+
+  <!-- Search - trigger added from filter for right menu -->
+  <div class="collapse clearfix" id="search_drawer">
+    <div class="header-search d-flex justify-content-center">
+      <form class="form-inline" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <div class="form-group">
+            <input name="s" type="text" class="form-control form-control-lg border-0" value="<?php the_search_query(); ?>" placeholder="<?php esc_attr_e( 'Search &hellip;', 'understrap' ); ?>">
+            <button type="submit" class="btn bg-white form-control-lg"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
 <?php
 }
 ?>
+<div class="margin-bottom-60"></div>
 
 
