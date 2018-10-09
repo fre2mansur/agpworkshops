@@ -624,3 +624,30 @@ figure .facilitaor-avatar{
   font-weight:400;
   font-style:italic;
 }
+
+/*Header search*/
+.header-search {
+	background: #ddd;
+	box-shadow: inset 0 -.100rem .40rem -.200rem rgba(9, 8, 9, 0.15) !important;
+	border-bottom: 1px solid #cdcdcd;
+	min-height: 100px;
+}
+.header-search .form-group {
+	background: #fff;
+	padding: 4px 20px;
+	border-radius: 40px;
+}
+.header-search input:focus {
+  border:none !important;
+  box-shadow: none !important;
+}
+.header-search input {
+	width: 40vw !important;
+}
+.header-search .fa {
+	font-size: 26px;
+	color: #919191;
+}
+#search_drawer {
+	transition: height 0.5s ease;
+}
