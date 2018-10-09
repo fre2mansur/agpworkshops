@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
-<div class="<?php echo esc_attr( $container ); ?> ">
+<div class="<?php echo esc_attr( $container ); ?> push-footer">
 
 <!--Gallery Starts-->
 		<?php
@@ -88,20 +88,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
         //   'post_status' => 'publish' );
 
-
-       
-				$workshops = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE 'workshop_dates_wp' ORDER BY meta_value ASC LIMIT 9" );
-		  		$postStartDate = null;
-				foreach($workshops as $post){
-						$workshopDates = $post->meta_value;
-				 		$arrayWorkshopDate = explode(',', $workshopDates);
- 				 		
-						$workshopStartDate = $arrayWorkshopDate[0];
-						$workshopEndDate = $arrayWorkshopDate[1];
-
-						$post = $post->post_id;
-						$dates = get_field('start_date_repeater'); 
-						
+		queryPost_With_Dates(); //this function resturns the variable $workshops
+				 
+				  foreach($workshops as $post){
+					$postId = $post->post_id;
+					$workshopStartDate = $post->start_date;
+					$workshopEndDate = $post->end_date;
 					
 							$randomGenerator = mt_rand(123506, 9999999);
 							$randPostIDsForAccordion = $postId * $randomGenerator;
@@ -120,31 +112,49 @@ $container = get_theme_mod( 'understrap_container_type' );
 									</a>
 								</div> 
 							</a>
-							<h6 class="card-subtitle text-muted mb-2 pb-2"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
-							<div class="collapse my-2" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
+							<?php $categories = get_the_terms( $postId, 'workshop_category'); 
+							foreach ( $categories as $category){
+									$categoryName = $category->slug;
+							 }?>
+							<h6 class="card-subtitle mb-2 pb-2 catColor-<?php echo $categoryName; ?>"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
+							<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
-								<div class="d-flex justify-content-start mb-3">
-									<a href="<?php the_permalink(); ?>">Know more</a>
-									<a href="#" class="ml-5">Register now</a>
+								<div class="d-flex mb-3 justify-content-between">
+									<a class="btn btn-outline-success d-inline-flex" href="<?php the_permalink(); ?>">Know more</a>
+									<a class="btn btn-outline-info d-inline-flex" href="#" >Register now</a>
 								</div>     
 							</div>
 						</div>
-						<hr class="p-0 m-0 mt-2">
+						<hr class="p-0 m-0 ">
 						<div class="footer d-flex justify-content-between m-0 px-4">
 						<?php ?>
 							<div class="py-3">
-								<span class="mr-auto">Starts - </span>
+								<span class="mr-auto d-block d-lg-inline-block ">Starts - </span>
+								<strong class= "d-block d-lg-inline-block "><?php
+									
 
-								<strong><?php echo $start_date; ?></strong>
-
-
+									
+									echo date('d-m-Y', strtotime($workshopStartDate));
+									 
+									
+								?></strong>
 							</div>
 							<span class="line border border-gray mx-auto"></span>
 							<div class="py-3 pl-2">
-								<span class="mr-auto">Ends -</span>
+								<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
+								<strong class= "d-block d-lg-inline-block "><?php
+								
+									echo date('d-m-Y', strtotime($workshopEndDate));
+								
 
-								<strong><?php echo $start_date; ?></strong>
-
+								// $get_the_schedule_type = get_field('select_the_schedule_type');
+								// $number_of_weeks = get_field('number_of_weeks');
+								// if($get_the_schedule_type == "daily"){				
+																		
+								// }
+								
+								
+								?></strong>
 							</div>
 						</div>
 					</div> 

@@ -86,9 +86,9 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 
 	<!-- Fluid banner -->
-	<div class="single-banner my-5">
+	<figure class="single-banner my-5">
 		<?php the_post_thumbnail('full', ['class' =>"img-fluid w-100"]); ?>
-	</div>
+	</figure>
 
 	<!-- All details with sidebar -->
 	<div class="row">
@@ -98,7 +98,9 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 			<h2 class="brownline-before my-5">Details</h2>
 			<div class="content-offset">
 				<?php echo $brief_intro; ?>
+				<article class="workshop-description">
 				<?php echo $workshop_description; ?>
+				</article>
 			</div>
 
 			<!-- Shedule	 -->
@@ -146,7 +148,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<?php $facilitators = get_field('facilitators');
 					foreach($facilitators as $fac){?>
 						<div class="card">
-							<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top h-200"]); ?>
+							<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
 							<div class="facilitator-details">
 							<h5><?php echo $fac->post_title; ?></h5>
 							<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
