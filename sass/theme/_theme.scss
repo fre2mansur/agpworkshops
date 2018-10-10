@@ -1,5 +1,5 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
-$border-green:rgba(115, 216, 124, 0.5);
+
 html{
    
   // margin-right: calc(100vw - 100%);
@@ -12,13 +12,18 @@ padding: 0;
 // justify-content:center;
 // align-items:center;
 height:100%;
-min-height: 99vh;
+min-height: 100%;
 // overflow-Y:scroll;
 
 &.home{
   background: #F9F9F9;
 }
 }
+
+.push-footer{
+  min-height: 99vh;
+}
+
 /*
   Admin Specific styles
 */
@@ -272,6 +277,7 @@ nav{
   .card-columns{
     
     .card{
+      
       margin-bottom: 30px !important;
       .card-top-img{
         min-height:190px;
@@ -397,10 +403,11 @@ text-align: inherit;
 }
 .brownline-before{
   position: relative;
+  padding-left: 40px;
  &::before{
   content:" ";
   position: absolute;
-  left:calc(-26px - 25px);
+  left:calc(-0px - 0px);
   top:50%;
   vertical-align: middle;
   min-height: 3px;
@@ -528,18 +535,152 @@ text-align: inherit;
 
 .workshop-card{
   margin-bottom: 15px;
-  max-width: 315px;
-  width: 315px;
+  max-width: 350px;
+  width: 100%;
   border:1px solid rgba(9,8,9,.125);
   border-radius:2%;
   padding:0;
   display:table;
+  float: left;
+  .card-body{
+    .collapsing{
+      transition: height .05s ease !important;
+    }
+  }
 
 }
 
-@media screen and (max-width: 992px) {
- .workshop-card{
-  max-width: 300px;
-  width: 300px;
- }
+@include media-breakpoint-down(md){
+  .workshop-card{
+    max-width: 290px;
+    width: 100%;
+   }
+}
+
+
+
+/*Agp-single page*/
+.content-offset {
+  margin-left: 7rem;
+  @include media-breakpoint-down(lg){
+    margin-left: 3rem;
+  }
+  @include media-breakpoint-down(sm){
+    margin: 8.33333%;
+  }
+}
+
+
+.workshop-single h3 {
+	font-size: 24px;
+	color: #707070;
+}
+.workshop-single h4 {
+	font-size: 18px;
+	color: #707070;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+.workshop-single p {
+	font-size: 16px;
+	color: #707070;
+}
+
+.workshop-single .facilitator-details {
+	padding: 10px;
+
+}
+.workshop-single .facilitator-details h5 {
+	font-size: 15px;
+	color: #707070;
+}
+
+figure .facilitaor-avatar{
+  max-height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+.single-banner img {
+  max-height:360px;
+  object-fit: cover;
+  object-position: center;
+}
+.row.offset > .col-md-4 {
+	max-width: 29.33333%;
+}
+
+.workshop-description{
+  h1{
+    font-size: calc(.75 * 2.5rem);
+  }
+  h2{
+    font-size: calc(.75 * 2rem);
+  }
+  h3{
+    font-size: calc(.75 * 1.75rem);
+  }
+  h4{
+    font-size: calc(.75 * 1.5rem);
+  }
+
+}
+.collapse-before {
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+}
+.collapse-before::before {
+  //content: "\f068";
+  content: "_";
+	position: absolute;
+	left: calc(0px - 0px);
+	top: -48px;
+	vertical-align: middle;
+	color: #d7be69;
+  font-size: 60px;
+  font-family: fontawesome;
+}
+.collapse-before.collapsed::before {
+  //content: "\f067";
+  content: "+";
+	position: absolute;
+	left: calc(0px - 0px);
+	top: -16px;
+	vertical-align: middle;
+	color: #d7be69;
+  font-size: 60px;
+  font-family: fontawesome;
+}
+
+.catColor-building-architecture{
+  color: $brown;
+  font-weight:400;
+  font-style:italic;
+}
+
+/*Header search*/
+.header-search {
+	background: #ddd;
+	box-shadow: inset 0 -.100rem .40rem -.200rem rgba(9, 8, 9, 0.15) !important;
+	border-bottom: 1px solid #cdcdcd;
+	min-height: 100px;
+}
+.header-search .form-group {
+	background: #fff;
+	padding: 4px 20px;
+	border-radius: 40px;
+}
+.header-search input:focus {
+  border:none !important;
+  box-shadow: none !important;
+}
+.header-search input {
+	width: 40vw !important;
+}
+.header-search .fa {
+	font-size: 26px;
+	color: #919191;
+}
+#search_drawer {
+	transition: height 0.5s ease;
 }

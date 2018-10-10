@@ -399,12 +399,32 @@ function homepageSliderGalleryImages_querry (){
 	global $wpdb;
 	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
 	global $homepageSliderGalleryImages; 
-	$homepageSliderGalleryImages = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $get_plugin_gallery_table ORDER BY RAND() LIMIT %d" ,array('12')),OBJECT_K);
+	$homepageSliderGalleryImages = $wpdb->get_results( 
+		$wpdb->prepare(
+			"SELECT * FROM $get_plugin_gallery_table 
+			ORDER BY RAND() LIMIT %d" 
+			,array('12')),
+			OBJECT_K);
 
 	return $homepageSliderGalleryImages;
 }
 
-
+// Custom querry to get and sort all posts by Start and End Date
+function queryPost_With_Dates ($limit = '9') {
+	global $wpdb;
+	$today = date('Ymd');
+	$customTable = $wpdb->prefix.'workshop_dates';
+	global $workshops;
+	$postStatus = 'publish';
+		  $workshops = $wpdb->get_results(
+			  $wpdb->prepare(
+			 "SELECT * FROM $customTable 
+			  INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
+			  WHERE post_status LIKE %s 
+			  AND (end_date > $today OR end_date = $today)
+			  ORDER BY start_date ASC LIMIT %d", $postStatus, $limit ));
+	return 	$workshops;	
+}
 /*
     in this example I have a repeater field named "start_date_repeater"
     one of the rows of this repeater is named "start_date"
@@ -416,14 +436,18 @@ function homepageSliderGalleryImages_querry (){
 
 function date_repeater_ACF_converter($post_id) {
 	$repeaterDates = get_field('start_date_repeater', $post_id);
-	foreach ($repeaterDates as $dateValue) {
-		convert_date_to_standard_wp_meta($post_id);
-}
+
+	global $wpdb;
+	$tablename = $wpdb->prefix.'workshop_dates';
+	$wpdb->delete( $tablename, array(
+		'post_id' => $post_id) 
+		);
+	save_start_end_date_In_custom_table($post_id);
 }
 
 add_filter('acf/save_post', 'date_repeater_ACF_converter', 20);
  
-function convert_date_to_standard_wp_meta($post_id) {
+function save_start_end_date_In_custom_table($post_id) {
    
   // pick a new meta_key to hold the values of the start_date field
   // I generally name this field by suffixing _wp to the field name
@@ -435,17 +459,19 @@ function convert_date_to_standard_wp_meta($post_id) {
   $meta_key = 'workshop_date';
 
    
-  // the next step is to delete any values already stored
-  // so that we can update it with new values
-  // and we don't need to worry about removing a value
+     // the next step is to delete any values already stored
+    // so that we can update it with new values
+   // and we don't need to worry about removing a value
   // when it's deleted from the ACF repeater
-  delete_post_meta($post_id, $meta_key);
+ //  delete_post_meta($post_id, $meta_key);
    
   // create an array to hold values that are already added
   // this way we won't add the same meta value more than once
   // because having the same value to search and filter by
   // would be pointless
   $saved_values = array();
+  
+
   
   //delete all records from wp_workshop_dates based on post_id
    
@@ -461,7 +487,7 @@ function convert_date_to_standard_wp_meta($post_id) {
 
       // get the value of this row
       $startDate = get_sub_field('start_date',false,false);
-       
+      $endDate = get_sub_field('end_date',false,false); 
       // see if this value has already been saved
       // note that I am using isset rather than in_array
       // the reason for this is that isset is faster than in_array
@@ -474,7 +500,18 @@ function convert_date_to_standard_wp_meta($post_id) {
       // note that we are using false for the 4th parameter
       // this means that this meta key is not unique
       // and can have more then one value
-      add_post_meta($post_id, $meta_key, $startDate, false);
+	  //   add_post_meta($post_id, $meta_key, $startDate, false);
+
+		
+		global $wpdb;
+		$tablename = $wpdb->prefix.'workshop_dates';
+	   	$wpdb->insert( $tablename, array(
+		   'post_id' => $post_id, 
+		   'start_date' => $startDate,
+		   'end_date' => $endDate ),
+		   array( '%s', '%s', '%s') 
+	   );
+		
        
       // add it to the values we've already saved
 
@@ -493,53 +530,31 @@ function convert_date_to_standard_wp_meta($post_id) {
    
 */
 
-function convert_end_to_standard_wp_meta($post_id) {
-   
-	// pick a new meta_key to hold the values of the start_date field
-	// I generally name this field by suffixing _wp to the field name
-	// as this makes it easy for me to remember this field name
-	// also note, that this is not an ACF field and will not
-	// appear when editing posts, it is just a db field that we
-	// will use for searching
-	$meta_key = 'end_date_wp';
-	 
-	// the next step is to delete any values already stored
-	// so that we can update it with new values
-	// and we don't need to worry about removing a value
-	// when it's deleted from the ACF repeater
-	delete_post_meta($post_id, $meta_key);
-	 
-	// create an array to hold values that are already added
-	// this way we won't add the same meta value more than once
-	// because having the same value to search and filter by
-	// would be pointless
-	$saved_values = array();
-	 
-	// now we'll look at the repeater and save any values
-	if (have_rows('start_date_repeater', $post_id)) {
-	  while (have_rows('start_date_repeater', $post_id)) {
-		the_row();
-		 
-		// get the value of this row
-		$endDate = get_sub_field('end_date',false,false);
-		 
-		// see if this value has already been saved
-		// note that I am using isset rather than in_array
-		// the reason for this is that isset is faster than in_array
-		if (isset($saved_values[$endDate])) {
-		  // no need to save this one we already have it
-		  continue;
-		}
-		 
-		// not already save, so add it using add_post_meta()
-		// note that we are using false for the 4th parameter
-		// this means that this meta key is not unique
-		// and can have more then one value
-		add_post_meta($post_id, $meta_key, $endDate, false);
-		 
-		// add it to the values we've already saved
-		$saved_values[$endDate] = $endDate;
-		 
-	  } // end while have rows
-	} // end if have rows
-} // end function
+// Join for searching metadata
+// function AGP_joinWorkshopDates_to_WPQuery($joinWorkshopDates) {
+// 	global $wpdb;
+// 	$customTable = $wpdb->prefix."workshop_dates";
+
+//     if('!is_admin'){
+//         $joinWorkshopDates .= "LEFT JOIN $customTable ON $wpdb->posts.ID = $customTable.post_id ";
+//     }
+
+// 	return $joinWorkshopDates;
+
+	
+// }
+// add_filter('posts_join', 'AGP_joinWorkshopDates_to_WPQuery');
+
+
+//Add search box to menu 
+
+add_filter( 'wp_nav_menu_items','add_search_box', 10, 2 );
+function add_search_box( $items, $args ) {
+	if( $args->theme_location == 'right' )   //Theme_Location is actually getting the location name defined in Understrap Setup
+	$items .=	'<li class="nav-item">
+	<a class="nav-link" data-toggle="collapse" href="#search_drawer" role="button" aria-expanded="false" aria-controls="search_drawer">
+	<i class="fa fa-search"></i></a></li>';
+				  
+	
+   return $items;
+}

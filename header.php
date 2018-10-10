@@ -13,7 +13,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes, minimum-scale=0.86">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?>">
@@ -85,7 +85,7 @@ if ( wp_is_mobile() ) {
   ?>
 
   <!-- Desktop Menu Starts -->
-  <nav class="navbar navbar-expand-lg sticky-top shadow-sm navbar-light bg-white py-0 margin-bottom-60">
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm navbar-light bg-white py-0">
             <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
                       $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full',['class'=>"d-lg-none"] );
                       $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
@@ -144,9 +144,23 @@ if ( wp_is_mobile() ) {
                   ) 
                 );
               ?>
+              
             </div>
   </nav>
   <!-- Desktop Menu Ends -->
+
+  <!-- Search - trigger added from filter for right menu -->
+  <div class="collapse clearfix" id="search_drawer">
+    <div class="header-search d-flex justify-content-center">
+      <form class="form-inline" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <div class="form-group">
+            <input name="s" type="text" class="form-control form-control-lg border-0" value="<?php the_search_query(); ?>" placeholder="<?php esc_attr_e( 'Search &hellip;', 'understrap' ); ?>">
+            <button type="submit" class="btn bg-white form-control-lg"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="margin-bottom-60"></div>
 <?php
 }
 ?>
