@@ -277,6 +277,7 @@ nav{
   .card-columns{
     
     .card{
+      
       margin-bottom: 30px !important;
       .card-top-img{
         min-height:190px;
@@ -541,6 +542,11 @@ text-align: inherit;
   padding:0;
   display:table;
   float: left;
+  .card-body{
+    .collapsing{
+      transition: height .05s ease !important;
+    }
+  }
 
 }
 
