@@ -426,7 +426,7 @@ function queryPost_With_Dates ($limit = '9') {
 	return 	$workshops;	
 }
 /*
-    in this example I have a repeater field named "start_date_repeater"
+    in this example I have a repeater field named "date_repeater"
     one of the rows of this repeater is named "start_date"
     and I want to be able to search, sort and filter by this field
 */
@@ -435,7 +435,7 @@ function queryPost_With_Dates ($limit = '9') {
 // priority of 20 to run after ACF is done saving the new values
 
 function date_repeater_ACF_converter($post_id) {
-	$repeaterDates = get_field('start_date_repeater', $post_id);
+	$repeaterDates = get_field('date_repeater', $post_id);
 
 	global $wpdb;
 	$tablename = $wpdb->prefix.'workshop_dates';
@@ -476,8 +476,8 @@ function save_start_end_date_In_custom_table($post_id) {
   //delete all records from wp_workshop_dates based on post_id
    
   // now we'll look at the repeater and save any values
-  if (have_rows('start_date_repeater', $post_id)) {
-    while (have_rows('start_date_repeater', $post_id)) {
+  if (have_rows('date_repeater', $post_id)) {
+    while (have_rows('date_repeater', $post_id)) {
 	  the_row();
 	  
 
