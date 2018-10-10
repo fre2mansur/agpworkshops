@@ -422,7 +422,7 @@ function queryPost_With_Dates () {
 			  INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
 			  WHERE post_status LIKE %s 
 			  AND (end_date > $today OR end_date = $today)
-			  ORDER BY start_date ASC LIMIT 9", $metakey ));
+			  ORDER BY start_date ASC LIMIT", $metakey ));
 	return 	$workshops;	
 }
 /*
