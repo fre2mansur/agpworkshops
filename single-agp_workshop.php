@@ -102,15 +102,16 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<?php echo $workshop_description; ?>
 				</article>
 			</div>
-
-			<!-- Shedule	 -->
-			<?php $title = '<h2 class="brownline-before my-5">Schedule</h2>';
-				if($get_the_schedule_type == "daily"){
+			<div class="accordion" id="accordionData">
+				<!-- Shedule	 -->
+				<?php $title = '<h2 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class="collapse-before my-5">Schedule</h2>';?>
+				<?php if($get_the_schedule_type == "daily"){
 					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
 					foreach($days as $day){
 						if($day == $number_of_days && $day != 'one_day') {
 							$day_content = get_field($day."_content");
 							echo $title;
+							echo '<div id="shedule" class="collapse show" aria-labelledby="shedule" data-parent="#accordionData">';
 							$i = 1; foreach($day_content as $content) {
 								if($content){
 									echo '<div class="content-offset">';
@@ -119,6 +120,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									echo '</div>';
 								}
 							}
+							echo '</div>';
 							
 						}
 					} 
@@ -128,6 +130,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						if($week == $number_of_weeks) {
 							$week_content = get_field($week."s_content");
 							echo $title;
+							echo '<div id="shedule" class="collapse show" aria-labelledby="shedule" data-parent="#accordionData">';
 							$i = 1; foreach($week_content as $content) {
 								if($content){
 									echo '<div class="content-offset">';
@@ -136,44 +139,52 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									echo '</div>';
 								}
 							}
+							echo '</div>';
 						}
 					}
-				} 
-			?>
-			
-			<!-- Facilitators -->
-			<h2 class="brownline-before my-5">Facilitators</h2>
-			<div class="content-offset">
-				<div class="card-columns card-img-h-200">
-					<?php $facilitators = get_field('facilitators');
-					foreach($facilitators as $fac){?>
-						<div class="card">
-							<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
-							<div class="facilitator-details">
-							<h5><?php echo $fac->post_title; ?></h5>
-							<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
-							</div>
+				} ?>
+				
+				
+				<!-- Facilitators -->
+				
+				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before my-5 collapsed">Facilitators</h2>
+				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
+					<div class="content-offset">
+						<div class="card-columns card-img-h-200">
+							<?php $facilitators = get_field('facilitators');
+							foreach($facilitators as $fac){?>
+								<div class="card">
+									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
+									<div class="facilitator-details">
+									<h5><?php echo $fac->post_title; ?></h5>
+									<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
+									</div>
+								</div>
+							<?php } ?>
 						</div>
-					<?php } ?>
+					</div>
 				</div>
-			</div>
 
-			<!-- Organizing Unit -->
-			<h2 class="brownline-before my-5">Organizing Unit</h2>
-			<div class="content-offset">
-				<?php $units = get_field('unit_name');
-					foreach($units as $user){?>
-						<div class="media mb-3">
-							<img class="align-self-center mr-3" src="<?php echo get_avatar_url($user->ID,'full');?>" alt="Generic placeholder image">
-							<div class="media-body">
-								<h5 class="mt-0"><?php echo $user->display_name; ?></h5>
-								<p class="mb-0"><?php  echo $user->description; ?></p>
-							</div>
-						</div>
-					<?php } 
-				?>
-			</div>
-					
+				<!-- Organizing Unit -->
+				
+				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before my-5 collapsed">Organizing Unit</h2>
+				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
+					<div class="content-offset">
+						<?php $units = get_field('unit_name');
+							foreach($units as $user){?>
+								<div class="media mb-3">
+									<img class="align-self-center mr-3" src="<?php echo get_avatar_url($user->ID,'full');?>" alt="Generic placeholder image">
+									<div class="media-body">
+										<h5 class="mt-0"><?php echo $user->display_name; ?></h5>
+										<p class="mb-0"><?php  echo $user->description; ?></p>
+									</div>
+								</div>
+							<?php } 
+						?>
+					</div>
+				</div>
+			</div><!--accordin-->
+						
 
 		</div> <!--col-md-8-->
 		<div class="col-lg-3">

@@ -618,6 +618,33 @@ figure .facilitaor-avatar{
   }
 
 }
+.collapse-before {
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+}
+.collapse-before::before {
+  //content: "\f068";
+  content: "_";
+	position: absolute;
+	left: calc(0px - 0px);
+	top: -48px;
+	vertical-align: middle;
+	color: #d7be69;
+  font-size: 60px;
+  font-family: fontawesome;
+}
+.collapse-before.collapsed::before {
+  //content: "\f067";
+  content: "+";
+	position: absolute;
+	left: calc(0px - 0px);
+	top: -16px;
+	vertical-align: middle;
+	color: #d7be69;
+  font-size: 60px;
+  font-family: fontawesome;
+}
 
 .catColor-building-architecture{
   color: $brown;
