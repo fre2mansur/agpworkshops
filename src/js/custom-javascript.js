@@ -118,4 +118,7 @@ $.when.apply($, deferreds).done(function() {
 	}, 0);
  });
 
-
+//Scroll top when search icon clicked in header
+$('#search-trigger').on("click",function(){
+  $('html, body').animate({scrollTop:0}, 'slow');
+});
