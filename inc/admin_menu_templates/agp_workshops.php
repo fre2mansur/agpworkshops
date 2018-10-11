@@ -84,8 +84,8 @@ function custom_agp_taxonomy() {
 	 */
 
 	$labels = array(
-		"name" 			=> __( "Categories", "AGP | Workshops" ),
-		"singular_name" => __( "Category", "AGP | Workshops" ),
+		"name" 			=> __( "Workshop Categories", "AGP | Workshops" ),
+		"singular_name" => __( "Workshop Category", "AGP | Workshops" ),
 		"menu_name" 	=> __( "Workshop Categories", "AGP | Workshops" ),
 		"all_items" 	=> __( "All Workshop Categories", "AGP | Workshops" ),
 		"edit_item"	 	=> __( "Edit Workshop Category", "AGP | Workshops" ),
@@ -108,7 +108,7 @@ function custom_agp_taxonomy() {
 	);
 
 	$args = array(
-		"label" 			 => __( "Categories", "AGP | Workshops" ),
+		"label" 			 => __( "Workshop Categories", "AGP | Workshops" ),
 		"labels" 			 => $labels,
 		"public" 			 => true,
 		"hierarchical"  	 => true,
