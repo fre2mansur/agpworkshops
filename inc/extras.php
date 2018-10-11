@@ -551,7 +551,7 @@ function save_start_end_date_In_custom_table($post_id) {
 add_filter( 'wp_nav_menu_items','add_search_box', 10, 2 );
 function add_search_box( $items, $args ) {
 	if( $args->theme_location == 'right' )   //Theme_Location is actually getting the location name defined in Understrap Setup
-	$items .=	'<li class="nav-item">
+	$items .=	'<li class="nav-item" id="search-trigger">
 	<a class="nav-link" data-toggle="collapse" href="#search_drawer" role="button" aria-expanded="false" aria-controls="search_drawer">
 	<i class="fa fa-search"></i></a></li>';
 				  
