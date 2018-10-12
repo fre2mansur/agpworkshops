@@ -113,7 +113,7 @@ if ( ! function_exists ( 'understrap_post_nav' ) ) {
  * Load AGP Workshops post type
 
 */
-require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php';
+require get_template_directory() . '/inc/admin_menu_templates/workshops.php';
 
 /**
  * Load AGP Facilitators post type
