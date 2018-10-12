@@ -57,7 +57,7 @@ function custom_agp_workshops() {
 		"capability_type" 			 => "post",
 		"map_meta_cap"				 => true,
 		"hierarchical"				 => true,
-		"rewrite"					 => array( "slug" => "agp_workshop", "with_front" => true ),
+		"rewrite"					 => array( "slug" => "workshops", "with_front" => true ),
 		"query_var"					 => true,
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-editor-paste-word",
