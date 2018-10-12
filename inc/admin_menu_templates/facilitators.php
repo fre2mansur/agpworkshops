@@ -5,7 +5,7 @@
 	================
 
 */
-function custom_facilitators() {
+function custom_agp_facilitators() {
 
 	/**
 	 * Post Type: Facilitators.
@@ -68,7 +68,7 @@ function custom_facilitators() {
 	register_post_type( "facilitators", $args );
 }
 
-add_action( 'init', 'custom_facilitators' );
+add_action( 'init', 'custom_agp_facilitators' );
 
 function change_facilitator_default_title( $title ){
 	$screen = get_current_screen();
