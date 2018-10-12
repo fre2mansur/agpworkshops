@@ -180,7 +180,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									</figure>
 									<div class="media-body">
 										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
-										<p class="mb-0"><small class="text-muted"><?php  echo wp_trim_words( get_the_content(), 50, '...'); ?></small></p>
+										<p class="mb-0"><small class="text-muted"><?php  echo wp_trim_words( get_the_content($unit->ID), 50, '...'); ?></small></p>
 									</div>
 								</div>
 							<?php } 
