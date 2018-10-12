@@ -175,7 +175,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						<?php $units = get_field('unit_name');
 							foreach($units as $unit){?>
 								<div class="media mb-3">
-									<img class="align-self-center mr-3" src="<?php echo get_the_post_thumbnail($unit->ID,'medium');?>" alt="Organising Unit Logo">
+									<img class="align-self-center mr-3" src="<?php echo get_the_post_thumbnail($unit->ID,'medium');?>">
 									<div class="media-body">
 										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
 										<p class="mb-0"><small class="text-muted"><?php  echo wp_trim_words( get_the_content(), 50, '...'); ?></small></p>
