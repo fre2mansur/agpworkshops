@@ -93,7 +93,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 	<!-- All details with sidebar -->
 	<div class="row">
 		<div class="col-lg-8">
-			<div class="accordion" id="accordionData">
+			<div id="accordionData">
 				<!-- Details -->
 				<h2 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class="collapse-before pb-5 m-0">Details</h2>
 				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
