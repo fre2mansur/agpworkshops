@@ -65,7 +65,7 @@ function custom_agp_workshops() {
 		"taxonomies"				 => array( "post_tag", "workshop_category" ),
 	);
 
-	register_post_type( "agp_workshop", $args );
+	register_post_type( "workshops", $args );
 }
 
 add_action( 'init', 'custom_agp_workshops' );
