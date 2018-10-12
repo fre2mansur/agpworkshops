@@ -68,7 +68,7 @@ function custom_facilitators() {
 	register_post_type( "facilitators", $args );
 }
 
-add_action( 'init', 'custom_facilitatorss' );
+add_action( 'init', 'custom_facilitators' );
 
 function change_facilitator_default_title( $title ){
 	$screen = get_current_screen();
