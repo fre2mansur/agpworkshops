@@ -17,7 +17,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
 </div>
 <div class="col-9">
-<<h2></h2>><?php the_title(); ?></h1>
+<h2><?php the_title(); ?></h2>
 <?php the_content(); ?>
 <?php endwhile; ?>
 </div>
