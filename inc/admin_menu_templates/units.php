@@ -59,7 +59,7 @@ function custom_auroville_units() {
 		"hierarchical"				 => true,
 		"rewrite"					 => array( "slug" => "organising-unit", "with_front" => true ),
 		"query_var"					 => true,
-		"menu_position"				 => 40,
+		"menu_position"				 => 42,
 		"menu_icon"					 => "dashicons-welcome-learn-more",
 		"supports"					 => array( "title", "custom-fields","editor", "filter", "thumbnail" ),
 		"taxonomies"				 => array( "workshop_category" ),

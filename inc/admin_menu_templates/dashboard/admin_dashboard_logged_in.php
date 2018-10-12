@@ -61,7 +61,7 @@
                         <i class="icon-ghost text-danger simple-dash-icons float-left"></i>
                       </div>
                       <div class="text-right">
-                        <h3><?php $count_posts = wp_count_posts( 'agp_workshop' )->draft; print $count_posts; ?></h3>
+                        <h3><?php $count_posts = wp_count_posts( 'workshops' )->draft; print $count_posts; ?></h3>
                         <span>Authorize Google</span>
                       </div>
                     </div>
