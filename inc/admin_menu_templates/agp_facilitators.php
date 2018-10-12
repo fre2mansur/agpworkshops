@@ -62,7 +62,7 @@ function custom_agp_Facilitators() {
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-welcome-learn-more",
 		"supports"					 => array( "title", "custom-fields","editor", "filter", "thumbnail" ),
-		"taxonomies"				 => array( "Facilitator_category" ),
+		"taxonomies"				 => array( "workshop_category" ),
 	);
 
 	register_post_type( "agp_Facilitator", $args );
