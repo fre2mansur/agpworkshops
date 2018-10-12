@@ -684,3 +684,9 @@ figure .facilitaor-avatar{
 #search_drawer {
 	transition: height 0.5s ease;
 }
+
+.facilitaor-avatar {
+	max-height: 180px;
+	overflow: hidden;
+	min-height: 180px;
+}
