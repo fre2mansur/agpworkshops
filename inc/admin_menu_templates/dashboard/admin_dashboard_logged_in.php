@@ -1,7 +1,7 @@
 
 <div id="admin-cards">
 <div class="row">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12"  onclick="window.open('<?php echo get_admin_url('/') . 'edit.php?post_status=publish&post_type=agp_workshop' ?>')">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 btn"  onclick="window.open('<?php echo get_admin_url('/') . 'edit.php?post_status=publish&post_type=workshops' ?>')">
               <div class="card p-0 pointer">
                 <div class="card-content">
                   <div class="card-body">
@@ -10,7 +10,7 @@
                         <i class="icon-event text-success simple-dash-icons float-left"></i>
                       </div>
                       <div class="text-right">
-                        <h3><?php $count_posts = wp_count_posts( 'agp_workshop' )->publish; print $count_posts; ?></h3>
+                        <h3><?php $count_posts = wp_count_posts( 'workshops' )->publish; print $count_posts; ?></h3>
                         <span><?php if($count_posts = "1"){print "Published Workshop";}  else {print "Published Workshops";}?></span>
                       </div>
                     </div>
@@ -18,7 +18,7 @@
                 </div>
               </div>
             </div>  
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" onclick="window.open('<?php echo get_admin_url('/') . 'edit.php?post_status=draft&post_type=agp_workshop' ?>')" >
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 btn" onclick="window.open('<?php echo get_admin_url('/') . 'edit.php?post_status=draft&post_type=workshops' ?>')" >
               <div class="card p-0 pointer">
                 <div class="card-content">
                   <div class="card-body">
@@ -27,7 +27,7 @@
                         <i class="icon-exclamation text-danger simple-dash-icons float-left"></i>
                       </div>
                       <div class="text-right">
-                        <h3><?php $count_posts = wp_count_posts( 'agp_workshop' )->draft; print $count_posts; ?></h3>
+                        <h3><?php $count_posts = wp_count_posts( 'workshops' )->draft; print $count_posts; ?></h3>
                         <span><?php if($count_posts = "1"){print "Workshop Draft";}  else {print "Workshop Drafts";}?></span>
                       </div>
                     </div>
@@ -35,7 +35,7 @@
                 </div>
               </div>
             </div>  
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 ">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 btn">
               <div class="card p-0 pointer">
                 <div class="card-content">
                   <div class="card-body">
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </div>  
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 btn">
               <div class="card p-0 pointer">
                 <div class="card-content">
                   <div class="card-body">
