@@ -183,7 +183,6 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 										<p class="mb-0">
 										<small class="text-muted">
 										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
-										<a href="<?php $unit->post_permalink?>"> ... </a>
 										</small></p>
 									</div>
 								</div>
