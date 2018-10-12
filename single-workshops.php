@@ -152,10 +152,10 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before pb-5 m-0 collapsed">Facilitators</h2>
 				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="content-offset">
-						<div class="card-columns card-img-h-200">
+						<div class="card-deck card-img-h-200">
 							<?php $facilitators = get_field('facilitators');
 							foreach($facilitators as $fac){?>
-								<div class="card">
+								<div class="card" onClick="">
 									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
@@ -173,12 +173,12 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 					<div class="content-offset">
 						<?php $units = get_field('unit_name');
-							foreach($units as $user){?>
+							foreach($units as $unit){?>
 								<div class="media mb-3">
-									<img class="align-self-center mr-3" src="<?php echo get_avatar_url($user->ID,'full');?>" alt="Generic placeholder image">
+									<img class="align-self-center mr-3" src="<?php echo get_the_post_thumbnail($unit->ID,'medium');?>" alt="Organising Unit Logo">
 									<div class="media-body">
-										<h5 class="mt-0"><?php echo $user->display_name; ?></h5>
-										<p class="mb-0"><?php  echo $user->description; ?></p>
+										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
+										<p class="mb-0"><small class="text-muted"><?php  echo wp_trim_words( get_the_content(), 50, '...'); ?></small></p>
 									</div>
 								</div>
 							<?php } 
