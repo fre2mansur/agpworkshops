@@ -176,7 +176,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							foreach($units as $unit){?>
 								<div class="media mb-3">
 									<figure>
-									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' =>"align-self-center mr-3"]);?>"
+									<?php echo get_the_post_thumbnail($unit->ID,'thumbnail',['class' =>"align-self-center mr-3"]);?>
 									</figure>
 									<div class="media-body">
 										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
