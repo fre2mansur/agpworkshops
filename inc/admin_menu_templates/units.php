@@ -78,4 +78,4 @@ function change_unit_default_title( $title ){
 	}
 }
 
-add_filter( 'enter_title_here', 'change_default_title' );
+add_filter( 'enter_title_here', 'change_unit_default_title' );
