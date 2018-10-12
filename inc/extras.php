@@ -116,6 +116,10 @@ if ( ! function_exists ( 'understrap_post_nav' ) ) {
 require get_template_directory() . '/inc/admin_menu_templates/workshops.php';
 
 /**
+ * Load AGP Units post type
+*/
+require get_template_directory() . '/inc/admin_menu_templates/units.php';
+/**
  * Load AGP Facilitators post type
 
 */
@@ -124,7 +128,7 @@ require get_template_directory() . '/inc/admin_menu_templates/agp_facilitators.p
  * Load AGP Registration Form post type
 
 */
-require get_template_directory() . '/inc/extras-mansur.php';
+// require get_template_directory() . '/inc/extras-mansur.php';
 /**
 	* Remove dashboard widgets for non admin users
 */
