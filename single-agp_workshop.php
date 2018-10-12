@@ -190,7 +190,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 		</div> <!--col-md-8-->
 		<div class="col-lg-3">
-			<?php //dynamic_sidebar( 'right-sidebar' ); ?>
+			<?php dynamic_sidebar( 'right-sidebar' ); ?>
 		</div>
 	</div><!--row-->
 </div>
