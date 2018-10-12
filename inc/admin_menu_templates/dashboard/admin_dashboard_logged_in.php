@@ -44,7 +44,7 @@
                         <i class="<?php if($count_posts = "1"){print "icon-user ";}  else {print "icon-people";}?> text-info simple-dash-icons float-left"></i>
                       </div>
                       <div class="text-right">
-                        <h3><?php $count_posts = wp_count_posts( 'agp_facilitator' )->publish; print $count_posts; ?></h3>
+                        <h3><?php $count_posts = wp_count_posts( 'facilitators' )->publish; print $count_posts; ?></h3>
                         <span><?php if($count_posts = "1"){print "Registered Facilitator";}  else {print "Registered Facilitators";}?></span>
                       </div>
                     </div>
@@ -61,8 +61,8 @@
                         <i class="icon-ghost text-danger simple-dash-icons float-left"></i>
                       </div>
                       <div class="text-right">
-                        <h3><?php $count_posts = wp_count_posts( 'workshops' )->draft; print $count_posts; ?></h3>
-                        <span>Authorize Google</span>
+                        <h3><?php ?></h3>
+                        <span>Think about it</span>
                       </div>
                     </div>
                   </div>
