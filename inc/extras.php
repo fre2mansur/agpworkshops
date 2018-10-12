@@ -123,7 +123,7 @@ require get_template_directory() . '/inc/admin_menu_templates/units.php';
  * Load AGP Facilitators post type
 
 */
-require get_template_directory() . '/inc/admin_menu_templates/agp_facilitators.php';
+require get_template_directory() . '/inc/admin_menu_templates/facilitators.php';
 /**
  * Load AGP Registration Form post type
 

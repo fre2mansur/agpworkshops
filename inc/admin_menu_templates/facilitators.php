@@ -5,7 +5,7 @@
 	================
 
 */
-function custom_agp_Facilitators() {
+function custom_facilitators() {
 
 	/**
 	 * Post Type: Facilitators.
@@ -57,7 +57,7 @@ function custom_agp_Facilitators() {
 		"capability_type" 			 => "post",
 		"map_meta_cap"				 => true,
 		"hierarchical"				 => true,
-		"rewrite"					 => array( "slug" => "agp_Facilitator", "with_front" => true ),
+		"rewrite"					 => array( "slug" => "facilitators", "with_front" => true ),
 		"query_var"					 => true,
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-welcome-learn-more",
@@ -65,15 +65,15 @@ function custom_agp_Facilitators() {
 		"taxonomies"				 => array( "workshop_category" ),
 	);
 
-	register_post_type( "agp_Facilitator", $args );
+	register_post_type( "facilitators", $args );
 }
 
-add_action( 'init', 'custom_agp_Facilitators' );
+add_action( 'init', 'custom_facilitatorss' );
 
 function change_facilitator_default_title( $title ){
 	$screen = get_current_screen();
 
-	if  ( $screen->post_type == 'agp_facilitator' ) {
+	if  ( $screen->post_type == 'facilitators' ) {
 		 return 'Enter Full Name Here';
 	}
 }
