@@ -20,22 +20,7 @@ height:100%;
 }
 }
 
-.container{
-  min-height: 100%;
-  margin-bottom: -50px;
-}
 
-.container{
-  &:after{
-     content: ' ';
-     display: block;
-  }
-}
-
-.page-footer,.cotainer::after{
-  content: ' ';
-  height:50px;
-}
 /*
   Admin Specific styles
 */
