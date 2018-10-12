@@ -11,7 +11,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 
 <?php while ( have_posts() ) : the_post(); ?>
-<div class="<?php echo esc_attr( $container ); ?>">
+<div class="<?php echo esc_attr( $container ); ?> push-footer">
 <div class="row">
 <div class="col-3">
 <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
