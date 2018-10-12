@@ -10,7 +10,7 @@
 $the_theme = wp_get_theme();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
-<div class="footer">
+<div class="footer page-footer">
     
         <div class="footer-top navbar">
             <div class="<?php echo esc_attr( $container ); ?> justify-content-center justify-content-md-start">
