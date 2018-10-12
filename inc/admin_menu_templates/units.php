@@ -70,7 +70,7 @@ function custom_auroville_units() {
 
 add_action( 'init', 'custom_auroville_units' );
 
-function change_default_title( $title ){
+function change_unit_default_title( $title ){
 	$screen = get_current_screen();
 
 	if  ( $screen->post_type == 'organising-unit' ) {

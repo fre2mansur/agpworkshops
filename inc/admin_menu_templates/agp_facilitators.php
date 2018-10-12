@@ -62,7 +62,7 @@ function custom_agp_Facilitators() {
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-welcome-learn-more",
 		"supports"					 => array( "title", "custom-fields","editor", "filter", "thumbnail" ),
-		"taxonomies"				 => array( "workshop_category" ),
+		"taxonomies"				 => array( "Facilitator_category" ),
 	);
 
 	register_post_type( "agp_Facilitator", $args );
@@ -70,7 +70,7 @@ function custom_agp_Facilitators() {
 
 add_action( 'init', 'custom_agp_Facilitators' );
 
-function change_default_title( $title ){
+function change_facilitator_default_title( $title ){
 	$screen = get_current_screen();
 
 	if  ( $screen->post_type == 'agp_facilitator' ) {
@@ -78,4 +78,4 @@ function change_default_title( $title ){
 	}
 }
 
-add_filter( 'enter_title_here', 'change_default_title' );
+add_filter( 'enter_title_here', 'change_facilitator_default_title' );
