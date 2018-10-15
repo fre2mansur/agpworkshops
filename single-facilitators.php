@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-5">Facilitator</h2>
+<h2 class="brownline-before mb-5">Facilitator <?php echo $post->ID; ?></h2>
 <div class="row">
     <div class="col-3">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
