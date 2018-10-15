@@ -61,7 +61,7 @@ $payment_without_accommodation = get_sub_field('payment_without_accommodation');
 $payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
 <?php while ( have_posts() ) : the_post(); ?>
-<div class="<?php echo esc_attr( $container ); ?> workshop-single">
+<div class="<?php echo esc_attr( $container ); ?> workshop-single push-footer">
 	
 	<!-- What where we -->
 	<div class="who-where-what">
@@ -174,13 +174,16 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<div class="content-offset">
 						<?php $units = get_field('unit_name');
 							foreach($units as $unit){?>
-								<div class="media mb-3 align-items-center">
+								<div class="media mb-3">
 									<figure>
-									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' =>" mr-3"]);?>
+									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
 									</figure>
 									<div class="media-body">
 										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
-										<p class="mb-0"><small class="text-muted"><?php  echo wp_trim_words( get_the_content(), 50, '...'); ?></small></p>
+										<p class="mb-0">
+										<small class="text-muted">
+										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+										</small></p>
 									</div>
 								</div>
 							<?php } 
