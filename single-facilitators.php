@@ -35,7 +35,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
         <?php the_content(); ?>
     </div>
 </div>
-<div class="row">
+<div class="row mt-5">
 <h2 class="brownline-before mb-5">Related Workshops</h2>
 </div>
 </div>
