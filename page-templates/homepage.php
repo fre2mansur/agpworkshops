@@ -176,7 +176,7 @@ else:
 
 
 <div class="row">
-<button class="btn btn-outline-primary mx-auto">Show All Workshops</button>
+<a class="mx-auto" href="<?php echo get_post_type_archive_link( 'workshops' ); ?>"><button class="btn btn-outline-primary ">Show All Workshops</button></a>
 </div>
 
 </div>
