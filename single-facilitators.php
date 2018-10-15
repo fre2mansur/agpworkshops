@@ -39,7 +39,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h2 class="brownline-before mb-5">Related Workshops</h2>
 </div>
 </div>
-
+<div class="workshop-container" id="accordion">
 <?php 
 		queryPost_With_Dates(); //this function resturns the variable $workshops
 				 
@@ -114,7 +114,9 @@ $container = get_theme_mod( 'understrap_container_type' );?>
       <?php 
 
 }
-
+?>
+</div>
+<?php
 endwhile; ?>
 <?php 
 get_footer(); ?>
