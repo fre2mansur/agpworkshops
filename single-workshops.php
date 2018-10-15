@@ -178,7 +178,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 					<div class="content-offset">
 						<?php $units = get_field('unit_name');
-							if($units):
+						if($units):
 							foreach($units as $unit){?>
 								<div class="media mb-3">
 									<figure>
