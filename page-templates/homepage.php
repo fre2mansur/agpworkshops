@@ -88,7 +88,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
         //   'post_status' => 'publish' );
 
-		queryPost_With_Dates(); //this function resturns the variable $workshops
+		$workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
+		if($workshops):	
 				 
 				  foreach($workshops as $post){
 					$postId = $post->post_id;
@@ -160,7 +161,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 				<?php 
 		
-}?>
+}
+
+else: 
+?>
+<div class="row">
+	<h3>No workshop found</h3>
+</div>
+<?php endif; ?>
 				</div>
 			</div> 
 		 </div> 
