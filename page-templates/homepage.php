@@ -161,8 +161,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div> 
 				<?php 
 		
-}
-
+}?>
+<div class="row">
+<button class="btn btn-outline-primary mx-auto">load more</button>
+</div>
+<?php
 else: 
 ?>
 <div class="row">
