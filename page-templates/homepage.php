@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
-<div class="<?php echo esc_attr( $container ); ?> push-footer">
+<div class="<?php echo esc_attr( $container ); ?>">
 
 <!--Gallery Starts-->
 		<?php
