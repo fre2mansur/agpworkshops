@@ -154,6 +154,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<div class="content-offset">
 						<div class="card-columns card-img-h-200">
 							<?php $facilitators = get_field('facilitators');
+							if ($facilitators):
 							foreach($facilitators as $fac){?>
 								<div class="card" onClick="">
 									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
@@ -162,7 +163,11 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
 									</div>
 								</div>
-							<?php } ?>
+							<?php } 
+							else:
+							?>
+
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
@@ -173,6 +178,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 					<div class="content-offset">
 						<?php $units = get_field('unit_name');
+							if($units):
 							foreach($units as $unit){?>
 								<div class="media mb-3">
 									<figure>
@@ -187,7 +193,21 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									</div>
 								</div>
 							<?php } 
+							else: 
 						?>
+							<!-- <div class="media mb-3">
+									<figure>
+									<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
+									</figure>
+									<div class="media-body">
+										<h5 class="mt-0"><?php // echo $unit->post_title; ?></h5>
+										<p class="mb-0">
+										<small class="text-muted">
+										<?php  // echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+										</small></p>
+									</div>
+							</div> -->
+						<?php endif; ?>
 					</div>
 				</div>
 			</div><!--accordin-->
