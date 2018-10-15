@@ -41,8 +41,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 </div>
 <div class="workshop-container" id="accordion">
 <?php 
-		queryPost_With_Dates(); //this function resturns the variable $workshops
-				 
+	 //this function resturns the variable $workshops
+		if($workshops):		 
         foreach($workshops as $post){
           $postId = $post->post_id;
           $workshopStartDate = $post->start_date;
@@ -114,6 +114,9 @@ $container = get_theme_mod( 'understrap_container_type' );?>
       <?php 
 
 }
+else:
+    echo "No Workshops Found";
+endif;
 ?>
 </div>
 <?php

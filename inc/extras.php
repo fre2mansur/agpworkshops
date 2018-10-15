@@ -414,11 +414,12 @@ function homepageSliderGalleryImages_querry (){
 }
 
 // Custom querry to get and sort all posts by Start and End Date
+global $workshops;
 function queryPost_With_Dates ($limit = '9') {
 	global $wpdb;
+	
 	$today = date('Ymd');
 	$customTable = $wpdb->prefix.'workshop_dates';
-	global $workshops;
 	$postStatus = 'publish';
 		  $workshops = $wpdb->get_results(
 			  $wpdb->prepare(
