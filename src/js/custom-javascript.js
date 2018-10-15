@@ -111,13 +111,13 @@ $.when.apply($, deferreds).done(function() {
 });
 });
 
-
+if ($container.length > 0){
  $(".collapse").on('shown.bs.collapse hidden.bs.collapse', function(){
    setTimeout(function() {
 		$container.masonry('layout');
 	}, 0);
  });
-
+}
 //Scroll top when search icon clicked in header
 $('#search-trigger').on("click",function(){
   $('html, body').animate({scrollTop:0}, 'slow');

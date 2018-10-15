@@ -69,7 +69,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                   foreach ( $categories as $category){
                           $categoryName = $category->slug;
                    }?>
-                  <h6 class="card-subtitle mb-2 pb-2 catColor-<?php echo $categoryName; ?>"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
+                  <h6 class="card-subtitle mb-2 pb-2 text-muted; ?>"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
                   <div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
                       <p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
                       <div class="d-flex mb-3 justify-content-between">
@@ -92,7 +92,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                           
                       ?></strong>
                   </div>
-                  <span class="line border border-gray mx-auto"></span>
+                  <span class="line border-card mx-auto"></span>
                   <div class="py-3 pl-2">
                       <span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
                       <strong class= "d-block d-lg-inline-block "><?php
