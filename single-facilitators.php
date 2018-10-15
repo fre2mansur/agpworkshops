@@ -9,10 +9,10 @@
 get_header(); 
 $container = get_theme_mod( 'understrap_container_type' );?>
 
-<h2 class="brownline-before mb-5">Facilitator</h2>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
+<h2 class="brownline-before mb-5">Facilitator</h2>
 <div class="row">
 <div class="col-3">
 <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
@@ -20,7 +20,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <div class="col-9">
 <h2><?php the_title(); ?></h2>
 <?php $units = get_field('unit_name');
-							foreach($units as $unit){?>
+                            if($units):
+                            foreach($units as $unit){?>
 								<div class="media mb-3">
 									<div class="media-body">
                                         <small class="text-muted">
@@ -28,7 +29,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                                         </small>
                                     </div>
 								</div>
-							<?php } 
+                            <?php } 
+                            endif;
 						?>
 <?php the_content(); ?>
 <?php endwhile; ?>
