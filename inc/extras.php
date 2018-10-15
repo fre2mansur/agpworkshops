@@ -113,18 +113,22 @@ if ( ! function_exists ( 'understrap_post_nav' ) ) {
  * Load AGP Workshops post type
 
 */
-require get_template_directory() . '/inc/admin_menu_templates/agp_workshops.php';
+require get_template_directory() . '/inc/admin_menu_templates/workshops.php';
 
+/**
+ * Load AGP Units post type
+*/
+require get_template_directory() . '/inc/admin_menu_templates/units.php';
 /**
  * Load AGP Facilitators post type
 
 */
-require get_template_directory() . '/inc/admin_menu_templates/agp_facilitators.php';
+require get_template_directory() . '/inc/admin_menu_templates/facilitators.php';
 /**
  * Load AGP Registration Form post type
 
 */
-require get_template_directory() . '/inc/extras-mansur.php';
+// require get_template_directory() . '/inc/extras-mansur.php';
 /**
 	* Remove dashboard widgets for non admin users
 */
@@ -426,7 +430,7 @@ function queryPost_With_Dates ($limit = '9') {
 	return 	$workshops;	
 }
 /*
-    in this example I have a repeater field named "start_date_repeater"
+    in this example I have a repeater field named "date_repeater"
     one of the rows of this repeater is named "start_date"
     and I want to be able to search, sort and filter by this field
 */
@@ -435,7 +439,7 @@ function queryPost_With_Dates ($limit = '9') {
 // priority of 20 to run after ACF is done saving the new values
 
 function date_repeater_ACF_converter($post_id) {
-	$repeaterDates = get_field('start_date_repeater', $post_id);
+	$repeaterDates = get_field('date_repeater', $post_id);
 
 	global $wpdb;
 	$tablename = $wpdb->prefix.'workshop_dates';
@@ -476,8 +480,8 @@ function save_start_end_date_In_custom_table($post_id) {
   //delete all records from wp_workshop_dates based on post_id
    
   // now we'll look at the repeater and save any values
-  if (have_rows('start_date_repeater', $post_id)) {
-    while (have_rows('start_date_repeater', $post_id)) {
+  if (have_rows('date_repeater', $post_id)) {
+    while (have_rows('date_repeater', $post_id)) {
 	  the_row();
 	  
 
@@ -551,7 +555,7 @@ function save_start_end_date_In_custom_table($post_id) {
 add_filter( 'wp_nav_menu_items','add_search_box', 10, 2 );
 function add_search_box( $items, $args ) {
 	if( $args->theme_location == 'right' )   //Theme_Location is actually getting the location name defined in Understrap Setup
-	$items .=	'<li class="nav-item">
+	$items .=	'<li class="nav-item" id="search-trigger">
 	<a class="nav-link" data-toggle="collapse" href="#search_drawer" role="button" aria-expanded="false" aria-controls="search_drawer">
 	<i class="fa fa-search"></i></a></li>';
 				  

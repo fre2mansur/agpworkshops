@@ -61,7 +61,7 @@ $payment_without_accommodation = get_sub_field('payment_without_accommodation');
 $payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
 <?php while ( have_posts() ) : the_post(); ?>
-<div class="<?php echo esc_attr( $container ); ?> workshop-single">
+<div class="<?php echo esc_attr( $container ); ?> workshop-single push-footer">
 	
 	<!-- What where we -->
 	<div class="who-where-what">
@@ -93,25 +93,27 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 	<!-- All details with sidebar -->
 	<div class="row">
 		<div class="col-lg-8">
-
-			<!-- Details -->
-			<h2 class="brownline-before my-5">Details</h2>
-			<div class="content-offset">
-				<?php echo $brief_intro; ?>
-				<article class="workshop-description">
-				<?php echo $workshop_description; ?>
-				</article>
-			</div>
-			<div class="accordion" id="accordionData">
+			<div id="accordionData">
+				<!-- Details -->
+				<h2 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class="collapse-before pb-5 m-0">Details</h2>
+				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
+					<div class="content-offset">
+						<?php echo $brief_intro; ?>
+						<article class="workshop-description">
+						<?php echo $workshop_description; ?>
+						</article>
+					</div>
+				</div>
+			
 				<!-- Shedule	 -->
-				<?php $title = '<h2 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class="collapse-before my-5">Schedule</h2>';?>
+				<?php $title = '<h2 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class="collapse-before pb-5 m-0 collapsed">Schedule</h2>';?>
 				<?php if($get_the_schedule_type == "daily"){
 					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
 					foreach($days as $day){
 						if($day == $number_of_days && $day != 'one_day') {
 							$day_content = get_field($day."_content");
 							echo $title;
-							echo '<div id="shedule" class="collapse show" aria-labelledby="shedule" data-parent="#accordionData">';
+							echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
 							$i = 1; foreach($day_content as $content) {
 								if($content){
 									echo '<div class="content-offset">';
@@ -130,7 +132,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						if($week == $number_of_weeks) {
 							$week_content = get_field($week."s_content");
 							echo $title;
-							echo '<div id="shedule" class="collapse show" aria-labelledby="shedule" data-parent="#accordionData">';
+							echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
 							$i = 1; foreach($week_content as $content) {
 								if($content){
 									echo '<div class="content-offset">';
@@ -147,13 +149,13 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				
 				<!-- Facilitators -->
 				
-				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before my-5 collapsed">Facilitators</h2>
+				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before pb-5 m-0 collapsed">Facilitators</h2>
 				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="content-offset">
 						<div class="card-columns card-img-h-200">
 							<?php $facilitators = get_field('facilitators');
 							foreach($facilitators as $fac){?>
-								<div class="card">
+								<div class="card" onClick="">
 									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
@@ -167,16 +169,21 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 				<!-- Organizing Unit -->
 				
-				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before my-5 collapsed">Organizing Unit</h2>
+				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before pb-5 m-0 collapsed">Organizing Unit</h2>
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 					<div class="content-offset">
 						<?php $units = get_field('unit_name');
-							foreach($units as $user){?>
+							foreach($units as $unit){?>
 								<div class="media mb-3">
-									<img class="align-self-center mr-3" src="<?php echo get_avatar_url($user->ID,'full');?>" alt="Generic placeholder image">
+									<figure>
+									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
+									</figure>
 									<div class="media-body">
-										<h5 class="mt-0"><?php echo $user->display_name; ?></h5>
-										<p class="mb-0"><?php  echo $user->description; ?></p>
+										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
+										<p class="mb-0">
+										<small class="text-muted">
+										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+										</small></p>
 									</div>
 								</div>
 							<?php } 
@@ -188,7 +195,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 		</div> <!--col-md-8-->
 		<div class="col-lg-3">
-			<?php //dynamic_sidebar( 'right-sidebar' ); ?>
+			<?php dynamic_sidebar( 'right-sidebar' ); ?>
 		</div>
 	</div><!--row-->
 </div>
