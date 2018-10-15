@@ -162,9 +162,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php 
 		
 }?>
-<div class="row">
-<button class="btn btn-outline-primary mx-auto">load more</button>
-</div>
+
 <?php
 else: 
 ?>
@@ -177,6 +175,9 @@ else:
 		 </div> 
 
 
+<div class="row">
+<button class="btn btn-outline-primary mx-auto">Show All Workshops</button>
+</div>
 
 </div>
 <!-- Wrapper end -->
