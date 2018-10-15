@@ -61,7 +61,7 @@ $payment_without_accommodation = get_sub_field('payment_without_accommodation');
 $payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
 <?php while ( have_posts() ) : the_post(); ?>
-<div class="<?php echo esc_attr( $container ); ?> workshop-single push-footer">
+<div class="<?php echo esc_attr( $container ); ?> workshop-single ">
 	
 	<!-- What where we -->
 	<div class="who-where-what">
