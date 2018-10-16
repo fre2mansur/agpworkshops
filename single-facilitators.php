@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-5">Facilitator <?php the_ID(); ?></h2>
+<h2 class="brownline-before mb-5">Facilitator</h2>
 <div class="row">
     <div class="col-3">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
@@ -43,6 +43,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 		if($workshops):		 
         foreach($workshops as $post){
           $postId = $post->post_id;
+          $facilitatorPostObject = get_field('facilitators', $postId);
+          print_r($facilitatorPostObject);
           $workshopStartDate = $post->start_date;
           $workshopEndDate = $post->end_date;
           
