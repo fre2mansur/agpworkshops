@@ -699,3 +699,9 @@ figure .facilitaor-avatar{
 	overflow: hidden;
 	min-height: 180px;
 }
+
+
+//styling gravity forms
+.workshop-registration-form_wrapper{
+  @extend .form-group
+}
