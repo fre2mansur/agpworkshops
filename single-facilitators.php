@@ -37,8 +37,6 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 </div>
 <div class="row mt-5">
 <h2 class="brownline-before mb-5">Related Workshops</h2>
-</div>
-</div>
 <div class="workshop-container" id="accordion">
 <?php 
 	$workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
@@ -113,8 +111,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
           </div> 
       <?php 
 
-}
-else:
+}?>
+</div>
+</div>
+<?php else:
     echo "No Workshops Found";
 endif;
 ?>
