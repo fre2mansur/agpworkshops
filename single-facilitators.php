@@ -39,12 +39,14 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h2 class="brownline-before mb-5">Related Workshops</h2>
 <div class="workshop-container" id="accordion">
 <?php 
-the_ID();
+    $currentFacilitatorId = get_the_ID();
+    
 	$workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
 		if($workshops):		 
         foreach($workshops as $post){
           $postId = $post->post_id;
           $facilitatorPostObject = get_field('facilitators', $postId);
+          echo $facilitatorPostObject->ID;
           print_r($facilitatorPostObject);
           $workshopStartDate = $post->start_date;
           $workshopEndDate = $post->end_date;
