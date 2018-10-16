@@ -46,8 +46,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
         foreach($workshops as $post){
           $postId = $post->post_id;
           $facilitatorPostObject = get_field('facilitators', $postId);
-          
-          print_r($facilitatorPostObject);
+          echo $facilitatorPostObject->post_id;
+        //   print_r($facilitatorPostObject);
           $workshopStartDate = $post->start_date;
           $workshopEndDate = $post->end_date;
           
