@@ -14,7 +14,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <div class="<?php echo esc_attr( $container ); ?> ">
 <h2 class="brownline-before mb-5">Facilitator</h2>
 <div class="row">
-    <div class="col-lg-3 col-12">
+    <div class="col-md-3 col-12">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
     </div>
     <div class="col-lg-9 col-12">
@@ -36,8 +36,9 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     </div>
 </div>
 
-<div class="h2 brownline-before mx-5">Related Workshops</div>
-
+<div class="row">
+<h2 class="h2 brownline-before mx-5">Related Workshops</h2>
+</div>
 <div class="workshop-container" id="accordion">
 <?php 
     $currentFacilitatorId = get_the_ID();
