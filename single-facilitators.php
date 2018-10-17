@@ -35,7 +35,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
         <?php the_content(); ?>
     </div>
 </div>
-<div class="row mx-5">
+<div class="row mt-5">
 <h2 class="brownline-before mb-5">Related Workshops</h2>
 </div>
 <div class="workshop-container" id="accordion">
@@ -116,18 +116,14 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                   </div>
               </div>
           </div> 
-          <div class="row mx-5">
-            <h4 class="brownline-before mb-5"><?php 
+      <?php 
                  else:
                   echo "The Facilitator Currently is not offering any workshops";
-                  ?></h4>
-                <?php endif;  
-                       }
-                        endif;
-                         }
-                          ?>
-          </div>
-      
+                endif;  
+            }
+             endif;
+    }
+        ?>
 
 
 </div>
@@ -136,7 +132,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     echo "No Workshops Found";
 endif;
 ?>
-
+</div>
 <?php
 endwhile; ?>
 <?php 
