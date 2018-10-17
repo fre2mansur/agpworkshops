@@ -36,7 +36,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                                     endif;
                                 ?>
        <p class="text-md-left text-justify">
-       <?php the_content(); ?>
+       <?php echo get_the_content(); ?>
        </p>
         
         </article>
