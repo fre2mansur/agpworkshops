@@ -32,7 +32,7 @@ if ( wp_is_mobile() ) {
   
   /* Display and echo mobile specific stuff here */
   ?>
-  <nav class="mobile-menu-parent sticky-top navbar-default shadow bg-white flex-row d-block margin-bottom-60" id="header-menu">
+  <nav class="mobile-menu-parent sticky-top navbar-default shadow bg-white flex-row d-block mb-4" id="header-menu">
     <div class="d-flex justify-content-around align-items-center p-2 w-100" >  
       <button class="menu-btn navbar-toggler d-inline-flex px-1" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30" >
