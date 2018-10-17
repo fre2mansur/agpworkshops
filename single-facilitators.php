@@ -118,8 +118,9 @@ $container = get_theme_mod( 'understrap_container_type' );?>
       <?php 
                  else:
                   echo "The Facilitator Currently is not offering any workshops";
-                 }
-            endif;  
+                endif;  
+            }
+             endif;
     }
         ?>
 
