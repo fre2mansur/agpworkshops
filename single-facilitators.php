@@ -46,9 +46,12 @@ $container = get_theme_mod( 'understrap_container_type' );?>
         foreach($workshops as $post){
           $postId = $post->post_id;
           $facilitatorPostObject = get_field('facilitators', $postId);
-
-          $workshopStartDate = $post->start_date;
-          $workshopEndDate = $post->end_date;
+          if($facilitatorPostObject):
+            foreach($facilitatorPostObject as $facilitator){
+                $facilitatorId = $facilitator->post_id;
+                if($facilitatorId = $currentFacilitatorId):
+                $workshopStartDate = $post->start_date;
+                $workshopEndDate = $post->end_date;
           
                   $randomGenerator = mt_rand(123506, 9999999);
                   $randPostIDsForAccordion = $postId * $randomGenerator;
@@ -82,7 +85,6 @@ $container = get_theme_mod( 'understrap_container_type' );?>
               </div>
               <hr class="p-0 m-0 ">
               <div class="footer d-flex justify-content-between m-0 px-4">
-              <?php ?>
                   <div class="py-3">
                       <span class="mr-auto d-block d-lg-inline-block ">Starts - </span>
                       <strong class= "d-block d-lg-inline-block "><?php
@@ -114,8 +116,14 @@ $container = get_theme_mod( 'understrap_container_type' );?>
               </div>
           </div> 
       <?php 
+                 else:
+                  echo "The Facilitator Currently is not offering any workshops";
+                 }
+            endif;  
+    }
+        ?>
 
-}?>
+
 </div>
 </div>
 <?php else:
