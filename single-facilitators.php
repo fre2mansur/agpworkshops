@@ -17,7 +17,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <figure class="col-md-3 col-12">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
     </figure>
-    <div class="col-lg-9 col-12">
+    <div class="col-lg-9 col-12 my-lg-auto my-2">
        <article>
            
       
