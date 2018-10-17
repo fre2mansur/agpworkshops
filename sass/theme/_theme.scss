@@ -531,13 +531,13 @@ text-align: inherit;
 }
 
 .workshop-card{
-  margin-bottom: 15px;
+  margin-bottom: 1.562rem;
   max-width: 350px;
   width: 100%;
   background-color: white;
   // border:1px solid rgba(9,8,9,.125);
   transition: box-shadow 0.5s ease;
-  box-shadow: 0 3px 30px -10px rgba(0,0,0,0.16);
+  box-shadow: 0 3px 30px -5px rgba(0,0,0,0.16);
   border-radius:2%;
   padding:0;
   display:table;
@@ -555,7 +555,7 @@ text-align: inherit;
   }
 &:hover{
   transition: box-shadow 0.5s ease;
-  box-shadow: 0 3px 30px -11px rgba(0,0,0,0.16);
+  box-shadow: 0 3px 30px -3px rgba(0,0,0,0.16);
 }
 }
 
