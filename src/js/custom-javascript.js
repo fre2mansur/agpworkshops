@@ -94,22 +94,26 @@ $container.masonry({
   gutter: 25
 
 });
-$(document).ready(function() {
-var deferreds = [];
-$('img').each(function() {
-    if (!this.complete) {
-        var deferred = $.Deferred();
-        $(this).one('load', deferred.resolve);
-        deferreds.push(deferred);
-    }
-});
-$.when.apply($, deferreds).done(function() {
-    /* things to do when all images loaded */
-  setTimeout(function() {
-		$container.masonry('layout');
-	}, 0);
-});
-});
+
+function reApplyMasonry() {
+  var deferreds = [];
+  $('img').each(function() {
+      if (!this.complete) {
+          var deferred = $.Deferred();
+          $(this).one('load', deferred.resolve);
+          deferreds.push(deferred);
+      }
+  });
+  $.when.apply($, deferreds).done(function() {
+      /* things to do when all images loaded */
+    setTimeout(function() {
+      $container.masonry('layout');
+    }, 0);
+  });
+}
+
+$(document).ready(reApplyMasonry);
+$(window).resize(reApplyMasonry);
 
 if ($container.length > 0){
  $(".collapse").on('shown.bs.collapse hidden.bs.collapse', function(){
