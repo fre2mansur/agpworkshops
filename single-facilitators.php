@@ -14,10 +14,13 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <div class="<?php echo esc_attr( $container ); ?> ">
 <h2 class="brownline-before mb-5">Facilitator</h2>
 <div class="row">
-    <div class="col-md-3 col-12">
+    <figure class="col-md-3 col-12">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive']);  ?>
-    </div>
+    </figure>
     <div class="col-lg-9 col-12">
+       <article>
+           
+      
         <h2><?php the_title(); ?></h2>
         <?php $units = get_field('unit_name');
                                     if($units):
@@ -33,6 +36,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                                     endif;
                                 ?>
         <?php the_content(); ?>
+        
+        </article>
     </div>
 </div>
 
