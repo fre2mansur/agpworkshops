@@ -160,7 +160,7 @@ if ( wp_is_mobile() ) {
       </form>
     </div>
   </div>
-  <div class="margin-bottom-60"></div>
+  <div class="mb-4"></div>
 <?php
 }
 ?>
