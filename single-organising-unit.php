@@ -31,7 +31,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 </div>
 
 
-<h3 class="h2 brownline-before my-4"> Contact Details</h3>
+<h3 class="h3 brownline-before my-4"> Contact Details</h3>
 <div class="row">
     <?php
     $contactName = get_field('contact_person_name');
@@ -45,7 +45,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 
 
-<h3 class="h2 brownline-before my-4">Related Workshops</h3>
+<h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
     <div class="workshop-container" id="accordion">
     <?php 
