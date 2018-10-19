@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-4">Unit</h2>
+<h2 class="brownline-before mb-4">Organising Unit</h2>
 <div class="row">
     <figure class="col-md-3 col-12">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
@@ -29,6 +29,14 @@ $container = get_theme_mod( 'understrap_container_type' );?>
         </article>
     </div>
 </div>
+
+
+<h2 class="h2 brownline-before my-4"> Contact Details</h2>
+<div class="row">
+    <?php $contactName = get_field('contact_person_name'); echo $contactName;?>
+</div>
+
+
 
 <h2 class="h2 brownline-before my-4">Related Workshops</h2>
 <div class="row">
