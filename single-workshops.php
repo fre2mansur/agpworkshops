@@ -156,7 +156,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							<?php $facilitators = get_field('facilitators');
 							if ($facilitators):
 							foreach($facilitators as $fac){?>
-								<div class="card" onClick="">
+								<div class="card" data-toggle="modal" data-target="#myModal">
 									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
@@ -230,6 +230,30 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 		</div>
 	</div><!--row-->
 </div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 <?php endwhile; // end of the loop. ?>
 <?php get_footer('agp'); ?>
