@@ -162,13 +162,13 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									<h5><?php echo $fac->post_title; ?></h5>
 									<p class="m-0"><small class="text-muted">
 									<?php 
-									$facilitatorsUnitStr = array();
 									$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
 									if($facilitatorUnitName):
+										$facilitatorsUnitStr = array();
 										foreach($facilitatorUnitName as $unitName){
-												$facilitatorsUnitStr = $unitName->post_title;
+												$facilitatorsUnitStr[] = $unitName->post_title;
 									   } 
-									   echo implode(",",$facilitatorsUnitStr );
+									   echo implode(",",$facilitatorsUnitStr);
                                     endif;
                                 ?>
 									</small></p>
