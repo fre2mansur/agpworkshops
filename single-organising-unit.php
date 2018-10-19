@@ -33,7 +33,14 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <h2 class="h2 brownline-before my-4"> Contact Details</h2>
 <div class="row">
-    <?php $contactName = get_field('contact_person_name'); echo $contactName;?>
+    <?php
+    $contactName = get_field('contact_person_name');
+    $contactEmail = get_field('contact_email');
+    $contactPhone = get_field('contact_email');
+    $contactFax = get_field('contact_fax_number');
+    $unitAddress = get_field('contact_address');
+    ?>
+    <div class="d-inline-flex"> </div>   
 </div>
 
 

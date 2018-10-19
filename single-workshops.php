@@ -160,7 +160,18 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
-									<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
+									<p class="m-0"><small class="text-muted">
+									<?php 
+									$facilitatorsUnitStr = array();
+									$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
+									if($facilitatorUnitName):
+										foreach($facilitatorUnitName as $unitName){
+												$facilitatorsUnitStr = $unitName->post_title;
+									   } 
+									   echo implode(",",$facilitatorsUnitStr );
+                                    endif;
+                                ?>
+									</small></p>
 									</div>
 								</div>
 							<?php } 
