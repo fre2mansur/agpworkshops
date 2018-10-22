@@ -40,7 +40,13 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
     ?>
-    <div class="d-inline-flex"> </div>   
+    
+    <address> 
+    <label for="unit-address">Address:</label>
+    <?php echo $unitAddress ?>
+    </address>
+
+
 </div>
 
 
