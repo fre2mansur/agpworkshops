@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all single posts for Oraganising Unit Posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-4">Facilitator</h2>
+<h2 class="brownline-before mb-4">Organising Unit</h2>
 <div class="row">
     <figure class="col-md-3 col-12">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
@@ -22,19 +22,6 @@ $container = get_theme_mod( 'understrap_container_type' );?>
            
       
         <h2><?php the_title(); ?></h2>
-        <?php $units = get_field('unit_name');
-                                    if($units):
-                                    foreach($units as $unit){?>
-                                        <div class="media mb-3">
-                                            <div class="media-body">
-                                                <small class="text-muted">
-                                                <?php echo $unit->post_title; ?>
-                                                </small>
-                                            </div>
-                                        </div>
-                                    <?php } 
-                                    endif;
-                                ?>
        <p class="text-md-left text-justify">
        <?php echo get_the_content(); ?>
        </p>
@@ -43,21 +30,44 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     </div>
 </div>
 
-<h2 class="h2 brownline-before my-4">Related Workshops</h2>
+
+<h3 class="h3 brownline-before my-4"> Contact Details</h3>
+<div class="row">
+    <?php
+    $contactName = get_field('contact_person_name');
+    $contactEmail = get_field('contact_email');
+    $contactPhone = get_field('contact_email');
+    $contactFax = get_field('contact_fax_number');
+    $unitAddress = get_field('contact_address');
+    ?>
+    <div class="offset-md-3">   
+    
+    <address> 
+    <label for="unit-address">Address:</label>
+    <?php echo $unitAddress ?>
+    </address>
+    </div>
+
+
+</div>
+
+
+
+<h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
     <div class="workshop-container" id="accordion">
     <?php 
-         $currentFacilitatorId = get_the_ID();
+         $currentOrganisingUnitPostID = get_the_ID();
     
         $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
             if($workshops):		 
             foreach($workshops as $post){
             $postId = $post->post_id;
-            $facilitatorPostObject = get_field('facilitators', $postId);
-            if($facilitatorPostObject):
-                foreach($facilitatorPostObject as $facilitator){
-                    $facilitatorId = $facilitator->post_id;
-                    if($facilitatorId = $currentFacilitatorId):
+            $organisingUnitPostObject = get_field('unit_name', $postId);
+            if($organisingUnitPostObject):
+                foreach($organisingUnitPostObject as $organiser){
+                    $organiserId = $organiser->post_id;
+                    if($organiserId = $currentOrganisingUnitPostID):
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
@@ -125,7 +135,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             </div> 
         <?php 
                     else:
-                    echo "The Facilitator Currently is not offering any workshops";
+                    echo "The organiser Currently is not offering any workshops";
                     endif;  
                 }
                 endif;
@@ -134,7 +144,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 
     </div>
-    </div>
+</div>
 <?php else:
     echo "No Workshops Found";
 endif;

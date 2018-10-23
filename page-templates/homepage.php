@@ -18,8 +18,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<?php
 		homepageSliderGalleryImages_querry();
 		if($homepageSliderGalleryImages){ ?>
-		<div class="row ">
-			<div class="margin-negative-60 margin-bottom-60 d-none px-3 d-md-block w-100">
+		<div class="row">
+			<div class="negative-mt-4 margin-bottom-60 d-none px-3 d-md-block w-100">
 				<div class="no-radius">
 					<div class="card-group text-center">
 						<?php foreach($homepageSliderGalleryImages as $image) { ?>
@@ -88,7 +88,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  
         //   'post_status' => 'publish' );
 
-		queryPost_With_Dates(); //this function resturns the variable $workshops
+		$workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
+		if($workshops):	
 				 
 				  foreach($workshops as $post){
 					$postId = $post->post_id;
@@ -116,7 +117,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							foreach ( $categories as $category){
 									$categoryName = $category->slug;
 							 }?>
-							<h6 class="card-subtitle mb-2 pb-2 catColor-<?php echo $categoryName; ?>"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
+							<h6 class="card-subtitle mb-2 pb-2 text-muted"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
 							<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 								<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 								<div class="d-flex mb-3 justify-content-between">
@@ -139,7 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 									
 								?></strong>
 							</div>
-							<span class="line border border-gray mx-auto"></span>
+							<span class="line border-card mx-auto"></span>
 							<div class="py-3 pl-2">
 								<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
 								<strong class= "d-block d-lg-inline-block "><?php
@@ -161,11 +162,22 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php 
 		
 }?>
+
+<?php
+else: 
+?>
+<div class="row">
+	<h3>No workshop found</h3>
+</div>
+<?php endif; ?>
 				</div>
 			</div> 
 		 </div> 
 
 
+<div class="row">
+<a class="mx-auto" href="<?php echo get_post_type_archive_link( 'workshops' ); ?>"><button class="btn btn-outline-primary ">Show All Workshops</button></a>
+</div>
 
 </div>
 <!-- Wrapper end -->

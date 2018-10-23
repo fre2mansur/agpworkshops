@@ -387,9 +387,6 @@ text-align: inherit;
   position: relative;
 }
 
-.workshops{
-  margin-top: 60px;
-}
 #filters{
   span.nav-link{
     padding-left:1px !important;
@@ -518,8 +515,8 @@ text-align: inherit;
   margin-bottom:60px !important;
 }
 
-.margin-negative-60{
-  margin-top:-60px !important;
+.negative-mt-4{
+  margin-top: ($spacer * -1.5);
 }
 
 
@@ -531,10 +528,13 @@ text-align: inherit;
 }
 
 .workshop-card{
-  margin-bottom: 15px;
+  margin-bottom: 1.562rem;
   max-width: 350px;
   width: 100%;
-  border:1px solid rgba(9,8,9,.125);
+  background-color: white;
+  // border:1px solid rgba(9,8,9,.125);
+  transition: box-shadow 0.5s ease;
+  box-shadow: 0 3px 30px -5px rgba(0,0,0,0.16);
   border-radius:2%;
   padding:0;
   display:table;
@@ -544,7 +544,16 @@ text-align: inherit;
       transition: height .05s ease !important;
     }
   }
-
+  hr{
+        border: 0.5px solid #C2F284;
+  }
+  .border-card{
+    border: 0.5px solid #C2F284 !important;
+  }
+&:hover{
+  transition: box-shadow 0.5s ease;
+  box-shadow: 0 3px 30px -3px rgba(0,0,0,0.16);
+}
 }
 
 @include media-breakpoint-down(md){
@@ -608,16 +617,16 @@ figure .facilitaor-avatar{
 
 .workshop-description{
   h1{
-    font-size: calc(.75 * 2.5rem);
+    font-size: calc(.60 * 2.5rem);
   }
   h2{
-    font-size: calc(.75 * 2rem);
+    font-size: calc(.60 * 2rem);
   }
   h3{
-    font-size: calc(.75 * 1.75rem);
+    font-size: calc(.60 * 1.75rem);
   }
   h4{
-    font-size: calc(.75 * 1.5rem);
+    font-size: calc(.60 * 1.5rem);
   }
 
 }
@@ -686,4 +695,10 @@ figure .facilitaor-avatar{
 	max-height: 180px;
 	overflow: hidden;
 	min-height: 180px;
+}
+
+
+//styling gravity forms
+.form-group_wrapper{
+  @extend .form-group;
 }

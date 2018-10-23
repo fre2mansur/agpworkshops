@@ -416,18 +416,19 @@ function homepageSliderGalleryImages_querry (){
 // Custom querry to get and sort all posts by Start and End Date
 function queryPost_With_Dates ($limit = '9') {
 	global $wpdb;
+	
+	
 	$today = date('Ymd');
 	$customTable = $wpdb->prefix.'workshop_dates';
-	global $workshops;
 	$postStatus = 'publish';
-		  $workshops = $wpdb->get_results(
+	return $wpdb->get_results(
 			  $wpdb->prepare(
 			 "SELECT * FROM $customTable 
 			  INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
 			  WHERE post_status LIKE %s 
 			  AND (end_date > $today OR end_date = $today)
 			  ORDER BY start_date ASC LIMIT %d", $postStatus, $limit ));
-	return 	$workshops;	
+
 }
 /*
     in this example I have a repeater field named "date_repeater"
