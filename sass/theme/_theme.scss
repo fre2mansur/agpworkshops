@@ -515,8 +515,8 @@ text-align: inherit;
   margin-bottom:60px !important;
 }
 
-.margin-negative-60{
-  margin-top:-60px !important;
+.negative-mt-4{
+  margin-top: ($spacer * -1.5);
 }
 
 
