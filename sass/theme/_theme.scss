@@ -601,11 +601,7 @@ text-align: inherit;
 	color: #707070;
 }
 
-figure .facilitaor-avatar{
-  max-height: 200px;
-  object-fit: cover;
-  object-position: center;
-}
+
 .single-banner img {
   max-height:360px;
   object-fit: cover;
@@ -691,19 +687,9 @@ figure .facilitaor-avatar{
 	transition: height 0.5s ease;
 }
 
-.facilitaor-avatar {
-	max-height: 180px;
-	overflow: hidden;
-	min-height: 180px;
-}
 
 
 // Facilitators card styling in single workshop
-#facilitators{
-  .card{
-    cursor: pointer;
-  }
-}
 
 
 //styling gravity forms

@@ -152,7 +152,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before pb-5 m-0 collapsed">Facilitators</h2>
 				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="offset-md-1">
-						<div class="card-deck card-img-h-200">
+						<div class="card-deck">
 							<?php $facilitators = get_field('facilitators');
 							if ($facilitators):
 							foreach($facilitators as $fac){?>
