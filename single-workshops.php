@@ -191,7 +191,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class="collapse-before py-3 m-0 collapsed">Organizing Unit</h3>
 				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
-						<div class="card-deck card-img-h-200">
+						<div class="card-deck scrolling-wrapper-flexbox">
 						<?php $units = get_field('unit_name');
 						if($units):
 							$noOfUnits = sizeof($units);
