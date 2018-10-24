@@ -732,3 +732,11 @@ text-align: inherit;
 .form-group_wrapper{
   @extend .form-group;
 }
+
+
+//Table width set to 100% for single workshop page
+.single-workshops{
+  table{
+    width: 100% !important;
+  }
+}
