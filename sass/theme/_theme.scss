@@ -556,24 +556,28 @@ text-align: inherit;
 }
 }
 
+@include media-breakpoint-down(sm){
+  .scrolling-wrapper-flexbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+    .card {
+      flex: 0 0 auto !important;
+      margin-right: 15px !important;
+    }
+  }
+}
+
 @include media-breakpoint-down(md){
   .workshop-card{
     max-width: 290px;
     width: 100%;
    }
-   .scrolling-wrapper-flexbox {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    .card {
-      flex: 0 0 auto;
-      margin-right: 3px;
-    }
-  }
 }
 
 
