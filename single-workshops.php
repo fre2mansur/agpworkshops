@@ -61,7 +61,7 @@ $payment_without_accommodation = get_sub_field('payment_without_accommodation');
 $payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
 <?php while ( have_posts() ) : the_post(); ?>
-<div class="<?php echo esc_attr( $container ); ?> workshop-single push-footer">
+<div class="<?php echo esc_attr( $container ); ?> workshop-single ">
 	
 	<!-- What where we -->
 	<div class="who-where-what">
@@ -154,15 +154,31 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<div class="content-offset">
 						<div class="card-columns card-img-h-200">
 							<?php $facilitators = get_field('facilitators');
+							if ($facilitators):
 							foreach($facilitators as $fac){?>
-								<div class="card" onClick="">
+								<div class="card" data-toggle="modal" data-target="#myModal">
 									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
-									<p class="m-0"><small class="text-muted">Unit of the facilitator</small></p>
+									<p class="m-0"><small class="text-muted">
+									<?php 
+									$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
+									if($facilitatorUnitName):
+										$facilitatorsUnitStr = array();
+										foreach($facilitatorUnitName as $unitName){
+												$facilitatorsUnitStr[] = $unitName->post_title;
+									   } 
+									   echo implode(",",$facilitatorsUnitStr);
+                                    endif;
+                                ?>
+									</small></p>
 									</div>
 								</div>
-							<?php } ?>
+							<?php } 
+							else:
+							?>
+
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
@@ -173,6 +189,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 					<div class="content-offset">
 						<?php $units = get_field('unit_name');
+						if($units):
 							foreach($units as $unit){?>
 								<div class="media mb-3">
 									<figure>
@@ -187,18 +204,56 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									</div>
 								</div>
 							<?php } 
+							else: 
 						?>
+							<!-- <div class="media mb-3">
+									<figure>
+									<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
+									</figure>
+									<div class="media-body">
+										<h5 class="mt-0"><?php // echo $unit->post_title; ?></h5>
+										<p class="mb-0">
+										<small class="text-muted">
+										<?php  // echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+										</small></p>
+									</div>
+							</div> -->
+						<?php endif; ?>
 					</div>
 				</div>
 			</div><!--accordin-->
 						
 
 		</div> <!--col-md-8-->
-		<div class="col-lg-3">
+		<div class="col-lg-3 offset-1">
 			<?php dynamic_sidebar( 'right-sidebar' ); ?>
 		</div>
 	</div><!--row-->
 </div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 <?php endwhile; // end of the loop. ?>
 <?php get_footer('agp'); ?>
