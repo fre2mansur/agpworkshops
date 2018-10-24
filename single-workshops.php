@@ -107,7 +107,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 			
 				<!-- Shedule	 -->
 				<?php $title = '<h3 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class=" py-3 m-0 collapsed">Schedule</h3>';?>
-				<?php if($get_the_schedule_type == "daily"){
+				<?php if($get_the_schedule_type == "daily"):
 					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
 					foreach($days as $day){
 						if($day == $number_of_days && $day != 'one_day') {
@@ -126,7 +126,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							
 						}
 					} 
-				} else {
+				else:
 					$all_weeks = array('two_week','three_week','four_week');
 					foreach($all_weeks as $week){
 						if($week == $number_of_weeks) {
@@ -144,18 +144,19 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							echo '</div>';
 						}
 					}
-				} ?>
+				endif;?>
 				
 				
 				<!-- Facilitators -->
 				
-				<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class=" py-3 m-0 collapsed">Facilitators</h3>
+
+							<?php $facilitators = get_field('facilitators');
+							if ($facilitators):?>
+			<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class=" py-3 m-0 collapsed">Facilitators</h3>
 				<div id="single-workshop-facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="offset-md-1">
 						<div class="card-deck scrolling-wrapper-flexbox">
-							<?php $facilitators = get_field('facilitators');
-							if ($facilitators):
-								$noOfFacilitators = sizeof($facilitators);
+								<?php $noOfFacilitators = sizeof($facilitators);
 							foreach($facilitators as $fac){?>
 								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#myModal">
 									<figure class="facilitaor-avatar">
@@ -181,20 +182,23 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							else:
 							?>
 
-							<?php endif; ?>
 						</div>
 					</div>
 				</div>
+				<?php endif; ?>
 
 				<!-- Organizing Unit -->
 				
+
+						<?php $units = get_field('unit_name');
+						if($units):?>
 				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 collapsed">Organizing Unit</h3>
 				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
 						<div class="card-deck scrolling-wrapper-flexbox">
-						<?php $units = get_field('unit_name');
-						if($units):
-							$noOfUnits = sizeof($units);
+
+
+							<?php $noOfUnits = sizeof($units);
 							foreach($units as $unit){?>
 								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>" data-toggle="modal-unit" data-target="#unitModal">
 									<figure class="unit-avatar p-2">
@@ -223,10 +227,10 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 										</small></p>
 									</div>
 							</div> -->
-						<?php endif; ?>
 						</div>
 					</div>
 				</div>
+				<?php endif; ?>
 			</div><!--accordin-->
 						
 
