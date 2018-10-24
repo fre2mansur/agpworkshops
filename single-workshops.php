@@ -156,7 +156,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							<?php $facilitators = get_field('facilitators');
 							if ($facilitators):
 							foreach($facilitators as $fac){?>
-								<div class="card shadow-sm" data-toggle="modal" data-target="#myModal">
+								<div class="card shadow-sm mx-auto" data-toggle="modal" data-target="#myModal">
 									<figure class="facilitaor-avatar">
 										<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
 									</figure>
@@ -194,7 +194,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						<?php $units = get_field('unit_name');
 						if($units):
 							foreach($units as $unit){?>
-								<div class="card shadow-sm" data-toggle="modal-unit" data-target="#unitModal">
+								<div class="card shadow-sm mx-auto" data-toggle="modal-unit" data-target="#unitModal">
 									<figure class="unit-avatar p-2">
 										<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
 									</figure>	
