@@ -57,7 +57,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 						$termname = strtolower($term->term_id);
 						$termname = str_replace(' ', '-', $termname);
-						echo '<li class="nav-item"><span class="filter nav-link" data-filter=".'.$termname.'">'.$term->name.'</span</li>';
+						echo '<li class="nav-item menu-item"><span class="filter nav-link" data-filter=".'.$termname.'">'.$term->name.'</span</li>';
 					}
 				} ?>
 			</ul>
