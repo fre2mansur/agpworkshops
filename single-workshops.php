@@ -190,7 +190,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before pb-5 m-0 collapsed">Organizing Unit</h2>
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
-						<div class="card-columns card-img-h-200">
+						<div class="card-deck card-img-h-200">
 						<?php $units = get_field('unit_name');
 						if($units):
 							foreach($units as $unit){?>
@@ -222,7 +222,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									</div>
 							</div> -->
 						<?php endif; ?>
-							</div>
+						</div>
 					</div>
 				</div>
 			</div><!--accordin-->
