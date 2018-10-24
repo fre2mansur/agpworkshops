@@ -573,6 +573,21 @@ text-align: inherit;
       flex: 0 0 auto !important;
     }
   }
+
+  ul#footer-menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    li.menu-item{
+      flex: 0 0 auto !important;
+    }
+  }
 }
 
 @include media-breakpoint-down(md){
