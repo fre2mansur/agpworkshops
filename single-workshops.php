@@ -152,7 +152,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class="collapse-before py-3 m-0 collapsed">Facilitators</h3>
 				<div id="single-workshop-facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="offset-md-1">
-						<div class="card-deck">
+						<div class="card-deck scrolling-wrapper-flexbox">
 							<?php $facilitators = get_field('facilitators');
 							if ($facilitators):
 								$noOfFacilitators = sizeof($facilitators);
