@@ -698,6 +698,14 @@ figure .facilitaor-avatar{
 }
 
 
+// Facilitators card styling in single workshop
+#facilitators{
+  .card{
+    cursor: pointer;
+  }
+}
+
+
 //styling gravity forms
 .form-group_wrapper{
   @extend .form-group;
