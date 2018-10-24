@@ -157,7 +157,9 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							if ($facilitators):
 							foreach($facilitators as $fac){?>
 								<div class="card" data-toggle="modal" data-target="#myModal">
-									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
+									<figure class="facilitaor-avatar">
+										<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+									</figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
 									<p class="m-0"><small class="text-muted">
@@ -187,19 +189,22 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				
 				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before pb-5 m-0 collapsed">Organizing Unit</h2>
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
-					<div class="offset-md-1">
+				<div class="offset-md-1">
+						<div class="card-columns card-img-h-200">
 						<?php $units = get_field('unit_name');
 						if($units):
 							foreach($units as $unit){?>
-									<div class="col-md-4 col-12">
-									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
+								<div class="card" data-toggle="modal-unit" data-target="#unitModal">
+									<figure class="unit-avatar">
+										<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
+									</figure>	
+									<div class="card-body unit-details">
+											<h5><?php echo $unit->post_title; ?></h5>
+											<small class="text-muted">
+											<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+											</small>
 									</div>
-									<div class="col-md-8 col-12">
-										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
-										<small class="text-muted">
-										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
-										</small>
-									</div>
+								</div>
 							<?php } 
 							else: 
 						?>
