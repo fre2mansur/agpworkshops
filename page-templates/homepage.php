@@ -41,7 +41,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="workshops">
 			<div class="h2 brownline-before">Latest Workshops</div>
 			
-			<ul id="filters" class="list-unstyled nav ">
+			<ul id="filters" class="list-unstyled nav mb-3 ">
 				<?php  $terms = get_terms('workshop_category',array("order"=>"ASC"));
 				$data_filter = '';
 				$dt = '';
