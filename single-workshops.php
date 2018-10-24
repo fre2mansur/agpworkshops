@@ -205,7 +205,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 											</small>
 									</div>
 								</div>
-							</div>	
+								
 							<?php } 
 							else: 
 						?>
@@ -222,6 +222,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 									</div>
 							</div> -->
 						<?php endif; ?>
+							</div>
 					</div>
 				</div>
 			</div><!--accordin-->
