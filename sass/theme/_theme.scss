@@ -15,9 +15,9 @@ height:100%;
 
 // overflow-Y:scroll;
 
-&.home{
-  background: #F9F9F9;
-}
+// &.home{
+//   background: #F9F9F9;
+// }
 }
 
 
@@ -695,6 +695,14 @@ figure .facilitaor-avatar{
 	max-height: 180px;
 	overflow: hidden;
 	min-height: 180px;
+}
+
+
+// Facilitators card styling in single workshop
+#facilitators{
+  .card{
+    cursor: pointer;
+  }
 }
 
 
