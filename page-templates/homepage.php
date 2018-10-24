@@ -50,7 +50,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						$dt=rtrim($data_filter,", ");
 				}
 				$count = count($terms);
-					echo '<li class="nav-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
+					echo '<li class="nav-item menu-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
 				if ( $count > 0 ){
 
 					foreach ( $terms as $term ) {

@@ -573,8 +573,9 @@ text-align: inherit;
       flex: 0 0 auto !important;
     }
   }
+  
 
-  ul#footer-menu{
+  ul#footer-menu, ul#filter{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap !important;
