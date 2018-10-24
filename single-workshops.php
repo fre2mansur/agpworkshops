@@ -196,7 +196,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						if($units):
 							$noOfUnits = sizeof($units);
 							foreach($units as $unit){?>
-								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";} ?>" data-toggle="modal-unit" data-target="#unitModal">
+								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>" data-toggle="modal-unit" data-target="#unitModal">
 									<figure class="unit-avatar p-2">
 										<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
 									</figure>	
