@@ -191,16 +191,15 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						<?php $units = get_field('unit_name');
 						if($units):
 							foreach($units as $unit){?>
-								<div class="media mb-3">
-									<figure>
+								<div class="col-12 media">
+									<div class="col-md-3 col-12">
 									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
-									</figure>
-									<div class="media-body">
+									</div>
+									<div class="col-md-8 col-12">
 										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
-										<p class="mb-0">
 										<small class="text-muted">
 										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
-										</small></p>
+										</small>
 									</div>
 								</div>
 							<?php } 
