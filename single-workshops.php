@@ -97,7 +97,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<!-- Details -->
 				<h2 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class="collapse-before pb-5 m-0">Details</h2>
 				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
-					<div class="content-offset">
+					<div class="offset-md-1">
 						<?php echo $brief_intro; ?>
 						<article class="workshop-description">
 						<?php echo $workshop_description; ?>
@@ -116,7 +116,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
 							$i = 1; foreach($day_content as $content) {
 								if($content){
-									echo '<div class="content-offset">';
+									echo '<div class="offset-md-1">';
 										echo "<h4>Day ".$i++."</h4>";
 										echo $content;
 									echo '</div>';
@@ -135,7 +135,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
 							$i = 1; foreach($week_content as $content) {
 								if($content){
-									echo '<div class="content-offset">';
+									echo '<div class="offset-md-1">';
 										echo "<h4>Week ".$i++."</h4>";
 										echo $content;
 									echo '</div>';
@@ -151,7 +151,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				
 				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before pb-5 m-0 collapsed">Facilitators</h2>
 				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
-					<div class="content-offset">
+					<div class="offset-md-1">
 						<div class="card-columns card-img-h-200">
 							<?php $facilitators = get_field('facilitators');
 							if ($facilitators):
@@ -187,12 +187,12 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				
 				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before pb-5 m-0 collapsed">Organizing Unit</h2>
 				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
-					<div class="content-offset">
+					<div class="offset-md-1">
 						<?php $units = get_field('unit_name');
 						if($units):
 							foreach($units as $unit){?>
-								<div class="col-12 media">
-									<div class="col-md-3 col-12">
+								<div class="media">
+									<div class="col-md-4 col-12">
 									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
 									</div>
 									<div class="col-md-8 col-12">
