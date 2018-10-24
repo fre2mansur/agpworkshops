@@ -191,7 +191,6 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						<?php $units = get_field('unit_name');
 						if($units):
 							foreach($units as $unit){?>
-								<div class="media">
 									<div class="col-md-4 col-12">
 									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
 									</div>
@@ -201,7 +200,6 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
 										</small>
 									</div>
-								</div>
 							<?php } 
 							else: 
 						?>
