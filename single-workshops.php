@@ -195,7 +195,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						if($units):
 							foreach($units as $unit){?>
 								<div class="card" data-toggle="modal-unit" data-target="#unitModal">
-									<figure class="unit-avatar">
+									<figure class="unit-avatar p-2">
 										<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
 									</figure>	
 									<div class="card-body unit-details">
@@ -205,6 +205,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 											</small>
 									</div>
 								</div>
+							</div>	
 							<?php } 
 							else: 
 						?>
