@@ -150,7 +150,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<!-- Facilitators -->
 				
 				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before pb-5 m-0 collapsed">Facilitators</h2>
-				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
+				<div id="single-workshop-facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="offset-md-1">
 						<div class="card-deck">
 							<?php $facilitators = get_field('facilitators');
@@ -188,7 +188,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				<!-- Organizing Unit -->
 				
 				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before pb-5 m-0 collapsed">Organizing Unit</h2>
-				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
+				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
 						<div class="card-deck card-img-h-200">
 						<?php $units = get_field('unit_name');

@@ -690,6 +690,23 @@ text-align: inherit;
 
 
 // Facilitators card styling in single workshop
+#single-workshop-facilitators{
+  .card{
+    cursor: pointer;
+    max-width: 235px;
+  }
+}
+
+#single-workshop-unit{
+  .card{
+    img{
+     object-fit: contain;
+     object-position: center;
+     min-height: 135px;
+     max-height: 135px; 
+    }
+  }
+}
 
 
 //styling gravity forms
