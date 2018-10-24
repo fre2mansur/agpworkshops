@@ -46,6 +46,7 @@ if ( ! function_exists ( 'understrap_setup' ) ) {
 			'left' => __( 'Left Menu', 'understrap' ),
 			'right' => __( 'Right Menu', 'understrap' ),
 			'mobile' => __( 'Mobile Menu', 'understrap' ),
+			'footer' => __('Footer Menu', 'understrap')
 		));
 
 		/*
