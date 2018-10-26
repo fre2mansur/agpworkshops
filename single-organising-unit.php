@@ -40,15 +40,32 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
     ?>
-    <address> 
+    <!-- <address> 
     <label for="unit-address">Address:</label>
-    <?php echo $unitAddress ?>
-    </address>
+    <?php // echo $unitAddress ?>
+    </address> -->
     <table class="table">
     <tbody>
     <tr>
     <th scope="row">Contact Name:</th>
       <td><?php echo($contactName); ?></td>
+    </tr>
+    <tr>
+    <th scope="row">Phone Number:</th>
+      <td><?php echo($contactPhone); ?></td>
+    </tr>
+    <tr>
+    <th scope="row">Email Address:</th>
+      <td><?php echo($contactEmail); ?></td>
+    </tr>
+    <?php if($contactFax):?><tr>
+    <th scope="row">Fax Number:</th>
+      <td><?php echo($contactName); ?></td>
+    </tr>
+    <?php endif;    ?>
+    <tr>
+    <th scope="row">Unit Address:</th>
+      <td><?php echo($unitAddress); ?></td>
     </tr>
     </tbody>  
     </table>
