@@ -36,7 +36,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <?php
     $contactName = get_field('contact_person_name');
     $contactEmail = get_field('contact_email');
-    $contactPhone = get_field('contact_phone');
+    $contactPhone = get_field('contact_phone_number');
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
     ?>
