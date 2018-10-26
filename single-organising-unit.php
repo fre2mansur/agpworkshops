@@ -40,13 +40,18 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
     ?>
-    <div class="offset-md-3">   
-    
     <address> 
     <label for="unit-address">Address:</label>
     <?php echo $unitAddress ?>
     </address>
-    </div>
+    <table class="table">
+    <tbody>
+    <tr>
+    <th scope="row">Contact Name:</th>
+      <td><?php echo($contactName); ?></td>
+    </tr>
+    </tbody>  
+    </table>
 
 
 </div>
