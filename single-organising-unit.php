@@ -40,10 +40,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
     ?>
-    <!-- <address> 
-    <label for="unit-address">Address:</label>
-    <?php // echo $unitAddress ?>
-    </address> -->
+    <div class="col-12 p-0"></div>
     <table class="table table-borderless offset-md-3">
     <tbody>
     <tr>
@@ -65,7 +62,11 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <?php endif;    ?>
     <tr>
     <th scope="row">Unit Address:</th>
-      <td><?php echo($unitAddress); ?></td>
+      <td>
+      <address>
+      <?php echo($unitAddress); ?>
+      </address>
+      </td>
     </tr>
     </tbody>  
     </table>
@@ -93,7 +94,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                     if($organiserId == $currentOrganisingUnitPostID):
 
                         var_dump($organiserId);
-
+                        var_dump($currentOrganisingUnitPostID);
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
