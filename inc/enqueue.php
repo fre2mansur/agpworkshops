@@ -35,6 +35,6 @@ add_action( 'wp_enqueue_scripts', 'understrap_scripts' );
 // Add admin scripts for custom javascripts
 function admin_chart_scripts() {
 	wp_enqueue_style( 'admin-line-icons','https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css', array(), true);
-	wp_enqueue_script( 'admin-chart-script',get_template_directory_uri() . '/js/chartjs.min.js', array(),'2.7.2', false );
+	wp_enqueue_script( 'admin-chart-script',get_template_directory_uri() . '/js/chartjs.min.js', array(),'2.7.2', true );
 }
 add_action( 'admin_enqueue_scripts', 'admin_chart_scripts' );?>
