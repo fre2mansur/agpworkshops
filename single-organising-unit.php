@@ -92,7 +92,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                     $organiserId = $organiser->post_id;
                     if($organiserId = $currentOrganisingUnitPostID):
 
-                        vardump($organiserId);
+                        var_dump($organiserId);
 
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
