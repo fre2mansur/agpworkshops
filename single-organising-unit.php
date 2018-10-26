@@ -14,10 +14,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <div class="<?php echo esc_attr( $container ); ?> ">
 <h2 class="brownline-before mb-4"><?php the_title(); ?></h2>
 <div class="row">
-    <figure class="col-md-3 col-12">
+    <figure class="col-md-3 col-12 offset-md-1">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
     </figure>
-    <div class="col-md-9 col-12 my-md-0 my-2">
+    <div class="col-md-8 col-12 my-md-0 my-2">
        <article>
        <p class="text-md-left text-justify">
        <?php echo get_the_content(); ?>
@@ -38,7 +38,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $unitAddress = get_field('contact_address');
     ?>
     <div class="col-12 p-0"></div>
-    <table class="table table-borderless offset-md-3">
+    <table class="table table-borderless offset-md-4">
     <tbody>
     <tr>
     <th scope="row">Contact Name:</th>
