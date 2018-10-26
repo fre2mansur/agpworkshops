@@ -91,10 +91,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             if($organisingUnitPostObject):
                 foreach($organisingUnitPostObject as $organiser){
                     $organiserId = $organiser->post_id;
+                    var_dump($organiserId);
+                    var_dump($currentOrganisingUnitPostID);
                     if($organiserId == $currentOrganisingUnitPostID):
 
-                        var_dump($organiserId);
-                        var_dump($currentOrganisingUnitPostID);
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
