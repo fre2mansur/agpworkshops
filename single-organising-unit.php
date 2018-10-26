@@ -44,7 +44,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <label for="unit-address">Address:</label>
     <?php // echo $unitAddress ?>
     </address> -->
-    <table class="table">
+    <table class="table table-borderless offset-md-3">
     <tbody>
     <tr>
     <th scope="row">Contact Name:</th>
