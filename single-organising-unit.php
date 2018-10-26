@@ -88,11 +88,11 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             foreach($workshops as $post){
             $postId = $post->post_id;
             $organisingUnitPostObject = get_field('unit_name', $postId);
-            if($organisingUnitPostObject):
+            if($organisingUnitPostObject){
                 foreach($organisingUnitPostObject as $organiser){
                     
                     $organiserId = $organiser->ID;                    
-                    if($organiserId == $currentOrganisingUnitPostID):
+                    if($organiserId == $currentOrganisingUnitPostID){
                         
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
@@ -146,13 +146,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                         <strong class= "d-block d-lg-inline-block "><?php
                         
                             echo date('d-m-Y', strtotime($workshopEndDate));
-                        
 
-                        // $get_the_schedule_type = get_field('select_the_schedule_type');
-                        // $number_of_weeks = get_field('number_of_weeks');
-                        // if($get_the_schedule_type == "daily"){				
-                                                                
-                        // }
                         
                         
                         ?></strong>
@@ -160,11 +154,12 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                 </div>
             </div> 
         <?php 
-                    else:
+                    }    
+                    else{
                     echo "The organiser Currently is not offering any workshops";
-                    endif;  
+                    }
                 }
-                endif;
+            }
         }
     ?>
 
