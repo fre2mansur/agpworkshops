@@ -81,7 +81,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <div class="row">
     <div class="workshop-container" id="accordion">
     <?php 
-         $currentOrganisingUnitPostID = get_the_ID();
+         $currentOrganisingUnitPostID = the_ID();
     
         $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
             if($workshops):		 
