@@ -12,16 +12,13 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-4">Organising Unit</h2>
+<h2 class="brownline-before mb-4"><?php the_title(); ?></h2>
 <div class="row">
     <figure class="col-md-3 col-12">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
     </figure>
     <div class="col-md-9 col-12 my-md-0 my-2">
        <article>
-           
-      
-        <h2><?php the_title(); ?></h2>
        <p class="text-md-left text-justify">
        <?php echo get_the_content(); ?>
        </p>
