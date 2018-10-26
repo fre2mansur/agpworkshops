@@ -57,7 +57,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             if($facilitatorPostObject):
                 foreach($facilitatorPostObject as $facilitator){
                     $facilitatorId = $facilitator->post_id;
-                    if($facilitatorId == $currentFacilitatorId):
+                    if($facilitatorId = $currentFacilitatorId):
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
