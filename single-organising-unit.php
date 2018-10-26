@@ -81,7 +81,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <div class="row">
     <div class="workshop-container" id="accordion">
     <?php 
-         $currentOrganisingUnitPostID = the_ID();
+         $currentOrganisingUnitPostID = get_the_ID();
     
         $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
             if($workshops):		 
@@ -90,11 +90,11 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             $organisingUnitPostObject = get_field('unit_name', $postId);
             if($organisingUnitPostObject):
                 foreach($organisingUnitPostObject as $organiser){
+                    
                     $organiserId = $organiser->post_id;
-                    var_dump($organiserId);
-                    var_dump($currentOrganisingUnitPostID);
-                    if($organiserId == $currentOrganisingUnitPostID):
 
+                    if($organiserId == $currentOrganisingUnitPostID):
+                        
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
