@@ -90,7 +90,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             if($organisingUnitPostObject):
                 foreach($organisingUnitPostObject as $organiser){
                     $organiserId = $organiser->post_id;
-                    if($organiserId = $currentOrganisingUnitPostID):
+                    if($organiserId == $currentOrganisingUnitPostID):
 
                         var_dump($organiserId);
 
