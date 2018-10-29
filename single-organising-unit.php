@@ -37,7 +37,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
     ?>
-    <div class="col-12 p-0"></div>
+    <div class="col-12 p-0">
     <table class="table table-borderless offset-md-4">
     <tbody>
     <tr>
@@ -67,7 +67,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     </tr>
     </tbody>  
     </table>
-
+    </div>
 
 </div>
 
@@ -76,8 +76,9 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
-    <div class="workshop-container" id="accordion">
-    <?php 
+    <div class="col-md-8 col-12 offset-md-4">
+    <div class="workshop-container w-100" id="accordion">
+     <?php 
          $currentOrganisingUnitPostID = get_the_ID();
     
         $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
@@ -155,11 +156,11 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                 }
             endif;
         }
-    ?>
+        ?>
 
 
     </div>
-</div>
+    </div>
 <?php else:
     echo "No Workshops Found";
 endif;
