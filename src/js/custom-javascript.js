@@ -88,7 +88,7 @@ var $container = jQuery('.workshop-container');
 $container.masonry({
   
   columnWidth: '.workshop-card',
-  fitWidth: false,
+  fitWidth: true,
   itemSelector: '.workshop-card',
   horizontalOrder: true,
   gutter: 25
