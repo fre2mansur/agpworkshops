@@ -55,8 +55,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <th scope="row">Email Address:</th>
       <td><?php echo($contactEmail); ?></td>
     </tr>
+    <?php if($contactFax):?>
     <tr>
-    <?php if($contactFax):?><tr>
     <th scope="row">Fax Number:</th>
       <td><?php echo($contactName); ?></td>
     </tr>
@@ -65,8 +65,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <th scope="row">Unit Address:</th>
       <td><?php echo($unitAddress); ?></td>
     </tr>
+    <?php if($unitWebsite):?>
     <tr>
-    <?php if($unitWebsite):?><tr>
     <th scope="row">Website:</th>
       <td><?php echo('<a href='.$unitWebsite.'>'.$unitWebsite.'</a>'); ?></td>
     </tr>
