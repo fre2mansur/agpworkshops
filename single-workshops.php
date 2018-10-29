@@ -66,17 +66,17 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 	<!-- What where we -->
 	<div class="who-where-what">
 		<h2 class="brownline-before mb-5"><?php the_title(); ?></h2>
-		<div class="offset-1">
 			<div class="row">
-				<div class="col-lg-4">
+			 <div class="col-12 offset-md-1">
+				<div class="col-lg-3 pull-left">
 					<h3>What</h3>
 					<p><?php echo $what; ?></p>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3 pull-left">
 					<h3>Where</h3>
 					<p><?php echo $where; ?></p>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3 pull-left">
 					<h3>Why</h3>
 					<p><?php echo $why; ?></p>
 				</div>

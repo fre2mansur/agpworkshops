@@ -19,7 +19,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		homepageSliderGalleryImages_querry();
 		if($homepageSliderGalleryImages){ ?>
 		<div class="row">
-			<div class="negative-mt-4 margin-bottom-60 d-none px-3 d-md-block w-100">
+			<div class="margin-bottom-60 d-none px-3 d-md-block w-100">
 				<div class="no-radius">
 					<div class="card-group text-center">
 						<?php foreach($homepageSliderGalleryImages as $image) { ?>
