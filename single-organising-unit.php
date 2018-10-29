@@ -72,7 +72,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <tr>
     <?php if($unitWebsite):?><tr>
     <th scope="row">Website:</th>
-      <td><?php echo($unitWebsite); ?></td>
+      <td><?php echo('<a href='.$unitWebsite.'>'.$unitWebsite.'</a>'); ?></td>
     </tr>
     <?php endif;    ?>
     </tbody>  
