@@ -585,7 +585,7 @@ text-align: inherit;
 
 @include media-breakpoint-down(md){
   .workshop-card{
-    max-width: 290px;
+    max-width: 100vw;
     width: 100%;
    }
 }
