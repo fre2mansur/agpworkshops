@@ -63,11 +63,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <?php endif;    ?>
     <tr>
     <th scope="row">Unit Address:</th>
-      <td>
-      <address>
-      <?php echo($unitAddress); ?>
-      </address>
-      </td>
+      <td><?php echo($unitAddress); ?></td>
     </tr>
     <tr>
     <?php if($unitWebsite):?><tr>
