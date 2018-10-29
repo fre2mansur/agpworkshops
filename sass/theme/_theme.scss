@@ -735,7 +735,13 @@ text-align: inherit;
   }
 }
 
+//Single Workshop Accordio to work in ios
 
+#accordionData{
+  h3{
+    cursor: pointer;
+  }
+}
 //styling gravity forms
 .form-group_wrapper{
   @extend .form-group;
