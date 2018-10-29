@@ -76,6 +76,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <th scope="row">Fax Number:</th>
       <td><?php echo($unitWebsite); ?></td>
     </tr>
+    <?php endif;    ?>
     </tbody>  
     </table>
     </div>
