@@ -27,7 +27,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 );
             ?>
                 <div class="flex-row ml-md-auto">
-                   Follow US &#160;&#160;&mdash;&mdash;&#160;&#160;
+                   <!-- Follow US &#160;&#160;&mdash;&mdash;&#160;&#160; -->
                    <span class="social">
                     <?php if(get_option('facebook')) { ?>
                         <a target="_blank" rel="noopener" href="<?php echo get_option('facebook'); ?>"><i class="fa fa-facebook"></i></a>
