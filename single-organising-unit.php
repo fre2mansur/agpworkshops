@@ -15,10 +15,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h3 class="brownline-before mb-4 d-none d-md-block">Facilitator</h3>
 
 <div class="row">
-    <figure class="col-md-3 col-12 offset-md-1">
-        <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
-    </figure>
-    <div class="col-md-8 col-12 my-md-0 my-2">
+    <!-- <figure class="col-md-3 col-12 offset-md-1">
+        <?php // the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
+    </figure> -->
+    <div class="col-md-8 col-12 offset-md-3">
        <article>
        <h2><?php the_title(); ?></h2>
        <p class="text-md-left text-justify">
@@ -38,9 +38,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     $contactPhone = get_field('contact_phone_number');
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
+    $unitWebsite = get_field('unit_website_url');
     ?>
-    <div class="col-12 p-0">
-    <table class="table table-borderless offset-md-4">
+    <div class="col-md-8 col-12 offset-md-3">
+    <table class="table table-borderless">
     <tbody>
     <tr>
     <th scope="row">Contact Name:</th>
@@ -67,6 +68,14 @@ $container = get_theme_mod( 'understrap_container_type' );?>
       </address>
       </td>
     </tr>
+    <tr>
+    <th scope="row">Website:</th>
+      <td><?php echo($contactEmail); ?></td>
+    </tr>
+    <?php if($unitWebsite):?><tr>
+    <th scope="row">Fax Number:</th>
+      <td><?php echo($unitWebsite); ?></td>
+    </tr>
     </tbody>  
     </table>
     </div>
@@ -78,7 +87,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
-    <div class="col-md-8 col-12 offset-md-4">
+    <div class="col-md-8 col-12 offset-md-3">
     <div class="workshop-container w-100" id="accordion">
      <?php 
          $currentOrganisingUnitPostID = get_the_ID();
