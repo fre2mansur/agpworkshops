@@ -288,7 +288,7 @@ $week_four_content = get_field('week_four_content');
 						<label class="" for="<?php echo($payment_without_accommodation); ?>">
 						<?php echo($payment_without_accommodation); ?>
 						</label>
-						<p class="offset-1">
+						<p class="offset-1 text-muted small">
 						<?php echo($payment_details_without_accommodation); ?>
 						</p>
 						<?php endwhile; endif; endwhile; endif;?>	
