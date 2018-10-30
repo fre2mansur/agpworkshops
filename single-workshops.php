@@ -192,7 +192,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 						<?php $units = get_field('unit_name');
 						if($units):?>
-				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse collapsed">Organizing Unit</h3>
+				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked collapsed">Organizing Unit</h3>
 				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
 						<div class="card-deck scrolling-wrapper-flexbox">
