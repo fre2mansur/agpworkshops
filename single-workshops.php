@@ -50,15 +50,6 @@ $week_two_content = get_field('week_two_content');
 $week_three_content = get_field('week_three_content');
 $week_four_content = get_field('week_four_content');
 
-/** Get Payment Details */
-$payment_group = 'payment_group';
-$fees_with_accommodation = get_sub_field('fees_with_accommodation');
-$payment_with_accommodation = get_sub_field('payment_with_accommodation');
-$payment_details_with_accommodation = get_field('payment_details_with_accommodation');
-
-$fees_without_accommodation = get_sub_field('fees_without_accommodation');
-$payment_without_accommodation = get_sub_field('payment_without_accommodation');
-$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> workshop-single ">
@@ -240,33 +231,67 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<h3 class=" py-3 m-0 brownline-before">Date</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
-					<select class="form-control">
-  					<option selected>Open this select menu</option>
-  					<option value="1">One</option>
-  					<option value="2">Two</option>
-  					<option value="3">Three</option>
-					</select>
+		<select class="form-control">
+			<option selected><?php echo('forwarded date'); ?></option>	
+			<?php
+			if( have_rows('date_repeater') ):
+
+				// loop through the rows of data
+			   while ( have_rows('date_repeater') ) : the_row(); 
+				
+			   $selectStartDate = get_sub_field('start_date');
+				if($selectStartDate):
+			?>
+					
+					<option><?php echo($selectStartDate); ?></option>
+					  <?php
+					  endif; 
+			endwhile;
+		endif;?>		
+		</select>
 		</div>
 		<div class="col-12 p-0">
 			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
-						<input class="" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-						<label class="" for="exampleRadios1">
-							Default radio
+			<?php
+			if(have_rows('payment_group') ):
+				while(have_rows('payment_group')) : the_row();
+
+				if(have_rows('fees_with_accommodation')):
+					while(have_rows('fees_with_accommodation')) : the_row();
+
+					$payment_with_accommodation = get_sub_field('payment_with_accommodation');
+					$payment_details_with_accommodation = get_sub_field('payment_details_with_accommodation');
+			 ?>
+						<input class="" type="radio" name="<?php echo($payment_with_accommodation); ?>" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
+						<label class="" for="<?php echo($payment_with_accommodation); ?>">
+						<?php echo($payment_with_accommodation); ?>
 						</label>
-						<p class="offset-1">
-						*Includes five nights of accommodation, five breakfasts & dinners, lunch, transportation within Auroville, materials and facilitation for all activities, and all taxes
+						<p class="offset-1 text-muted small">
+							<small><?php echo($payment_details_with_accommodation); ?></small>
 						</p>
+				<?php endwhile; endif; endwhile; endif;?>		
 					</div>
 		<div class="col-10 offset-2 p-0">
-						<input class="" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-						<label class="" for="exampleRadios2">
-							Second default radio
+		<?php
+			if(have_rows('payment_group') ):
+				while(have_rows('payment_group')) : the_row();
+
+				if(have_rows('fees_without_accommodation')):
+					while(have_rows('fees_without_accommodation')) : the_row();
+
+					$payment_without_accommodation = get_sub_field('payment_without_accommodation');
+					$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
+				?>
+						<input class="" type="radio" name="<?php echo($payment_without_accommodation); ?>" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
+						<label class="" for="<?php echo($payment_without_accommodation); ?>">
+						<?php echo($payment_without_accommodation); ?>
 						</label>
 						<p class="offset-1">
-						*Includes five nights of accommodation, five breakfasts & dinners, lunch, transportation within Auroville, materials and facilitation for all activities, and all taxes
+						<?php echo($payment_details_without_accommodation); ?>
 						</p>
+						<?php endwhile; endif; endwhile; endif;?>	
 		</div>
 		
 		<div class="col-12 p-0 d-flex">
