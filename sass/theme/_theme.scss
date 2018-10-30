@@ -616,7 +616,7 @@ text-align: inherit;
 }
 .workshop-single p {
 	font-size: 16px;
-	color: #707070;
+	color: #404040;
 }
 
 .workshop-single .facilitator-details {
@@ -639,6 +639,9 @@ text-align: inherit;
 }
 
 .workshop-description{
+  h1,h2,h3,h4,h5,h6{
+    color: #707070;
+  }
   h1{
     font-size: calc(.60 * 2.5rem);
   }

@@ -95,7 +95,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 		<div class="col-lg-8">
 			<div id="accordionData">
 				<!-- Details -->
-				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0">Details</h3>
+				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse ">Details</h3>
 				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
 					<div class="offset-md-1">
 						<?php echo $brief_intro; ?>
@@ -106,7 +106,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				</div>
 			
 				<!-- Shedule	 -->
-				<?php $title = '<h3 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class=" py-3 m-0 collapsed">Schedule</h3>';?>
+				<?php $title = '<h3 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class=" py-3 m-0 icon-after-collapse collapsed">Schedule</h3>';?>
 				<?php if($get_the_schedule_type == "daily"):
 					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
 					foreach($days as $day){
@@ -152,7 +152,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 							<?php $facilitators = get_field('facilitators');
 							if ($facilitators):?>
-			<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class=" py-3 m-0 collapsed">Facilitators</h3>
+			<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class=" py-3 m-0 icon-after-collapse collapsed">Facilitators</h3>
 				<div id="single-workshop-facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
 					<div class="offset-md-1">
 						<div class="card-deck scrolling-wrapper-flexbox">
@@ -192,7 +192,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 						<?php $units = get_field('unit_name');
 						if($units):?>
-				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 collapsed">Organizing Unit</h3>
+				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse collapsed">Organizing Unit</h3>
 				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
 						<div class="card-deck scrolling-wrapper-flexbox">
