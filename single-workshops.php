@@ -95,7 +95,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 		<div class="col-lg-8">
 			<div id="accordionData">
 				<!-- Details -->
-				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse ">Details</h3>
+				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked">Details</h3>
 				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
 					<div class="offset-md-1">
 						<?php echo $brief_intro; ?>
@@ -192,7 +192,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 						<?php $units = get_field('unit_name');
 						if($units):?>
-				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked collapsed">Organizing Unit</h3>
+				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse collapsed">Organizing Unit</h3>
 				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
 				<div class="offset-md-1">
 						<div class="card-deck scrolling-wrapper-flexbox">
@@ -201,9 +201,9 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							<?php $noOfUnits = sizeof($units);
 							foreach($units as $unit){?>
 								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>" data-toggle="modal-unit" data-target="#unitModal">
-									<!-- <figure class="unit-avatar p-2">
-										<?php //echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
-									</figure>	 -->
+									<figure class="unit-avatar p-2">
+										<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
+									</figure>	
 									<div class="card-body unit-details">
 											<h5><?php echo $unit->post_title; ?></h5>
 											<small class="text-muted">
