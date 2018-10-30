@@ -167,6 +167,20 @@ a{
   transition:all 0.2s ease-in-out;
 }
 
+.icon-after-collapse{
+  position: relative;
+  &:after{
+    font-family:'FontAwesome';
+    font-size: smaller;
+    left: 100%;
+    top: 35%;
+    position: absolute;
+    content:"\f107";
+    vertical-align:middle; 
+    transition:all 0.2s ease-in-out;
+  }
+}
+
 .container strong{color:rgba(0,0,0,0.4);}
 
 @media only screen and (max-width:576px) {
