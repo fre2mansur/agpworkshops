@@ -92,7 +92,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 	<!-- All details with sidebar -->
 	<div class="row">
-		<div class="col-lg-8">
+		<div class="col-md-8">
 			<div id="accordionData">
 				<!-- Details -->
 				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked">Details</h3>
@@ -235,9 +235,26 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 						
 
 		</div> <!--col-md-8-->
-		<!-- <div class="col-lg-3 offset-1">
-			<?php dynamic_sidebar( 'right-sidebar' ); ?>
-		</div> -->
+		<div class="col-md-3">
+		<div class="col-12 p-0">	
+					<h3 class=" py-3 m-0 brownline-before">Date</h3>
+		</div>
+		<div class="col-10 offset-2 p-0">
+					<select class="custom-select">
+  					<option selected>Open this select menu</option>
+  					<option value="1">One</option>
+  					<option value="2">Two</option>
+  					<option value="3">Three</option>
+					</select>
+		</div>
+		<div class="col-12 p-0">
+			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
+		</div>
+		<div class="col-12 p-0">
+			<button class="btn btn-primary mx-auto">Register Now</button>
+		</div>
+		
+		</div> <!--- col-md-3 -->
 	</div><!--row-->
 </div>
 
@@ -262,8 +279,8 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
         </div>
         
       </div>
-    </div>
-  </div>
+	</div>
+</div>
 
 <?php endwhile; // end of the loop. ?>
 
