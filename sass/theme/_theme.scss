@@ -172,7 +172,7 @@ a{
   &:after{
     font-family:'FontAwesome';
     font-size: smaller;
-    left: 100%;
+    left: calc(100% - 1rem);
     top: 35%;
     position: absolute;
     content:"\f107";
@@ -185,7 +185,7 @@ a{
   &:after{
     font-family:'FontAwesome';
     font-size: smaller;
-    left: 100%;
+    left: calc(100% - 1rem);
     top: 35%;
     position: absolute;
     content:"\f107";
