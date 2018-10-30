@@ -240,7 +240,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<h3 class=" py-3 m-0 brownline-before">Date</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
-					<select class="custom-select">
+					<select class="form-control">
   					<option selected>Open this select menu</option>
   					<option value="1">One</option>
   					<option value="2">Two</option>
@@ -250,7 +250,26 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 		<div class="col-12 p-0">
 			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
 		</div>
-		<div class="col-12 p-0">
+		<div class="col-10 offset-2 p-0">
+						<input class="" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+						<label class="" for="exampleRadios1">
+							Default radio
+						</label>
+						<p class="offset-1">
+						*Includes five nights of accommodation, five breakfasts & dinners, lunch, transportation within Auroville, materials and facilitation for all activities, and all taxes
+						</p>
+					</div>
+		<div class="col-10 offset-2 p-0">
+						<input class="" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+						<label class="" for="exampleRadios2">
+							Second default radio
+						</label>
+						<p class="offset-1">
+						*Includes five nights of accommodation, five breakfasts & dinners, lunch, transportation within Auroville, materials and facilitation for all activities, and all taxes
+						</p>
+		</div>
+		
+		<div class="col-12 p-0 d-flex">
 			<button class="btn btn-primary mx-auto">Register Now</button>
 		</div>
 		
