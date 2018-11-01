@@ -226,9 +226,9 @@ $week_four_content = get_field('week_four_content');
 						
 
 		</div> <!--col-md-8-->
-		<div class="col-md-3">
+		<div class="col-md-3 offset-md-1">
 		<div class="col-12 p-0">	
-					<h3 class=" py-3 m-0 brownline-before">Date</h3>
+					<h3 class=" py-3 m-0">Date</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
 		<select class="form-control">
@@ -251,9 +251,10 @@ $week_four_content = get_field('week_four_content');
 		</select>
 		</div>
 		<div class="col-12 p-0">
-			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
+			<h3 class=" py-3 m-0">Fees</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
+			
 			<?php
 			if(have_rows('payment_group') ):
 				while(have_rows('payment_group')) : the_row();
@@ -264,15 +265,18 @@ $week_four_content = get_field('week_four_content');
 					$payment_with_accommodation = get_sub_field('payment_with_accommodation');
 					$payment_details_with_accommodation = get_sub_field('payment_details_with_accommodation');
 			 ?>
-						<input class="" type="radio" name="<?php echo($payment_with_accommodation); ?>" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
-						<label class="" for="<?php echo($payment_with_accommodation); ?>">
-						<?php echo($payment_with_accommodation); ?>
-						</label>
-						<p class="offset-1 text-muted small">
-							<small><?php echo($payment_details_with_accommodation); ?></small>
-						</p>
-				<?php endwhile; endif; endwhile; endif;?>		
-					</div>
+			 <?php endwhile; endif; endwhile; endif;?>		
+
+			
+			
+			<label>
+				<input class="" type="radio" name="feesSelector" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
+				<?php echo($payment_with_accommodation); ?>
+			</label>
+			<p class="offset-1 text-muted small">
+			<small><?php echo($payment_details_with_accommodation); ?></small>
+			</p>
+			</div>
 		<div class="col-10 offset-2 p-0">
 		<?php
 			if(have_rows('payment_group') ):
@@ -283,15 +287,15 @@ $week_four_content = get_field('week_four_content');
 
 					$payment_without_accommodation = get_sub_field('payment_without_accommodation');
 					$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
-				?>
-						<input class="" type="radio" name="<?php echo($payment_without_accommodation); ?>" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
-						<label class="" for="<?php echo($payment_without_accommodation); ?>">
+					?>
+					<?php endwhile; endif; endwhile; endif;?>	
+						<label>
+						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
 						<?php echo($payment_without_accommodation); ?>
 						</label>
 						<p class="offset-1 text-muted small">
 						<small><?php echo($payment_details_without_accommodation); ?></small>
 						</p>
-						<?php endwhile; endif; endwhile; endif;?>	
 		</div>
 		
 		<div class="col-12 p-0 d-flex">
