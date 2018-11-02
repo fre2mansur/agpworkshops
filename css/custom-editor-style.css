@@ -10798,6 +10798,9 @@ body {
   padding: 0;
   height: 100%; }
 
+.push-footer {
+  min-height: 99vh; }
+
 /*
   Admin Specific styles
 */
@@ -11374,20 +11377,17 @@ nav div ul li a {
   content: "_";
   position: absolute;
   left: calc(0px - 0px);
-  top: -48px;
   vertical-align: middle;
   color: #d7be69;
-  font-size: 60px;
+  background: #d7be69;
   font-family: fontawesome; }
 
 .collapse-before.collapsed::before {
   content: "+";
   position: absolute;
   left: calc(0px - 0px);
-  top: -16px;
   vertical-align: middle;
   color: #d7be69;
-  font-size: 60px;
   font-family: fontawesome; }
 
 .catColor-building-architecture {
