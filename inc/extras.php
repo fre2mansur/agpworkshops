@@ -563,3 +563,57 @@ function add_search_box( $items, $args ) {
 	
    return $items;
 }
+
+
+//Loop workshop cards. used in home page, facilitator, unit pages.
+//$itemid = getting key value of foreach, its important.
+function card_loop($itemId) {
+	$postId = $itemId->post_id;
+	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
+	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
+	$randomGenerator = mt_rand(123506, 9999999);
+	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
+
+	<div class="workshop-card" data-cat="">
+		<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
+		<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
+		</a>
+		<div class="card-body pb-0">
+			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
+				<div class="d-flex justify-content-between header">
+					<h5 class="card-title"><?php the_title()?></h5>
+					<a class="collapsed" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" name="header" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
+						<span class="arrow"></span>
+					</a>
+				</div> 
+			</a>
+			<?php $categories = get_the_terms( $postId, 'workshop_category'); 
+			foreach ( $categories as $category){
+					$categoryName = $category->slug;
+				}?>
+			<h6 class="card-subtitle mb-2 pb-2 text-muted"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
+			<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
+				<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
+				<div class="d-flex mb-3 justify-content-between">
+					<a class="btn btn-outline-success d-inline-flex" href="<?php echo add_query_arg('start-date', $workshopStartDate, the_permalink());//the_permalink();?>">Know more</a>
+					<a class="btn btn-outline-info d-inline-flex" href="#" >Register now</a>
+				</div>     
+			</div>
+		</div>
+		<hr class="p-0 m-0 ">
+		<div class="footer d-flex justify-content-between m-0 px-4">
+			<div class="py-3">
+				<span class="mr-auto d-block d-lg-inline-block ">Starts - </span>
+				<strong class= "d-block d-lg-inline-block ">
+					<?php echo $workshopStartDate;?></strong>
+			</div>
+			<span class="line border-card mx-auto"></span>
+			<div class="py-3 pl-2">
+				<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
+				<strong class= "d-block d-lg-inline-block ">
+					<?php echo $workshopEndDate;?></strong>
+			</div>
+		</div>
+	</div> 
+
+<?php }
