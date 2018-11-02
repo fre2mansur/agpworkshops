@@ -50,15 +50,6 @@ $week_two_content = get_field('week_two_content');
 $week_three_content = get_field('week_three_content');
 $week_four_content = get_field('week_four_content');
 
-/** Get Payment Details */
-$payment_group = 'payment_group';
-$fees_with_accommodation = get_sub_field('fees_with_accommodation');
-$payment_with_accommodation = get_sub_field('payment_with_accommodation');
-$payment_details_with_accommodation = get_field('payment_details_with_accommodation');
-
-$fees_without_accommodation = get_sub_field('fees_without_accommodation');
-$payment_without_accommodation = get_sub_field('payment_without_accommodation');
-$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
 ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> workshop-single ">
@@ -66,8 +57,8 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 	<!-- What where we -->
 	<div class="who-where-what">
 		<h2 class="brownline-before mb-5"><?php the_title(); ?></h2>
-		<div class="offset-1">
-			<div class="row">
+		
+			<div class="row p-0 col-11 mx-auto d-flex">
 				<div class="col-lg-4">
 					<h3>What</h3>
 					<p><?php echo $what; ?></p>
@@ -81,7 +72,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 					<p><?php echo $why; ?></p>
 				</div>
 			</div>
-		</div>
+		
 	</div>
 
 
@@ -92,10 +83,10 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 	<!-- All details with sidebar -->
 	<div class="row">
-		<div class="col-lg-8">
+		<div class="col-md-8">
 			<div id="accordionData">
 				<!-- Details -->
-				<h2 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class="collapse-before pb-5 m-0">Details</h2>
+				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked">Details</h3>
 				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
 					<div class="offset-md-1">
 						<?php echo $brief_intro; ?>
@@ -106,8 +97,8 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 				</div>
 			
 				<!-- Shedule	 -->
-				<?php $title = '<h2 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class="collapse-before pb-5 m-0 collapsed">Schedule</h2>';?>
-				<?php if($get_the_schedule_type == "daily"){
+				<?php $title = '<h3 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class=" py-3 m-0 icon-after-collapse collapsed">Schedule</h3>';?>
+				<?php if($get_the_schedule_type == "daily"):
 					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
 					foreach($days as $day){
 						if($day == $number_of_days && $day != 'one_day') {
@@ -126,7 +117,7 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							
 						}
 					} 
-				} else {
+				else:
 					$all_weeks = array('two_week','three_week','four_week');
 					foreach($all_weeks as $week){
 						if($week == $number_of_weeks) {
@@ -144,20 +135,24 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 							echo '</div>';
 						}
 					}
-				} ?>
+				endif;?>
 				
 				
 				<!-- Facilitators -->
 				
-				<h2 data-toggle="collapse" data-target="#facilitators" aria-expanded="true" aria-controls="facilitators" class="collapse-before pb-5 m-0 collapsed">Facilitators</h2>
-				<div id="facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
-					<div class="offset-md-1">
-						<div class="card-columns card-img-h-200">
+
 							<?php $facilitators = get_field('facilitators');
-							if ($facilitators):
+							if ($facilitators):?>
+			<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class=" py-3 m-0 icon-after-collapse collapsed">Facilitators</h3>
+				<div id="single-workshop-facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
+					<div class="offset-md-1">
+						<div class="card-deck scrolling-wrapper-flexbox">
+								<?php $noOfFacilitators = sizeof($facilitators);
 							foreach($facilitators as $fac){?>
-								<div class="card" data-toggle="modal" data-target="#myModal">
-									<figure class="facilitaor-avatar"><?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?></figure>
+								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#myModal">
+									<figure class="facilitaor-avatar">
+										<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+									</figure>
 									<div class="facilitator-details">
 									<h5><?php echo $fac->post_title; ?></h5>
 									<p class="m-0"><small class="text-muted">
@@ -185,21 +180,29 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 
 				<!-- Organizing Unit -->
 				
-				<h2 data-toggle="collapse" data-target="#unit" aria-expanded="true" aria-controls="unit" class="collapse-before pb-5 m-0 collapsed">Organizing Unit</h2>
-				<div id="unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
-					<div class="offset-md-1">
+
 						<?php $units = get_field('unit_name');
-						if($units):
+						if($units):?>
+				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse collapsed">Organizing Unit</h3>
+				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
+				<div class="offset-md-1">
+						<div class="card-deck scrolling-wrapper-flexbox">
+
+
+							<?php $noOfUnits = sizeof($units);
 							foreach($units as $unit){?>
-									<div class="col-md-4 col-12">
-									<?php echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
+								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>" data-toggle="modal-unit" data-target="#unitModal">
+									<!-- <figure class="unit-avatar p-2">
+										<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
+									</figure>	 -->
+									<div class="card-body unit-details">
+											<h5><?php echo $unit->post_title; ?></h5>
+											<small class="text-muted">
+											<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+											</small>
 									</div>
-									<div class="col-md-8 col-12">
-										<h5 class="mt-0"><?php echo $unit->post_title; ?></h5>
-										<small class="text-muted">
-										<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
-										</small>
-									</div>
+								</div>
+								
 							<?php } 
 							else: 
 						?>
@@ -215,16 +218,91 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
 										</small></p>
 									</div>
 							</div> -->
-						<?php endif; ?>
+							<?php endif; ?>
+						</div>
 					</div>
 				</div>
 			</div><!--accordin-->
 						
 
 		</div> <!--col-md-8-->
-		<div class="col-lg-3 offset-1">
-			<?php dynamic_sidebar( 'right-sidebar' ); ?>
+		<div class="col-md-3 offset-md-1">
+		<div class="col-12 p-0">	
+					<h3 class=" py-3 m-0">Date</h3>
 		</div>
+		<div class="col-10 offset-2 p-0">
+		<select class="form-control">
+			<option selected><?php echo('forwarded date'); ?></option>	
+			<?php
+			if( have_rows('date_repeater') ):
+
+				// loop through the rows of data
+			   while ( have_rows('date_repeater') ) : the_row(); 
+				
+			   $selectStartDate = get_sub_field('start_date');
+				if($selectStartDate):
+			?>
+					
+					<option><?php echo($selectStartDate); ?></option>
+					  <?php
+					  endif; 
+			endwhile;
+		endif;?>		
+		</select>
+		</div>
+		<div class="col-12 p-0">
+			<h3 class=" py-3 m-0">Fees</h3>
+		</div>
+		<div class="col-10 offset-2 p-0">
+			
+			<?php
+			if(have_rows('payment_group') ):
+				while(have_rows('payment_group')) : the_row();
+
+				if(have_rows('fees_with_accommodation')):
+					while(have_rows('fees_with_accommodation')) : the_row();
+
+					$payment_with_accommodation = get_sub_field('payment_with_accommodation');
+					$payment_details_with_accommodation = get_sub_field('payment_details_with_accommodation');
+			 ?>
+			 <?php endwhile; endif; endwhile; endif;?>		
+
+			
+			
+			<label>
+				<input class="" type="radio" name="feesSelector" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
+				<?php echo($payment_with_accommodation); ?>
+			</label>
+			<p class="offset-1 text-muted small">
+			<small><?php echo($payment_details_with_accommodation); ?></small>
+			</p>
+			</div>
+		<div class="col-10 offset-2 p-0">
+		<?php
+			if(have_rows('payment_group') ):
+				while(have_rows('payment_group')) : the_row();
+
+				if(have_rows('fees_without_accommodation')):
+					while(have_rows('fees_without_accommodation')) : the_row();
+
+					$payment_without_accommodation = get_sub_field('payment_without_accommodation');
+					$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
+					?>
+					<?php endwhile; endif; endwhile; endif;?>	
+						<label>
+						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
+						<?php echo($payment_without_accommodation); ?>
+						</label>
+						<p class="offset-1 text-muted small">
+						<small><?php echo($payment_details_without_accommodation); ?></small>
+						</p>
+		</div>
+		
+		<div class="col-12 p-0 d-flex">
+			<button class="btn btn-primary mx-auto">Register Now</button>
+		</div>
+		
+		</div> <!--- col-md-3 -->
 	</div><!--row-->
 </div>
 
@@ -249,8 +327,10 @@ $payment_details_without_accommodation = get_sub_field('payment_details_without_
         </div>
         
       </div>
-    </div>
-  </div>
+	</div>
+</div>
 
 <?php endwhile; // end of the loop. ?>
+
+<?php wp_reset_postdata(); // reset the query ?> 
 <?php get_footer('agp'); ?>

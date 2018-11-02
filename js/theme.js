@@ -4101,3 +4101,11 @@ if ($container.length > 0){
 $('#search-trigger').on("click",function(){
   $('html, body').animate({scrollTop:0}, 'slow');
 });
+
+// $('.icon-after-collapse').each(function(){
+//   icon = $(this);
+//   });
+
+  $('.icon-after-collapse').on("click",function(){
+    $(this).toggleClass('icon-after-collapse-clicked');
+  })
