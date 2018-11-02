@@ -599,17 +599,17 @@ function card_loop($itemId) {
 					 echo esc_url(add_query_arg(
 						array(
 							'startDate' => $workshopStartDate,
-							'workshopID' => $postId,
+							'workshopId' => $postId,
 						),
 						the_permalink())
-						 );?>>">
+						 );?>">
 						 Know more
 						 </a>
 					<a class="btn btn-outline-info d-inline-flex" href="<?php
 					 echo esc_url(add_query_arg(
 						array(
 							'startDate' => $workshopStartDate,
-							'workshopID' => $postId,
+							'workshopId' => $postId,
 						),
 						the_permalink())
 						 );?>">
