@@ -231,24 +231,35 @@ $week_four_content = get_field('week_four_content');
 					<h3 class=" py-3 m-0">Date</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
-		<select class="form-control">
-			<option selected><?php echo('forwarded date'); ?></option>	
 			<?php
-			if( have_rows('date_repeater') ):
+			$today=date("d/m/y");
+			if(have_rows('date_repeater') ):
 
-				// loop through the rows of data
-			   while ( have_rows('date_repeater') ) : the_row(); 
+			?>
+				
+			<select class="form-control">	
+			
+			<?php	// loop through the rows of data
+			   while (have_rows('date_repeater') ) : the_row(); 
 				
 			   $selectStartDate = get_sub_field('start_date');
-				if($selectStartDate):
+			   $selectEndDate = get_sub_field('end_date');
+					if($selectStartDate && $selectEndDate>=$today ):
 			?>
-					
 					<option><?php echo($selectStartDate); ?></option>
-					  <?php
-					  endif; 
-			endwhile;
-		endif;?>		
-		</select>
+				<?php
+
+					endif; 
+				endwhile; ?>
+				</select>
+
+			<?php
+			else:?>
+			<select class="form-control" disabled>						
+			<option value="unavailable">workshop currently unavailable</option>
+			</select>
+
+		<?php endif;?>		
 		</div>
 		<div class="col-12 p-0">
 			<h3 class=" py-3 m-0">Fees</h3>
