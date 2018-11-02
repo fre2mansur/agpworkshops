@@ -19,7 +19,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		homepageSliderGalleryImages_querry();
 		if($homepageSliderGalleryImages){ ?>
 		<div class="row">
-			<div class="negative-mt-4 margin-bottom-60 d-none px-3 d-md-block w-100">
+			<div class="mb-5 d-none px-3 d-md-block w-100">
 				<div class="no-radius">
 					<div class="card-group text-center">
 						<?php foreach($homepageSliderGalleryImages as $image) { ?>
@@ -41,7 +41,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="workshops">
 			<div class="h2 brownline-before">Latest Workshops</div>
 			
-			<ul id="filters" class="list-unstyled nav ">
+			<ul id="filters" class="list-unstyled nav mb-3 ">
 				<?php  $terms = get_terms('workshop_category',array("order"=>"ASC"));
 				$data_filter = '';
 				$dt = '';
@@ -50,14 +50,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 						$dt=rtrim($data_filter,", ");
 				}
 				$count = count($terms);
-					echo '<li class="nav-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
+					echo '<li class="nav-item menu-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
 				if ( $count > 0 ){
 
 					foreach ( $terms as $term ) {
 
 						$termname = strtolower($term->term_id);
 						$termname = str_replace(' ', '-', $termname);
-						echo '<li class="nav-item"><span class="filter nav-link" data-filter=".'.$termname.'">'.$term->name.'</span</li>';
+						echo '<li class="nav-item menu-item"><span class="filter nav-link" data-filter=".'.$termname.'">'.$term->name.'</span</li>';
 					}
 				} ?>
 			</ul>

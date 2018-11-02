@@ -12,16 +12,15 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-4">Organising Unit</h2>
+<h3 class="brownline-before mb-4 d-none d-md-block">Facilitator</h3>
+
 <div class="row">
-    <figure class="col-md-3 col-12">
-        <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
-    </figure>
-    <div class="col-md-9 col-12 my-md-0 my-2">
+    <!-- <figure class="col-md-3 col-12 offset-md-1">
+        <?php // the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
+    </figure> -->
+    <div class="col-md-8 col-12 offset-md-3">
        <article>
-           
-      
-        <h2><?php the_title(); ?></h2>
+       <h2><?php the_title(); ?></h2>
        <p class="text-md-left text-justify">
        <?php echo get_the_content(); ?>
        </p>
@@ -36,27 +35,56 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     <?php
     $contactName = get_field('contact_person_name');
     $contactEmail = get_field('contact_email');
-    $contactPhone = get_field('contact_email');
+    $contactPhone = get_field('contact_phone_number');
     $contactFax = get_field('contact_fax_number');
     $unitAddress = get_field('contact_address');
+    $unitWebsite = get_field('unit_website_url');
     ?>
-    <div class="offset-md-3">   
-    
-    <address> 
-    <label for="unit-address">Address:</label>
-    <?php echo $unitAddress ?>
-    </address>
+    <div class="col-md-8 col-12 offset-md-3">
+    <table class="table table-borderless">
+    <tbody>
+    <tr>
+    <th scope="row">Contact Name:</th>
+      <td><?php echo($contactName); ?></td>
+    </tr>
+    <tr>
+    <th scope="row">Phone Number:</th>
+      <td><?php echo($contactPhone); ?></td>
+    </tr>
+    <tr>
+    <th scope="row">Email Address:</th>
+      <td><?php echo($contactEmail); ?></td>
+    </tr>
+    <?php if($contactFax):?>
+    <tr>
+    <th scope="row">Fax Number:</th>
+      <td><?php echo($contactName); ?></td>
+    </tr>
+    <?php endif;    ?>
+    <tr>
+    <th scope="row">Unit Address:</th>
+      <td><?php echo($unitAddress); ?></td>
+    </tr>
+    <?php if($unitWebsite):?>
+    <tr>
+    <th scope="row">Website:</th>
+      <td><?php echo('<a href='.$unitWebsite.'>'.$unitWebsite.'</a>'); ?></td>
+    </tr>
+    <?php endif;    ?>
+    </tbody>  
+    </table>
     </div>
-
 
 </div>
 
 
 
+
 <h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
-    <div class="workshop-container" id="accordion">
-    <?php 
+    <div class="col-md-8 col-12 offset-md-3">
+    <div class="workshop-container w-100" id="accordion">
+     <?php 
          $currentOrganisingUnitPostID = get_the_ID();
     
         $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
@@ -66,8 +94,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             $organisingUnitPostObject = get_field('unit_name', $postId);
             if($organisingUnitPostObject):
                 foreach($organisingUnitPostObject as $organiser){
-                    $organiserId = $organiser->post_id;
-                    if($organiserId = $currentOrganisingUnitPostID):
+                    
+                    $organiserId = $organiser->ID;                    
+                    if($organiserId == $currentOrganisingUnitPostID):
+                        
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
@@ -120,13 +150,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                         <strong class= "d-block d-lg-inline-block "><?php
                         
                             echo date('d-m-Y', strtotime($workshopEndDate));
-                        
 
-                        // $get_the_schedule_type = get_field('select_the_schedule_type');
-                        // $number_of_weeks = get_field('number_of_weeks');
-                        // if($get_the_schedule_type == "daily"){				
-                                                                
-                        // }
                         
                         
                         ?></strong>
@@ -134,17 +158,15 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                 </div>
             </div> 
         <?php 
-                    else:
-                    echo "The organiser Currently is not offering any workshops";
-                    endif;  
+                    endif;    
                 }
-                endif;
+            endif;
         }
-    ?>
+        ?>
 
 
     </div>
-</div>
+    </div>
 <?php else:
     echo "No Workshops Found";
 endif;

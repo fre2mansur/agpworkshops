@@ -12,12 +12,12 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h2 class="brownline-before mb-4">Facilitator</h2>
+<h3 class="brownline-before mb-4 d-none d-md-block">Facilitator</h3>
 <div class="row">
-    <figure class="col-md-3 col-12">
+    <figure class="col-md-3 col-12 offset-md-1">
         <?php the_post_thumbnail( 'medium', ['class' => 'img-responsive, w-100']);  ?>
     </figure>
-    <div class="col-md-9 col-12 my-md-0 my-2">
+    <div class="col-md-8 col-12 my-md-0 my-2">
        <article>
            
       
@@ -43,9 +43,10 @@ $container = get_theme_mod( 'understrap_container_type' );?>
     </div>
 </div>
 
-<h2 class="h2 brownline-before my-4">Related Workshops</h2>
+<h3 class="brownline-before my-4">Related Workshops</h3>
 <div class="row">
-    <div class="workshop-container" id="accordion">
+    <div class="col-md-8 col-12 offset-md-4">
+    <div class="workshop-container w-100" id="accordion">
     <?php 
          $currentFacilitatorId = get_the_ID();
     
@@ -56,8 +57,8 @@ $container = get_theme_mod( 'understrap_container_type' );?>
             $facilitatorPostObject = get_field('facilitators', $postId);
             if($facilitatorPostObject):
                 foreach($facilitatorPostObject as $facilitator){
-                    $facilitatorId = $facilitator->post_id;
-                    if($facilitatorId = $currentFacilitatorId):
+                    $facilitatorId = $facilitator->ID;
+                    if($facilitatorId == $currentFacilitatorId):
                     $workshopStartDate = $post->start_date;
                     $workshopEndDate = $post->end_date;
             
@@ -124,8 +125,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                 </div>
             </div> 
         <?php 
-                    else:
-                    echo "The Facilitator Currently is not offering any workshops";
+
                     endif;  
                 }
                 endif;
