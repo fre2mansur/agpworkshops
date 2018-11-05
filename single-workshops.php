@@ -234,7 +234,7 @@ $week_four_content = get_field('week_four_content');
 		<div class="col-10 offset-2 p-0">
 		<select class="form-control">	
 			<?php
-			$today=date("d/m/y");
+			$today=date("d/m/Y");
 			if(have_rows('date_repeater') ):
 				while (have_rows('date_repeater') ) : the_row(); 
 				?>
@@ -249,7 +249,7 @@ $week_four_content = get_field('week_four_content');
 			  if(!empty($_GET['startDate'])){
 				  
 				  $getDateFromUrl = date("d/m/Y",strtotime($_GET['startDate']));
-			}
+			  }	
 			  if($selectStartDate && $selectEndDate>=$today ):
 						
 			?>
