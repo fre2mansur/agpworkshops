@@ -267,6 +267,7 @@ $week_four_content = get_field('week_four_content');
 				</select>
 				<p class="offset-1 text-muted small">
 			<small>*Click to see other available dates</small>
+			</p>
 		<?php endif;?>		
 		</div>
 		<div class="col-12 p-0">
