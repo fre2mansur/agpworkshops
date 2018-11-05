@@ -595,8 +595,26 @@ function card_loop($itemId) {
 			<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 				<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
 				<div class="d-flex mb-3 justify-content-between">
-					<a class="btn btn-outline-success d-inline-flex" href="<?php echo add_query_arg('start-date', $workshopStartDate, the_permalink());//the_permalink();?>">Know more</a>
-					<a class="btn btn-outline-info d-inline-flex" href="#" >Register now</a>
+					<a class="btn btn-outline-success d-inline-flex" href="<?php
+					 echo esc_url(add_query_arg(
+						array(
+							'startDate' => $workshopStartDate,
+							'workshopId' => $postId,
+						),
+						the_permalink())
+						 );?>">
+						 Know more
+						 </a>
+					<a class="btn btn-outline-info d-inline-flex" href="<?php
+					 echo esc_url(add_query_arg(
+						array(
+							'startDate' => $workshopStartDate,
+							'workshopId' => $postId,
+						),
+						the_permalink())
+						 );?>">
+						 Register now
+						 </a>
 				</div>     
 			</div>
 		</div>
