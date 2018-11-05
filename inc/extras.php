@@ -599,7 +599,7 @@ function card_loop($itemId) {
 					 echo esc_url(add_query_arg(
 						array(
 							'startDate' => $workshopStartDate,
-							'workshopId' => $postId,
+							
 						),
 						the_permalink())
 						 );?>">
@@ -611,7 +611,8 @@ function card_loop($itemId) {
 							'startDate' => $workshopStartDate,
 							'workshopId' => $postId,
 						),
-						the_permalink())
+						the_permalink()
+						)
 						 );?>">
 						 Register now
 						 </a>

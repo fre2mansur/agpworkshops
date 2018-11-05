@@ -237,22 +237,32 @@ $week_four_content = get_field('week_four_content');
 			$today=date("d/m/y");
 			if(have_rows('date_repeater') ):
 				while (have_rows('date_repeater') ) : the_row(); 
-			?>
+				?>
 				
 			
 			<?php	// loop through the rows of data
 			  
-				
-			   $selectStartDate = get_sub_field('start_date');
-			   $selectEndDate = get_sub_field('end_date');
-					if($selectStartDate && $selectEndDate>=$today ):
+			  
+			  $selectStartDate = get_sub_field('start_date');
+			  $selectEndDate = get_sub_field('end_date');
+			  $getDateFromUrl = '';
+			  if(!empty($_GET['startDate'])){
+				  
+				  $getDateFromUrl = date("d/m/Y",strtotime($_GET['startDate']));
+			}
+			  if($selectStartDate && $selectEndDate>=$today ):
 						
 			?>
-					
-					<option><?php echo($selectStartDate); ?></option>
+					<option name=<?php echo $selectStartDate;?>
+					<?php if($selectStartDate === $getDateFromUrl){
+						echo 'selected'; 
+						}?>>
+					<?php echo($selectStartDate); ?>
+					</option>
+				
 				<?php
-
-					endif; 
+				else: echo '<option name="Workshop Unavailable" disabled selected>Currently not available</option>'; break;
+				endif; 
 				endwhile; ?>
 				</select>
 
