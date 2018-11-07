@@ -149,7 +149,7 @@ $week_four_content = get_field('week_four_content');
 						<div class="card-deck scrolling-wrapper-flexbox">
 								<?php $noOfFacilitators = sizeof($facilitators);
 							foreach($facilitators as $fac){?>
-								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#myModal">
+								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
 									<figure class="facilitaor-avatar">
 										<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
 									</figure>
@@ -169,6 +169,37 @@ $week_four_content = get_field('week_four_content');
 									</small></p>
 									</div>
 								</div>
+								<div class="modal fade" id="facilitator_<?php echo $fac->ID?>">
+										<div class="modal-dialog">
+											<div class="modal-content">
+										
+											<!-- Modal Header -->
+											<div class="modal-header">
+											<h4 class="modal-title my-auto"><?php echo $fac->post_title; ?></h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											
+											<!-- Modal body -->
+											<div class="modal-body">
+											
+												<figure class="facilitaor-avatar">
+													<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+												</figure>
+   												 <article>
+													<p class="text-md-left text-justify">
+      												 <?php echo $fac->post_content;?>
+      												</p>
+												</article>
+											</div>
+											
+											<!-- Modal footer -->
+											<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+											</div>
+											
+										</div>
+										</div>
+									</div>
 							<?php } 
 							else:
 							?>
@@ -321,36 +352,40 @@ $week_four_content = get_field('week_four_content');
 		</div>
 		
 		<div class="col-12 p-0 d-flex">
-			<button class="btn btn-primary mx-auto">Register Now</button>
+			<button class="btn btn-primary mx-auto" data-toggle="modal" data-target="#modal_<?php the_ID() ?>" >
+						 Register now
+			</button>		
+								<div class="modal fade" id="modal_<?php the_ID() ?>">
+									<div class="modal-dialog">
+										<div class="modal-content">
+										
+											<!-- Modal Header -->
+											<div class="modal-header">
+											<h5 class="modal-title"><?php the_title()?></h5>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											
+											<!-- Modal body -->
+											<div class="modal-body">
+											Modal body..
+											</div>
+											
+											<!-- Modal footer -->
+											<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+				
 		</div>
 		
 		</div> <!--- col-md-3 -->
 	</div><!--row-->
 </div>
 
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-	</div>
-</div>
+
 
 <?php endwhile; // end of the loop. ?>
 

@@ -129,4 +129,4 @@ $('#search-trigger').on("click",function(){
 
   $('.icon-after-collapse').on("click",function(){
     $(this).toggleClass('icon-after-collapse-clicked');
-  })
+  });
