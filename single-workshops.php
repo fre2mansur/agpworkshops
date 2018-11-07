@@ -257,7 +257,9 @@ $week_four_content = get_field('week_four_content');
 					<?php if($selectStartDate === $getDateFromUrl){
 						echo 'selected'; 
 						}?>>
-					<?php echo($selectStartDate); ?>
+					<?php
+						$convertedStartDateForSelection = DateTime::createFromFormat('d/m/Y', $selectStartDate)->format('j F, Y');
+					echo $convertedStartDateForSelection; ?>
 					</option>
 				
 				<?php
