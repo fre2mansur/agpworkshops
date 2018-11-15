@@ -130,3 +130,42 @@ $('#search-trigger').on("click",function(){
   $('.icon-after-collapse').on("click",function(){
     $(this).toggleClass('icon-after-collapse-clicked');
   });
+
+// For Gravity Form
+function _(id){ return document.getElementById(id); }
+
+$("#registrationFormBtn").on('click',function(e){
+  e.preventDefault();
+  var usrselectedDate = $('#usrSelectDate option:selected').val();
+  console.log(usrselectedDate);
+  var usrselectedFees = $("input[name='feesSelector']:checked").val();
+  console.log(usrselectedFees);
+  // ajaxurl  = $(this).data('url');
+
+      $.ajax({
+      
+        type: "post",
+        url: gfcustom_Ajax_function.ajaxurl,
+        data : {
+              start_Date : usrselectedDate,
+              workshop_Price : usrselectedFees,
+              action : 'gfcustom_Ajax_Call'
+
+        },
+        success: function(result){    
+          if(result)    {
+            _("status").innerHTML = result;
+
+            setTimeout(function() {
+              $('#popmake-2129').popmake('open');
+          }, 100);
+          
+          }
+          else{
+            _("status").innerHTML = 'Somthing is wrong, refresh the page ...';
+          }
+        }
+
+
+      })
+})

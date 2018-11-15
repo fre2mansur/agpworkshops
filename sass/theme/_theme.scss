@@ -774,8 +774,10 @@ text-align: inherit;
   }
 }
 //styling gravity forms
-.form-group_wrapper{
-  @extend .form-group;
+.gf-custom-style{
+  .gform_page{
+    flex-direction: column;
+  }
 }
 
 

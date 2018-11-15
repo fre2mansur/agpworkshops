@@ -258,12 +258,15 @@ $week_four_content = get_field('week_four_content');
 
 		</div> <!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
+		<form method="post" action="" id="preRegistrationForm">
+
+		
 		<div class="col-12 p-0">	
 					<h3 class=" py-3 m-0">Date</h3>
 		</div>
 		
 		<div class="col-10 offset-2 p-0">
-		<select class="form-control">	
+		<select class="form-control" id="usrSelectDate">	
 			<?php
 			$today=date("d/m/Y");
 			if(have_rows('date_repeater') ):
@@ -281,7 +284,7 @@ $week_four_content = get_field('week_four_content');
 				  
 				  $getDateFromUrl = date("d/m/Y",strtotime($_GET['startDate']));
 			  }	
-			  if($selectStartDate && $selectEndDate>=$today ):
+			  if($selectStartDate && $selectStartDate>=$today ):
 						
 			?>
 					<option name=<?php echo $selectStartDate;?>
@@ -350,36 +353,15 @@ $week_four_content = get_field('week_four_content');
 						<small><?php echo($payment_details_without_accommodation); ?></small>
 						</p>
 		</div>
-		
-		<div class="col-12 p-0 d-flex">
-			<button class="btn btn-primary mx-auto" data-toggle="modal" data-target="#modal_<?php the_ID() ?>" >
-						 Register now
+		<div class="col-12 p-0 d-flex flex-column text-center">
+			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
+			data-url="<?php echo get_admin_url().'admin-ajax.php'?>">
+				Register now
 			</button>		
-								<div class="modal fade" id="modal_<?php the_ID() ?>">
-									<div class="modal-dialog">
-										<div class="modal-content">
-										
-											<!-- Modal Header -->
-											<div class="modal-header">
-											<h5 class="modal-title"><?php the_title()?></h5>
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											</div>
-											
-											<!-- Modal body -->
-											<div class="modal-body">
-											Modal body..
-											</div>
-											
-											<!-- Modal footer -->
-											<div class="modal-footer">
-											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-				
+			<span id="status"></span>					
+			
 		</div>
+	</form>
 		
 		</div> <!--- col-md-3 -->
 	</div><!--row-->

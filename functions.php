@@ -71,3 +71,9 @@ require get_template_directory() . '/inc/woocommerce.php';
 require get_template_directory() . '/inc/editor.php';
 
 
+/**
+ * Load gf Custom Function
+ *
+*/
+
+require get_template_directory() . '/inc/gf-customFunction.php';
