@@ -144,6 +144,6 @@ $("#registrationFormBtn").on('click',function(e){
     $('#popmake-2129, #popmake-2049').popmake('open');
    }, 100);
 
-   $("#input_2_21").val(usrselectedDate);
-   $('#input_2_20').val(usrselectedFees);       
+   $("#input_2_21, #input_9_21").val(usrselectedDate);
+   $('#input_2_20, #input_9_20').val(usrselectedFees);       
 })
