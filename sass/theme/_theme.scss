@@ -773,6 +773,21 @@ text-align: inherit;
     cursor: pointer;
   }
 }
+
+
+//Single Workshop Tel Link
+a[href^="tel:"]:before {
+  content: "\f095";
+  margin-right: 0.5em;
+  font-family: FontAwesome;
+}
+a[href^="mailto:"]:before {
+  content: "\f0e0";
+  margin-right: 0.5em;
+  font-family: FontAwesome;
+}
+
+
 //styling gravity forms
 .gf-custom-style{
   .gform_page{

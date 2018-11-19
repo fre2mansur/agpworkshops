@@ -307,21 +307,16 @@ $week_four_content = get_field('week_four_content');
 		<?php endif;?>		
 		</div>
 		<div class="col-12 p-0">
-			<h3 class=" py-3 m-0">Fees</h3>
+			<h3 class=" py-3 m-0">Payment Details</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
 			
 			<?php
-			if(have_rows('payment_group') ):
-				while(have_rows('payment_group')) : the_row();
 
-				if(have_rows('fees_with_accommodation')):
-					while(have_rows('fees_with_accommodation')) : the_row();
-
-					$payment_with_accommodation = get_sub_field('payment_with_accommodation');
-					$payment_details_with_accommodation = get_sub_field('payment_details_with_accommodation');
+					$payment_with_accommodation = get_field('payment_with_accommodation');
+					$payment_details_with_accommodation = get_field('payment_details_with_accommodation');
 			 ?>
-			 <?php endwhile; endif; endwhile; endif;?>		
+			 <?php if($payment_details_with_accommodation && $payment_with_accommodation):?>		
 
 			
 			
@@ -332,19 +327,54 @@ $week_four_content = get_field('week_four_content');
 			<p class="offset-1 text-muted small">
 			<small><?php echo($payment_details_with_accommodation); ?></small>
 			</p>
+			<?php else:?>
+			<label>
+				<input class="d-none" type="radio" name="feesSelector" id="noFee" value="0" checked>
+				For details contact
+			</label>
+
+			<table class="table table-borderless">
+				<tbody>
+				<?php if($units): ?>
+				<?php foreach($units as $unit){ ?>
+					
+					<tr>
+						<td class="pl-0">
+							<?php echo $unit->post_title ?>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="pl-0">
+							<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+							echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+						</td>
+					</tr>
+				
+				
+					<tr>
+						
+						<td class="pl-0">
+							<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+							echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+						</td>
+					</tr>
+			
+				<?php break; } endif; ?>
+					
+				</tbody>
+			</table>
+			<?php endif; ?>
+
 			</div>
 		<div class="col-10 offset-2 p-0">
 		<?php
-			if(have_rows('payment_group') ):
-				while(have_rows('payment_group')) : the_row();
 
-				if(have_rows('fees_without_accommodation')):
-					while(have_rows('fees_without_accommodation')) : the_row();
 
-					$payment_without_accommodation = get_sub_field('payment_without_accommodation');
-					$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
+					$payment_without_accommodation = get_field('payment_without_accommodation');
+					$payment_details_without_accommodation = get_field('payment_details_without_accommodation');
 					?>
-					<?php endwhile; endif; endwhile; endif;?>	
+					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
 						<label>
 						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
 						<?php echo($payment_without_accommodation); ?>
@@ -352,6 +382,8 @@ $week_four_content = get_field('week_four_content');
 						<p class="offset-1 text-muted small">
 						<small><?php echo($payment_details_without_accommodation); ?></small>
 						</p>
+
+					<?php endif; ?>
 		</div>
 		<div class="col-12 p-0 d-flex flex-column text-center">
 			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
