@@ -594,8 +594,8 @@ function card_loop($itemId) {
 			<h6 class="card-subtitle mb-2 pb-2 text-muted"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
 			<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 				<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
-				<div class="d-flex mb-3 justify-content-between">
-					<a class="btn btn-outline-success d-inline-flex" href="<?php
+				<div class="d-flex mb-3 justify-content-center">
+					<a class="btn btn-outline-success w-100" href="<?php
 					 echo esc_url(add_query_arg(
 						array(
 							'startDate' => $workshopStartDate,
@@ -605,16 +605,7 @@ function card_loop($itemId) {
 						 );?>">
 						 Know more
 						 </a>
-					<a class="btn btn-outline-info d-inline-flex " href="<?php
-					 echo esc_url(add_query_arg(
-						array(
-							'startDate' => $workshopStartDate,
-							'workshopId' => $postId,
-						)
-						)
-						 );?>" >
-						 Register now
-						 </a>
+					
 				</div>     
 			</div>
 		</div>
