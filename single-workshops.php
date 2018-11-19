@@ -280,9 +280,10 @@ $week_four_content = get_field('week_four_content');
 			  $selectStartDate = get_sub_field('start_date');
 			  $selectEndDate = get_sub_field('end_date');
 			  $getDateFromUrl = '';
-			  if(!empty($_GET['startDate'])){
+			  if(!empty(esc_html($_GET['startDate']))){
 				  
-				  $getDateFromUrl = date("d/m/Y",strtotime($_GET['startDate']));
+				  $getDateFromUrl = date("d/m/Y",strtotime(esc_html($_GET['startDate'])));
+				  
 			  }	
 			  if($selectStartDate && $selectStartDate>=$today ):
 						
@@ -297,7 +298,7 @@ $week_four_content = get_field('week_four_content');
 					</option>
 				
 				<?php
-				else: echo '<option name="Workshop Unavailable" disabled selected>Currently not available</option>'; break;
+				else: echo '<option name="Workshop Unavailable" disabled>Currently not available</option>'; break;
 				endif; 
 				endwhile; ?>
 				</select>
