@@ -2,7 +2,7 @@
    
        
 // update '1' to the ID of your form
-add_filter( 'gform_pre_render_2', 'add_readonly_script' );
+add_filter( 'gform_pre_render_9', 'add_readonly_script' );
 function add_readonly_script( $form ) {
     ?>
  
