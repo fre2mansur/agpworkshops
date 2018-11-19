@@ -285,7 +285,7 @@ $week_four_content = get_field('week_four_content');
 				  $getDateFromUrl = date("d/m/Y",strtotime(esc_html($_GET['startDate'])));
 				  
 			  }	
-			  if($selectStartDate && $selectEndDate>=$today ):
+			  if(isset($selectStartDate) && $selectEndDate>=$today ):
 						
 			?>
 					<option name=<?php echo $selectStartDate;?>
