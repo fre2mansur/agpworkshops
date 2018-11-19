@@ -4120,7 +4120,7 @@ $("#registrationFormBtn").on('click',function(e){
 
 
   setTimeout(function() {
-    $('#popmake-2129').popmake('open');
+    $('#popmake-2129, #popmake-2049').popmake('open');
    }, 100);
 
    $("#input_2_21").val(usrselectedDate);
