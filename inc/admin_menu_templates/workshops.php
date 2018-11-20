@@ -42,7 +42,6 @@ function custom_agp_taxonomy() {
 		"labels" 			 => $labels,
 		"public" 			 => true,
 		"hierarchical"  	 => true,
-		"label" 			 => $labels,
 		"show_ui" 			 => true,
 		"show_in_menu"  	 => true,
 		"show_in_nav_menus"  => true,
@@ -122,7 +121,7 @@ function custom_agp_workshops() {
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-editor-paste-word",
 		"supports"					 => array( "title", "custom-fields", "post-formats", "filter", "thumbnail" ),
-		"taxonomies"				 => array( "post_tag", "workshop_category" ),
+		"taxonomies"				 => array( "workshop_category","post_tag", ),
 	);
 
 	register_post_type( "workshops", $args );

@@ -62,7 +62,7 @@ function custom_auroville_units() {
 		"menu_position"				 => 42,
 		"menu_icon"					 => "dashicons-store",
 		"supports"					 => array( "title", "custom-fields","editor", "filter", "thumbnail" ),
-		"taxonomies"				 => array( "post_tag", "workshop_category" ),
+		"taxonomies"				 => array( "workshop_category" ),
 	);
 
 	register_post_type( "organising-unit", $args );
