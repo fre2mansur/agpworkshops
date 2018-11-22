@@ -627,3 +627,35 @@ function card_loop($itemId) {
 
 <?php }
 
+// ACF Date limiter 
+function my_acf_input_admin_footer() {
+	
+	?>
+	<script type="text/javascript">
+	(function($) {
+		
+		
+		
+	})(jQuery);	
+	</script>
+	<?php
+			
+	}
+	
+	add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
+
+
+//Testing javascript defer
+function add_defer_attribute($tag, $handle) {
+	// add script handles to the array below
+	$scripts_to_defer = array('jquery', 'jquery-mixitup','masonry-js','understrap-scripts', );
+	
+	foreach($scripts_to_defer as $defer_script) {
+	   if ($defer_script === $handle) {
+		  return str_replace(' src', ' defer="defer" src', $tag);
+	   }
+	}
+	return $tag;
+ }
+ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+  
