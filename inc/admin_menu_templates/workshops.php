@@ -1,4 +1,63 @@
 <?php 
+
+/*
+	====================
+	Custom Taxonomy Type
+	====================
+
+*/
+
+function custom_agp_taxonomy() {
+
+	/**
+	 * Taxonomy: Categories.
+	 */
+
+	$labels = array(
+		"name" 			=> __( "Workshop Categories", "AGP | Workshops" ),
+		"singular_name" => __( "Workshop Category", "AGP | Workshops" ),
+		"menu_name" 	=> __( "Workshop Categories", "AGP | Workshops" ),
+		"all_items" 	=> __( "All Workshop Categories", "AGP | Workshops" ),
+		"edit_item"	 	=> __( "Edit Workshop Category", "AGP | Workshops" ),
+		"view_item" 	=> __( "View Workshop Category", "AGP | Workshops" ),
+		"update_item" 	=> __( "Update Workshop Category", "AGP | Workshops" ),
+		"add_new_item" 	=> __( "Add New Workshop Category", "AGP | Workshops" ),
+		"new_item_name" => __( "New category name", "AGP | Workshops" ),
+		"parent_item" 	=> __( "Parent Workshop Category", "AGP | Workshops" ),
+		"not_found" 	=> __( "No workshop category found", "AGP | Workshops" ),
+		"no_terms" 		=> __( "No workshop categories", "AGP | Workshops" ),
+		"items_list" 	=> __( "Workshop categories list", "AGP | Workshops" ),
+		"parent_item_colon" 		 => __( "Parent Workshop Category:", "AGP | Workshops" ),
+		"search_items" 				 => __( "Search Workshop Category", "AGP | Workshops" ),
+		"popular_items" 			 => __( "Popular Workshop Categories", "AGP | Workshops" ),
+		"separate_items_with_commas" => __( "Separate Workshop Categories With Commas", "AGP | Workshops" ),
+		"add_or_remove_items" 		 => __( "Add or Remove Workshop Categories", "AGP | Workshops" ),
+		"choose_from_most_used" 	 => __( "Choose from most used Workshop Categories", "AGP | Workshops" ),
+		"items_list_navigation" 	 => __( "Workshop categories list navigation", "AGP | Workshops" ),
+		
+	);
+
+	$args = array(
+		"label" 			 => __( "Workshop Categories", "AGP | Workshops" ),
+		"labels" 			 => $labels,
+		"public" 			 => true,
+		"hierarchical"  	 => true,
+		"show_ui" 			 => true,
+		"show_in_menu"  	 => true,
+		"show_in_nav_menus"  => true,
+		"query_var" 		 => true,
+		"rewrite" 			 => array( 'slug' => 'workshop_category', 'with_front' => true, ),
+		"show_admin_column"  => true,
+		"show_in_rest" 		 => true,
+		"rest_base" 		 => "workshop_cat_rest",
+		"show_in_quick_edit" => true,
+		);
+	register_taxonomy( "workshop_category", array( "workshops","facilitators","units" ), $args );
+}
+add_action( 'init', 'custom_agp_taxonomy' );
+
+
+
 /*
 	================
 	Custom Post Type
@@ -62,7 +121,7 @@ function custom_agp_workshops() {
 		"menu_position"				 => 40,
 		"menu_icon"					 => "dashicons-editor-paste-word",
 		"supports"					 => array( "title", "custom-fields", "post-formats", "filter", "thumbnail" ),
-		"taxonomies"				 => array( "post_tag", "workshop_category" ),
+		"taxonomies"				 => array( "workshop_category","post_tag", ),
 	);
 
 	register_post_type( "workshops", $args );
@@ -70,59 +129,3 @@ function custom_agp_workshops() {
 
 add_action( 'init', 'custom_agp_workshops' );
 
-/*
-	====================
-	Custom Taxonomy Type
-	====================
-
-*/
-
-function custom_agp_taxonomy() {
-
-	/**
-	 * Taxonomy: Categories.
-	 */
-
-	$labels = array(
-		"name" 			=> __( "Workshop Categories", "AGP | Workshops" ),
-		"singular_name" => __( "Workshop Category", "AGP | Workshops" ),
-		"menu_name" 	=> __( "Workshop Categories", "AGP | Workshops" ),
-		"all_items" 	=> __( "All Workshop Categories", "AGP | Workshops" ),
-		"edit_item"	 	=> __( "Edit Workshop Category", "AGP | Workshops" ),
-		"view_item" 	=> __( "View Workshop Category", "AGP | Workshops" ),
-		"update_item" 	=> __( "Update Workshop Category", "AGP | Workshops" ),
-		"add_new_item" 	=> __( "Add New Workshop Category", "AGP | Workshops" ),
-		"new_item_name" => __( "New category name", "AGP | Workshops" ),
-		"parent_item" 	=> __( "Parent Workshop Category", "AGP | Workshops" ),
-		"not_found" 	=> __( "No workshop category found", "AGP | Workshops" ),
-		"no_terms" 		=> __( "No workshop categories", "AGP | Workshops" ),
-		"items_list" 	=> __( "Workshop categories list", "AGP | Workshops" ),
-		"parent_item_colon" 		 => __( "Parent Workshop Category:", "AGP | Workshops" ),
-		"search_items" 				 => __( "Search Workshop Category", "AGP | Workshops" ),
-		"popular_items" 			 => __( "Popular Workshop Categories", "AGP | Workshops" ),
-		"separate_items_with_commas" => __( "Separate Workshop Categories With Commas", "AGP | Workshops" ),
-		"add_or_remove_items" 		 => __( "Add or Remove Workshop Categories", "AGP | Workshops" ),
-		"choose_from_most_used" 	 => __( "Choose from most used Workshop Categories", "AGP | Workshops" ),
-		"items_list_navigation" 	 => __( "Workshop categories list navigation", "AGP | Workshops" ),
-		
-	);
-
-	$args = array(
-		"label" 			 => __( "Workshop Categories", "AGP | Workshops" ),
-		"labels" 			 => $labels,
-		"public" 			 => true,
-		"hierarchical"  	 => true,
-		"label" 			 => "Categories",
-		"show_ui" 			 => true,
-		"show_in_menu"  	 => true,
-		"show_in_nav_menus"  => true,
-		"query_var" 		 => true,
-		"rewrite" 			 => array( 'slug' => 'workshop_category', 'with_front' => true, ),
-		"show_admin_column"  => true,
-		"show_in_rest" 		 => true,
-		"rest_base" 		 => "workshop_cat_rest",
-		"show_in_quick_edit" => true,
-		);
-	register_taxonomy( "workshop_category", array( "agp_workshop" ), $args );
-}
-add_action( 'init', 'custom_agp_taxonomy' );

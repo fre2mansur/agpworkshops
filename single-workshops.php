@@ -149,7 +149,7 @@ $week_four_content = get_field('week_four_content');
 						<div class="card-deck scrolling-wrapper-flexbox">
 								<?php $noOfFacilitators = sizeof($facilitators);
 							foreach($facilitators as $fac){?>
-								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#myModal">
+								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
 									<figure class="facilitaor-avatar">
 										<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
 									</figure>
@@ -169,6 +169,37 @@ $week_four_content = get_field('week_four_content');
 									</small></p>
 									</div>
 								</div>
+								<div class="modal fade" id="facilitator_<?php echo $fac->ID?>">
+										<div class="modal-dialog">
+											<div class="modal-content">
+										
+											<!-- Modal Header -->
+											<div class="modal-header">
+											<h4 class="modal-title my-auto"><?php echo $fac->post_title; ?></h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+											
+											<!-- Modal body -->
+											<div class="modal-body">
+											
+												<figure class="facilitaor-avatar">
+													<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+												</figure>
+   												 <article>
+													<p class="text-md-left text-justify">
+      												 <?php echo $fac->post_content;?>
+      												</p>
+												</article>
+											</div>
+											
+											<!-- Modal footer -->
+											<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+											</div>
+											
+										</div>
+										</div>
+									</div>
 							<?php } 
 							else:
 							?>
@@ -227,53 +258,66 @@ $week_four_content = get_field('week_four_content');
 
 		</div> <!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
+		<form method="post" action="" id="preRegistrationForm">
+
+		
 		<div class="col-12 p-0">	
 					<h3 class=" py-3 m-0">Date</h3>
 		</div>
 		
 		<div class="col-10 offset-2 p-0">
-		<select class="form-control">	
+		<select class="form-control" id="usrSelectDate">	
 			<?php
-			$today=date("d/m/y");
+			$today=date("d/m/Y");
 			if(have_rows('date_repeater') ):
 				while (have_rows('date_repeater') ) : the_row(); 
-			?>
+				?>
 				
 			
 			<?php	// loop through the rows of data
 			  
-				
-			   $selectStartDate = get_sub_field('start_date');
-			   $selectEndDate = get_sub_field('end_date');
-					if($selectStartDate && $selectEndDate>=$today ):
+			  
+			  $selectStartDate = get_sub_field('start_date');
+			  $selectEndDate = get_sub_field('end_date');
+			  $getDateFromUrl = '';
+			  if(!empty(esc_html($_GET['startDate']))){
+				  
+				  $getDateFromUrl = date("d/m/Y",strtotime(esc_html($_GET['startDate'])));
+				  
+			  }	
+			  if(isset($selectStartDate) && $selectEndDate>=$today ):
 						
 			?>
-					
-					<option><?php echo($selectStartDate); ?></option>
+					<option name=<?php echo $selectStartDate;?>
+					<?php if($selectStartDate === $getDateFromUrl){
+						echo 'selected'; 
+						}?>>
+					<?php
+						$convertedStartDateForSelection = DateTime::createFromFormat('d/m/Y', $selectStartDate)->format('j F, Y');
+					echo $convertedStartDateForSelection; ?>
+					</option>
+				
 				<?php
-
-					endif; 
+				else: echo '<option name="Workshop Unavailable" disabled>Currently not available</option>'; break;
+				endif; 
 				endwhile; ?>
 				</select>
-
+				<p class="offset-1 text-muted small">
+			<small>*Click to see other available dates</small>
+			</p>
 		<?php endif;?>		
 		</div>
 		<div class="col-12 p-0">
-			<h3 class=" py-3 m-0">Fees</h3>
+			<h3 class=" py-3 m-0">Payment Details</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
 			
 			<?php
-			if(have_rows('payment_group') ):
-				while(have_rows('payment_group')) : the_row();
 
-				if(have_rows('fees_with_accommodation')):
-					while(have_rows('fees_with_accommodation')) : the_row();
-
-					$payment_with_accommodation = get_sub_field('payment_with_accommodation');
-					$payment_details_with_accommodation = get_sub_field('payment_details_with_accommodation');
+					$payment_with_accommodation = get_field('payment_with_accommodation');
+					$payment_details_with_accommodation = get_field('payment_details_with_accommodation');
 			 ?>
-			 <?php endwhile; endif; endwhile; endif;?>		
+			 <?php if($payment_details_with_accommodation && $payment_with_accommodation):?>		
 
 			
 			
@@ -284,19 +328,54 @@ $week_four_content = get_field('week_four_content');
 			<p class="offset-1 text-muted small">
 			<small><?php echo($payment_details_with_accommodation); ?></small>
 			</p>
+			<?php else:?>
+			<label>
+				<input class="d-none" type="radio" name="feesSelector" id="noFee" value="0" checked>
+				For details contact
+			</label>
+
+			<table class="table table-borderless">
+				<tbody>
+				<?php if($units): ?>
+				<?php foreach($units as $unit){ ?>
+					
+					<tr>
+						<td class="pl-0">
+							<?php echo $unit->post_title ?>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="pl-0">
+							<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+							echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+						</td>
+					</tr>
+				
+				
+					<tr>
+						
+						<td class="pl-0">
+							<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+							echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+						</td>
+					</tr>
+			
+				<?php break; } endif; ?>
+					
+				</tbody>
+			</table>
+			<?php endif; ?>
+
 			</div>
 		<div class="col-10 offset-2 p-0">
 		<?php
-			if(have_rows('payment_group') ):
-				while(have_rows('payment_group')) : the_row();
 
-				if(have_rows('fees_without_accommodation')):
-					while(have_rows('fees_without_accommodation')) : the_row();
 
-					$payment_without_accommodation = get_sub_field('payment_without_accommodation');
-					$payment_details_without_accommodation = get_sub_field('payment_details_without_accommodation');
+					$payment_without_accommodation = get_field('payment_without_accommodation');
+					$payment_details_without_accommodation = get_field('payment_details_without_accommodation');
 					?>
-					<?php endwhile; endif; endwhile; endif;?>	
+					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
 						<label>
 						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
 						<?php echo($payment_without_accommodation); ?>
@@ -304,39 +383,24 @@ $week_four_content = get_field('week_four_content');
 						<p class="offset-1 text-muted small">
 						<small><?php echo($payment_details_without_accommodation); ?></small>
 						</p>
+
+					<?php endif; ?>
 		</div>
-		
-		<div class="col-12 p-0 d-flex">
-			<button class="btn btn-primary mx-auto">Register Now</button>
+		<div class="col-12 p-0 d-flex flex-column text-center">
+			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
+			data-url="<?php echo get_admin_url().'admin-ajax.php'?>">
+				Register now
+			</button>		
+			<span id="status"></span>					
+			
 		</div>
+	</form>
 		
 		</div> <!--- col-md-3 -->
 	</div><!--row-->
 </div>
 
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-	</div>
-</div>
+
 
 <?php endwhile; // end of the loop. ?>
 
