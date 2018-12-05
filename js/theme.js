@@ -4108,4 +4108,21 @@ $('#search-trigger').on("click",function(){
 
   $('.icon-after-collapse').on("click",function(){
     $(this).toggleClass('icon-after-collapse-clicked');
-  })
+  });
+
+// For Gravity Form
+function _(id){ return document.getElementById(id); }
+
+$("#registrationFormBtn").on('click',function(e){
+  e.preventDefault();
+  var usrselectedDate = $('#usrSelectDate option:selected').val();
+  var usrselectedFees = $("input[name='feesSelector']:checked").val();
+
+
+  setTimeout(function() {
+    $('#popmake-2129, #popmake-2049').popmake('open');
+   }, 100);
+
+   $("#input_2_21, #input_9_21").val(usrselectedDate);
+   $('#input_2_20, #input_9_20').val(usrselectedFees);       
+})

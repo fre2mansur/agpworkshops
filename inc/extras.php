@@ -594,27 +594,18 @@ function card_loop($itemId) {
 			<h6 class="card-subtitle mb-2 pb-2 text-muted"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
 			<div class="collapse" id="workshop_<?php echo $randPostIDsForAccordion; ?>"  data-parent="#accordion">
 				<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
-				<div class="d-flex mb-3 justify-content-between">
-					<a class="btn btn-outline-success d-inline-flex" href="<?php
+				<div class="d-flex mb-3 justify-content-center">
+					<a class="btn btn-outline-success w-100" href="<?php
 					 echo esc_url(add_query_arg(
 						array(
 							'startDate' => $workshopStartDate,
-							'workshopId' => $postId,
+							
 						),
 						the_permalink())
 						 );?>">
 						 Know more
 						 </a>
-					<a class="btn btn-outline-info d-inline-flex" href="<?php
-					 echo esc_url(add_query_arg(
-						array(
-							'startDate' => $workshopStartDate,
-							'workshopId' => $postId,
-						),
-						the_permalink())
-						 );?>">
-						 Register now
-						 </a>
+					
 				</div>     
 			</div>
 		</div>
@@ -635,3 +626,36 @@ function card_loop($itemId) {
 	</div> 
 
 <?php }
+
+// ACF Date limiter 
+function my_acf_input_admin_footer() {
+	
+	?>
+	<script type="text/javascript">
+	(function($) {
+		
+		
+		
+	})(jQuery);	
+	</script>
+	<?php
+			
+	}
+	
+	add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
+
+
+//Testing javascript defer
+function add_defer_attribute($tag, $handle) {
+	// add script handles to the array below
+	$scripts_to_defer = array('jquery', 'jquery-mixitup','masonry-js','understrap-scripts', );
+	
+	foreach($scripts_to_defer as $defer_script) {
+	   if ($defer_script === $handle) {
+		  return str_replace(' src', ' defer="defer" src', $tag);
+	   }
+	}
+	return $tag;
+ }
+ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+  
