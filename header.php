@@ -79,7 +79,7 @@ if ( wp_is_mobile() ) {
 
   </nav>
   <!-- Mobile menu ends -->
-  <div class="header--fix"style="height:61px;"></div> 
+  <div class="header--fix"style="height:75px;"></div> 
 <?php
 }else {
 
