@@ -173,8 +173,7 @@ var headroom = new Headroom(headElem, {
 },
     // callback when pinned, `this` is headroom object
     onPin : function() {
-      setTimeout(function(){
-      headElem.classList.add("header--fixed");}, 200);
+      headElem.classList.add("header--fixed");
     },
     // callback when unpinned, `this` is headroom object
     onTop : function() {
