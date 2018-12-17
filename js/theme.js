@@ -4155,7 +4155,7 @@ var headroom = new Headroom(headElem, {
       headElem.classList.add("header--fixed");
     },
     // callback when unpinned, `this` is headroom object
-    onUnpin : function() {
+    onTop : function() {
       headElem.classList.remove("header--fixed");
     },
 });
