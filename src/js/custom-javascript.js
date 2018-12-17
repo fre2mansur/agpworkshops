@@ -153,8 +153,8 @@ var headElem = document.querySelector(".header");
 // construct an instance of Headroom, passing the element
 var headroom = new Headroom(headElem, {
     // vertical offset in px before element is first unpinned
-    "offset": 100,
-    "tolerance": 35,
+    "offset": 55,
+    "tolerance": 5,
   "classes" : {
     // when element is initialised
     initial : "headroom",
