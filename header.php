@@ -32,7 +32,7 @@ if ( wp_is_mobile() ) {
   
   /* Display and echo mobile specific stuff here */
   ?>
-  <nav class="mobile-menu-parent navbar-default shadow bg-white flex-row header header--fixed hide-from-print mb-4" id="header-menu">
+  <nav class="mobile-menu-parent navbar-default shadow bg-white flex-row header hide-from-print mb-4" id="header-menu">
     <div class="d-flex justify-content-around align-items-center p-2 w-100" >  
       <button class="menu-btn navbar-toggler d-inline-flex px-1" type="button" onclick="" data-toggle="collapse" data-target="#mobilemenu" aria-controls="mobilemenu" aria-expanded="false" aria-label="Toggle navigation" >
         <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="30" >
@@ -85,7 +85,7 @@ if ( wp_is_mobile() ) {
   ?>
 
   <!-- Desktop Menu Starts -->
-  <nav class="navbar navbar-expand-lg header header--fixed hide-from-print shadow-sm navbar-light bg-white py-0">
+  <nav class="navbar navbar-expand-lg header hide-from-print shadow-sm navbar-light bg-white py-0">
             <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
                       $logo_url = wp_get_attachment_image_src( $custom_logo_id , 'full',['class'=>"d-lg-none"] );
                       $style = ' background-image: url("'.$logo_url[0].'"); background-size: contain; background-repeat:no-repeat; background-position:center center; min-height:50px;
