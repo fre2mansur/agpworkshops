@@ -4149,15 +4149,7 @@ var headroom = new Headroom(headElem, {
     bottom : "headroom--bottom",
     // when not at bottom of scroll area
     notBottom : "headroom--not-bottom"
-},
-    // callback when pinned, `this` is headroom object
-    onPin : function() {
-      headElem.classList.add("header--fixed");
-    },
-    // callback when unpinned, `this` is headroom object
-    onTop : function() {
-      headElem.classList.remove("header--fixed");
-    },
+}
 });
 
 headroom.init();
