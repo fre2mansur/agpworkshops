@@ -648,7 +648,7 @@ function my_acf_input_admin_footer() {
 //Testing javascript defer
 function add_defer_attribute($tag, $handle) {
 	// add script handles to the array below
-	$scripts_to_defer = array('jquery', 'jquery-mixitup','masonry-js','understrap-scripts', );
+	$scripts_to_defer = array('jquery', 'jquery-mixitup','isotope-js','understrap-scripts', );
 	
 	foreach($scripts_to_defer as $defer_script) {
 	   if ($defer_script === $handle) {
