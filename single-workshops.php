@@ -6,7 +6,7 @@
  *
  * @package understrap  
  */
-get_header('agp'); ?>
+get_header(); ?>
 <?php
 $container = get_theme_mod( 'understrap_container_type' );
 /** Get Quick Details  */

@@ -109,7 +109,7 @@ function custom_agp_workshops() {
 		"delete_with_user"	 => false,
 		"show_in_rest"		 => false,
 		"rest_base"			 => "",
-		"has_archive"		 => true,
+		"has_archive"		 => false,
 		"show_in_menu"		 => true,
 		"show_in_nav_menus"	 => true,
 		"exclude_from_search"		 => false,
