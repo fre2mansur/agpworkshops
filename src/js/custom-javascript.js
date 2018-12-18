@@ -85,13 +85,14 @@ $(window).scroll(function() {
 
 var $container = jQuery('.workshop-container');
 
-$container.masonry({
+$container.isotope({
   
   columnWidth: '.workshop-card',
   fitWidth: true,
   itemSelector: '.workshop-card',
   horizontalOrder: true,
-  gutter: 25
+  gutter: 25,
+  layoutMode : 'fitRows'
 
 });
 $(document).ready(function() {
@@ -106,7 +107,7 @@ $('img').each(function() {
 $.when.apply($, deferreds).done(function() {
     /* things to do when all images loaded */
   setTimeout(function() {
-		$container.masonry('layout');
+		$container.isotope('layout');
 	}, 0);
 });
 });
@@ -114,7 +115,7 @@ $.when.apply($, deferreds).done(function() {
 if ($container.length > 0){
  $(".collapse").on('shown.bs.collapse hidden.bs.collapse', function(){
    setTimeout(function() {
-		$container.masonry('layout');
+		$container.isotope('layout');
 	}, 0);
  });
 }
