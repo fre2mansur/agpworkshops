@@ -92,7 +92,7 @@ $container.isotope({
   itemSelector: '.workshop-card',
   horizontalOrder: true,
   gutter: 25,
-  layoutMode : 'fitRows'
+  layoutMode: 'packery' 
 
 });
 $(document).ready(function() {
