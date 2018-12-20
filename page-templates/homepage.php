@@ -13,8 +13,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <div class="<?php echo esc_attr( $container ); ?>">
+<?php
 
+
+?>
 <!--Gallery Starts-->
+
 		<?php
 		homepageSliderGalleryImages_querry();
 		if($homepageSliderGalleryImages){ ?>
@@ -40,60 +44,27 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<!--workshop portfolio-->
 		<div class="workshops">
 			<div class="h2 brownline-before">Latest Workshops</div>
+			<?php echo agpf_workshop_query_pagination(); ?>
 			
 			<ul id="filters" class="list-unstyled nav mb-3 ">
-				<?php  $terms = get_terms('workshop_category',array("order"=>"ASC"));
-				$data_filter = '';
-				$dt = '';
-				foreach($terms as $key=>$term){
-						$data_filter .= ".".$term->term_id.", ";
-						$dt=rtrim($data_filter,", ");
-				}
-				$count = count($terms);
-					echo '<li class="nav-item menu-item p-0"><span data-filter="'.$dt.'" class="filter all nav-link">All</span></li>';
-				if ( $count > 0 ){
-
-					foreach ( $terms as $term ) {
-
-						$termname = strtolower($term->term_id);
-						$termname = str_replace(' ', '-', $termname);
-						echo '<li class="nav-item menu-item"><span class="filter nav-link" data-filter=".'.$termname.'">'.$term->name.'</span</li>';
-					}
-				} ?>
+				<?php echo agpf_category_filter(); ?>
 			</ul>
 			<div id="portfoliolist">
 			<div class="workshop-container" id="accordion">
-				<?php  
+	<?php  
 				
-				
-		// 		$args = array( 
-        //   'post_type' => 'agp_workshop',
-		//   'posts_per_page' => 9,
-		//   'meta_query' => array(
-		// 	  'relation' => 'AND',
-		// 	  array(
-		// 		  'key' => 'start_date_wp',
-		// 		  'compare' => '>=',
-		// 		  'value'=> $today
+		if(isset($_GET['cpage'])) {
+			$page = $_GET['cpage'];
+		} else {
+			$page = 1;
+		}
 
-		// 	  ),
-		// 	  array(
-		// 		  'key' => 'end_date_wp',
-		// 		  'compare' => '>=',
-		// 		  'value' => $today
-		// 	  )
-		//   ),
-		//   'orderby' => 'meta_value',
-		//   'order' => 'ASC',
-		  
-        //   'post_status' => 'publish' );
-
-		$workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
+		$workshops = agpf_workshop_query(); //this function resturns the variable $workshops
 		if($workshops):	
 			foreach($workshops as $post){
-				card_loop($post);
-			 } 
-else: 
+				agpf_card_loop($post);
+			 }  
+			else: 
 ?>
 <div class="row">
 	<h3>No workshop found</h3>
@@ -105,7 +76,8 @@ else:
 
 
 <div class="row">
-<a class="mx-auto" href="<?php echo get_post_type_archive_link( 'workshops' ); ?>"><button class="btn btn-outline-primary ">Show All Workshops</button></a>
+
+<!-- <a class="mx-auto" href="<?php echo get_post_type_archive_link( 'workshops' ); ?>"><button class="btn btn-outline-primary ">Show All Workshops</button></a> -->
 </div>
 
 </div>

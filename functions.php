@@ -41,6 +41,11 @@ require get_template_directory() . '/inc/pagination.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
+ * Custom functions for workshops card and its pagination.
+ */
+require get_template_directory() . '/inc/agp_functions.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
