@@ -34,9 +34,19 @@ function agpf_category_filter() {
 }
 
 // Custom query to get and sort all posts by Start and End Date
-function agpf_workshop_query () {
+
+function agpf_workshop_query ($limit="9") {
+	
 	global $wpdb;
-	return $wpdb->get_results(agpf_workshop_sql());
+	$today = date('Ymd');
+	$customTable = $wpdb->prefix.'workshop_dates';
+	$postStatus = 'publish';
+	return $wpdb->get_results($wpdb->prepare(
+		"SELECT * FROM $customTable 
+		 INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
+		 WHERE post_status LIKE %s 
+		 AND (end_date > $today OR end_date = $today)
+		 ORDER BY start_date ASC LIMIT %d", $postStatus, $limit ));
 }
 
 // Pagination for Workshops
