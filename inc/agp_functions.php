@@ -114,7 +114,7 @@ function agpf_workshop_sql($count="") {
         $sql .= "INNER JOIN $wpdb->term_relationships wtr ON (wtr.object_id = ct.post_id) ";
         $sql .= "INNER JOIN $wpdb->term_taxonomy wtt ON (wtt.term_taxonomy_id = wtr.term_taxonomy_id AND wtt.taxonomy='workshop_category') ";
         $sql .= "INNER JOIN $wpdb->terms wt ON (wt.term_id = wtt.term_id) $where ";
-        $sql .= "ORDER BY ct.start_date ASC LIMIT  %d, %d";
+        $sql .= "GROUP BY ct.post_id ORDER BY ct.start_date ASC LIMIT  %d, %d";
 
         return $wpdb->prepare($sql, $offset, $limit);
 	}
