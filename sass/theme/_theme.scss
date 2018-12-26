@@ -608,13 +608,12 @@ text-align: inherit;
 
     li.menu-item{
       flex: 0 0 auto !important;
-
-      a.active:after{
-        content:" ";
-        display: block;
-        border-bottom: 2px solid black;
-        margin-top: 5px;
-      }
+    }
+    .active:after{
+      content:" ";
+      display: block;
+      border-bottom: 2px solid black;
+      margin-top: 5px;
     }
   }
 }
