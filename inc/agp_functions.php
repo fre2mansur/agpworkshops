@@ -34,20 +34,9 @@ function agpf_category_filter() {
 }
 
 // Custom query to get and sort all posts by Start and End Date
-
-function agpf_workshop_query ($limit="9") {
-	
+function agpf_workshop_query () {
 	global $wpdb;
-	$today = date('Ymd');
-	$customTable = $wpdb->prefix.'workshop_dates';
-	$postStatus = 'publish';
 	return $wpdb->get_results(agpf_workshop_sql());
-		// $wpdb->prepare(
-		// "SELECT * FROM $customTable 
-		//  INNER JOIN $wpdb->posts ON ($wpdb->posts.ID = $customTable.post_id)  
-		//  WHERE post_status LIKE %s 
-		//  AND (end_date > $today OR end_date = $today)
-		//  ORDER BY start_date ASC LIMIT %d", $postStatus, $limit ));
 }
 
 // Pagination for Workshops
@@ -114,15 +103,15 @@ function agpf_workshop_sql($count="") {
         $sql = "SELECT COUNT(post_id) as total ";
         $sql .= "FROM $customTable ct ";
         $sql .= "INNER JOIN $wpdb->posts wp ON (wp.ID = ct.post_id) ";
-        $sql .= "INNER JOIN $wpdb->term_relationships wtr ON (wtr.object_id = wp.ID) ";
+        $sql .= "INNER JOIN $wpdb->term_relationships wtr ON (wtr.object_id = ct.post_id) ";
         $sql .= "INNER JOIN $wpdb->term_taxonomy wtt ON (wtt.term_taxonomy_id = wtr.term_taxonomy_id AND wtt.taxonomy='workshop_category') ";
-        $sql .= "INNER JOIN $wpdb->terms wt ON (wt.term_id = wtt.term_id) $where ORDER BY %s ";
+        $sql .= "INNER JOIN $wpdb->terms wt ON (wt.term_id = wtt.term_id) $where GROUP BY ct.start_date ORDER BY %s ";
         return $wpdb->prepare($sql, 'ASC');
 	} else {
         $sql = "SELECT *";
         $sql .= "FROM $customTable ct ";
         $sql .= "INNER JOIN $wpdb->posts wp ON (wp.ID = ct.post_id) ";
-        $sql .= "INNER JOIN $wpdb->term_relationships wtr ON (wtr.object_id = wp.ID) ";
+        $sql .= "INNER JOIN $wpdb->term_relationships wtr ON (wtr.object_id = ct.post_id) ";
         $sql .= "INNER JOIN $wpdb->term_taxonomy wtt ON (wtt.term_taxonomy_id = wtr.term_taxonomy_id AND wtt.taxonomy='workshop_category') ";
         $sql .= "INNER JOIN $wpdb->terms wt ON (wt.term_id = wtt.term_id) $where ";
         $sql .= "GROUP BY ct.start_date ORDER BY ct.start_date ASC LIMIT  %d, %d";
