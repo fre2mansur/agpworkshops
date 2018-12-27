@@ -18,7 +18,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 wp_nav_menu(
                 array(
                     'theme_location'  => 'footer',
-                    'container_class' => '',
+                    'container_class' => 'scrolling-wrapper-flexbox',
                     'menu_class'      => 'nav flex-row', //Ul class
                     'menu_id'         => 'footer-menu',
                     'fallback_cb'     => '',

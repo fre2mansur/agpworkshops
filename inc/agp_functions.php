@@ -24,7 +24,7 @@ define('DATEPARAM', 'wDate');
 //Category list to filter the item.
 function agpf_category_filter() {
     $terms = get_terms('workshop_category',array("order"=>"ASC")); 
-    echo '<li class="nav-item menu-item"><a class="nav-link" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
+    echo '<li class="nav-item menu-item"><a class="nav-link active" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
 
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);

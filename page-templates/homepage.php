@@ -20,6 +20,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <!--Gallery Starts-->
 
 		<?php
+		if ( !wp_is_mobile() ) {
 		homepageSliderGalleryImages_querry();
 		if($homepageSliderGalleryImages){ ?>
 		<div class="row">
@@ -40,7 +41,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 			</div>
     	</div><!-- .row end -->
-		<?php } ?>
+		<?php } 
+		}?>
 		<!--workshop portfolio-->
 		<div class="workshops">
 			<div class="h2 brownline-before">Latest Workshops</div>

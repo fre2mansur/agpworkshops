@@ -578,7 +578,7 @@ function add_search_box( $items, $args ) {
 }
 
 // ACF Date limiter 
-function my_acf_input_admin_footer() {
+function acf_Date_Selection_Limiter() {
 	
 	?>
 	<script type="text/javascript">
@@ -592,7 +592,7 @@ function my_acf_input_admin_footer() {
 			
 	}
 	
-	add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
+	add_action('acf/input/admin_footer', 'acf_Date_Selection_Limiter');
 
 
 //Testing javascript defer

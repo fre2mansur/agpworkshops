@@ -380,11 +380,11 @@ nav{
       & li {
         a{
           color:#505050;
-          transition:transform 0.2s ease-in-out;
+          transition:transform 0.2s ease;
           &:hover{       
             color:#909090;
              transform: scale(1.05);
-             transition:transform 0.2s ease-in-out;
+             transition:transform 0.1s ease;
           }
 
         } 
@@ -608,6 +608,12 @@ text-align: inherit;
 
     li.menu-item{
       flex: 0 0 auto !important;
+    }
+    .active:after{
+      content:" ";
+      display: block;
+      border-bottom: 2px solid black;
+      margin-top: 5px;
     }
   }
 }
