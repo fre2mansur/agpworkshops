@@ -583,7 +583,7 @@ function acf_Date_Selection_Limiter() {
 	?>
 	<script type="text/javascript">
 	(function($) {
-		
+		alert('Testing');
 		
 		
 	})(jQuery);	
@@ -598,7 +598,7 @@ function acf_Date_Selection_Limiter() {
 //Testing javascript defer
 function add_defer_attribute($tag, $handle) {
 	// add script handles to the array below
-	$scripts_to_defer = array('jquery-mixitup','isotope-js','understrap-scripts', );
+	$scripts_to_defer = array('jquery', 'jquery-mixitup','isotope-js','understrap-scripts', );
 	
 	foreach($scripts_to_defer as $defer_script) {
 	   if ($defer_script === $handle) {
