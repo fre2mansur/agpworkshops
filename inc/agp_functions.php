@@ -185,4 +185,27 @@ function agpf_card_loop($itemId) {
 	</div> 
 
 <?php }
+function my_acf_input_admin_footer() { ?>
+	<script type="text/javascript">
+		(function($) {
+			var start_date_key = 'field_5bb496b0c69b3'; // the field key of the start date
+			var end_date_key = 'field_5bb4b62297bdf'; // the field key of the end date
+			
+			if (typeof(acf) != 'undefined') {
+			acf.add_action('date_picker_init', function($input, args, $field) {
+				var key = $input.closest('.acf-field').data('key');// get the field key for this field
+				if (key == start_date_key) { // see if it's the start date field
+					$input.datepicker().on('input change select', function(e) { // add action to start date field datepicker
+						var date = jQuery(this).datepicker('getDate'); // get the selected date
+						jQuery('[data-key="'+end_date_key+'"] input.hasDatepicker').datepicker( "option", "minDate", date);
+					});
+				}
+				return args;
+			});
+			}
+		
+		})(jQuery);	
+	</script>
+<?php }
+add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
 ?>
