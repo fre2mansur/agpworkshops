@@ -102,9 +102,9 @@ function agpf_workshop_sql($count="") {
 	$where[] = "(wtt.term_taxonomy_id = ".esc_sql($_GET[CATPARAM]).")";
     }
     
-    if(isset($_GET[DATEPARAM]) && $_GET[DATEPARAM] != 'all') {
+    if(isset($_GET[DATEPARAM]) && isset($_GET[DATEPARAM]) != 'all') {
 	   // convert date formate to 20181220
-	 	$dateToMonth = date(Y).$_GET[DATEPARAM].'01';
+	 	$dateToMonth = date('Y').$_GET[DATEPARAM].'01';
         $where[] = "(start_date >= ".esc_sql($dateToMonth).")";
     }
 
