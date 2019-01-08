@@ -40,9 +40,10 @@ function agpf_month_filter() {
 	<select name="wDate" onchange="parent.window.location=this.value" class="form-control">
 	</li>';
 	foreach ($months as $name => $value) { ?>
-		<option <?php
-		 if(isset($_GET['wDate']) == $value) {echo "selected";}
-		 ?> value="?wDate=<?php echo $value; ?>"><?php echo $name; ?></option>';
+
+		<option <?php if(@$_GET['wDate'] == $value) {echo "selected";} ?> value="?wDate=<?php echo $value; ?>"><?php echo $name; ?></option>
+
+
 	<?php }
 	echo '</select>';
 }
@@ -104,7 +105,9 @@ function agpf_workshop_sql($count="") {
 	$where[] = "(wtt.term_taxonomy_id = ".esc_sql($_GET[CATPARAM]).")";
     }
     
+
     if(isset($_GET[DATEPARAM]) && isset($_GET[DATEPARAM]) != 'all') {
+      
 	   // convert date formate to 20181220
 	 	$dateToMonth = date('Y').$_GET[DATEPARAM].'01';
         $where[] = "(start_date >= ".esc_sql($dateToMonth).")";
