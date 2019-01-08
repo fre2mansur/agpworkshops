@@ -36,7 +36,7 @@ function agpf_category_filter() {
 
 function agpf_month_filter() {
 	$months = array('All'=>'all','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Aep'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
-	echo '<li class="nav-item menu-item"> <span class="nav-link"> Filter by month </span> </li>
+	echo '<li class="nav-item menu-item ml-auto"> <a class="nav-link"> Filter by month </a> </li>
 	<li class="nav-item menu-item">
 	<select name="wDate" onchange="parent.window.location=this.value" class="form-control">
 	</li>';
