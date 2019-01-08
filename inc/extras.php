@@ -578,21 +578,25 @@ function add_search_box( $items, $args ) {
 }
 
 // ACF Date limiter 
-function acf_Date_Selection_Limiter() {
-	
-	?>
-	<script type="text/javascript">
-	(function($) {
-		
-		
-		
-	})(jQuery);	
-	</script>
-	<?php
-			
-	}
-	
-	add_action('acf/input/admin_footer', 'acf_Date_Selection_Limiter');
+// acf.add_filter('date_picker_args', function( $args){
+   
+//     // where our new values will live
+//     $field['choices'] = array();
+     
+//     // dynamic data we want to popuplate with
+//     $bundles = get_field('bundles', 'option' );
+ 
+//     foreach ( $bundles as $bundle ){
+//         // $value = $label
+//         // the bundle_id will be saved to the database 
+//         // while the bundle_name is shown to the user
+//         $field['choices'][$bundle['bundle_id']] = $bundle['bundle_name'];
+//     }
+     
+//     // All done!
+//     return $field;
+     
+// } );
 
 
 //Testing javascript defer
