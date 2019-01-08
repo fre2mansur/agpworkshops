@@ -48,7 +48,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="h2 brownline-before">Latest Workshops</div>
 			<?php echo agpf_workshop_query_pagination(); ?>
 			
-			<ul id="filters" class="list-unstyled nav mb-3 ">
+			<ul id="filters" class="list-unstyled nav mb-3 pr-3">
 				<?php echo agpf_category_filter(); ?>
 				<?php echo agpf_month_filter(); ?>
 			</ul>
