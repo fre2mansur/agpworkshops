@@ -50,6 +50,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 			<ul id="filters" class="list-unstyled nav mb-3 ">
 				<?php echo agpf_category_filter(); ?>
+				<?php echo agpf_month_filter(); ?>
 			</ul>
 			<div id="portfoliolist">
 			<div class="workshop-container" id="accordion">
