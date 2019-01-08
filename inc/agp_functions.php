@@ -38,7 +38,9 @@ function agpf_month_filter() {
 	$months = array('All'=>'all','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Aep'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
 	echo '<select name="wDate" onchange="parent.window.location=this.value">';
 	foreach ($months as $name => $value) { ?>
-		<option <?php if($_GET['wDate'] == $value) {echo "selected";} ?> value="?wDate=<?php echo $value; ?>"><?php echo $name; ?></option>';
+		<option <?php
+		 if(isset($_GET['wDate']) == $value) {echo "selected";}
+		 ?> value="?wDate=<?php echo $value; ?>"><?php echo $name; ?></option>';
 	<?php }
 	echo '</select>';
 }
