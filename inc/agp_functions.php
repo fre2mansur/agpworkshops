@@ -35,8 +35,11 @@ function agpf_category_filter() {
 }
 
 function agpf_month_filter() {
-	$months = array('All'=>'all','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Aep'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
-	echo '<select name="wDate" onchange="parent.window.location=this.value">';
+	$months = array('All'=>'all','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Apr'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
+	echo '<li class="nav-item menu-item ml-auto"> <a class="nav-link"> Filter by month </a> </li>
+	<li class="nav-item menu-item">
+	<select name="wDate" onchange="parent.window.location=this.value" class="form-control">
+	</li>';
 	foreach ($months as $name => $value) { ?>
 
 		<option <?php if(@$_GET['wDate'] == $value) {echo "selected";} ?> value="?wDate=<?php echo $value; ?>"><?php echo $name; ?></option>
@@ -55,7 +58,7 @@ function agpf_workshop_query () {
 // Pagination for Workshops
 function agpf_workshop_query_pagination () {
 	global $wpdb;
-	$items_per_page = 3;
+	$items_per_page = 9;
     //$total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
     $total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
 	$total = $total[0]->total;
@@ -84,7 +87,7 @@ function agpf_workshop_sql($count="") {
     if(isset($_GET[PAGEPARAM])) {
         $page = esc_html($_GET[PAGEPARAM]);
     }
-	$limit = 3;
+	$limit = 9;
 	
 	
 	
