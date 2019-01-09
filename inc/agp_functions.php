@@ -59,7 +59,9 @@ function agpf_workshop_query () {
 // Pagination for Workshops
 function agpf_workshop_query_pagination () {
 	global $wpdb;
+
 	$items_per_page = ITEMSPERPAGE;
+
     //$total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
 	$total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
 	if($total){
@@ -90,7 +92,9 @@ function agpf_workshop_sql($count="") {
     if(isset($_GET[PAGEPARAM])) {
         $page = esc_html($_GET[PAGEPARAM]);
     }
+
 	$limit = ITEMSPERPAGE;
+
 	
 	
 	
@@ -110,9 +114,12 @@ function agpf_workshop_sql($count="") {
     }
     
 
+
     if(isset($_GET[DATEPARAM]) && $_GET[DATEPARAM] != 'all') {
       	// convert date formate to 20181220
 	   //$where[] = "(start_date >= 20190201)";
+
+
 	 	$dateToMonth = date('Y').$_GET[DATEPARAM].'01';
 		$where[] = "(start_date >= ".esc_sql($dateToMonth).")";
     }
