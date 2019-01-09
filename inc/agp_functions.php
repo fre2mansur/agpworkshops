@@ -12,6 +12,7 @@
 define('CATPARAM', 'wCat');
 define('PAGEPARAM', 'wPage');
 define('DATEPARAM', 'wDate');
+define('ITEMSPERPAGE', '9');
 
 //NOt working if register its redirect to other page
 // function agpf_var_register($var) {
@@ -58,13 +59,15 @@ function agpf_workshop_query () {
 // Pagination for Workshops
 function agpf_workshop_query_pagination () {
 	global $wpdb;
-	$items_per_page = 9;
+	$items_per_page = ITEMSPERPAGE;
     //$total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
-    $total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
-	$total = $total[0]->total;
-	//var_dump($total[0]->total);
-    
-    //$page = get_query_var(PAGEPARAM, 1);
+	$total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
+	if($total){
+		$total = $total[0]->total;
+	} else {
+		$total = '';
+	}
+
     $page = 1;
     if(isset($_GET[PAGEPARAM])) {
         $page = esc_html($_GET[PAGEPARAM]);
@@ -87,7 +90,7 @@ function agpf_workshop_sql($count="") {
     if(isset($_GET[PAGEPARAM])) {
         $page = esc_html($_GET[PAGEPARAM]);
     }
-	$limit = 9;
+	$limit = ITEMSPERPAGE;
 	
 	
 	
@@ -107,11 +110,11 @@ function agpf_workshop_sql($count="") {
     }
     
 
-    if(isset($_GET[DATEPARAM]) && isset($_GET[DATEPARAM]) != 'all') {
-      
-	   // convert date formate to 20181220
+    if(isset($_GET[DATEPARAM]) && $_GET[DATEPARAM] != 'all') {
+      	// convert date formate to 20181220
+	   //$where[] = "(start_date >= 20190201)";
 	 	$dateToMonth = date('Y').$_GET[DATEPARAM].'01';
-        $where[] = "(start_date >= ".esc_sql($dateToMonth).")";
+		$where[] = "(start_date >= ".esc_sql($dateToMonth).")";
     }
 
 	//Turn array to string
