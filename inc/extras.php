@@ -346,6 +346,11 @@ function add_inr_currency( $currencies ) {
     return $currencies;
 }
 
+//Reordered Gravity Forms in admin menu: https://docs.gravityforms.com/gform_menu_position/
+add_filter( 'gform_menu_position', 'my_gform_menu_position' );
+function my_gform_menu_position( $position ) {
+    return 30;
+}
 // Disable wordpress emoji and speed up the page
 
 /**

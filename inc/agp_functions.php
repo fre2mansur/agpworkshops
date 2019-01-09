@@ -230,4 +230,17 @@ function my_acf_input_admin_footer() { ?>
 	</script>
 <?php }
 add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
+
+//Admin Menu name changed posts to blog
+function blog_change_post_object() {
+    global $wp_post_types;
+	$labels = &$wp_post_types['post']->labels;
+	$labels->menu_name = 'Blog';
+    $labels->name = 'Blog';
+	$labels->singular_name = 'Blog';
+	$labels->name_admin_bar = 'Blog';
+}
+add_action( 'init', 'blog_change_post_object' );
+
+
 ?>
