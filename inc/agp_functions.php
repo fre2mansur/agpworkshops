@@ -242,5 +242,5 @@ function blog_change_post_object() {
 }
 add_action( 'init', 'blog_change_post_object' );
 
-
+ 
 ?>
