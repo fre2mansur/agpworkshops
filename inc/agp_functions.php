@@ -87,7 +87,7 @@ function agpf_workshop_sql($count="") {
     if(isset($_GET[PAGEPARAM])) {
         $page = esc_html($_GET[PAGEPARAM]);
     }
-	$limit = 3;
+	$limit = 9;
 	
 	
 	
