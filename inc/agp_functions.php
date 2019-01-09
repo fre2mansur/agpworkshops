@@ -58,7 +58,7 @@ function agpf_workshop_query () {
 // Pagination for Workshops
 function agpf_workshop_query_pagination () {
 	global $wpdb;
-	$items_per_page = 3;
+	$items_per_page = 9;
     //$total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
     $total = $wpdb->get_results(agpf_workshop_sql(1), OBJECT);
 	$total = $total[0]->total;
