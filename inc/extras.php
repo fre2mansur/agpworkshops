@@ -115,7 +115,7 @@ if ( ! function_exists ( 'understrap_post_nav' ) ) {
 */
 require get_template_directory() . '/inc/admin_menu_templates/workshops.php';
 
-/**
+/** 
  * Load AGP Units post type
 */
 require get_template_directory() . '/inc/admin_menu_templates/units.php';
@@ -346,6 +346,11 @@ function add_inr_currency( $currencies ) {
     return $currencies;
 }
 
+//Reordered Gravity Forms in admin menu: https://docs.gravityforms.com/gform_menu_position/
+add_filter( 'gform_menu_position', 'my_gform_menu_position' );
+function my_gform_menu_position( $position ) {
+    return 30;
+}
 // Disable wordpress emoji and speed up the page
 
 /**
