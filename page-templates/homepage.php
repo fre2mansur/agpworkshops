@@ -21,7 +21,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<?php
 		if ( !wp_is_mobile() ) {
-		homepageSliderGalleryImages_querry();
+		agpf_homepageSliderGalleryImages_querry();
 		if($homepageSliderGalleryImages){ ?>
 		<div class="row">
 			<div class="mb-5 d-none px-3 d-md-block w-100">

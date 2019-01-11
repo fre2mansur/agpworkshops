@@ -152,33 +152,6 @@ function disable_default_dashboard_widgets() {
 
 
 
-// Remove product data tabs
-
-add_filter( 'woocommerce_register_post_type_product', 'custom_post_type_label_woo' );
-
-function custom_post_type_label_woo( $args ){
-    $labels = array(
-        'name'               =>  'Workshops_Woo',
-        'singular_name'      =>  'Workshop_woo',
-        'menu_name'          =>  'Workshops_woo', 'Admin menu name',
-        'add_new'            =>  'Create Workshop',
-		'add_new_item'       =>  'Create New Workshop',
-        'edit'               =>  'Edit Workshops',
-        'edit_item'          =>  'Edit Workshop',
-        'new_item'           =>  'New Workshop',
-        'view'               =>  'View Workshops',
-        'view_item'          =>  'View Workshop',
-        'search_items'       =>  'Search Workshops',
-        'not_found'          =>  'No Workshop found',
-		'not_found_in_trash' =>  'No Workshop found in trash',
-        'parent'             =>  'Parent Workshop'
-    );
-
-    $args['labels'] = $labels;
-    return $args;
-}
-
-
 // Custom Title for New Workshop
 function custom_post_title($input){
 if('product' === get_post_type()){
@@ -186,118 +159,6 @@ if('product' === get_post_type()){
 return $input;
 }
 add_filter('enter_title_here', 'custom_post_title'); 
-
-
-/* Customize Product Categories Labels */
-add_filter( 'woocommerce_taxonomy_args_product_cat', 'custom_wc_taxonomy_args_product_cat' );
-function custom_wc_taxonomy_args_product_cat( $args ) {
-	$args['label'] = ('Workshop Categories');
-	$args['labels'] = array(
-        'name' 				=> 'Workshop Categories',
-        'singular_name' 	=> 'Workshop Category',
-        'menu_name'			=> 'Categories', 'Admin menu name',
-        'search_items' 		=> 'Search Workshop Categories',
-        'all_items' 		=> 'All Workshop Categories',
-        'parent_item' 		=> 'Parent Workshop Category',
-        'parent_item_colon' => 'Parent Workshop Category:',
-        'edit_item' 		=> 'Edit Workshop Category',
-        'update_item' 		=> 'Update Workshop Category',
-        'add_new_item' 		=> 'Add New Workshop Category',
-        'new_item_name' 	=> 'New Workshop Category Name'
-	);
-
-	return $args;
-}
-
-/* Customize Product Tags Labels */
-add_filter( 'woocommerce_taxonomy_args_product_tag', 'custom_wc_taxonomy_args_product_tag' );
-function custom_wc_taxonomy_args_product_tag( $args ) {
-	$args['label'] = __( 'Product Tags', 'woocommerce' );
-	$args['labels'] = array(
-	    'name' 				=> __( 'Workshop Tags', 'woocommerce' ),
-	    'singular_name' 	=> __( 'Workshop Tag', 'woocommerce' ),
-        'menu_name'			=> _x( 'Tags', 'Admin menu name', 'woocommerce' ),
-	    'search_items' 		=> __( 'Search Workshop Tags', 'woocommerce' ),
-	    'all_items' 		=> __( 'All Workshop Tags', 'woocommerce' ),
-	    'parent_item' 		=> __( 'Parent Workshop Tag', 'woocommerce' ),
-	    'parent_item_colon' => __( 'Parent Workshop Tag:', 'woocommerce' ),
-	    'edit_item' 		=> __( 'Edit Workshop Tag', 'woocommerce' ),
-	    'update_item' 		=> __( 'Update Workshop Tag', 'woocommerce' ),
-	    'add_new_item' 		=> __( 'Add New Workshop Tag', 'woocommerce' ),
-	    'new_item_name' 	=> __( 'New Workshop Tag Name', 'woocommerce' )
-	);
-
-	return $args;
-}
-
-/* Custom Product Data Tabs */
-add_filter( 'woocommerce_product_data_tabs', 'custom_product_data_tabs');
-
-function custom_product_data_tabs($args){
-	$custom_label = array(
-		'general' => array(
-			'label'    => __( 'Price', 'woocommerce' ),
-			'target'   => 'general_product_data',
-			'class'    => array( 'hide_if_grouped' ),
-			'priority' => 10,
-		),
-		'inventory' => array(
-			'label'    => __( 'Inventory', 'woocommerce' ),
-			'target'   => 'inventory_product_data',
-			'class'    => array( 'show_if_simple', 'show_if_variable', 'show_if_grouped', 'show_if_external' ),
-			'priority' => 20,
-		),
-		'shipping' => array(
-			'label'    => __( 'Shipping', 'woocommerce' ),
-			'target'   => 'shipping_product_data',
-			'class'    => array( 'hide_if_virtual', 'hide_if_grouped', 'hide_if_external' ),
-			'priority' => 30,
-		),
-		'linked_product' => array(
-			'label'    => __( 'Linked Products', 'woocommerce' ),
-			'target'   => 'linked_product_data',
-			'class'    => array(),
-			'priority' => 40,
-		),
-		'attribute' => array(
-			'label'    => __( 'Attributes', 'woocommerce' ),
-			'target'   => 'product_attributes',
-			'class'    => array(),
-			'priority' => 50,
-		),
-		'variations' => array(
-			'label'    => __( 'Variations', 'woocommerce' ),
-			'target'   => 'variable_product_options',
-			'class'    => array( 'variations_tab', 'show_if_variable' ),
-			'priority' => 60,
-		),
-		'advanced' => array(
-			'label'    => __( 'Advanced', 'woocommerce' ),
-			'target'   => 'advanced_product_data',
-			'class'    => array(),
-			'priority' => 70,
-		),
-	);
-		
-	$args = $custom_label;
-	return $args;
-}
-
-/* Adding custom icon to Creat Workshops */
-function replace_admin_menu_icons_css() {
-    ?>
-    <style>
-    #adminmenu #menu-posts-product .menu-icon-post div.wp-menu-image::before, #adminmenu #menu-posts-product .menu-icon-product div.wp-menu-image::before {
-	
-	content: '\e01c';
-}
-    </style>
-    <?php
-}
-
-add_action( 'admin_head', 'replace_admin_menu_icons_css' );
-
-
 
 /* 
 	Custom Sidebar Navigation Walker
@@ -400,52 +261,6 @@ function my_gform_menu_position( $position ) {
    
    return $urls;
    }
-
-// Create a querry for homepage slider
-
-function homepageSliderGalleryImages_querry (){
-
-	global $wpdb;
-	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
-	global $homepageSliderGalleryImages; 
-	$homepageSliderGalleryImages = $wpdb->get_results( 
-		$wpdb->prepare(
-			"SELECT * FROM $get_plugin_gallery_table 
-			ORDER BY RAND() LIMIT %d" 
-			,array('12')),
-			OBJECT_K);
-
-	return $homepageSliderGalleryImages;
-}
-
-
-
-// Pagination for Workshops
-function queryPost_With_Dates_pagination () {
-	global $wpdb;
-	
-	$items_per_page = 3;
-	//$total = $wpdb->get_results(workshop_sql(1), OBJECT);
-	//$total = $total->total;
-	$total = "15";
-	$page = "1";
-	
-
-	
-	if(isset($_GET['cPage'])){
-		$page = esc_sql($_GET['cPage']);
-	}
-	return paginate_links( array(
-		'base' => add_query_arg( 'cPage', '%#%' ),
-		'format' => '',
-		'prev_text' => __('&laquo;'),
-		'next_text' => __('&raquo;'),
-		'total' => ceil($total / $items_per_page),
-		'current' => $page
-	));
-}
-
-
 
 
 /*
@@ -553,23 +368,8 @@ function save_start_end_date_In_custom_table($post_id) {
    
 */
 
-// Join for searching metadata
-// function AGP_joinWorkshopDates_to_WPQuery($joinWorkshopDates) {
-// 	global $wpdb;
-// 	$customTable = $wpdb->prefix."workshop_dates";
 
-//     if('!is_admin'){
-//         $joinWorkshopDates .= "LEFT JOIN $customTable ON $wpdb->posts.ID = $customTable.post_id ";
-//     }
-
-// 	return $joinWorkshopDates;
-
-	
-// }
-// add_filter('posts_join', 'AGP_joinWorkshopDates_to_WPQuery');
-
-
-//Add search box to menu 
+// Add search button to the End of the Right menu 
 
 add_filter( 'wp_nav_menu_items','add_search_box', 10, 2 );
 function add_search_box( $items, $args ) {
@@ -581,28 +381,6 @@ function add_search_box( $items, $args ) {
 	
    return $items;
 }
-
-// ACF Date limiter 
-// acf.add_filter('date_picker_args', function( $args){
-   
-//     // where our new values will live
-//     $field['choices'] = array();
-     
-//     // dynamic data we want to popuplate with
-//     $bundles = get_field('bundles', 'option' );
- 
-//     foreach ( $bundles as $bundle ){
-//         // $value = $label
-//         // the bundle_id will be saved to the database 
-//         // while the bundle_name is shown to the user
-//         $field['choices'][$bundle['bundle_id']] = $bundle['bundle_name'];
-//     }
-     
-//     // All done!
-//     return $field;
-     
-// } );
-
 
 //Testing javascript defer
 function add_defer_attribute($tag, $handle) {
