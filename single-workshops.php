@@ -229,15 +229,13 @@ $week_four_content = get_field('week_four_content');
 									<div class="card-body unit-details">
 											<h5><?php echo $unit->post_title; ?></h5>
 											<small class="text-muted">
+											
+											<?php  echo wp_trim_words( $unit->post_content, 20, '...'); ?>
 											<table class="table table-borderless">
 												<tbody>
 
 													
-													<tr>
-														<td class="pl-0">
-															<?php echo $unit->post_title ?>
-														</td>
-													</tr>
+
 													
 													<tr>
 														<td class="pl-0">
@@ -254,6 +252,8 @@ $week_four_content = get_field('week_four_content');
 															echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
 														</td>
 													</tr>
+											
+
 													
 												</tbody>
 											</table>
