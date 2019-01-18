@@ -231,14 +231,14 @@ $week_four_content = get_field('week_four_content');
 											<small class="text-muted">
 											
 											<?php  echo wp_trim_words( $unit->post_content, 20, '...'); ?>
-											<table class="table table-borderless">
+											<table class="table table-borderless my-4">
 												<tbody>
 
 													
 
 													
 													<tr>
-														<td class="pl-0">
+														<td class="p-0 mb-2">
 															<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
 															echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
 														</td>
@@ -247,7 +247,7 @@ $week_four_content = get_field('week_four_content');
 												
 													<tr>
 														
-														<td class="pl-0">
+														<td class="p-0 mb-2">
 															<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
 															echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
 														</td>
