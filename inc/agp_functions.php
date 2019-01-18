@@ -10,7 +10,7 @@
 
 // Create a querry for homepage slider
 
-function agpf_homepageSliderGalleryImages_querry (){
+function agpf_homepageSliderGalleryImages(){
 
 	global $wpdb;
 	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
