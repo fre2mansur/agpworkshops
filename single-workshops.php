@@ -344,7 +344,7 @@ $week_four_content = get_field('week_four_content');
 					$payment_with_accommodation = get_field('payment_with_accommodation');
 					$payment_details_with_accommodation = get_field('payment_details_with_accommodation');
 			 ?>
-			 <?php if($payment_details_with_accommodation || $payment_with_accommodation):?>		
+			 <?php if($payment_details_with_accommodation && $payment_with_accommodation):?>		
 
 			
 			
@@ -355,7 +355,7 @@ $week_four_content = get_field('week_four_content');
 			<p class="offset-1 text-muted small">
 			<small><?php echo($payment_details_with_accommodation); ?></small>
 			</p>
-			<!-- <?php else:?>
+			<!-- <?php //else:?>
 			<label>
 				<input class="d-none" type="radio" name="feesSelector" id="noFee" value="0" checked>
 				Please contact us for more information. Thank you!
@@ -370,7 +370,7 @@ $week_four_content = get_field('week_four_content');
 					$payment_without_accommodation = get_field('payment_without_accommodation');
 					$payment_details_without_accommodation = get_field('payment_details_without_accommodation');
 					?>
-					<?php if($payment_details_without_accommodation || $payment_without_accommodation): ?>	
+					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
 						<label>
 						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
 						<?php echo($payment_without_accommodation); ?>
