@@ -12,7 +12,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="<?php echo esc_attr( $container ); ?> ">
-<h3 class="brownline-before mb-4 d-none d-md-block">Facilitator</h3>
+<h3 class="brownline-before mb-4 d-none d-md-block">Unit</h3>
 
 <div class="row">
     <!-- <figure class="col-md-3 col-12 offset-md-1">
@@ -86,7 +86,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
         <div class="workshop-container w-100" id="accordion">
         <?php 
             $currentOrganisingUnitPostID = get_the_ID();
-            $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
+            $workshops = agpf_workshop_query(); //this function resturns the variable $workshops
             if($workshops):		 
                 foreach($workshops as $post){
                     $postId = $post->post_id;
@@ -96,7 +96,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                             
                             $organiserId = $organiser->ID;                    
                             if($organiserId == $currentOrganisingUnitPostID):
-                                card_loop($post);
+                                agpf_card_loop($post);
                             endif;    
                         }
                     endif;

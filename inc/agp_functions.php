@@ -8,6 +8,25 @@
  */
 //
 
+// Create a querry for homepage slider
+
+function agpf_homepageSliderGalleryImages(){
+
+	global $wpdb;
+	$get_plugin_gallery_table = $wpdb->prefix . "advance_green_plugin_gallery";
+	global $homepageSliderGalleryImages; 
+	$homepageSliderGalleryImages = $wpdb->get_results( 
+		$wpdb->prepare(
+			"SELECT * FROM $get_plugin_gallery_table 
+			ORDER BY RAND() LIMIT %d" 
+			,array('12')),
+			OBJECT_K);
+
+	return $homepageSliderGalleryImages;
+}
+
+
+
 //Here you can change the param which passed in to the url used on all agpf function.
 define('CATPARAM', 'wCat');
 define('PAGEPARAM', 'wPage');

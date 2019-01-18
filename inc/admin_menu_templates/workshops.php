@@ -127,8 +127,3 @@ function custom_agp_workshops() {
 	register_post_type( "workshops", $args );
 }
 add_action( 'init', 'custom_agp_workshops' );
-
-add_action('admin_menu', 'my_menu_pages');
-function my_menu_pages(){
-    add_menu_page('Registrations', 'Registrations', 'manage_options', 'gf_entries', '', '', 40 );
-}

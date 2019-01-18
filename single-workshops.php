@@ -229,7 +229,34 @@ $week_four_content = get_field('week_four_content');
 									<div class="card-body unit-details">
 											<h5><?php echo $unit->post_title; ?></h5>
 											<small class="text-muted">
-											<?php  echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+											
+											<?php  echo wp_trim_words( $unit->post_content, 20, ' ...'); ?>
+											<table class="table table-borderless my-4">
+												<tbody>
+
+													
+
+													
+													<tr>
+														<td class="p-0 mb-2">
+															<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+															echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+														</td>
+													</tr>
+												
+												
+													<tr>
+														
+														<td class="p-0 mb-2">
+															<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+															echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+														</td>
+													</tr>
+											
+
+													
+												</tbody>
+											</table>
 											</small>
 									</div>
 								</div>
@@ -317,7 +344,7 @@ $week_four_content = get_field('week_four_content');
 					$payment_with_accommodation = get_field('payment_with_accommodation');
 					$payment_details_with_accommodation = get_field('payment_details_with_accommodation');
 			 ?>
-			 <?php if($payment_details_with_accommodation && $payment_with_accommodation):?>		
+			 <?php if($payment_details_with_accommodation || $payment_with_accommodation):?>		
 
 			
 			
@@ -331,40 +358,8 @@ $week_four_content = get_field('week_four_content');
 			<?php else:?>
 			<label>
 				<input class="d-none" type="radio" name="feesSelector" id="noFee" value="0" checked>
-				For details contact
+				Please contact us for more information. Thank you!
 			</label>
-
-			<table class="table table-borderless">
-				<tbody>
-				<?php if($units): ?>
-				<?php foreach($units as $unit){ ?>
-					
-					<tr>
-						<td class="pl-0">
-							<?php echo $unit->post_title ?>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="pl-0">
-							<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
-							echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
-						</td>
-					</tr>
-				
-				
-					<tr>
-						
-						<td class="pl-0">
-							<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
-							echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
-						</td>
-					</tr>
-			
-				<?php break; } endif; ?>
-					
-				</tbody>
-			</table>
 			<?php endif; ?>
 
 			</div>
@@ -375,7 +370,7 @@ $week_four_content = get_field('week_four_content');
 					$payment_without_accommodation = get_field('payment_without_accommodation');
 					$payment_details_without_accommodation = get_field('payment_details_without_accommodation');
 					?>
-					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
+					<?php if($payment_details_without_accommodation || $payment_without_accommodation): ?>	
 						<label>
 						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
 						<?php echo($payment_without_accommodation); ?>
@@ -385,6 +380,42 @@ $week_four_content = get_field('week_four_content');
 						</p>
 
 					<?php endif; ?>
+		</div>
+		<div class="col-12 p-0">
+			<h3 class="py-3 m-0">Contact Information</h3>
+		</div>
+		<div class="col-10 offset-2 p-0">
+			<table class="table table-borderless">
+					<tbody>
+					<?php if($units): ?>
+					<?php foreach($units as $unit){ ?>
+						
+						<tr>
+							<td class="pl-0">
+								<?php echo $unit->post_title ?>
+							</td>
+						</tr>
+						
+						<tr>
+							<td class="pl-0">
+								<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+								echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+							</td>
+						</tr>
+					
+					
+						<tr>
+							
+							<td class="pl-0">
+								<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+								echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+							</td>
+						</tr>
+				
+					<?php break; } endif; ?>
+						
+					</tbody>
+			</table>
 		</div>
 		<div class="col-12 p-0 d-flex flex-column text-center">
 			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
