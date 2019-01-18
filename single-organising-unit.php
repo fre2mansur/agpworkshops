@@ -83,7 +83,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
     <div class="col-md-8 col-12 offset-md-3">
-        <div class="workshop-container w-100" id="accordion">
+        <div class="card-deck">
         <?php 
             $currentOrganisingUnitPostID = get_the_ID();
             $workshops = agpf_workshop_query(); //this function resturns the variable $workshops
@@ -96,7 +96,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                             
                             $organiserId = $organiser->ID;                    
                             if($organiserId == $currentOrganisingUnitPostID):
-                                agpf_card_loop($post);
+                                agpf_related_loop($post);
                             endif;    
                         }
                     endif;
