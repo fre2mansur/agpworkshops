@@ -386,6 +386,37 @@ $week_four_content = get_field('week_four_content');
 
 					<?php endif; ?>
 		</div>
+		<table class="table table-borderless">
+				<tbody>
+				<?php if($units): ?>
+				<?php foreach($units as $unit){ ?>
+					
+					<tr>
+						<td class="pl-0">
+							<?php echo $unit->post_title ?>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="pl-0">
+							<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+							echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+						</td>
+					</tr>
+				
+				
+					<tr>
+						
+						<td class="pl-0">
+							<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+							echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+						</td>
+					</tr>
+			
+				<?php break; } endif; ?>
+					
+				</tbody>
+			</table>
 		<div class="col-12 p-0 d-flex flex-column text-center">
 			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
 			data-url="<?php echo get_admin_url().'admin-ajax.php'?>">
