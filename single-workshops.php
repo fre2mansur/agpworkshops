@@ -230,7 +230,7 @@ $week_four_content = get_field('week_four_content');
 											<h5><?php echo $unit->post_title; ?></h5>
 											<small class="text-muted">
 											
-											<?php  echo wp_trim_words( $unit->post_content, 20, '...'); ?>
+											<?php  echo wp_trim_words( $unit->post_content, 20, ' ...'); ?>
 											<table class="table table-borderless my-4">
 												<tbody>
 
