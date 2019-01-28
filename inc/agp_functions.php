@@ -246,6 +246,7 @@ function agpf_related_loop($itemId) {
 	  $row_count = count($rows);
 	  $i = rand(0, $row_count - 1);
 	  $agp_card_image = wp_get_attachment_image_src($rows[ $i ]['agp_workshop_gallery_images'], 'medium');;
+	  var_dump($agp_card_image);
 	  ?>
 	  <figure>
 	  	<img src="<?php echo $agp_card_image; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
