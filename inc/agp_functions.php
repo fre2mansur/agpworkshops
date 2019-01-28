@@ -246,7 +246,7 @@ function agpf_related_loop($itemId) {
 	  $row_count = count($rows);
 	  $i = rand(0, $row_count - 1);
 	  $agp_attachmentID = get_sub_field('agp_workshop_gallery_images');
-	  $agp_imageUrl = wp_get_attachment_image_src( $attachment_id, 'full' );
+	  $agp_imageUrl = wp_get_attachment_image_src( $agp_attachmentID, 'full' );
 	  $agp_imageTitle = $agp_attachmentID->post_title;
 
 	  ?>
