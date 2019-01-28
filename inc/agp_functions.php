@@ -252,7 +252,7 @@ function agpf_related_loop($itemId) {
 	  <figure>
 	  	<img src="<?php echo $agp_card_image ; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
 	  </figure>
-	   <?php } else echo "couldn't find the image";// the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
+	   <?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
