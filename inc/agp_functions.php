@@ -245,14 +245,11 @@ function agpf_related_loop($itemId) {
 	  if($rows){ 
 	  $row_count = count($rows);
 	  $i = rand(0, $row_count - 1);
-	  $agp_attachmentID = get_sub_field('agp_workshop_gallery_images');
-	  $agp_imageUrl = wp_get_attachment_image_src( $agp_attachmentID, 'full' );
-	  $agp_imageTitle = $agp_attachmentID->post_title;
-
+	  $agp_card_image = $rows[ $i ]['agp_workshop_gallery_images'];
 	  ?>
-
+	  
 	  <figure>
-	  	<img src="<?php echo $agp_imageUrl[$i] ; ?>" alt="<?php echo $agp_imageTitle[$i]; ?>" class="card-img-top"/>	
+	  	<img src="<?php echo $agp_card_image ; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
 	  </figure>
 	   <?php } else echo "couldn't find the image";// the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 		<div class="card-body">
