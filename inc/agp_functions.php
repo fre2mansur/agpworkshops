@@ -188,11 +188,12 @@ function agpf_card_loop($itemId) {
 			if($rows){ 
 			$row_count = count($rows);
 			$i = rand(0, $row_count - 1);
-			$agp_card_image = $rows[ $i ]['agp_workshop_gallery_images'];
-			?>
+			$agp_card_images = $rows[ $i ]['agp_workshop_gallery_images'];
+			$agp_card_image = wp_get_attachment_image_src($agp_card_images, 'thumbnail'); 
 			
+			?>
 			<figure>
-				<img src="<?php echo $agp_card_image ; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
+				<img src="<?php echo $agp_card_image[$i] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
 	  		 <?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
 		</a>
