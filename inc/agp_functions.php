@@ -186,14 +186,13 @@ function agpf_card_loop($itemId) {
 		<?php
 			$rows = get_field('shuffle_gallery');
 			if($rows){ 
-			$row_count = count($rows);
-			$i = rand(0, $row_count - 1);
-			$agp_card_images = $rows[ $i ]['agp_workshop_gallery_images'];
-			$agp_card_image = wp_get_attachment_image_src($agp_card_images, 'thumbnail'); 
+			$rand_row = $rows[ array_rand( $rows ) ];
+			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
 			
 			?>
 			<figure>
-				<img src="<?php echo $agp_card_image[$i] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
 	  		 <?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
 		</a>
