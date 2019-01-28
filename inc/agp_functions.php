@@ -183,7 +183,18 @@ function agpf_card_loop($itemId) {
 
 	<div class="workshop-card">
 		<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
-		<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
+		<?php
+			$rows = get_field('shuffle_gallery');
+			if($rows){ 
+			$row_count = count($rows);
+			$i = rand(0, $row_count - 1);
+			$agp_card_image = $rows[ $i ]['agp_workshop_gallery_images'];
+			?>
+			
+			<figure>
+				<img src="<?php echo $agp_card_image ; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
+			</figure>
+	  		 <?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
 		</a>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
@@ -245,7 +256,6 @@ function agpf_related_loop($itemId) {
 	  if($rows){ 
 	  $row_count = count($rows);
 	  $i = rand(0, $row_count - 1);
-	  var_dump($i);
 	  $agp_card_image = $rows[ $i ]['agp_workshop_gallery_images'];
 	  ?>
 	  
