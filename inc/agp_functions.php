@@ -194,7 +194,7 @@ function agpf_card_loop($itemId) {
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
-	  		 <?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
+	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
@@ -262,7 +262,10 @@ function agpf_related_loop($itemId) {
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
-	  	<?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
+		  <?php } 
+		  else {
+			  the_post_thumbnail('medium', ['class' =>"card-img-top"]); 
+		  }?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
