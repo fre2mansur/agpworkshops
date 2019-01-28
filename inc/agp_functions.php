@@ -245,6 +245,7 @@ function agpf_related_loop($itemId) {
 	  if($rows){ 
 	  $row_count = count($rows);
 	  $i = rand(0, $row_count - 1);
+	  var_dump($i);
 	  $agp_card_image = $rows[ $i ]['agp_workshop_gallery_images'];
 	  ?>
 	  
