@@ -248,10 +248,9 @@ function agpf_related_loop($itemId) {
 	  $agp_card_image = wp_get_attachment_image_src($rows[ $i ]['agp_workshop_gallery_images'], 'medium');;
 	  ?>
 	  <figure>
-	  	<img src="<?php echo $agp_card_image[$i]; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
+	  	<img src="<?php echo $agp_card_image; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
 	  </figure>
-	  
-		 <!-- <?php } else echo "couldn't find the image";// the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?> -->
+	   <?php } else echo "couldn't find the image";// the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
