@@ -252,17 +252,17 @@ function agpf_related_loop($itemId) {
 
   	<div class="workshop-card">
 	  <?php
-	  $rows = get_field('shuffle_gallery');
-	  if($rows){ 
-	  $row_count = count($rows);
-	  $i = rand(0, $row_count - 1);
-	  $agp_card_image = $rows[ $i ]['agp_workshop_gallery_images'];
-	  ?>
-	  
-	  <figure>
-	  	<img src="<?php echo $agp_card_image ; ?>" alt="<?php echo $agp_card_image[$i]; ?>" class="card-img-top"/>	
-	  </figure>
-	   <?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
+			$rows = get_field('shuffle_gallery');
+			if($rows){ 
+			$rand_row = $rows[ array_rand( $rows ) ];
+			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+			
+		?>
+			<figure class="figure w-100">
+				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+			</figure>
+	  	<?php } else {the_post_thumbnail('medium', ['class' =>"card-img-top"]);} ?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
