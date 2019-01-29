@@ -208,7 +208,7 @@ function agpf_card_loop($itemId) {
 	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
 
 	<div class="workshop-card">
-		
+		<?php agpf_card_Image_sepration() ?>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 				<div class="d-flex justify-content-between header">
