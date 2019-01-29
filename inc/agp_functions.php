@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_loop($itemId, $iForRow) {
+function agpf_card_loop($itemId, $iForRow=0) {
 	$postId = $itemId->post_id;
 	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
 	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
@@ -188,10 +188,13 @@ function agpf_card_loop($itemId, $iForRow) {
 			
 			$agp_row_count = count($agp_Image_rows);
 			if($agp_Image_rows && ($iForRow <= $agp_row_count - 1)){
-			$rand_row = $agp_Image_rows[$iForRow];
-			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			$iForRow++;
+				for($iForRow; $iForRow < count($agp_row_count); $iForRow++){
+
+					$rand_row = $agp_Image_rows[$iForRow];
+					$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+					$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+					
+				}
 			?>
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
