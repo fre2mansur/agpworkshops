@@ -186,11 +186,6 @@ function agpf_card_Image_sepration($itemId){
 			if($agp_Image_rows && ($iForRow < $agp_row_count)){
 				
 				$rand_row = $agp_Image_rows[$iForRow];
-				if($itemId == $agp_Image_field["ID"] ){
-					
-					$iForRow++;
-
-				}
 				
 			
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
