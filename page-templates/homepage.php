@@ -65,15 +65,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 		$workshops = agpf_workshop_query(); //this function returns the variable $workshops
 		if($workshops):	
 			
-			
-			
+			$iForRow = 0;
 			foreach($workshops as $post){
-				agpf_card_loop($post);
-				
+				agpf_card_loop($post, $iForRow++);
 			 }  
 			else: 
 ?>
-<div class="row">
+
+<div class="row h-100">
 	<h3>No workshop found</h3>
 </div>
 <?php endif; ?>
