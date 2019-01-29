@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_loop($itemId, $iForRow=0) {
+function agpf_card_loop($itemId, $iForRow) {
 	$postId = $itemId->post_id;
 	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
 	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
@@ -184,8 +184,10 @@ function agpf_card_loop($itemId, $iForRow=0) {
 	<div class="workshop-card">
 		<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
-			$rows = get_field('shuffle_gallery');
-			if($rows){
+			$agp_Image_rows = get_field('shuffle_gallery');
+			
+			if($agp_Image_rows){
+			
 			$rand_row = $rows[$iForRow];
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
