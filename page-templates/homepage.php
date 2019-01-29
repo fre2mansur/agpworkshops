@@ -62,13 +62,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 			$page = 1;
 		}
 
-		$workshops = agpf_workshop_query(); //this function resturns the variable $workshops
+		$workshops = agpf_workshop_query(); //this function returns the variable $workshops
 		if($workshops):	
 			
-			$iForRow = 0;
+			$iForRow = -1;
 			foreach($workshops as $post){
-				agpf_card_loop($post, $iForRow );
-				$iForRow++;
+				agpf_card_loop($post, $iForRow++);
 			 }  
 			else: 
 ?>

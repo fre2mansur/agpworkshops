@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_loop($itemId, $iForRow=0) {
+function agpf_card_loop($itemId, $iForRow=-1) {
 	$postId = $itemId->post_id;
 	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
 	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
