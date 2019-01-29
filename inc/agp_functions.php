@@ -190,7 +190,8 @@ function agpf_card_loop($itemId) {
 			
 			if($agp_Image_rows && ($iForRow <= $agp_row_count)){
 				
-				for($iForRow = 0;$iForRow <= $agp_row_count;){
+				$iForRow = -1;
+				while($iForRow <= $agp_row_count){
 					
 					echo var_dump($iForRow);
 					$rand_row = $agp_Image_rows[$iForRow];
