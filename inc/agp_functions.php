@@ -191,7 +191,9 @@ function agpf_card_loop($itemId) {
 			if($agp_Image_rows && ($iForRow <= $agp_row_count)){
 				
 				for($iForRow = 0;$iForRow <= $agp_row_count;){
-				$rand_row = $agp_Image_rows[$iForRow];
+					
+					echo var_dump($iForRow);
+					$rand_row = $agp_Image_rows[$iForRow];
 
 			
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
