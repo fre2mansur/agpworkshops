@@ -187,14 +187,12 @@ function agpf_card_loop($itemId, $iForRow=0) {
 			$agp_Image_rows = get_field('shuffle_gallery');
 			
 			$agp_row_count = count($agp_Image_rows);
-			if($agp_Image_rows && ($iForRow <= $agp_row_count - 1)){
-				for($iForRow; $iForRow < count($agp_row_count); $iForRow++){
-
-					$rand_row = $agp_Image_rows[$iForRow];
-					$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-					$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-					
-				}
+			
+			if($agp_Image_rows && ($iForRow < $agp_row_count)){
+			$rand_row = $agp_Image_rows[$iForRow];
+			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+			// 
 			?>
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
