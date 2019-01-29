@@ -191,9 +191,9 @@ function agpf_card_loop($itemId) {
 			if($agp_Image_rows){
 				
 				
-				$iForRow++;
 				$rand_row = $agp_Image_rows[$iForRow];
-
+				$iForRow++;
+				
 			
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
