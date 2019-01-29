@@ -185,11 +185,12 @@ function agpf_card_loop($itemId) {
 		<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
 			$rows = get_field('shuffle_gallery');
-			if($rows){ 
-			$rand_row = $rows[ array_rand( $rows ) ];
+			if($rows){
+			$iForRow = 0; 
+			$rand_row = $rows[$iForRow];
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			
+			$iForRow++;
 			?>
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
@@ -254,10 +255,11 @@ function agpf_related_loop($itemId) {
 	  <?php
 			$rows = get_field('shuffle_gallery');
 			if($rows){ 
-			$rand_row = $rows[ array_rand( $rows ) ];
-			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			
+				$iForRow = 0; 
+				$rand_row = $rows[$iForRow];
+				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+				$iForRow++;
 		?>
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
