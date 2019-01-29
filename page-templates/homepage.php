@@ -65,11 +65,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 		$workshops = agpf_workshop_query(); //this function returns the variable $workshops
 		if($workshops):	
 			
-			$iForRow = 0;
+			global $iForRow;
 			foreach($workshops as $post){
-				agpf_card_loop($post, $iForRow);
+				agpf_card_loop($post);
 				$iForRow++;
-				echo var_dump($iForRow);
+			
 			 }  
 			else: 
 ?>
