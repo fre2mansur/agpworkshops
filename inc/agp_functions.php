@@ -189,9 +189,10 @@ function agpf_card_loop($itemId, $iForRow=0) {
 			$agp_row_count = count($agp_Image_rows);
 			
 			if($agp_Image_rows && ($iForRow < $agp_row_count)){
-			for($iForRow=0;$iForRow < $agp_row_count; $iForRow++){
+			while($iForRow < $agp_row_count){
 
 				$rand_row = $agp_Image_rows[$iForRow];
+				$iForRow++;
 			}
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
