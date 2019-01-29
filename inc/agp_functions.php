@@ -191,7 +191,7 @@ function agpf_card_loop($itemId, $iForRow) {
 			$rand_row = $agp_Image_rows[$iForRow];
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			
+			$iForRow++;
 			?>
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
