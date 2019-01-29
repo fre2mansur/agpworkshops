@@ -67,7 +67,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 			
 			foreach($workshops as $post){
-				agpf_card_loop($post, $iForRow=0);
+				$iForRow=0;
+				agpf_card_loop($post, $iForRow);
 				$iForRow++;
 			 }  
 			else: 
