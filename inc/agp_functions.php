@@ -187,14 +187,12 @@ function agpf_card_loop($itemId) {
 			$agp_Image_rows = get_field('shuffle_gallery');
 			
 			$agp_row_count = count($agp_Image_rows) - 1;
-			
+			static $iForRow = 0;
+   			$iForRow++;
 			if($agp_Image_rows && ($iForRow <= $agp_row_count)){
 				
-				$iForRow = -1;
-				while($iForRow <= $agp_row_count){
-					
-					echo var_dump($iForRow);
-					$rand_row = $agp_Image_rows[$iForRow];
+				
+				$rand_row = $agp_Image_rows[$iForRow];
 
 			
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
@@ -204,7 +202,7 @@ function agpf_card_loop($itemId) {
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
-	  		 <?php $iForRow++; } } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
+	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
