@@ -179,8 +179,7 @@ function agpf_card_Image_sepration($itemId){
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
 			$agp_Image_rows = get_field('shuffle_gallery');
-			$agp_Image_field = get_field_object('shuffle_gallery');
-			var_dump($agp_Image_field);
+			var_dump($agp_Image_rows);
 			$agp_row_count = count($agp_Image_rows);
 			static $iForRow = 0;
 			if($agp_Image_rows && ($iForRow < $agp_row_count)){
