@@ -174,15 +174,9 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_loop($itemId) {
-	$postId = $itemId->post_id;
-	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
-	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
-	$randomGenerator = mt_rand(123506, 9999999);
-	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
-
-	<div class="workshop-card">
-		<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
+function agpf_card_Image_sepration(){
+	?>
+	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
 			$agp_Image_rows = get_field('shuffle_gallery');
 			
@@ -204,6 +198,17 @@ function agpf_card_loop($itemId) {
 			</figure>
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
+	<?php
+}
+function agpf_card_loop($itemId) {
+	$postId = $itemId->post_id;
+	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
+	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
+	$randomGenerator = mt_rand(123506, 9999999);
+	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
+
+	<div class="workshop-card">
+		
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 				<div class="d-flex justify-content-between header">
