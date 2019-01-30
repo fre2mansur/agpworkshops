@@ -186,7 +186,7 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
 				
 				
 				$rand_row = $agp_Image_rows[$iForRow];
-				if($randPostIDsForAccordion){
+				if($randPostIDsForAccordion == $randPostIDsForAccordion){
 					$iForRow++; 
 				}
 				
