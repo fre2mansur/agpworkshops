@@ -201,7 +201,7 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion){
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 	<?php
-	return $iForRow;
+	return $iForRow++;
 }
 function agpf_card_loop($itemId) {
 	$postId = $itemId->post_id;
