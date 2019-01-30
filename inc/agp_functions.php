@@ -174,6 +174,34 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
+function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, $startDate, $endDate){
+	?>
+	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
+		<?php
+			$agp_Image_rows = get_field('shuffle_gallery');
+			
+			$agp_row_count = count($agp_Image_rows);
+			
+			
+			if($agp_Image_rows && $iForRow < $agp_row_count){
+				
+				
+				$rand_row = $agp_Image_rows[$iForRow];
+				
+			
+			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+			$iForRow++;
+		
+			// 
+			?>
+			<figure class="figure w-100">
+				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+			</figure>
+	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
+		</a>
+	<?php
+}
 function agpf_card_loop($itemId) {
 	$postId = $itemId->post_id;
 	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
@@ -182,9 +210,11 @@ function agpf_card_loop($itemId) {
 	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
 
 	<div class="workshop-card">
-		<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
-		<?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
-		</a>
+		<?php 
+		$iForRow = 0;
+		agpf_card_Image_sepration($postId, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
+		
+		?>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 				<div class="d-flex justify-content-between header">
@@ -240,7 +270,22 @@ function agpf_related_loop($itemId) {
 	?>
 
   	<div class="workshop-card">
-	  <?php the_post_thumbnail('medium', ['class' =>"card-img-top"]); ?>
+	  <?php
+			$rows = get_field('shuffle_gallery');
+			if($rows){ 
+				$iForRow = 0; 
+				$rand_row = $rows[$iForRow];
+				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+				$iForRow++;
+		?>
+			<figure class="figure w-100">
+				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+			</figure>
+		  <?php } 
+		  else {
+			  the_post_thumbnail('medium', ['class' =>"card-img-top"]); 
+		  }?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
