@@ -174,23 +174,17 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, $startDate, $endDate){
+function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate, $endDate){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
-			$agp_Image_rows = get_field('shuffle_gallery');
+			$agp_Image_rows = get_field('shuffle_gallery', $itemId->ID);
 			
-			$agp_row_count = count($agp_Image_rows);
+			$agp_rand_row_image = array_rand($agp_Image_rows, 1);
 			
 			
-
-			if($agp_Image_rows && $iForRow < $agp_row_count){
+			if($agp_Image_rows){
 				
-				
-				$rand_row = $agp_Image_rows[$iForRow];
-				
-			
-			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
 			$iForRow++;
 		
@@ -212,8 +206,8 @@ function agpf_card_loop($itemId) {
 
 	<div class="workshop-card">
 		<?php 
-		$iForRow = 0;
-		agpf_card_Image_sepration($postId, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
+		
+		agpf_card_Image_sepration($postId, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
 		
 		?>
 		<div class="card-body pb-0">
