@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration($itemId){
+function agpf_card_Image_sepration(){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
@@ -185,24 +185,23 @@ function agpf_card_Image_sepration($itemId){
 			if($agp_Image_rows && ($iForRow < $agp_row_count)){
 				
 				foreach($agp_Image_rows as $agp_Image_row){
-					$rand_row = $agp_Image_rows[$iForRow];
-					$iForRow++;
-					break;
+
+					$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+					$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+
+
 				}
 				
 				
 				
 			
-			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
 			// 
 			?>
-			<figure class="figure w-100">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
-			</figure>
-	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
+
+	  		 <?php } else { $agp_card_image = the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 	<?php
+	return $agp_card_image;
 }
 function agpf_card_loop($itemId) {
 	$postId = $itemId->post_id;
@@ -212,7 +211,10 @@ function agpf_card_loop($itemId) {
 	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
 
 	<div class="workshop-card">
-		<?php agpf_card_Image_sepration($itemId) ?>
+		<?php agpf_card_Image_sepration() ?>
+		<figure class="figure w-100">
+				<img src="<?php agpf_card_Image_sepration(); echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+		</figure>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 				<div class="d-flex justify-content-between header">
