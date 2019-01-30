@@ -182,6 +182,9 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, 
 			
 			$agp_row_count = count($agp_Image_rows);
 			
+			
+			
+			print_r (array_count_values($postArray));
 
 			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
@@ -211,7 +214,7 @@ function agpf_card_loop($itemId) {
 
 	<div class="workshop-card">
 		<?php 
-		
+		$iForRow = 0;
 		agpf_card_Image_sepration($postId, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
 		
 		?>
