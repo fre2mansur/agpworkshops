@@ -185,14 +185,14 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate
 			if($agp_Image_rows){
 				
 			$agp_rand_row_image = array_rand($agp_Image_rows, 1);
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+			
 			
 		
 			// 
 			?>
 			<figure class="figure w-100">
 				<?php var_dump($agp_rand_row_image); var_dump($agp_card_image);?>
-				<img src="<?php echo $agp_card_image[0];?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+				<img src="<?php echo $agp_Image_rows[$agp_rand_row_image]['sizes']['medium'];?>" alt="<?php echo $agp_Image_rows[$agp_rand_row_image]['alt'] ?>" class="card-img-top"/>	
 			</figure>
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
