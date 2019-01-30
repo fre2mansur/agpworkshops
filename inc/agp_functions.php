@@ -183,6 +183,9 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, 
 			$agp_row_count = count($agp_Image_rows);
 			
 			
+			$postArray[] = $itemId;
+			print_r (array_count_values($postArray));
+			
 			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
 				

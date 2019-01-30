@@ -56,7 +56,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="workshop-container" id="accordion">
 	<?php  
 				
-		if(isset($_GET['cpage'])) {
+		if(isset($_GET['cpage'])) { //@ToDo change to post method with ajax without browser refresh
 			$page = $_GET['cpage'];
 		} else {
 			$page = 1;
@@ -66,10 +66,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		
 		if($workshops):	
 			foreach($workshops as $post){
-				agpf_card_loop($post);	
-				$postArray[] = $post->ID;
+				agpf_card_loop($post);			
 			}  
-			print_r(array_count_values($postArray));		
 		else: 
 ?>
 
