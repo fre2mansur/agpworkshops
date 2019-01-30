@@ -185,9 +185,7 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, 
 			
 			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
-				foreach($agp_Image_rows as $img_Rows){
-					$iForRow++;
-				}
+			
 				
 				$rand_row = $agp_Image_rows[$iForRow];
 				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
