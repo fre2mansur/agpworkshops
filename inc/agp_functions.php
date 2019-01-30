@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion){
+function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, $startDate, $endDate){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
@@ -183,25 +183,27 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion){
 			$agp_row_count = count($agp_Image_rows);
 			
 			
-			if($agp_Image_rows && $iForRow < $agp_row_count){
+			if($agp_Image_rows){
+				
+				while($agp_Image_rows){
+
+					$agp_rand_row_image = get_sub_field('agp_workshop_gallery_images');
+					$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+					?>
+					<figure class="figure w-100">
+						<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+					</figure>
+
+				<?php }
 				
 				
-				$rand_row = $agp_Image_rows[$iForRow];
-				
-			
-			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			$iForRow++;
-		
+				// $rand_row = $agp_Image_rows[$iForRow];
+						
 			// 
 			?>
-			<figure class="figure w-100">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
-			</figure>
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 	<?php
-	return $iForRow++;
 }
 function agpf_card_loop($itemId) {
 	$postId = $itemId->post_id;
@@ -213,7 +215,7 @@ function agpf_card_loop($itemId) {
 	<div class="workshop-card">
 		<?php 
 		$iForRow = 0;
-		agpf_card_Image_sepration($postId, $iForRow, $randPostIDsForAccordion);
+		agpf_card_Image_sepration($postId, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
 		
 		?>
 		<div class="card-body pb-0">
