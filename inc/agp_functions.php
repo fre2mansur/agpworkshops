@@ -185,13 +185,13 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, 
 			
 			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
-			
 				
 				$rand_row = $agp_Image_rows[$iForRow];
-				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 				
 			
+			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
+			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+			$iForRow++;
 		
 			// 
 			?>
