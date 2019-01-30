@@ -215,7 +215,7 @@ function agpf_card_loop($itemId) {
 	<div class="workshop-card">
 		<?php 
 		$iForRow = 0;
-		$postArray[] = $itemId;	
+		$postArray[] = $postId;	
 		agpf_card_Image_sepration($postArray, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
 		
 		?>
