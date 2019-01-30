@@ -63,10 +63,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 		}
 
 		$workshops = agpf_workshop_query(); //this function returns the variable $workshops
-		
+		$countWorkshops = array_count_values($workshops); 
 		if($workshops):	
 			foreach($workshops as $post){
-				agpf_card_loop($post);			
+				agpf_card_loop($post);	
+				echo $countWorkshops[$post];		
 			}  
 		else: 
 ?>

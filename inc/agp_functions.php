@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration(array $itemId, $iForRow, $randPostIDsForAccordion, $startDate, $endDate){
+function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, $startDate, $endDate){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
@@ -182,9 +182,6 @@ function agpf_card_Image_sepration(array $itemId, $iForRow, $randPostIDsForAccor
 			
 			$agp_row_count = count($agp_Image_rows);
 			
-			
-			
-			print_r (array_count_values($itemId));
 
 			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
@@ -214,9 +211,8 @@ function agpf_card_loop($itemId) {
 
 	<div class="workshop-card">
 		<?php 
-		$iForRow = 0;
-		$postArray[] = $postId;	
-		agpf_card_Image_sepration($postArray, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
+		
+		agpf_card_Image_sepration($postId, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
 		
 		?>
 		<div class="card-body pb-0">
