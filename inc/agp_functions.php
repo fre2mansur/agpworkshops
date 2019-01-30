@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
+function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
@@ -183,14 +183,11 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
 			
 			$agp_row_count = count($agp_Image_rows);
 			
-			static $iForRow = 0;
+			
 			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
 				
 				$rand_row = $agp_Image_rows[$iForRow];
-				if($randPostIDsForAccordion == $randPostIDsForAccordion){
-					$iForRow++; 
-				}
 				
 			
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
@@ -205,6 +202,7 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 	<?php
+	return $iForRow;
 }
 function agpf_card_loop($itemId) {
 	$postId = $itemId->post_id;
@@ -214,7 +212,11 @@ function agpf_card_loop($itemId) {
 	$randPostIDsForAccordion = $postId * $randomGenerator; ?>
 
 	<div class="workshop-card">
-		<?php agpf_card_Image_sepration($postId, $randPostIDsForAccordion) ?>
+		<?php 
+		static $iForRow = 0;
+		agpf_card_Image_sepration($postId, $iForRow, $randPostIDsForAccordion);
+		$iForRow++;
+		?>
 		<div class="card-body pb-0">
 			<a class="decoration-none" data-toggle="collapse" href="#workshop_<?php echo $randPostIDsForAccordion; ?>" role="button" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion; ?>" >
 				<div class="d-flex justify-content-between header">
