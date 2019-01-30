@@ -67,7 +67,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		if($workshops):	
 			foreach($workshops as $post){
 				agpf_card_loop($post);	
-				echo $countWorkshops[$post];		
+				echo $countWorkshops[$post->ID];		
 			}  
 		else: 
 ?>
