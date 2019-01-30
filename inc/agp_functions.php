@@ -178,21 +178,21 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
-			$agp_Image_rows = get_field('shuffle_gallery');
+			$agp_Image_rows = get_field('shuffle_gallery',false, false);
 			
 			
 			
-			$agp_rand_row_image = array_rand($agp_Image_rows, 1);
 			if($agp_Image_rows){
 				
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+			$agp_rand_row_image = array_rand($agp_Image_rows, 1);
+			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image['ID'], 'medium' );
 			
 		
 			// 
 			?>
 			<figure class="figure w-100">
 				<?php var_dump($agp_rand_row_image); var_dump($agp_card_image);?>
-				<img src="<?php echo 'unkown';?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+				<img src="<?php echo $agp_Image_rows[$agp_rand_row_image]['url'];?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
