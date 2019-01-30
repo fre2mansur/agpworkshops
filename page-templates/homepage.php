@@ -68,8 +68,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 			foreach($workshops as $post){
 				agpf_card_loop($post);	
 				$postArray[] = $post->ID;
-				print_r (array_count_values($postArray));		
 			}  
+			print_r(array_count_values($postArray));		
 		else: 
 ?>
 
