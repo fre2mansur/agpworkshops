@@ -179,7 +179,7 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
 			$agp_Image_rows = get_field('shuffle_gallery');
-			
+			var_dump($agp_Image_rows);
 			$agp_row_count = count($agp_Image_rows);
 			static $iForRow = 0;
 			if($agp_Image_rows && $iForRow < $agp_row_count){
@@ -193,8 +193,8 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
 			
 			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			echo var_dump($agp_card_image);
-
+			var_dump($agp_card_image);
+		
 			// 
 			?>
 			<figure class="figure w-100">
