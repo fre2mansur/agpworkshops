@@ -196,7 +196,7 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion){
 			// 
 			?>
 			<figure class="figure w-100">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+				<img src="<?php echo $agp_card_image[0] ; echo var_dump($agp_card_image); ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
 			</figure>
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
