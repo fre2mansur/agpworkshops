@@ -183,24 +183,23 @@ function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, 
 			$agp_row_count = count($agp_Image_rows);
 			
 			
-			if($agp_Image_rows){
+			if($agp_Image_rows && $iForRow < $agp_row_count){
 				
-				while($agp_Image_rows){
-
-					$agp_rand_row_image = get_sub_field('agp_workshop_gallery_images');
-					$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-					?>
-					<figure class="figure w-100">
-						<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
-					</figure>
-
-				<?php }
+				foreach($agp_Image_rows as $img_Rows){
+					$iForRow++;
+				}
 				
+				$rand_row = $agp_Image_rows[$iForRow];
+				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
+				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
 				
-				// $rand_row = $agp_Image_rows[$iForRow];
-						
+			
+		
 			// 
 			?>
+			<figure class="figure w-100">
+				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+			</figure>
 	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
 		</a>
 	<?php
