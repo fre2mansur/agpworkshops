@@ -179,16 +179,8 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
 			$agp_Image_rows = get_field('shuffle_gallery');
-			
-			
-			
 			if($agp_Image_rows){
-				
-			$agp_rand_row_image = array_rand($agp_Image_rows, 1);
-			
-			
-		
-			// 
+			$agp_rand_row_image = array_rand($agp_Image_rows, 1); 
 			?>
 			<figure class="figure w-100">
 				<img src="<?php echo $agp_Image_rows[$agp_rand_row_image]['sizes']['medium'];?>" alt="<?php echo $agp_Image_rows[$agp_rand_row_image]['alt'] ?>" class="card-img-top"/>	
