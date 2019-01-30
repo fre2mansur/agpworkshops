@@ -212,7 +212,7 @@ function agpf_card_loop($itemId) {
 
 	<div class="workshop-card">
 		<?php 
-		static $iForRow = 0;
+		$iForRow = 0;
 		agpf_card_Image_sepration($postId, $iForRow, $randPostIDsForAccordion);
 		
 		?>
