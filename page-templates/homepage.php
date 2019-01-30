@@ -67,9 +67,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 		if($workshops):	
 			foreach($workshops as $post){
 				agpf_card_loop($post);	
-				print_r(array_count_values($post->ID));		
-			 }  
-			else: 
+				$postArray[] = $post->ID;
+			}  
+			print_r(array_count_values($postArray));		
+		else: 
 ?>
 
 <div class="row h-100">
