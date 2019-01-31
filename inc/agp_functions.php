@@ -257,7 +257,7 @@ function agpf_related_loop($itemId) {
 	$randID = rand(0, 999999);
 	?>
 
-  	<div class="workshop-card card scrollable-cards">
+  	<div class="workshop-card card scrollable-cards mx-2">
 	  <?php
 			agpf_card_Image_sepration($postId, $randID, $workshopStartDate, $workshopEndDate);
 		?>
