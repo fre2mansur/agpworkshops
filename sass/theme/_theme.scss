@@ -882,6 +882,7 @@ a[href^="mailto:"]:before {
 }
 
 .scrollable-content{
+  flex-wrap: nowrap !important;
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch !important;
   &::-webkit-scrollbar {
