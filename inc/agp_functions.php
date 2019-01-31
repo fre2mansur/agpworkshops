@@ -258,21 +258,8 @@ function agpf_related_loop($itemId) {
 
   	<div class="workshop-card card-deck scrollable-content">
 	  <?php
-			$rows = get_field('shuffle_gallery');
-			if($rows){ 
-				$iForRow = 0; 
-				$rand_row = $rows[$iForRow];
-				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-				$iForRow++;
+			agpf_card_Image_sepration($postId, $workshopStartDate, $workshopEndDate);
 		?>
-			<figure class="figure">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
-			</figure>
-		  <?php } 
-		  else {
-			  the_post_thumbnail('medium', ['class' =>"card-img-top"]); 
-		  }?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
