@@ -263,7 +263,7 @@ function agpf_related_loop($itemId) {
 		?>
 		<div class="card-body pb-0">
 			<div class="d-flex justify-content-between header">
-				<h5 class="card-title"><?php the_title()?></h5>
+				<h5 class="card-title text-truncate"><?php the_title()?></h5>
 			</div> 
 			<?php 	$categories = get_the_terms( $postId, 'workshop_category'); 
 					foreach ( $categories as $category){

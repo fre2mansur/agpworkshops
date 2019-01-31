@@ -898,7 +898,7 @@ a[href^="mailto:"]:before {
   }
   &:before,
   &:after {
-  content: '';
+  content: " ";
   width: 10px;
-}
+  }
 }
