@@ -256,7 +256,7 @@ function agpf_related_loop($itemId) {
 	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
 	?>
 
-  	<div class="workshop-card-related">
+  	<div class="workshop-card-related card">
 	  <?php agpf_card_Image_sepration() ?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
