@@ -652,8 +652,8 @@ text-align: inherit;
   box-shadow: 0 3px 30px -5px rgba(0,0,0,0.16);
   border-radius:2%;
   padding:0;
-  display:table;
-  float: left;
+  // display:table;
+  // float: left;
   .card-body{
     .collapsing{
       transition: height .05s ease !important;
