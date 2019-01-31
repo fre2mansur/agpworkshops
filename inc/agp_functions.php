@@ -280,6 +280,7 @@ function agpf_related_loop($itemId) {
 						), the_permalink()) );?>"> Know more
 				</a>
 			</div>
+		</div>
 			<hr class="p-0 m-0 ">
 			<div class="footer d-flex justify-content-between m-0 px-4">
 				<div class="">
@@ -288,7 +289,7 @@ function agpf_related_loop($itemId) {
 						<?php echo $workshopStartDate;?></strong>
 				</div>
 				<span class="line border-card mx-auto"></span>
-				<div class="pl-2 pb-1">
+				<div class="pl-2">
 					<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
 					<strong class= "d-block d-lg-inline-block ">
 						<?php echo $workshopEndDate;?></strong>
