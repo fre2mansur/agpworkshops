@@ -880,3 +880,14 @@ a[href^="mailto:"]:before {
   left: 0;
   top: 0
 }
+
+.scrollable-content{
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  .scrollable-cards{
+    flex:0 0 100% !important;
+  }
+}
