@@ -254,11 +254,12 @@ function agpf_related_loop($itemId) {
 	$postId = $itemId->post_id;
 	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
 	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
+	$randID = rand(0, 999999);
 	?>
 
   	<div class="workshop-card card-deck scrollable-content">
 	  <?php
-			agpf_card_Image_sepration($postId, $workshopStartDate, $workshopEndDate);
+			agpf_card_Image_sepration($postId, $randID, $workshopStartDate, $workshopEndDate);
 		?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
