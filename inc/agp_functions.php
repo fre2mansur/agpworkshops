@@ -261,7 +261,7 @@ function agpf_related_loop($itemId) {
 	  <?php
 			agpf_card_Image_sepration($postId, $randID, $workshopStartDate, $workshopEndDate);
 		?>
-		<div class="card-body">
+		<div class="card-body pb-0">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
 			</div> 
@@ -288,7 +288,7 @@ function agpf_related_loop($itemId) {
 						<?php echo $workshopStartDate;?></strong>
 				</div>
 				<span class="line border-card mx-auto"></span>
-				<div class="pl-2">
+				<div class="pl-2 pb-1">
 					<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
 					<strong class= "d-block d-lg-inline-block ">
 						<?php echo $workshopEndDate;?></strong>
