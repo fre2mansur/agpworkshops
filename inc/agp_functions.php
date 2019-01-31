@@ -294,7 +294,7 @@ function agpf_related_loop($itemId) {
 					<strong class= "d-block d-lg-inline-block ">
 						<?php echo $workshopEndDate;?></strong>
 				</div>
-			</div>
+			
      
     </div>
 
