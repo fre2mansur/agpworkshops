@@ -279,7 +279,8 @@ function agpf_related_loop($itemId) {
 							'startDate' => $workshopStartDate,
 						), the_permalink()) );?>"> Know more
 				</a>
-			</div>
+			</div> 
+		</div>
 			<hr class="p-0 m-0 ">
 			<div class="footer d-flex justify-content-between m-0 px-4">
 				<div class="">
