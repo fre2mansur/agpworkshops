@@ -13,7 +13,9 @@ if (is_admin()) {
 
 function load_admin_styles() {
 		// Bail if not viewing the main dashboard page
-    wp_enqueue_style( 'understrap-styles', get_stylesheet_directory_uri() . '/css/theme.min.css');
+		if (($screen -> id == "dashboard") || is_page('advanceGreenOptions')){
+	wp_enqueue_style( 'understrap-styles', get_stylesheet_directory_uri() . '/css/theme.min.css');
+		}
 }
 
 $user = wp_get_current_user();
