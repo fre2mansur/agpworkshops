@@ -83,7 +83,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h3 class="h3 brownline-before my-4">Related Workshops</h3>
 <div class="row">
     <div class="col-md-8 col-12 offset-md-3">
-        <div class="scrollable-content">
+        <div class="card-deck scrollable-content">
         <?php 
             $currentOrganisingUnitPostID = get_the_ID();
             $workshops = agpf_workshop_query(); //this function resturns the variable $workshops
