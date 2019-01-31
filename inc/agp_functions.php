@@ -268,7 +268,7 @@ function agpf_related_loop($itemId) {
 					}
 			?>
 			<h6 class="card-subtitle mb-2 pb-2 text-muted"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
-			<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
+			<!-- <p class="card-text"><?php //echo wp_strip_all_tags(get_field('brief_intro'));?></p> -->
 			<div class="d-flex mb-3 justify-content-center">
 				<a class="btn btn-outline-success w-100" href="<?php
 					 echo esc_url(add_query_arg(
