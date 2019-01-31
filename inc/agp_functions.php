@@ -174,7 +174,7 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate, $endDate){
+function agpf_card_Image_sepration(){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
@@ -199,7 +199,7 @@ function agpf_card_loop($itemId) {
 	<div class="workshop-card">
 		<?php 
 		
-		agpf_card_Image_sepration($postId, $randPostIDsForAccordion, $workshopStartDate, $workshopEndDate);
+		agpf_card_Image_sepration();
 		
 		?>
 		<div class="card-body pb-0">
@@ -257,22 +257,7 @@ function agpf_related_loop($itemId) {
 	?>
 
   	<div class="workshop-card">
-	  <?php
-			$rows = get_field('shuffle_gallery');
-			if($rows){ 
-				$iForRow = 0; 
-				$rand_row = $rows[$iForRow];
-				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-				$iForRow++;
-		?>
-			<figure class="figure w-100">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
-			</figure>
-		  <?php } 
-		  else {
-			  the_post_thumbnail('medium', ['class' =>"card-img-top"]); 
-		  }?>
+	  <?php agpf_card_Image_sepration() ?>
 		<div class="card-body">
 			<div class="d-flex justify-content-between header">
 				<h5 class="card-title"><?php the_title()?></h5>
