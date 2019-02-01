@@ -182,10 +182,10 @@ function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate
 			if($agp_Image_rows){
 			$agp_rand_row_image = array_rand($agp_Image_rows, 1); 
 			?>
-			<figure class="figure w-100">
+			<figure class="figure w-100 mb-0">
 				<img src="<?php echo $agp_Image_rows[$agp_rand_row_image]['sizes']['medium'];?>" alt="<?php echo $agp_Image_rows[$agp_rand_row_image]['alt'] ?>" class="card-img-top"/>	
 			</figure>
-	  		 <?php } else { ?> <figure class="figure w-100"> <?php the_post_thumbnail('medium', ['class' =>"card-img-top"]);?></figure> <?php } ?>
+	  		 <?php } else { ?> <figure class="figure w-100 mb-0"> <?php the_post_thumbnail('medium', ['class' =>"card-img-top"]);?></figure> <?php } ?>
 		</a>
 	<?php
 }
