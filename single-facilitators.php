@@ -46,7 +46,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h3 class="brownline-before my-4">Related Workshops</h3>
 <div class="row">
     <div class="col-md-8 col-12 offset-md-4">
-    <div class="workshop-container w-100" id="accordion">
+    <div class="card-deck scrollable-content">
     <?php 
          $currentFacilitatorId = get_the_ID();
     
