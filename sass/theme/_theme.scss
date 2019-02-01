@@ -887,6 +887,7 @@ a[href^="mailto:"]:before {
   flex-wrap: nowrap !important;
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch !important;
+  padding-bottom: 1rem;
   /*change the thinkness of the scrollbar here*/
   &::-webkit-scrollbar {
     width: 10px;
@@ -906,7 +907,7 @@ a[href^="mailto:"]:before {
 /*this is the little scrolly dealio in the bar*/ 
 &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: #4353ff;
+    background: #2E242C;
     height: 3px;
 }
 /*nobody needs this little scrollbar corner, I mean really, get rid of it haha*/  
