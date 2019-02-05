@@ -282,14 +282,14 @@ $week_four_content = get_field('week_four_content');
 				</div>
 			</div><!--accordin-->
 			<div class="seprator"></div>
-			<h3 class="h3 brownline-before">Contact Information</h3>
+			<h3 class="h3">Contact Information</h3>
 			<div class="single-workshop-contact card-deck">
 			<?php if($units): ?>
 			<?php foreach($units as $unit){ ?>
 				<div class="card">
-					<span class="card-header">
+					<h5 class="card-title">
 						<?php echo $unit->post_title ?>
-					</span>
+					</h5>
 					<span class="card-body">
 						<table class="table table-borderless">
 							<tbody>	
