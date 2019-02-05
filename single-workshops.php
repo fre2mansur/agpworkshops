@@ -289,7 +289,7 @@ $week_four_content = get_field('week_four_content');
 
 		
 		<div class="col-12 p-0">	
-					<h3 class=" py-3 m-0">Date</h3>
+					<h3 class=" py-3 m-0 brownline-before">Date</h3>
 		</div>
 		
 		<div class="col-10 offset-2 p-0">
@@ -335,7 +335,7 @@ $week_four_content = get_field('week_four_content');
 		<?php endif;?>		
 		</div>
 		<div class="col-12 p-0">
-			<h3 class=" py-3 m-0">Payment Details</h3>
+			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
 		</div>
 		<div class="col-10 offset-2 p-0">
 			
@@ -350,7 +350,7 @@ $week_four_content = get_field('week_four_content');
 			 <?php if($payment_details_with_accommodation && $payment_with_accommodation):?>		
 			<label>
 				<input class="" type="radio" name="feesSelector" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
-				<?php echo($payment_with_accommodation); ?>
+				<?php echo("₹ ".$payment_with_accommodation." Per Person"); ?>
 			</label>
 			<p class="offset-1 text-muted small">
 			<small><?php echo($payment_details_with_accommodation); ?></small>
@@ -368,7 +368,7 @@ $week_four_content = get_field('week_four_content');
 					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
 						<label>
 						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
-						<?php echo($payment_without_accommodation); ?>
+						<?php echo("₹ ".$payment_without_accommodation." Per Person"); ?>
 						</label>
 						<p class="offset-1 text-muted small">
 						<small><?php echo($payment_details_without_accommodation); ?></small>
