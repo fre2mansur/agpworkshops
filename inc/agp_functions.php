@@ -174,31 +174,18 @@ function agpf_workshop_sql($count="") {
 
 //Loop workshop cards. used in home page, facilitator, unit pages.
 //$itemid = getting key value of foreach, its important.
-function agpf_card_Image_sepration($itemId, $iForRow, $randPostIDsForAccordion, $startDate, $endDate){
+function agpf_card_Image_sepration($itemId, $randPostIDsForAccordion, $startDate, $endDate){
 	?>
 	<a class="d-block" href="#workshop_<?php echo $randPostIDsForAccordion;?>" data-toggle="collapse" aria-expanded="false" aria-controls="workshop_<?php echo $randPostIDsForAccordion?>">
 		<?php
 			$agp_Image_rows = get_field('shuffle_gallery');
-			
-			$agp_row_count = count($agp_Image_rows);
-			
-			
-			if($agp_Image_rows && $iForRow < $agp_row_count){
-				
-				
-				$rand_row = $agp_Image_rows[$iForRow];
-				
-			
-			$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-			$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-			$iForRow++;
-		
-			// 
+			if($agp_Image_rows){
+			$agp_rand_row_image = array_rand($agp_Image_rows, 1); 
 			?>
-			<figure class="figure w-100">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
+			<figure class="figure w-100 mb-0">
+				<img src="<?php echo $agp_Image_rows[$agp_rand_row_image]['sizes']['medium'];?>" alt="<?php echo $agp_Image_rows[$agp_rand_row_image]['alt'] ?>" class="card-img-top"/>	
 			</figure>
-	  		 <?php } else { the_post_thumbnail('medium', ['class' =>"card-img-top"]); } ?>
+	  		 <?php } else { ?> <figure class="figure w-100 mb-0"> <?php the_post_thumbnail('medium', ['class' =>"card-img-top"]);?></figure> <?php } ?>
 		</a>
 	<?php
 }
@@ -211,8 +198,8 @@ function agpf_card_loop($itemId) {
 
 	<div class="workshop-card">
 		<?php 
-		$iForRow = 0;
-		agpf_card_Image_sepration($postId, $iForRow, $workshopStartDate, $workshopEndDate, $randPostIDsForAccordion);
+		
+		agpf_card_Image_sepration($postId, $randPostIDsForAccordion, $workshopStartDate, $workshopEndDate);
 		
 		?>
 		<div class="card-body pb-0">
@@ -267,28 +254,16 @@ function agpf_related_loop($itemId) {
 	$postId = $itemId->post_id;
 	$workshopStartDate = date('d-m-Y', strtotime($itemId->start_date));
 	$workshopEndDate = date('d-m-Y', strtotime($itemId->end_date));
+	$randID = rand(0, 999999);
 	?>
 
-  	<div class="workshop-card">
+  	<div class="workshop-card card scrollable-cards mx-2">
 	  <?php
-			$rows = get_field('shuffle_gallery');
-			if($rows){ 
-				$iForRow = 0; 
-				$rand_row = $rows[$iForRow];
-				$agp_rand_row_image = $rand_row['agp_workshop_gallery_images'];
-				$agp_card_image = wp_get_attachment_image_src( $agp_rand_row_image, 'medium' );
-				$iForRow++;
+			agpf_card_Image_sepration($postId, $randID, $workshopStartDate, $workshopEndDate);
 		?>
-			<figure class="figure w-100">
-				<img src="<?php echo $agp_card_image[0] ; ?>" alt="<?php echo get_the_title($agp_card_image); ?>" class="card-img-top"/>	
-			</figure>
-		  <?php } 
-		  else {
-			  the_post_thumbnail('medium', ['class' =>"card-img-top"]); 
-		  }?>
-		<div class="card-body">
+		<div class="card-body pb-0">
 			<div class="d-flex justify-content-between header">
-				<h5 class="card-title"><?php the_title()?></h5>
+				<h5 class="card-title text-truncate"><?php the_title()?></h5>
 			</div> 
 			<?php 	$categories = get_the_terms( $postId, 'workshop_category'); 
 					foreach ( $categories as $category){
@@ -296,7 +271,7 @@ function agpf_related_loop($itemId) {
 					}
 			?>
 			<h6 class="card-subtitle mb-2 pb-2 text-muted"><?php the_terms( $postId, 'workshop_category' ); ?></h6>
-			<p class="card-text"><?php echo wp_strip_all_tags(get_field('brief_intro'));?></p>
+			<!-- <p class="card-text"><?php // echo wp_strip_all_tags(get_field('brief_intro'));?></p> -->
 			<div class="d-flex mb-3 justify-content-center">
 				<a class="btn btn-outline-success w-100" href="<?php
 					 echo esc_url(add_query_arg(
@@ -304,21 +279,22 @@ function agpf_related_loop($itemId) {
 							'startDate' => $workshopStartDate,
 						), the_permalink()) );?>"> Know more
 				</a>
-			</div>
+			</div> 
+		</div>
 			<hr class="p-0 m-0 ">
 			<div class="footer d-flex justify-content-between m-0 px-4">
-				<div class="">
+				<div class="py-2">
 					<span class="mr-auto d-block d-lg-inline-block ">Starts - </span>
 					<strong class= "d-block d-lg-inline-block ">
 						<?php echo $workshopStartDate;?></strong>
 				</div>
 				<span class="line border-card mx-auto"></span>
-				<div class="pl-2">
+				<div class="pl-2 py-2">
 					<span class="mr-auto d-block d-lg-inline-block ">Ends -</span>
 					<strong class= "d-block d-lg-inline-block ">
 						<?php echo $workshopEndDate;?></strong>
 				</div>
-			</div>
+			
      
     </div>
 

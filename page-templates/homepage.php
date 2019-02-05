@@ -56,18 +56,19 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="workshop-container" id="accordion">
 	<?php  
 				
-		if(isset($_GET['cpage'])) {
+		if(isset($_GET['cpage'])) { //@ToDo change to post method with ajax without browser refresh
 			$page = $_GET['cpage'];
 		} else {
 			$page = 1;
 		}
 
 		$workshops = agpf_workshop_query(); //this function returns the variable $workshops
+		
 		if($workshops):	
 			foreach($workshops as $post){
-				agpf_card_loop($post);			
-			 }  
-			else: 
+				agpf_card_loop($post);		
+			}  
+		else: 
 ?>
 
 <div class="row h-100">

@@ -46,11 +46,11 @@ $container = get_theme_mod( 'understrap_container_type' );?>
 <h3 class="brownline-before my-4">Related Workshops</h3>
 <div class="row">
     <div class="col-md-8 col-12 offset-md-4">
-    <div class="workshop-container w-100" id="accordion">
+    <div class="card-deck scrollable-content">
     <?php 
          $currentFacilitatorId = get_the_ID();
     
-        $workshops = queryPost_With_Dates(); //this function resturns the variable $workshops
+        $workshops = agpf_workshop_query(); //this function resturns the variable $workshops
             if($workshops):		 
                 foreach($workshops as $post){
                     $postId = $post->post_id;
@@ -59,7 +59,7 @@ $container = get_theme_mod( 'understrap_container_type' );?>
                         foreach($facilitatorPostObject as $facilitator){
                             $facilitatorId = $facilitator->ID;
                             if($facilitatorId == $currentFacilitatorId):
-                                card_loop($post);
+                                agpf_related_loop($post);
                             endif;  
                         }
                     endif;

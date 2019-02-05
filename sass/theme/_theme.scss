@@ -198,22 +198,123 @@ a{
 
 .container strong{color:rgba(0,0,0,0.4);}
 
-@media only screen and (max-width:576px) {
+// @media only screen and (max-width:576px) {
   
-  .card-body .footer{font-size:12.5px !important;}
+  //   .card-body .footer{font-size:12.5px !important;}
   
   
-}
-
-
-@media only screen and (min-width:576px) and (max-width:1200px){
-  .card-columns {
-        -webkit-column-count:2;
-        -moz-column-count:2;
-        column-count:2;
-        
+  
+  // }
+  
+@include media-breakpoint-down(sm) {
+    .card-body .footer{font-size:12.5px !important;}
+    .scrolling-wrapper-flexbox {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      &::-webkit-scrollbar {
+        display: none !important;
+      }
+      .card {
+        max-width: 80vw;
+        flex: 0 0 auto !important;
+      }
     }
+    
+  
+    ul#footer-menu, ul#filters{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      &::-webkit-scrollbar {
+        display: none !important;
+      }
+  
+      li.menu-item{
+        flex: 0 0 auto !important;
+      }
+      .active:after{
+        content:" ";
+        display: block;
+        border-bottom: 2px solid black;
+        margin-top: 5px;
+      }
+    }
+    
+ }
+@include media-breakpoint-between(md, lg) { 
+  .card-columns {
+    -webkit-column-count:2;
+    -moz-column-count:2;
+    column-count:2;
+    font-size:12.5px;
+    
 }
+ }
+
+ @include media-breakpoint-only(sm) { 
+  .card-columns{
+    column-count: 1;
+      
+  }
+ }
+
+@include media-breakpoint-down(md){
+  .workshop-card{
+    max-width: 100vw;
+    width: 100%;
+   }
+}
+
+@include media-breakpoint-up(lg){
+  #nav-left{
+    ul{
+      li{
+            border-right: 0.5px solid $border-green ;
+        
+            
+      }
+    }
+  }
+  
+  #nav-right{
+    ul {
+      li{
+        border-left:0.5px solid $border-green ;
+        
+      }
+    }
+  }
+  
+  #logo {
+    width: 260px;
+    position: relative;
+  }
+  .card-columns{
+    
+    .card{
+      
+      margin-bottom: 30px !important;
+      .card-top-img{
+        min-height:190px;
+      }
+    }
+  }
+} 
+
+
+// @media only screen and (min-width:576px) and (max-width:1200px){
+//   .card-columns {
+//     -webkit-column-count:2;
+//     -moz-column-count:2;
+//     column-count:2;
+    
+// }
+// }
 
 nav{
   
@@ -276,43 +377,41 @@ nav{
 
 
 
-
-
-@media screen and (min-width: 992px) {
-  #nav-left{
-    ul{
-      li{
-            border-right: 0.5px solid $border-green ;
+// @media screen and (min-width: 992px) {
+   // #nav-left{
+   //   ul{
+   //     li{
+   //           border-right: 0.5px solid $border-green ;
         
             
-      }
-    }
-  }
+   //     }
+   //   }
+   // }
   
-  #nav-right{
-    ul {
-      li{
-        border-left:0.5px solid $border-green ;
+   // #nav-right{
+   //   ul {
+   //     li{
+   //       border-left:0.5px solid $border-green ;
         
-      }
-    }
-  }
-  
-  #logo {
-    width: 260px;
-    position: relative;
-  }
-  .card-columns{
+   //     }
+   //   }
+   // }
+ 
+   // #logo {
+   //   width: 260px;
+   //   position: relative;
+   // }
+   // .card-columns{
     
-    .card{
+   //   .card{
       
-      margin-bottom: 30px !important;
-      .card-top-img{
-        min-height:190px;
-      }
-    }
-  }
-}
+   //     margin-bottom: 30px !important;
+   //     .card-top-img{
+   //       min-height:190px;
+   //     }
+   //   }
+   // }
+// }
 
 .wrapper{
 display:flex;
@@ -355,24 +454,17 @@ transition:all 0.2s ease-in-out;
 
 .container strong{color:rgba(0,0,0,0.4);}
 
-@media only screen and (max-width:520px) {
-.card-body .footer{font-size:12.5px !important;}
 
-}
+// @media (min-width: 576px) and (max-width: 767.98px){
+  
+// }
 
-@media (min-width: 576px) and (max-width: 767.98px){
-  .card-columns{
-  column-count: 1;
-    
-}
-}
-
-@media (min-width: 768px) and (max-width: 991.98px){
-.card-columns{
-  column-count: 2;
-  font-size:12.5px;
-}
-}
+// @media (min-width: 768px) and (max-width: 991.98px){
+// .card-columns{
+//   column-count: 2;
+//   font-size:12.5px;
+// }
+// }
 
 nav{
   & div {
@@ -550,7 +642,7 @@ text-align: inherit;
   margin: 0 auto;
 }
 
-.workshop-card{
+.workshop-card, .workshop-card-related{
   margin-bottom: 1.562rem;
   max-width: 350px;
   width: 100%;
@@ -560,8 +652,8 @@ text-align: inherit;
   box-shadow: 0 3px 30px -5px rgba(0,0,0,0.16);
   border-radius:2%;
   padding:0;
-  display:table;
-  float: left;
+  // display:table;
+  // float: left;
   .card-body{
     .collapsing{
       transition: height .05s ease !important;
@@ -579,51 +671,7 @@ text-align: inherit;
 }
 }
 
-@include media-breakpoint-down(sm){
-  .scrolling-wrapper-flexbox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    &::-webkit-scrollbar {
-      display: none !important;
-    }
-    .card {
-      max-width: 80vw;
-      flex: 0 0 auto !important;
-    }
-  }
-  
 
-  ul#footer-menu, ul#filters{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    &::-webkit-scrollbar {
-      display: none !important;
-    }
-
-    li.menu-item{
-      flex: 0 0 auto !important;
-    }
-    .active:after{
-      content:" ";
-      display: block;
-      border-bottom: 2px solid black;
-      margin-top: 5px;
-    }
-  }
-}
-
-@include media-breakpoint-down(md){
-  .workshop-card{
-    max-width: 100vw;
-    width: 100%;
-   }
-}
 
 
 
@@ -831,4 +879,67 @@ a[href^="mailto:"]:before {
   right: 0;
   left: 0;
   top: 0
+}
+
+.scrollable-content{
+  display: flex !important;
+  flex-direction: row!important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: 1rem;
+  /*change the thinkness of the scrollbar here*/
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ /*add a shadow to the scrollbar here*/
+&::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px rgba(0,0,0,0);
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+/*this is the little scrolly dealio in the bar*/ 
+&::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #605052;
+    height: 3px;
+}
+/*nobody needs this little scrollbar corner, I mean really, get rid of it haha*/  
+  &::-webkit-scrollbar-corner       { display: none; height: 0px; width: 0px; }
+  
+  scroll-snap-type: x proximity;
+  justify-content:start;
+  &:before,
+  &:after {
+  content: " ";
+  width: 10px;
+  }
+  
+  .scrollable-cards{
+    flex:0 0 80% !important;
+  }
+}
+
+.or-spacer {
+  margin-top:1.5rem; 
+  width:100%;
+  margin-bottom: 1.5rem; 
+  position:relative; 
+  
+  .mask { 
+    overflow:hidden; height:20px; 
+    &:after { 
+      content:''; 
+      display:block; margin:-25px auto 0;
+      width:100%; height:25px;  
+      border-radius:125px / 12px;  
+      box-shadow:0 0 8px rgba(0,0,0,0.4);
+    }
+  }
 }
