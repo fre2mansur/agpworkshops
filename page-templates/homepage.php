@@ -71,7 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		else: 
 ?>
 
-<div class="row h-100">
+<div class="row no-workshop-found">
 	<h3>No workshop found</h3>
 </div>
 <?php endif; ?>
