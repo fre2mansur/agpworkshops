@@ -285,7 +285,7 @@ $week_four_content = get_field('week_four_content');
 				<div class="mask"></div>
 			</div>
 			<h3 class="h3 my-4">Contact Information</h3>
-			<div class="single-workshop-contact card-deck">
+			<div class="single-workshop-contact offset-md-1">
 			<?php if($units): ?>
 			<?php foreach($units as $unit){ ?>
 				<div class="card">
