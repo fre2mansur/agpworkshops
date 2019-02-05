@@ -649,6 +649,11 @@ text-align: inherit;
   min-height: 50vh;
 }
 
+.no-workshop-found{
+  display: flex;
+  align-items: center;
+  
+}
 .workshop-card, .workshop-card-related{
   margin-bottom: 1.562rem;
   max-width: 350px;
