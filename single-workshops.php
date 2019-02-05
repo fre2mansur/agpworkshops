@@ -281,7 +281,40 @@ $week_four_content = get_field('week_four_content');
 					</div>
 				</div>
 			</div><!--accordin-->
+			<div class="seprator"></div>
+			<h3 class="h3 brownline-before">Contact Information</h3>
+			<div class="single-workshop-contact card-deck">
+			<?php if($units): ?>
+			<?php foreach($units as $unit){ ?>
+				<div class="card">
+					<span class="card-header">
+						<?php echo $unit->post_title ?>
+					</span>
+					<span class="card-body">
+						<table class="table table-borderless">
+							<tbody>	
+							<tr>
+								<td class="pl-0">
+									<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+									echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+								</td>
+							</tr>
 						
+						
+							<tr>
+								
+								<td class="pl-0">
+									<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+									echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</span>
+					
+				</div>
+				<?php } endif; ?>
+			</div>	
 
 		</div> <!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
@@ -376,42 +409,7 @@ $week_four_content = get_field('week_four_content');
 
 					<?php endif; ?>
 		</div>
-		<div class="col-12 p-0">
-			<h3 class="py-3 m-0">Contact Information</h3>
-		</div>
-		<div class="col-10 offset-2 p-0">
-			<table class="table table-borderless">
-					<tbody>
-					<?php if($units): ?>
-					<?php foreach($units as $unit){ ?>
-						
-						<tr>
-							<td class="pl-0">
-								<?php echo $unit->post_title ?>
-							</td>
-						</tr>
-						
-						<tr>
-							<td class="pl-0">
-								<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
-								echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
-							</td>
-						</tr>
-					
-					
-						<tr>
-							
-							<td class="pl-0">
-								<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
-								echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
-							</td>
-						</tr>
-				
-					<?php break; } endif; ?>
-						
-					</tbody>
-			</table>
-		</div>
+		
 		<div class="col-12 p-0 d-flex flex-column text-center">
 			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
 			data-url="<?php echo get_admin_url().'admin-ajax.php'?>">
