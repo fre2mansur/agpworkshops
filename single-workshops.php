@@ -281,7 +281,9 @@ $week_four_content = get_field('week_four_content');
 					</div>
 				</div>
 			</div><!--accordin-->
-			<div class="seprator"></div>
+			<div class="or-spacer">
+				<div class="mask"></div>
+			</div>
 			<h3 class="h3">Contact Information</h3>
 			<div class="single-workshop-contact card-deck">
 			<?php if($units): ?>
