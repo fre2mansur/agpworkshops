@@ -237,15 +237,11 @@ a{
       li.menu-item{
         flex: 0 0 auto !important;
       }
-      .active:after{
-        content:" ";
-        display: block;
-        border-bottom: 2px solid black;
-        margin-top: 5px;
-      }
+
     }
     
  }
+
 @include media-breakpoint-between(md, lg) { 
   .card-columns {
     -webkit-column-count:2;
@@ -315,6 +311,16 @@ a{
     
 // }
 // }
+
+ul#footer-menu, ul#Filters{
+  .active:after{
+    content:" ";
+    display: block;
+    border-bottom: 2px solid black;
+    margin-top: 5px;
+  }
+}
+
 
 nav{
   
