@@ -44,7 +44,7 @@ define('ITEMSPERPAGE', '9');
 //Category list to filter the item.
 function agpf_category_filter() {
 	$terms = get_terms('workshop_category',array("order"=>"ASC"));
-	if(@$_GET[CATPARAM] == 'All') { $active = "active";}
+	if(!@$_GET[CATPARAM] || @$_GET[CATPARAM] == 'All') { $active = "active";}
     echo '<li class="nav-item menu-item"><a class="nav-link '.@$active.'" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
 
     foreach ( $terms as $term ) {
