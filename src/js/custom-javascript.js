@@ -8,17 +8,14 @@ var header = document.querySelector('.mobile-menu-parent');
 var windowWidth = $(window).width();
 
 
-$("#mobilemenu").on('show.bs.collapse', function(e){
-  e.preventDefault();
+$("#mobilemenu").on('show.bs.collapse', function(){
   header.classList.toggle('active-mobile');
 })
 
-$("#mobilemenu").on('shown.bs.collapse', function(e){
-  e.preventDefault();
+$("#mobilemenu").on('shown.bs.collapse', function(){
         ham[0].classList.toggle('active-mobile'); ham[1].classList.toggle('active-mobile'); 
  });
-$("#mobilemenu").on('hidden.bs.collapse', function(e){
-  e.preventDefault();
+$("#mobilemenu").on('hidden.bs.collapse', function(){
         ham[0].classList.toggle('active-mobile');
         ham[1].classList.toggle('active-mobile');
         header.classList.toggle('active-mobile'); 
