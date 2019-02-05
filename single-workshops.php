@@ -331,7 +331,7 @@ $week_four_content = get_field('week_four_content');
 					<h3 class=" py-3 m-0 brownline-before">Date</h3>
 		</div>
 		
-		<div class="col-10 offset-2 p-0">
+		<div class="col-10 offset-md-2 p-0">
 		<select class="form-control" id="usrSelectDate">	
 			<?php
 			$today=date("d/m/Y");
@@ -376,7 +376,7 @@ $week_four_content = get_field('week_four_content');
 		<div class="col-12 p-0">
 			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
 		</div>
-		<div class="col-10 offset-2 p-0">
+		<div class="col-10 offset-md-2 p-0">
 			
 			<?php
 
@@ -402,7 +402,7 @@ $week_four_content = get_field('week_four_content');
 			<?php endif; ?>
 
 			</div>
-		<div class="col-10 offset-2 p-0">
+		<div class="col-10 offset-md-2 p-0">
 		<?php					?>
 					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
 						<label>
