@@ -237,12 +237,16 @@ a{
       li.menu-item{
         flex: 0 0 auto !important;
       }
+<<<<<<< HEAD
       .active:after{
         content:" ";
         display: block;
         border-bottom: 2px solid black;
         margin-top: 5px;
       }
+=======
+
+>>>>>>> kshitijbhatt-master
     }
     
  }
@@ -275,6 +279,7 @@ a{
     ul{
       li{
             border-right: 0.5px solid $border-green ;
+<<<<<<< HEAD
         
             
       }
@@ -304,6 +309,37 @@ a{
       }
     }
   }
+=======
+        
+            
+      }
+    }
+  }
+  
+  #nav-right{
+    ul {
+      li{
+        border-left:0.5px solid $border-green ;
+        
+      }
+    }
+  }
+  
+  #logo {
+    width: 260px;
+    position: relative;
+  }
+  .card-columns{
+    
+    .card{
+      
+      margin-bottom: 30px !important;
+      .card-top-img{
+        min-height:190px;
+      }
+    }
+  }
+>>>>>>> kshitijbhatt-master
 } 
 
 
@@ -315,6 +351,20 @@ a{
     
 // }
 // }
+<<<<<<< HEAD
+=======
+ul#filters{
+  .active{
+    font-weight: 700 !important;
+  }
+  .active:after{
+    content:" ";
+    display: block;
+    border-bottom: 2px solid black;
+    margin-top: 5px;
+  }
+}
+>>>>>>> kshitijbhatt-master
 
 nav{
   

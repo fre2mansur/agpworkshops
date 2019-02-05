@@ -421,7 +421,7 @@ $week_four_content = get_field('week_four_content');
 		<div class="col-12 p-0 d-flex flex-column text-center">
 			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
 			data-url="<?php echo get_admin_url().'admin-ajax.php'?>">
-				Register now
+				Register
 			</button>		
 			<span id="status"></span>					
 			
