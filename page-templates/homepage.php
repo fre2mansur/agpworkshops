@@ -73,6 +73,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <div class="row no-workshop-found">
 	<h3>No workshop found</h3>
+	<a class="h3 noWorkshop-home" autofocus onclick="window.location='<?php echo home_url(); ?>'" >
+			Redirect to home!
+		</a>
 </div>
 <?php endif; ?>
 				</div>
