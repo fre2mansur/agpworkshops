@@ -325,7 +325,7 @@ $week_four_content = get_field('week_four_content');
 
 		</div> <!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
-		<form method="post" action="" id="preRegistrationForm">
+		<form method="get" action="<?php echo site_url(); ?>/registration" id="preRegistrationForm">
 
 		
 		<div class="col-12 p-0">	
@@ -333,7 +333,7 @@ $week_four_content = get_field('week_four_content');
 		</div>
 		
 		<div class="col-10 offset-md-2 p-0">
-		<select class="form-control" id="usrSelectDate">	
+		<select name="workshop_date" class="form-control" id="usrSelectDate">	
 			<?php
 			$today=date("d/m/Y");
 			if(have_rows('date_repeater') ):
@@ -356,7 +356,7 @@ $week_four_content = get_field('week_four_content');
 			  if(isset($selectStartDate) && $selectEndDate>=$today ):
 						
 			?>
-					<option name=<?php echo $selectStartDate;?>
+					<option value=<?php echo $selectStartDate;?>
 					<?php if($selectStartDate === $getDateFromUrl){
 						echo 'selected'; 
 						}?>>
@@ -419,11 +419,10 @@ $week_four_content = get_field('week_four_content');
 		</div>
 		
 		<div class="col-12 p-0 d-flex flex-column text-center">
-			<button class="btn btn-primary mx-auto" type="submit" form="preRegistrationForm" name="registrationFormBtn" id="registrationFormBtn"
-			data-url="<?php echo get_admin_url().'admin-ajax.php'?>">
+			<button class="btn btn-primary mx-auto" type="submit">
 				Register
 			</button>		
-			<span id="status"></span>					
+						
 			
 		</div>
 	</form>
