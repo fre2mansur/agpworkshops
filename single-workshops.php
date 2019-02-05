@@ -284,15 +284,16 @@ $week_four_content = get_field('week_four_content');
 			<div class="or-spacer">
 				<div class="mask"></div>
 			</div>
-			<h3 class="h3">Contact Information</h3>
+			<h3 class="h3 my-4">Contact Information</h3>
 			<div class="single-workshop-contact card-deck">
 			<?php if($units): ?>
 			<?php foreach($units as $unit){ ?>
 				<div class="card">
-					<h5 class="card-title">
-						<?php echo $unit->post_title ?>
-					</h5>
+					
 					<span class="card-body">
+						<h5 class="card-title">
+						<?php echo $unit->post_title ?>
+						</h5>
 						<table class="table table-borderless">
 							<tbody>	
 							<tr>
@@ -315,7 +316,7 @@ $week_four_content = get_field('week_four_content');
 					</span>
 					
 				</div>
-				<?php } endif; ?>
+				<?php break; } endif; ?>
 			</div>	
 
 		</div> <!--col-md-8-->
