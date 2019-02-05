@@ -295,7 +295,7 @@ $week_four_content = get_field('week_four_content');
 						<?php
 
 						$contactName = get_field('contact_person_name', $unit->post_Id);
-						echo($contactName); ?>
+						echo( $unit->post_Id); ?>
 						</h5>
 						<table class="table table-borderless">
 							<tbody>	
