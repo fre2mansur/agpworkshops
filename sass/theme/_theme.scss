@@ -241,7 +241,6 @@ a{
     }
     
  }
-
 @include media-breakpoint-between(md, lg) { 
   .card-columns {
     -webkit-column-count:2;
@@ -311,8 +310,10 @@ a{
     
 // }
 // }
-
-ul#footer-menu, ul#Filters{
+ul#filters{
+  .active{
+    font-weight: 700 !important;
+  }
   .active:after{
     content:" ";
     display: block;
@@ -320,7 +321,6 @@ ul#footer-menu, ul#Filters{
     margin-top: 5px;
   }
 }
-
 
 nav{
   
