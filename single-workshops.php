@@ -296,7 +296,7 @@ $week_four_content = get_field('week_four_content');
 
 						$contactName = get_field('contact_person_name', $unit->ID);
 						echo( $contactName);
-						the_field('contact_person_name') ?>
+						?>
 						</h5>
 						<table class="table table-borderless">
 							<tbody>	
@@ -347,7 +347,8 @@ $week_four_content = get_field('week_four_content');
 			  $selectStartDate = get_sub_field('start_date');
 			  $selectEndDate = get_sub_field('end_date');
 			  $getDateFromUrl = '';
-			  if(!empty(esc_html($_GET['startDate']))){
+			  
+			  if(isset($_GET['startDate'])){
 				  
 				  $getDateFromUrl = date("d/m/Y",strtotime(esc_html($_GET['startDate'])));
 				  
