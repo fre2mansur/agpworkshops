@@ -72,10 +72,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <div class="row no-workshop-found">
-	<h3>Oops! No workshop found</h3>
-	<button class="btn-primary btn-noWorkshop-home" autofocus onclick="window.location='<?php echo home_url(); ?>'" >
-			Return home
-	</button>
+	<div class="wrap-no-content">
+
+		<h3>Oops! No workshop found</h3>
+		<button class="btn-primary btn-noWorkshop-home" autofocus onclick="window.location='<?php echo home_url(); ?>'" >
+				Return home
+		</button>
+
+	</div>
 </div>
 <?php endif; ?>
 				</div>
