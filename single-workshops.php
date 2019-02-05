@@ -294,8 +294,9 @@ $week_four_content = get_field('week_four_content');
 						<h5 class="card-title">
 						<?php
 
-						$contactName = get_field('contact_person_name', $unit->post_Id);
-						echo( $unit->post_Id); ?>
+						$contactName = get_field('contact_person_name', $unit->ID);
+						echo( $contactName);
+						the_field('contact_person_name') ?>
 						</h5>
 						<table class="table table-borderless">
 							<tbody>	
