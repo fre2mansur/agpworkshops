@@ -939,7 +939,7 @@ a[href^="mailto:"]:before {
       display:block; margin:-25px auto 0;
       width:100%; height:25px;  
       border-radius:125px / 12px;  
-      box-shadow:0 0 8px black;
+      box-shadow:0 0 8px rgba(0,0,0,0.4);
     }
   }
 }
