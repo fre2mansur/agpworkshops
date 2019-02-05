@@ -43,14 +43,16 @@ define('ITEMSPERPAGE', '9');
 
 //Category list to filter the item.
 function agpf_category_filter() {
-    $terms = get_terms('workshop_category',array("order"=>"ASC")); 
-    echo '<li class="nav-item menu-item"><a class="nav-link active" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
+    $terms = get_terms('workshop_category',array("order"=>"ASC"));
+    echo '<li class="nav-item menu-item"><a class="nav-link" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
 
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);
-        $termname = str_replace(' ', '-', $termname);
-        echo '<li class="nav-item menu-item"><a class="nav-link" href="'.add_query_arg( array(CATPARAM => $termname, PAGEPARAM => '1') ).'">'.$term->name.'</a></li>';
-	}
+        $termname = str_replace(' ', '-', $termname); ?>
+        <li class="nav-item menu-item">
+			<a class="nav-link <?php if(@$_GET[CATPARAM] == $termname) {echo "active";} ?>" href="<?php echo add_query_arg( array(CATPARAM => $termname, PAGEPARAM => '1') );?>"><?php echo $term->name; ?></a>
+		</li>
+	<?php }
 	
 }
 
