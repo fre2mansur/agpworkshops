@@ -4162,7 +4162,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		data : {
 			action : 'ajax_test_function',
       wCat : catName,
-      _ajax_nonce: custom_nonce_filter.nonce
+      security:ajax_object.ajax_nonce,
 		},
 		success : function( response ) {
       if('success' === response.type){
