@@ -344,15 +344,15 @@ add_action( 'init', 'blog_change_post_object' );
 function ajax_test_function(){
 	check_ajax_referer('custom_nonce_filter','security');
 
-	if(isset($_POST['wCat'])){
-		$postTestResult = '<div class="noAjax"><h3>'.$_POST['wCat'].'</h3></div>';
+	if(isset($_GET['wCat'])){
+		$wCat = $_GET['wCat'];
 	}
 
-	echo $postTestResult;
+	echo $wCat;
 	
 	wp_die();
 }
  
-add_action('wp_ajax_agpf_category_filter', 'agpf_category_filter');
-add_action('wp_ajax_nopriv_agpf_category_filter', 'agpf_category_filter');
+add_action('wp_ajax_ajax_test_function', 'agpf_category_filter');
+add_action('wp_ajax_nopriv_ajax_test_function', 'agpf_category_filter');
 ?>

@@ -4160,7 +4160,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		url : gfcustom_Ajax_function.ajaxurl,
 		type : 'GET',
 		data : {
-			action : 'agpf_category_filter',
+			action : 'ajax_test_function',
       wCat : 'All',
       security:gfcustom_Ajax_function.ajax_nonce,
     },
