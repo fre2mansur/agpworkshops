@@ -184,7 +184,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 			category : 'All'
 		},
 		success : function( response ) {
-		 alert(data.category);
+		 alert(response);
 		}
 	});
 })

@@ -46,7 +46,7 @@ function agpf_category_filter() {
 	$terms = get_terms('workshop_category',array("order"=>"ASC"));
 	if(!@$_GET[CATPARAM] || @$_GET[CATPARAM] == 'All') { $active = "active";}
     echo '<li class="nav-item menu-item"><a class="nav-link allClick '.@$active.'" href="#">All<a/></li>';
-
+	echo $_POST['category'];
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);
         $termname = str_replace(' ', '-', $termname); ?>
