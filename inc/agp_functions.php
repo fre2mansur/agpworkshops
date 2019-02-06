@@ -46,7 +46,6 @@ function agpf_category_filter() {
 	$terms = get_terms('workshop_category',array("order"=>"ASC"));
 	if(!@$_GET[CATPARAM] || @$_GET[CATPARAM] == 'All') { $active = "active";}
     echo '<li class="nav-item menu-item"><a class="nav-link allClick '.@$active.'" href="#">All<a/></li>';
-	echo $_POST['category'];
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);
         $termname = str_replace(' ', '-', $termname); ?>
@@ -340,5 +339,8 @@ function blog_change_post_object() {
 }
 add_action( 'init', 'blog_change_post_object' );
 
+function ajax_test_function(){
+	echo "I am so fancy ajax";
+}
  
 ?>

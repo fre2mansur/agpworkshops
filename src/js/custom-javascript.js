@@ -181,10 +181,11 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		url : gfcustom_Ajax_function.ajax_url,
 		type : 'post',
 		data : {
-			category : 'All'
+			action : 'ajax_test_function',
+			post_id : post_id
 		},
 		success : function( response ) {
-		 alert(response);
+			alert(response)
 		}
 	});
 })
