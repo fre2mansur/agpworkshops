@@ -353,6 +353,6 @@ function ajax_test_function(){
 	wp_die();
 }
  
-add_action('wp_ajax_ajax_test_function', 'ajax_test_function');
-add_action('wp_ajax_nopriv_ajax_test_function', 'ajax_test_function');
+add_action('wp_ajax_agpf_category_filter', 'agpf_category_filter');
+add_action('wp_ajax_nopriv_agpf_category_filter', 'agpf_category_filter');
 ?>
