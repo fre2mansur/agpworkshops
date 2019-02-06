@@ -182,12 +182,12 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		type : 'GET',
 		data : {
 			action : 'ajax_test_function',
-      wCat : '93',
+      cpage : '2',
       security:gfcustom_Ajax_function.ajax_nonce,
     },
     
 		success : function( response ) {
-      console.log(response);
+      $('.workshop-container').html(response);
 		}
 	});
 });
