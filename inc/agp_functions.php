@@ -346,20 +346,4 @@ function ajax_test_function(){
 	$love = $_POST['post_id'];
 }
 ?>
-<script>
-jQuery( document ).on( 'click', '.allClick', function() {
-	var post_id = jQuery(this).data('id');
-	jQuery.ajax({
-		url : gfcustom_Ajax_function.ajax_url,
-		type : 'post',
-		data : {
-			action : 'ajax_test_function',
-			post_id : post_id
-		},
-		success : function( data ) {
-			alert(data);
-		}
-	});
-});
-</script>
 <?php ?>
