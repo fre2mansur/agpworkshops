@@ -340,7 +340,7 @@ function blog_change_post_object() {
 add_action( 'init', 'blog_change_post_object' );
 
 function ajax_test_function(){
-	echo "I am so fancy ajax";
+	return "I am so fancy ajax";
 }
  
 ?>
