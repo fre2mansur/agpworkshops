@@ -4158,12 +4158,13 @@ jQuery( document ).on( 'click', '.allClick', function() {
 	var catName = "All";
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajaxurl,
-		type : 'post',
+		type : 'POST',
 		data : {
 			action : 'ajax_test_function',
       wCat : catName,
-      
-		},
+      security:gfcustom_Ajax_function.ajax_nonce,
+    },
+    dataType : "text",
 		success : function( response ) {
       if('success' === response.type){
         console.log(response);

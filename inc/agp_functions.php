@@ -342,7 +342,7 @@ add_action( 'init', 'blog_change_post_object' );
 
 
 function ajax_test_function(){
-	// check_ajax_referer('custom_nonce_filter','security');
+	check_ajax_referer('custom_nonce_filter','security');
 
 	if(isset($_POST['wCat'])){
 		echo $_POST['wCat'];
@@ -350,7 +350,7 @@ function ajax_test_function(){
 
 
 	
-	die;
+	wp_die();
 }
  
 add_action('wp_ajax_ajax_test_function', 'ajax_test_function');
