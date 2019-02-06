@@ -4165,8 +4165,11 @@ jQuery( document ).on( 'click', '.allClick', function() {
       security:gfcustom_Ajax_function.ajax_nonce,
 		},
 		success : function( response ) {
-     
+      if('success' === response.type){
         console.log(response);
-      		}
+      } else {
+        console.log('error');
+      }
+		}
 	});
 });
