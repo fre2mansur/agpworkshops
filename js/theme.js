@@ -4163,8 +4163,8 @@ jQuery( document ).on( 'click', '.allClick', function() {
 			action : 'ajax_test_function',
 			wCat : catName
 		},
-		success : function( data ) {
-			console.log(data);
+		success : function( response ) {
+			console.log(wCat);
 		}
 	});
 });
