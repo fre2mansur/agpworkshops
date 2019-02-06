@@ -185,7 +185,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 			post_id : post_id
 		},
 		success : function( data ) {
-			alert(data);
+			window.reload();
 		}
 	});
 });
