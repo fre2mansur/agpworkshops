@@ -187,11 +187,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
     },
     
 		success : function( response ) {
-      if('success' === response.type){
-        console.log(response);
-      } else {
-        console.log('error');
-      }
+      console.log(response);
 		}
 	});
 });

@@ -345,10 +345,10 @@ function ajax_test_function(){
 	check_ajax_referer('custom_nonce_filter','security');
 
 	if(isset($_POST['wCat'])){
-		echo $_POST['wCat'];
+		$postTestResult = '<div class="noAjax"><h3>'.$_POST['wCat'].'</h3></div>';
 	}
 
-
+	echo $postTestResult;
 	
 	wp_die();
 }
