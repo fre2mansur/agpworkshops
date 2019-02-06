@@ -339,11 +339,7 @@ function blog_change_post_object() {
 }
 add_action( 'init', 'blog_change_post_object' );
 
-add_action( 'wp_ajax_nopriv_ajax_test_function', 'ajax_test_function' );
-add_action( 'wp_ajax_ajax_test_function', 'ajax_test_function' );
+add_action( 'wp_ajax_nopriv_ajax_test_function', 'agpf_workshop_query' );
+add_action( 'wp_ajax_ajax_test_function', 'agpf_workshop_query' );
 
-function ajax_test_function(){
-	$love = $_POST['post_id'];
-}
 ?>
-<?php ?>
