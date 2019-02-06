@@ -4164,7 +4164,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 			wCat : catName
 		},
 		success : function( response ) {
-			console.log(response)
+			jQuery('.allClick').html('All workshops');
 		}
 	});
 });
