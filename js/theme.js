@@ -4161,7 +4161,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		type : 'GET',
 		data : {
 			action : 'ajax_test_function',
-      wCat : 'All',
+      wCat : '93',
       security:gfcustom_Ajax_function.ajax_nonce,
     },
     
