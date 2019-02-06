@@ -354,5 +354,5 @@ function ajax_test_function(){
 }
  
 add_action('wp_ajax_ajax_test_function', 'ajax_test_function');
-add_action('wp_ajax_ajax_nopriv_ajax_test_function', 'ajax_test_function');
+add_action('wp_ajax_nopriv_ajax_test_function', 'ajax_test_function');
 ?>
