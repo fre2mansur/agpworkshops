@@ -4158,13 +4158,18 @@ jQuery( document ).on( 'click', '.allClick', function() {
 	var catName = "All";
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajax_url,
-		type : 'GET',
+		type : 'post',
 		data : {
 			action : 'ajax_test_function',
-			wCat : catName
+      wCat : catName,
+      _ajax_nonce: custom_nonce_filter.nonce
 		},
 		success : function( response ) {
-		
+      if('success' === response.type){
+        console.log(response);
+      } else {
+        console.log(error);
+      }
 		}
 	});
 });
