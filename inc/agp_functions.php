@@ -45,8 +45,8 @@ define('ITEMSPERPAGE', '9');
 function agpf_category_filter() {
 	$terms = get_terms('workshop_category',array("order"=>"ASC"));
 	if(!@$_GET[CATPARAM] || @$_GET[CATPARAM] == 'All') { $active = "active";}
-	echo '<li class="nav-item menu-item"><a class="nav-link allClick '.@$active.'" >All<a/></li>';
-	
+    echo '<li class="nav-item menu-item"><a class="nav-link allClick '.@$active.'" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
+
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);
         $termname = str_replace(' ', '-', $termname); ?>
@@ -340,7 +340,5 @@ function blog_change_post_object() {
 }
 add_action( 'init', 'blog_change_post_object' );
 
-add_action( 'wp_ajax_nopriv_ajax_test_function', 'agpf_workshop_query' );
-add_action( 'wp_ajax_ajax_test_function', 'agpf_workshop_query' );
-
+ 
 ?>
