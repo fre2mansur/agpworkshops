@@ -4163,7 +4163,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 			category : 'All'
 		},
 		success : function( response ) {
-			alert("First Ajax Call ", response);
+		 console.log(response);
 		}
 	});
 })
