@@ -353,6 +353,6 @@ function ajax_test_function(){
 	wp_die();
 }
  
-add_action('wp_ajax_ajax_test_function', 'agpf_workshop_sql');
-add_action('wp_ajax_nopriv_ajax_test_function', 'agpf_workshop_sql');
+add_action('wp_ajax_ajax_test_function', 'agpf_card_loop');
+add_action('wp_ajax_nopriv_ajax_test_function', 'agpf_card_loop');
 ?>
