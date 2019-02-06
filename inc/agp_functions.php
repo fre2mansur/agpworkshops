@@ -345,14 +345,13 @@ function ajax_test_function(){
 	check_ajax_referer('custom_nonce_filter','security');
 
 	if(isset($_POST['wCat'])){
-		$wCat = $_POST['wCat'];
+		[CATPARAM] = $_POST['wCat'];
 	}
 
-	return $wCat;
 	
 	wp_die();
 }
  
-add_action('wp_ajax_ajax_test_function', 'agpf_category_filter');
-add_action('wp_ajax_nopriv_ajax_test_function', 'agpf_category_filter');
+add_action('wp_ajax_ajax_test_function', 'agpf_workshop_sql');
+add_action('wp_ajax_nopriv_ajax_test_function', 'agpf_workshop_sql');
 ?>
