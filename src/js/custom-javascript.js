@@ -181,7 +181,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		url : gfcustom_Ajax_function.ajaxurl,
 		type : 'GET',
 		data : {
-			action : 'ajax_test_function',
+			action : 'agpf_category_filter',
       wCat : 'All',
       security:gfcustom_Ajax_function.ajax_nonce,
     },
