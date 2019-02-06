@@ -4153,3 +4153,17 @@ var headroom = new Headroom(headElem, {
 });
 
 headroom.init();
+
+jQuery( document ).on( 'click', '.allClick', function() {
+	var post_id = jQuery(this).data('id');
+	jQuery.ajax({
+		url : gfcustom_Ajax_function.ajax_url,
+		type : 'post',
+		data : {
+			category : 'All'
+		},
+		success : function( response ) {
+			alert("First Ajax Call ", response);
+		}
+	});
+})
