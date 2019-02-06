@@ -4161,10 +4161,10 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		type : 'POST',
 		data : {
 			action : 'ajax_test_function',
-      wCat : catName,
+      wCat : 'All',
       security:gfcustom_Ajax_function.ajax_nonce,
     },
-    dataType : "text",
+    
 		success : function( response ) {
       if('success' === response.type){
         console.log(response);
