@@ -178,7 +178,7 @@ headroom.init();
 function ajaxFilter(obj) {
 
   var catName = $(obj).attr('data-Cat');
-
+  console.log(obj);
 	
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajaxurl,
