@@ -4154,14 +4154,14 @@ var headroom = new Headroom(headElem, {
 
 headroom.init();
 
-jQuery( document ).on( 'click', '.allClick', function() {
+jQuery(function ajaxFilter() {
 	var catName = "All";
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajaxurl,
 		type : 'POST',
 		data : {
 			action : 'ajax_test_function',
-      wCat : '93',
+      wCat : catName,
       security:gfcustom_Ajax_function.ajax_nonce,
     },
     
