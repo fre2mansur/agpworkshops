@@ -179,7 +179,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 	var catName = "All";
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajaxurl,
-		type : 'GET',
+		type : 'POST',
 		data : {
 			action : 'ajax_test_function',
       wCat : '93',

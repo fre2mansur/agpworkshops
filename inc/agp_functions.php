@@ -58,7 +58,7 @@ function agpf_category_filter() {
 }
 
 function agpf_month_filter() {
-	$months = array('All'=>'All','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Apr'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
+	$months = array('All'=>'all','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Apr'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
 	echo '<li class="nav-item menu-item ml-auto"> <a class="nav-link d-none d-lg-flex"> Filter by month </a> </li>
 	<li class="nav-item menu-item">
 	<select name="wDate" onchange="parent.window.location=this.value" class="form-control">
@@ -344,34 +344,11 @@ add_action( 'init', 'blog_change_post_object' );
 function ajax_test_function(){
 	check_ajax_referer('custom_nonce_filter','security');
 
-
-				
-	if(isset($_GET['wCat'])) { //@ToDo change to post method with ajax without browser refresh
-		$wCat = $_GET['wCat'];
-	} else {
-		$wCat = 'All';
+	if(isset($_POST['wCat'])){
+		$cpage = $_POST['wCat'];
 	}
 
-	$workshops = agpf_workshop_query(); //this function returns the variable $workshops
-	
-	if($workshops):	
-		foreach($workshops as $post){
-			agpf_card_loop($post);		
-		}  
-	else: 
-?>
-
-<div class="row no-workshop-found">
-<div class="wrap-no-content">
-
-	<h3>Oops! No workshop found</h3>
-	<button class="btn btn-primary btn-noWorkshop-home" autofocus onclick="window.location='<?php echo home_url(); ?>'" >
-			Return Home
-	</button>
-
-</div>
-</div>
-<?php endif; 
+	echo $cpage;
 	
 	wp_die();
 }
