@@ -44,8 +44,8 @@ define('ITEMSPERPAGE', '9');
 //Category list to filter the item.
 function agpf_category_filter() {
 	$terms = get_terms('workshop_category',array("order"=>"ASC"));
-	if(!@$_POST[CATPARAM] || @$_POST[CATPARAM] == 'All') { $active = "active";}
-    echo '<li class="nav-item menu-item"><a class="nav-link workshop-filter '.@$active.'" href="javascript:ajaxFilter(this)" data-Cat="All">All<a/></li>';
+	if(!@$_GET[CATPARAM] || @$_GET[CATPARAM] == 'All') { $active = "active";}
+    echo '<li class="nav-item menu-item"><a class="nav-link allClick '.@$active.'" href="javasctipt:ajaxFilter(this)" data-cat="All">All<a/></li>';
 
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);
@@ -344,11 +344,11 @@ add_action( 'init', 'blog_change_post_object' );
 function ajax_test_function(){
 	check_ajax_referer('custom_nonce_filter','security');
 
-	if(isset($_POST['wCat'])){
-		$wCat = $_POST['wCat'];
+	if(isset($_GET['wCat'])){
+		$cpage = $_GET['wCat'];
 	}
 
-	echo $wCat;
+	echo $cpage;
 	
 	wp_die();
 }
