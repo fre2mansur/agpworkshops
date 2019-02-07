@@ -4154,8 +4154,11 @@ var headroom = new Headroom(headElem, {
 
 headroom.init();
 
-function ajaxFilter() {
-	var catName = "All";
+function ajaxFilter(obj) {
+
+  var catName = $(obj).attr('data-Cat');
+
+	
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajaxurl,
 		type : 'POST',
