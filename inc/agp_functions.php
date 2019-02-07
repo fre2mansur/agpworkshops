@@ -344,11 +344,34 @@ add_action( 'init', 'blog_change_post_object' );
 function ajax_test_function(){
 	check_ajax_referer('custom_nonce_filter','security');
 
-	if(isset($_GET['cpage'])){
-		$cpage = $_GET['cpage'];
+
+				
+	if(isset($_GET['wCat'])) { //@ToDo change to post method with ajax without browser refresh
+		$wCat = $_GET['wCat'];
+	} else {
+		$wCat = 'All';
 	}
 
-	echo $cpage;
+	$workshops = agpf_workshop_query(); //this function returns the variable $workshops
+	
+	if($workshops):	
+		foreach($workshops as $post){
+			agpf_card_loop($post);		
+		}  
+	else: 
+?>
+
+<div class="row no-workshop-found">
+<div class="wrap-no-content">
+
+	<h3>Oops! No workshop found</h3>
+	<button class="btn btn-primary btn-noWorkshop-home" autofocus onclick="window.location='<?php echo home_url(); ?>'" >
+			Return Home
+	</button>
+
+</div>
+</div>
+<?php endif; 
 	
 	wp_die();
 }

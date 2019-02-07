@@ -182,7 +182,7 @@ jQuery( document ).on( 'click', '.allClick', function() {
 		type : 'GET',
 		data : {
 			action : 'ajax_test_function',
-      cpage : '2',
+      wCat : '93',
       security:gfcustom_Ajax_function.ajax_nonce,
     },
     
