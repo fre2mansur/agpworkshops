@@ -4154,7 +4154,7 @@ var headroom = new Headroom(headElem, {
 
 headroom.init();
 
-jQuery(function ajaxFilter() {
+function ajaxFilter() {
 	var catName = "All";
 	jQuery.ajax({
 		url : gfcustom_Ajax_function.ajaxurl,
@@ -4169,4 +4169,4 @@ jQuery(function ajaxFilter() {
       $('.workshop-container').html(response);
 		}
 	});
-});
+};
