@@ -93,7 +93,7 @@ $week_four_content = get_field('week_four_content');
 				<a class="nav-item nav-link" id="nav-facilitators-tab" data-toggle="tab" href="#nav-facilitators" role="tab" aria-controls="nav-facilitators" aria-selected="false">Facilitators</a>
 				</div>
 			</nav>
-            <div class="tab-content" id="nav-tabContent">
+            <div class="tab-content border border-top-0" id="nav-tabContent">
 				<div class="tab-pane fade show active p-3" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
 						<!--Details Tab-->
 
@@ -221,7 +221,7 @@ $week_four_content = get_field('week_four_content');
 						<div class="card-deck scrolling-wrapper-flexbox">
 							<?php $noOfFacilitators = sizeof($facilitators);
 							foreach($facilitators as $fac){?>
-								<div class="card w-25 shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
+								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
 									<figure class="facilitaor-avatar">
 									<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
 									</figure>
