@@ -291,7 +291,8 @@ $week_four_content = get_field('week_four_content');
 				<?php break; }
 				endif; ?>
 			</div>
-			</div>
+			
+		</div>
 
 		</div><!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
