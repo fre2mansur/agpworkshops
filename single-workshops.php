@@ -290,7 +290,7 @@ $week_four_content = get_field('week_four_content');
 			</div>	
 
 		   </div> 
-
+			</div>
 		</div><!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
 		<form method="post" action="" id="preRegistrationForm">
