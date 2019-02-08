@@ -94,7 +94,7 @@ $week_four_content = get_field('week_four_content');
             </div>
         </nav>
             <div class="tab-content" id="nav-tabContent">
-           <div class="tab-pane fade show active px-3" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+           <div class="tab-pane fade show active p-3" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
 				<!--Details Tab-->
 
 				<?php echo $brief_intro; ?>
@@ -103,7 +103,7 @@ $week_four_content = get_field('week_four_content');
 				</article>
 			</div>
 
-            <div class="tab-pane fade px-3" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab">
+            <div class="tab-pane fade p-3" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab">
 				<!-- Schedule -->
 					<?php if($get_the_schedule_type == "daily"):
 						$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
@@ -111,16 +111,16 @@ $week_four_content = get_field('week_four_content');
 							if($day == $number_of_days && $day != 'one_day') {
 								$day_content = get_field($day."_content");
 								echo $title;
-								echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
+
 								$i = 1; foreach($day_content as $content) {
 									if($content){
-										echo '<div class="offset-md-1">';
+									
 											echo "<h4>Day ".$i++."</h4>";
 											echo $content;
-										echo '</div>';
+									
 									}
 								}
-								echo '</div>';
+							
 								
 							}
 						} 
@@ -130,21 +130,21 @@ $week_four_content = get_field('week_four_content');
 							if($week == $number_of_weeks) {
 								$week_content = get_field($week."s_content");
 								echo $title;
-								echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
+
 								$i = 1; foreach($week_content as $content) {
 									if($content){
-										echo '<div class="offset-md-1">';
+								
 											echo "<h4>Week ".$i++."</h4>";
 											echo $content;
-										echo '</div>';
+										
 									}
 								}
-								echo '</div>';
+
 							}
 						}
 					endif;?>
 			</div>
-            <div class="tab-pane fade px-3" id="nav-organising-unit" role="tabpanel" aria-labelledby="nav-organising-unit-tab">
+            <div class="tab-pane fade p-3" id="nav-organising-unit" role="tabpanel" aria-labelledby="nav-organising-unit-tab">
 				<!-- Organising Unit -->
 				<?php $units = get_field('unit_name');
 						if($units):?>
@@ -215,7 +215,7 @@ $week_four_content = get_field('week_four_content');
 			</div>
 				
 			
-            <div class="tab-pane fade px-3" id="nav-facilitators" role="tabpanel" aria-labelledby="nav-facilitators-tab">
+            <div class="tab-pane fade p-3" id="nav-facilitators" role="tabpanel" aria-labelledby="nav-facilitators-tab">
 				<?php $facilitators = get_field('facilitators');
 				if ($facilitators):?>
 					<div class="card-deck scrolling-wrapper-flexbox">
