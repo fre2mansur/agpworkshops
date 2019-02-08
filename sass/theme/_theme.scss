@@ -945,8 +945,8 @@ a[href^="mailto:"]:before {
 }
 
 .scrolling-wrapper-flexbox{
-  .card .shadow-sm{
-    max-width: 250px;
+  .card{
+    max-width: 250px !important;
   }
 } 
 
