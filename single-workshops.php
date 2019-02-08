@@ -250,47 +250,6 @@ $week_four_content = get_field('week_four_content');
 					<?php endif; ?>
 				</div>
 
-				<h3 class="h3 my-4">Contact Information</h3>
-				<div class="single-workshop-contact p-3">
-					<?php if($units): ?>
-					<?php foreach($units as $unit){ ?>
-						<div class="card">
-							
-							<span class="card-body">
-								<h5 class="card-title">
-								<?php
-
-								$contactName = get_field('contact_person_name', $unit->ID);
-								echo( $contactName);
-								?>
-								</h5>
-								<table class="table table-borderless">
-									<tbody>	
-									<tr>
-										<td class="pl-0">
-											<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
-											echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
-										</td>
-									</tr>
-								
-								
-									<tr>
-										
-										<td class="pl-0">
-											<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
-											echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</span>
-							
-						</div>
-						
-					<?php break; }
-					 endif; ?>
-				</div>	
-
 		   </div> 
 
 		    <h3 class="h3 my-4">Contact Information</h3>
