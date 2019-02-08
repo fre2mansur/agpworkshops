@@ -174,3 +174,23 @@ var headroom = new Headroom(headElem, {
 });
 
 headroom.init();
+
+function ajaxFilter(obj) {
+
+  var catName = $(obj).attr('data-cat');
+  console.log((obj).attr('data-cat'));
+	
+	jQuery.ajax({
+		url : gfcustom_Ajax_function.ajaxurl,
+		type : 'GET',
+		data : {
+			action : 'ajax_test_function',
+      wCat : catName,
+      security:gfcustom_Ajax_function.ajax_nonce,
+    },
+    
+		success : function( response ) {
+      $('.workshop-container').html(response);
+		}
+	});
+};

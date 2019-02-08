@@ -45,7 +45,7 @@ define('ITEMSPERPAGE', '9');
 function agpf_category_filter() {
 	$terms = get_terms('workshop_category',array("order"=>"ASC"));
 	if(!@$_GET[CATPARAM] || @$_GET[CATPARAM] == 'All') { $active = "active";}
-    echo '<li class="nav-item menu-item"><a class="nav-link '.@$active.'" href="'.add_query_arg( array(CATPARAM => 'All', PAGEPARAM => '1')  ).'">All<a/></li>';
+    echo '<li class="nav-item menu-item"><a class="nav-link allClick '.@$active.'" href="javasctipt:ajaxFilter("All");" data-cat="All">All<a/></li>';
 
     foreach ( $terms as $term ) {
         $termname = strtolower($term->term_id);
@@ -59,9 +59,10 @@ function agpf_category_filter() {
 
 function agpf_month_filter() {
 	$months = array('All'=>'all','Jan'=>'01', 'Feb'=>'02', 'Mar'=>'03', 'Apr'=>'04', 'May'=>'05', 'Jun'=>'06', 'Jul'=>'07','Aug'=>'08','Sep'=>'09','Oct'=>'10','Nov'=>'11','Dec'=>'12');
-	echo '<li class="nav-item menu-item ml-auto"> <a class="nav-link"> Filter by month </a> </li>
+	echo '<li class="nav-item menu-item ml-auto"> <a class="nav-link d-none d-lg-flex"> Filter by month </a> </li>
 	<li class="nav-item menu-item">
 	<select name="wDate" onchange="parent.window.location=this.value" class="form-control">
+	<option value="" selected disabled hidden>Select Month</option>
 	</li>';
 	foreach ($months as $name => $value) { ?>
 
@@ -339,5 +340,19 @@ function blog_change_post_object() {
 }
 add_action( 'init', 'blog_change_post_object' );
 
+
+function ajax_test_function(){
+	check_ajax_referer('custom_nonce_filter','security');
+
+	if(isset($_GET['wCat'])){
+		$cpage = $_GET['wCat'];
+	}
+
+	echo $cpage;
+	
+	wp_die();
+}
  
+add_action('wp_ajax_ajax_test_function', 'ajax_test_function');
+add_action('wp_ajax_nopriv_ajax_test_function', 'ajax_test_function');
 ?>

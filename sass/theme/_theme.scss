@@ -49,6 +49,10 @@ height:100%;
   left:0;
   right:0;
 }
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+  font-weight: bold !important;
+}
 .mobile-menu-parent.active-mobile{
   border-radius:0;
   transition:all 0s linear;
@@ -690,8 +694,16 @@ text-align: inherit;
   justify-content:space-evenly;
   flex-wrap:wrap;
   margin: 0 auto;
+  min-height: 50vh;
 }
 
+.no-workshop-found{
+  max-width: 335px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
 .workshop-card, .workshop-card-related{
   margin-bottom: 1.562rem;
   max-width: 350px;
@@ -975,6 +987,12 @@ a[href^="mailto:"]:before {
     flex:0 0 80% !important;
   }
 }
+
+.scrolling-wrapper-flexbox{
+  .card{
+    max-width: 295px !important;
+  }
+} 
 
 .or-spacer {
   margin-top:1.5rem; 
