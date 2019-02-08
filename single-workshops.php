@@ -253,7 +253,7 @@ $week_four_content = get_field('week_four_content');
 		   </div> 
 
 		    <h3 class="h3 my-4">Contact Information</h3>
-			<div class="single-workshop-contact offset-md-1">
+			<div class="single-workshop-contact px-3">
 				<?php if($units): ?>
 					<?php foreach($units as $unit){ ?>
 						<div class="card">
