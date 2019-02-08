@@ -85,14 +85,14 @@ $week_four_content = get_field('week_four_content');
 	<div class="row">
 		<div class="col-md-8">
 
-        <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="true">Details</a>
-            <a class="nav-item nav-link" id="nav-schedule-tab" data-toggle="tab" href="#nav-schedule" role="tab" aria-controls="nav-schedule" aria-selected="false">Schedule</a>
-            <a class="nav-item nav-link" id="nav-organising-unit-tab" data-toggle="tab" href="#nav-organising-unit" role="tab" aria-controls="nav-organising-unit" aria-selected="false">Organising Unit</a>
-            <a class="nav-item nav-link" id="nav-facilitators-tab" data-toggle="tab" href="#nav-facilitators" role="tab" aria-controls="nav-facilitators" aria-selected="false">Facilitators</a>
-            </div>
-        </nav>
+			<nav>
+				<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link active" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="true">Details</a>
+				<a class="nav-item nav-link" id="nav-schedule-tab" data-toggle="tab" href="#nav-schedule" role="tab" aria-controls="nav-schedule" aria-selected="false">Schedule</a>
+				<a class="nav-item nav-link" id="nav-organising-unit-tab" data-toggle="tab" href="#nav-organising-unit" role="tab" aria-controls="nav-organising-unit" aria-selected="false">Organising Unit</a>
+				<a class="nav-item nav-link" id="nav-facilitators-tab" data-toggle="tab" href="#nav-facilitators" role="tab" aria-controls="nav-facilitators" aria-selected="false">Facilitators</a>
+				</div>
+			</nav>
             <div class="tab-content" id="nav-tabContent">
            <div class="tab-pane fade show active p-3" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
 				<!--Details Tab-->
@@ -250,26 +250,8 @@ $week_four_content = get_field('week_four_content');
 				<?php endif; ?>
 			</div>
 
-
-
-			<div id="accordionData">
-				<!-- Details -->
-
-				<!-- Shedule	 -->
-				
-				<!-- Facilitators -->
-				
-
-
-		</div>
-
-				<!-- Organizing Unit -->
-				
-
-
-			</div><!--accordin-->
 			<h3 class="h3 my-4">Contact Information</h3>
-			<div class="single-workshop-contact offset-md-1">
+			<div class="single-workshop-contact p-3">
 			<?php if($units): ?>
 			<?php foreach($units as $unit){ ?>
 				<div class="card">
@@ -307,7 +289,9 @@ $week_four_content = get_field('week_four_content');
 				<?php break; } endif; ?>
 			</div>	
 
-		</div> <!--col-md-8-->
+		   </div> 
+
+		</div><!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
 		<form method="post" action="" id="preRegistrationForm">
 
