@@ -255,7 +255,7 @@ $week_four_content = get_field('week_four_content');
 		
 		<h3 class="h3 my-4">Contact Information</h3>
 		
-		<div class="single-workshop-contact px-3">
+		<div class="single-workshop-contact">
 				<?php if($units): ?>
 					<?php foreach($units as $unit){ ?>
 						<div class="card">
