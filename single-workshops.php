@@ -221,7 +221,7 @@ $week_four_content = get_field('week_four_content');
 						<div class="card-deck scrolling-wrapper-flexbox">
 							<?php $noOfFacilitators = sizeof($facilitators);
 							foreach($facilitators as $fac){?>
-								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
+								<div class="card w-25 shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
 									<figure class="facilitaor-avatar">
 									<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
 									</figure>
@@ -251,9 +251,11 @@ $week_four_content = get_field('week_four_content');
 				</div>
 
 		   </div> 
-
-		    <h3 class="h3 my-4">Contact Information</h3>
-			<div class="single-workshop-contact px-3">
+		</div>
+		
+		<h3 class="h3 my-4">Contact Information</h3>
+		
+		<div class="single-workshop-contact px-3">
 				<?php if($units): ?>
 					<?php foreach($units as $unit){ ?>
 						<div class="card">
@@ -290,10 +292,11 @@ $week_four_content = get_field('week_four_content');
 						</div>
 				<?php break; }
 				endif; ?>
-			</div>
-			
 		</div>
+			
+		
 
+		
 		</div><!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
 		<form method="post" action="" id="preRegistrationForm">
