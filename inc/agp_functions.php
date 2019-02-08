@@ -355,4 +355,91 @@ function ajax_test_function(){
  
 add_action('wp_ajax_ajax_test_function', 'ajax_test_function');
 add_action('wp_ajax_nopriv_ajax_test_function', 'ajax_test_function');
+
+//This filter add custom short tag code in to the admin in the advance tab in fields
+//https://docs.gravityforms.com/gform_merge_tags/ 
+add_action( 'gform_admin_pre_render', 'add_merge_tags' );
+function add_merge_tags( $form ) {
+    ?>
+    <script type="text/javascript">
+        gform.addFilter('gform_merge_tags', 'add_merge_tags');
+        function add_merge_tags(mergeTags, elementId, hideAllFields, excludeFieldTypes, isPrepop, option){
+            mergeTags["custom"].tags.push({ tag: '{workshop_fees}', label: 'Workshop Fees' });
+            mergeTags["custom"].tags.push({ tag: '{workshop_date}', label: 'Workshop Date' });
+           
+ 
+            return mergeTags;
+        }
+    </script>
+    <?php
+    //return the form object from the php hook
+    return $form;
+}
+
+//This filter replace the {workshop_fees} to function in front end
+//https://docs.gravityforms.com/gform_replace_merge_tags/
+add_filter( 'gform_replace_merge_tags', 'replace_fees_tag', 10, 7 );
+function replace_fees_tag( $text, $form, $entry, $url_encode, $esc_html, $nl2br, $format ) {
+	 $custom_fees_tag = '{workshop_fees}';
+ 	if ( strpos( $text, $custom_fees_tag ) === false ) {
+        return $text;
+	}
+	if(isset($_POST['workshop_fees_selector'])) {
+		$fees = $_POST['workshop_fees_selector'];//$_COOKIE['feesSelector'];
+	} elseif(isset($_COOKIE['workshop_fees_selector'])) {
+		$fees = $_COOKIE['workshop_fees_selector'];
+	} else {
+		$fees = "";
+	}
+
+    $text = str_replace( $custom_fees_tag, $fees, $text );
+ 	return $text;
+}
+
+//This filter replace the {workshop_date} to function in front end
+//https://docs.gravityforms.com/gform_replace_merge_tags/
+add_filter( 'gform_replace_merge_tags', 'replace_date_tag', 10, 7 );
+function replace_date_tag( $text, $form, $entry, $url_encode, $esc_html, $nl2br, $format ) {
+	 $custom_date_tag = '{workshop_date}';
+ 	if ( strpos( $text, $custom_date_tag ) === false ) {
+        return $text;
+	}
+	if(isset($_POST['workshop_date_selector'])) {
+		$date = $_POST['workshop_date_selector'];//$_COOKIE['feesSelector'];
+	} elseif(isset($_COOKIE['workshop_date_selector'])) {
+		$date = $_COOKIE['workshop_date_selector'];
+	} else {
+		$date = "";
+	}
+
+    $text = str_replace( $custom_date_tag, $date, $text );
+ 	return $text;
+}
+
+//Store the date and fees in to cookie 
+//if cookie is not set redirect users to homepage from registration page
+add_action( 'init', 'save_fees' );
+function save_fees() {
+	if ( isset($_POST['workshop_fees_selector']) ) :
+		 setcookie( "workshop_fees_selector", $_POST['workshop_fees_selector'] );
+	endif;
+
+	if ( isset($_POST['workshop_date_selector']) ) :
+		setcookie( "workshop_date_selector", $_POST['workshop_date_selector'] );
+   endif;
+}
+
+//Redirect users if they come directly to the registration form without cookie or post
+add_action( 'template_redirect', 'redirect_to_specific_page' );
+function redirect_to_specific_page() {
+	if ( is_page('registration') ) {
+		if(!isset($_POST['workshop_fees_selector']) && !isset($_POST['workshop_date_selector'])  ){
+			if(!isset( $_COOKIE['workshop_fees_selector'])  && !isset( $_COOKIE['workshop_date_selector']) ){
+				wp_redirect(site_url()); 
+				  exit;
+			}
+		}
+    }
+}
+
 ?>

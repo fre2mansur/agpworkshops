@@ -299,7 +299,7 @@ $week_four_content = get_field('week_four_content');
 		
 		</div><!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
-		<form method="get" action="<?php echo site_url(); ?>/registration" id="preRegistrationForm">
+		<form method="post" action="<?php echo site_url(); ?>/registration">
 
 		
 		<div class="col-12 p-0">	
@@ -307,48 +307,34 @@ $week_four_content = get_field('week_four_content');
 		</div>
 		
 		<div class="col-10 offset-md-2 p-0">
-		<select name="workshop_date" class="form-control" id="usrSelectDate">	
-			<?php
-			$today=date("d/m/Y");
-			if(have_rows('date_repeater') ):
-				while (have_rows('date_repeater') ) : the_row(); 
-				?>
+			<select name="workshop_date_selector" class="form-control">	
+				<?php $today=date("d/m/Y");
+					  if(have_rows('date_repeater') ):
+						while (have_rows('date_repeater') ) : the_row(); 
+							// loop through the rows of data
+			  				$selectStartDate = get_sub_field('start_date');
+			  				$selectEndDate = get_sub_field('end_date');
+			  				$getDateFromUrl = '';
+			  
+			  				if(isset($_GET['startDate'])){
+				  				$getDateFromUrl = date("d/m/Y",strtotime(esc_html($_GET['startDate'])));
+							}	
+			  				if(isset($selectStartDate) && $selectEndDate>=$today ): ?>
+
+							<option value=<?php echo $selectStartDate;?>
+								<?php if($selectStartDate === $getDateFromUrl){ echo 'selected';}?>>
+								<?php $convertedStartDateForSelection = DateTime::createFromFormat('d/m/Y', $selectStartDate)->format('j F, Y');
+									echo $convertedStartDateForSelection; ?>
+							</option>
 				
-			
-			<?php	// loop through the rows of data
-			  
-			  
-			  $selectStartDate = get_sub_field('start_date');
-			  $selectEndDate = get_sub_field('end_date');
-			  $getDateFromUrl = '';
-			  
-			  if(isset($_GET['startDate'])){
-				  
-				  $getDateFromUrl = date("d/m/Y",strtotime(esc_html($_GET['startDate'])));
-				  
-			  }	
-			  if(isset($selectStartDate) && $selectEndDate>=$today ):
-						
-			?>
-					<option value=<?php echo $selectStartDate;?>
-					<?php if($selectStartDate === $getDateFromUrl){
-						echo 'selected'; 
-						}?>>
-					<?php
-						$convertedStartDateForSelection = DateTime::createFromFormat('d/m/Y', $selectStartDate)->format('j F, Y');
-					echo $convertedStartDateForSelection; ?>
-					</option>
-				
-				<?php
-				else: echo '<option name="Workshop Unavailable" disabled>Currently not available</option>'; break;
-				endif; 
-				endwhile; ?>
-				</select>
-				<p class="offset-1 text-muted small">
-			<small>*Click to see other available dates</small>
-			</p>
-		<?php endif;?>		
-		</div>
+							<?php else: 
+								echo '<option name="Workshop Unavailable" disabled>Currently not available</option>'; break;
+							endif; 
+						endwhile; ?>
+					</select>
+					<p class="offset-1 text-muted small"> <small>*Click to see other available dates</small></p>
+				<?php endif;?>		
+			</div>
 		<div class="col-12 p-0">
 			<h3 class=" py-3 m-0 brownline-before">Fees</h3>
 		</div>
@@ -364,7 +350,7 @@ $week_four_content = get_field('week_four_content');
 			 ?>
 			 <?php if($payment_details_with_accommodation && $payment_with_accommodation):?>		
 			<label>
-				<input class="" type="radio" name="feesSelector" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
+				<input class="" type="radio" name="workshop_fees_selector" id="<?php echo($payment_with_accommodation); ?>" value="<?php echo($payment_with_accommodation); ?>" checked>
 				<?php echo("₹ ".$payment_with_accommodation." Per Person"); ?>
 			</label>
 			<p class="offset-1 text-muted small">
@@ -382,7 +368,7 @@ $week_four_content = get_field('week_four_content');
 		<?php					?>
 					<?php if($payment_details_without_accommodation && $payment_without_accommodation): ?>	
 						<label>
-						<input class="" type="radio" name="feesSelector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
+						<input class="" type="radio" name="workshop_fees_selector" id="<?php echo($payment_without_accommodation); ?>" value="<?php echo($payment_without_accommodation); ?>">
 						<?php echo("₹ ".$payment_without_accommodation." Per Person"); ?>
 						</label>
 						<p class="offset-1 text-muted small">
