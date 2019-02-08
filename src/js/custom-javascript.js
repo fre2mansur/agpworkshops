@@ -177,7 +177,7 @@ headroom.init();
 
 function ajaxFilter(obj) {
 
-  var catName = $(obj).data('cat');
+  var catName = $(obj).attr('data-cat');
   console.log((obj).attr('data-cat'));
 	
 	jQuery.ajax({
