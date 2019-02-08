@@ -944,6 +944,12 @@ a[href^="mailto:"]:before {
   }
 }
 
+.scrolling-wrapper-flexbox{
+  .card .shadow-sm{
+    max-width: 250px;
+  }
+} 
+
 .or-spacer {
   margin-top:1.5rem; 
   width:100%;
