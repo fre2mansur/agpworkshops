@@ -90,157 +90,73 @@ $week_four_content = get_field('week_four_content');
             <a class="nav-item nav-link active" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="true">Details</a>
             <a class="nav-item nav-link" id="nav-schedule-tab" data-toggle="tab" href="#nav-schedule" role="tab" aria-controls="nav-schedule" aria-selected="false">Schedule</a>
             <a class="nav-item nav-link" id="nav-organising-unit-tab" data-toggle="tab" href="#nav-organising-unit" role="tab" aria-controls="nav-organising-unit" aria-selected="false">Organising Unit</a>
-            <a class="nav-item nav-link" id="nav-facilitators-tab" data-toggle="tab" href="#nav-facilitators" role="tab" aria-controls="nav-facilitators" aria-selected="false">facilitators</a>
+            <a class="nav-item nav-link" id="nav-facilitators-tab" data-toggle="tab" href="#nav-facilitators" role="tab" aria-controls="nav-facilitators" aria-selected="false">Facilitators</a>
             </div>
         </nav>
             <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">...</div>
-            <div class="tab-pane fade" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab">...</div>
-            <div class="tab-pane fade" id="nav-organising-unit" role="tabpanel" aria-labelledby="nav-organising-unit-tab">...</div>
-            <div class="tab-pane fade" id="nav-facilitators" role="tabpanel" aria-labelledby="nav-facilitators-tab">...</div>
-        </div>
-
-
-
-			<div id="accordionData">
-				<!-- Details -->
-				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked">Details</h3>
-				<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
-					<div class="offset-md-1">
-						<?php echo $brief_intro; ?>
-						<article class="workshop-description">
-						<?php echo $workshop_description; ?>
-						</article>
-					</div>
-				</div>
-			
-				<!-- Shedule	 -->
-				<?php $title = '<h3 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class=" py-3 m-0 icon-after-collapse collapsed">Schedule</h3>';?>
-				<?php if($get_the_schedule_type == "daily"):
-					$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
-					foreach($days as $day){
-						if($day == $number_of_days && $day != 'one_day') {
-							$day_content = get_field($day."_content");
-							echo $title;
-							echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
-							$i = 1; foreach($day_content as $content) {
-								if($content){
-									echo '<div class="offset-md-1">';
-										echo "<h4>Day ".$i++."</h4>";
-										echo $content;
-									echo '</div>';
-								}
-							}
-							echo '</div>';
-							
-						}
-					} 
-				else:
-					$all_weeks = array('two_week','three_week','four_week');
-					foreach($all_weeks as $week){
-						if($week == $number_of_weeks) {
-							$week_content = get_field($week."s_content");
-							echo $title;
-							echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
-							$i = 1; foreach($week_content as $content) {
-								if($content){
-									echo '<div class="offset-md-1">';
-										echo "<h4>Week ".$i++."</h4>";
-										echo $content;
-									echo '</div>';
-								}
-							}
-							echo '</div>';
-						}
-					}
-				endif;?>
-				
-				
-				<!-- Facilitators -->
-				
-
-							<?php $facilitators = get_field('facilitators');
-							if ($facilitators):?>
-			<h3 data-toggle="collapse" data-target="#single-workshop-facilitators" aria-expanded="true" aria-controls="single-workshop-facilitators" class=" py-3 m-0 icon-after-collapse collapsed">Facilitators</h3>
-				<div id="single-workshop-facilitators" class="collapse" aria-labelledby="facilitators" data-parent="#accordionData">
-					<div class="offset-md-1">
-						<div class="card-deck scrolling-wrapper-flexbox">
-								<?php $noOfFacilitators = sizeof($facilitators);
-							foreach($facilitators as $fac){?>
-								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
-									<figure class="facilitaor-avatar">
-										<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
-									</figure>
-									<div class="facilitator-details">
-									<h5><?php echo $fac->post_title; ?></h5>
-									<p class="m-0"><small class="text-muted">
-									<?php 
-									$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
-									if($facilitatorUnitName):
-										$facilitatorsUnitStr = array();
-										foreach($facilitatorUnitName as $unitName){
-												$facilitatorsUnitStr[] = $unitName->post_title;
-									   } 
-									   echo implode(",",$facilitatorsUnitStr);
-                                    endif;
-                                ?>
-									</small></p>
-									</div>
-								</div>
-								<div class="modal fade" id="facilitator_<?php echo $fac->ID?>">
-										<div class="modal-dialog">
-											<div class="modal-content">
-										
-											<!-- Modal Header -->
-											<div class="modal-header">
-											<h4 class="modal-title my-auto"><?php echo $fac->post_title; ?></h4>
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											</div>
-											
-											<!-- Modal body -->
-											<div class="modal-body">
-											
-												<figure class="facilitaor-avatar">
-													<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
-												</figure>
-   												 <article>
-													<p class="text-md-left text-justify">
-      												 <?php echo $fac->post_content;?>
-      												</p>
-												</article>
-											</div>
-											
-											<!-- Modal footer -->
-											<div class="modal-footer">
-											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-											</div>
-											
-										</div>
-										</div>
-									</div>
-							<?php } 
-							else:
-							?>
-
-							<?php endif; ?>
+           <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+				<!--Details Tab-->
+					<div id="details" class="collapse show" aria-labelledby="details" data-parent="#accordionData">
+						<div class="offset-md-1">
+							<?php echo $brief_intro; ?>
+							<article class="workshop-description">
+							<?php echo $workshop_description; ?>
+							</article>
 						</div>
 					</div>
-				</div>
-
-				<!-- Organizing Unit -->
-				
-
-						<?php $units = get_field('unit_name');
+			</div>
+            <div class="tab-pane fade" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab">
+				<!-- Schedule -->
+					<?php if($get_the_schedule_type == "daily"):
+						$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
+						foreach($days as $day){
+							if($day == $number_of_days && $day != 'one_day') {
+								$day_content = get_field($day."_content");
+								echo $title;
+								echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
+								$i = 1; foreach($day_content as $content) {
+									if($content){
+										echo '<div class="offset-md-1">';
+											echo "<h4>Day ".$i++."</h4>";
+											echo $content;
+										echo '</div>';
+									}
+								}
+								echo '</div>';
+								
+							}
+						} 
+					else:
+						$all_weeks = array('two_week','three_week','four_week');
+						foreach($all_weeks as $week){
+							if($week == $number_of_weeks) {
+								$week_content = get_field($week."s_content");
+								echo $title;
+								echo '<div id="shedule" class="collapse" aria-labelledby="shedule" data-parent="#accordionData">';
+								$i = 1; foreach($week_content as $content) {
+									if($content){
+										echo '<div class="offset-md-1">';
+											echo "<h4>Week ".$i++."</h4>";
+											echo $content;
+										echo '</div>';
+									}
+								}
+								echo '</div>';
+							}
+						}
+					endif;?>
+			</div>
+            <div class="tab-pane fade" id="nav-organising-unit" role="tabpanel" aria-labelledby="nav-organising-unit-tab">
+				<!-- Organising Unit -->
+				<?php $units = get_field('unit_name');
 						if($units):?>
-				<h3 data-toggle="collapse" data-target="#single-workshop-unit" aria-expanded="true" aria-controls="single-workshop-unit" class=" py-3 m-0 icon-after-collapse collapsed">Organizing Unit</h3>
-				<div id="single-workshop-unit" class="collapse" aria-labelledby="unit" data-parent="#accordionData">
-				<div class="offset-md-1">
+				
 						<div class="card-deck scrolling-wrapper-flexbox">
 
 
 							<?php $noOfUnits = sizeof($units);
 							foreach($units as $unit){?>
-								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>" data-toggle="modal-unit" data-target="#unitModal">
+								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>">
 									<!-- <figure class="unit-avatar p-2">
 										<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
 									</figure>	 -->
@@ -281,7 +197,7 @@ $week_four_content = get_field('week_four_content');
 								
 							<?php } 
 							else: 
-						?>
+							?>
 							<!-- <div class="media mb-3">
 									<figure>
 									<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
@@ -295,9 +211,101 @@ $week_four_content = get_field('week_four_content');
 									</div>
 							</div> -->
 							<?php endif; ?>
+
+						</div>
+
+					</div>
+				
+			
+            <div class="tab-pane fade" id="nav-facilitators" role="tabpanel" aria-labelledby="nav-facilitators-tab">
+				
+			</div>
+        </div>
+
+
+
+			<div id="accordionData">
+				<!-- Details -->
+				<h3 data-toggle="collapse" data-target="#details" aria-expanded="true" aria-controls="details" class=" py-3 m-0 icon-after-collapse icon-after-collapse-clicked">Details</h3>
+
+			
+				<!-- Shedule	 -->
+				<?php $title = '<h3 data-toggle="collapse" data-target="#shedule" aria-expanded="true" aria-controls="shedule" class=" py-3 m-0 icon-after-collapse collapsed">Schedule</h3>';?>
+
+				
+				
+				<!-- Facilitators -->
+				
+
+			<?php $facilitators = get_field('facilitators');
+			if ($facilitators):?>
+				<div class="card-deck scrolling-wrapper-flexbox">
+					<?php $noOfFacilitators = sizeof($facilitators);
+				 	 foreach($facilitators as $fac){?>
+						<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
+						<figure class="facilitaor-avatar">
+						<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+						</figure>
+						<div class="facilitator-details">
+						<h5><?php echo $fac->post_title; ?></h5>
+						<p class="m-0">
+						<small class="text-muted">
+						<?php 
+									$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
+									if($facilitatorUnitName):
+										$facilitatorsUnitStr = array();
+										foreach($facilitatorUnitName as $unitName){
+												$facilitatorsUnitStr[] = $unitName->post_title;
+									   } 
+									   echo implode(",",$facilitatorsUnitStr);
+                                    endif;
+                         ?>
+						</small></p>
+							</div>
+							</div>
+							<div class="modal fade" id="facilitator_<?php echo $fac->ID?>">
+								<div class="modal-dialog">
+								<div class="modal-content">	
+									<!-- Modal Header -->
+									<div class="modal-header">
+									<h4 class="modal-title my-auto"><?php echo $fac->post_title; ?></h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+											
+									<!-- Modal body -->
+									<div class="modal-body">
+									
+										<figure class="facilitaor-avatar">
+											<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+										</figure>
+											<article>
+											<p class="text-md-left text-justify">
+												<?php echo $fac->post_content;?>
+											</p>
+										</article>
+									</div>
+											
+									<!-- Modal footer -->
+									<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+									</div>
+											
+								</div>
+								</div>
+							</div>
+							<?php } 
+							else:
+							?>
+
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
+
+				<!-- Organizing Unit -->
+				
+
+
 			</div><!--accordin-->
 			<h3 class="h3 my-4">Contact Information</h3>
 			<div class="single-workshop-contact offset-md-1">
