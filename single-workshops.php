@@ -94,203 +94,206 @@ $week_four_content = get_field('week_four_content');
 				</div>
 			</nav>
             <div class="tab-content" id="nav-tabContent">
-           <div class="tab-pane fade show active p-3" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
-				<!--Details Tab-->
+				<div class="tab-pane fade show active p-3" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+						<!--Details Tab-->
 
-				<?php echo $brief_intro; ?>
-				<article class="workshop-description">
-				<?php echo $workshop_description; ?>
-				</article>
-			</div>
-
-            <div class="tab-pane fade p-3" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab">
-				<!-- Schedule -->
-					<?php if($get_the_schedule_type == "daily"):
-						$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
-						foreach($days as $day){
-							if($day == $number_of_days && $day != 'one_day') {
-								$day_content = get_field($day."_content");
-								echo $title;
-
-								$i = 1; foreach($day_content as $content) {
-									if($content){
-									
-											echo "<h4>Day ".$i++."</h4>";
-											echo $content;
-									
-									}
-								}
-							
-								
-							}
-						} 
-					else:
-						$all_weeks = array('two_week','three_week','four_week');
-						foreach($all_weeks as $week){
-							if($week == $number_of_weeks) {
-								$week_content = get_field($week."s_content");
-								echo $title;
-
-								$i = 1; foreach($week_content as $content) {
-									if($content){
-								
-											echo "<h4>Week ".$i++."</h4>";
-											echo $content;
-										
-									}
-								}
-
-							}
-						}
-					endif;?>
-			</div>
-            <div class="tab-pane fade p-3" id="nav-organising-unit" role="tabpanel" aria-labelledby="nav-organising-unit-tab">
-				<!-- Organising Unit -->
-				<?php $units = get_field('unit_name');
-						if($units):?>
-				
-						<div class="card-deck scrolling-wrapper-flexbox">
-
-
-							<?php $noOfUnits = sizeof($units);
-							foreach($units as $unit){?>
-								<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>">
-									<!-- <figure class="unit-avatar p-2">
-										<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
-									</figure>	 -->
-									<div class="card-body unit-details">
-											<h5><?php echo $unit->post_title; ?></h5>
-											<small class="text-muted">
-											
-											<?php  echo wp_trim_words( $unit->post_content, 20, ' ...'); ?>
-											<table class="table table-borderless my-4">
-												<tbody>
-
-													
-
-													
-													<tr>
-														<td class="pt-0 pl-0 mb-2">
-															<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
-															echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
-														</td>
-													</tr>
-												
-												
-													<tr>
-														
-														<td class="pt-0 pl-0 mb-2">
-															<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
-															echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
-														</td>
-													</tr>
-											
-
-													
-												</tbody>
-											</table>
-											</small>
-									</div>
-								</div>
-								
-							<?php } 
-							else: 
-							?>
-							<!-- <div class="media mb-3">
-									<figure>
-									<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
-									</figure>
-									<div class="media-body">
-										<h5 class="mt-0"><?php // echo $unit->post_title; ?></h5>
-										<p class="mb-0">
-										<small class="text-muted">
-										<?php  // echo wp_trim_words( $unit->post_content, 50, '...'); ?>
-										</small></p>
-									</div>
-							</div> -->
-							<?php endif; ?>
-
-						</div>
-
-			</div>
-				
-			
-            <div class="tab-pane fade p-3" id="nav-facilitators" role="tabpanel" aria-labelledby="nav-facilitators-tab">
-				<?php $facilitators = get_field('facilitators');
-				if ($facilitators):?>
-					<div class="card-deck scrolling-wrapper-flexbox">
-						<?php $noOfFacilitators = sizeof($facilitators);
-						foreach($facilitators as $fac){?>
-							<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
-								<figure class="facilitaor-avatar">
-								<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
-								</figure>
-									<div class="facilitator-details">
-										<h5><?php echo $fac->post_title; ?></h5>
-										<p class="m-0">
-											<small class="text-muted">
-											<?php 
-														$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
-														if($facilitatorUnitName):
-															$facilitatorsUnitStr = array();
-															foreach($facilitatorUnitName as $unitName){
-																	$facilitatorsUnitStr[] = $unitName->post_title;
-														} 
-														echo implode(",",$facilitatorsUnitStr);
-														endif;
-											?>
-											</small>
-										</p>
-									</div>
-							</div>
-						<?php } 
-						else:
-						?>
-					</div>
-				<?php endif; ?>
-			</div>
-
-			<h3 class="h3 my-4">Contact Information</h3>
-			<div class="single-workshop-contact p-3">
-			<?php if($units): ?>
-			<?php foreach($units as $unit){ ?>
-				<div class="card">
-					
-					<span class="card-body">
-						<h5 class="card-title">
-						<?php
-
-						$contactName = get_field('contact_person_name', $unit->ID);
-						echo( $contactName);
-						?>
-						</h5>
-						<table class="table table-borderless">
-							<tbody>	
-							<tr>
-								<td class="pl-0">
-									<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
-									echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
-								</td>
-							</tr>
-						
-						
-							<tr>
-								
-								<td class="pl-0">
-									<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
-									echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
-								</td>
-							</tr>
-							</tbody>
-						</table>
-					</span>
-					
+						<?php echo $brief_intro; ?>
+						<article class="workshop-description">
+						<?php echo $workshop_description; ?>
+						</article>
 				</div>
-				<?php break; } endif; ?>
-			</div>	
+
+				<div class="tab-pane fade p-3" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab">
+					<!-- Schedule -->
+						<?php if($get_the_schedule_type == "daily"):
+							$days = array('one_day','two_days','three_days','four_days','five_days','six_days');
+							foreach($days as $day){
+								if($day == $number_of_days && $day != 'one_day') {
+									$day_content = get_field($day."_content");
+									echo $title;
+
+									$i = 1; foreach($day_content as $content) {
+										if($content){
+										
+												echo "<h4>Day ".$i++."</h4>";
+												echo $content;
+										
+										}
+									}
+								
+									
+								}
+							} 
+						else:
+							$all_weeks = array('two_week','three_week','four_week');
+							foreach($all_weeks as $week){
+								if($week == $number_of_weeks) {
+									$week_content = get_field($week."s_content");
+									echo $title;
+
+									$i = 1; foreach($week_content as $content) {
+										if($content){
+									
+												echo "<h4>Week ".$i++."</h4>";
+												echo $content;
+											
+										}
+									}
+
+								}
+							}
+						endif;?>
+				</div>
+				
+				<div class="tab-pane fade p-3" id="nav-organising-unit" role="tabpanel" aria-labelledby="nav-organising-unit-tab">
+					<!-- Organising Unit -->
+					<?php $units = get_field('unit_name');
+							if($units):?>
+					
+							<div class="card-deck scrolling-wrapper-flexbox">
+
+
+								<?php $noOfUnits = sizeof($units);
+								foreach($units as $unit){?>
+									<div class="card shadow-sm <?php if($noOfUnits == 1){echo "mx-auto";}else{ echo"mr-3";} ?>">
+										<!-- <figure class="unit-avatar p-2">
+											<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "card-img-top"]);?>
+										</figure>	 -->
+										<div class="card-body unit-details">
+												<h5><?php echo $unit->post_title; ?></h5>
+												<small class="text-muted">
+												
+												<?php  echo wp_trim_words( $unit->post_content, 20, ' ...'); ?>
+												<table class="table table-borderless my-4">
+													<tbody>
+
+														
+
+														
+														<tr>
+															<td class="pt-0 pl-0 mb-2">
+																<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+																echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+															</td>
+														</tr>
+													
+													
+														<tr>
+															
+															<td class="pt-0 pl-0 mb-2">
+																<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+																echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+															</td>
+														</tr>
+												
+
+														
+													</tbody>
+												</table>
+												</small>
+										</div>
+									</div>
+									
+								<?php } 
+								else: 
+								?>
+								<!-- <div class="media mb-3">
+										<figure>
+										<?php // echo get_the_post_thumbnail($unit->ID,'medium',['class' => "mr-3"]);?>
+										</figure>
+										<div class="media-body">
+											<h5 class="mt-0"><?php // echo $unit->post_title; ?></h5>
+											<p class="mb-0">
+											<small class="text-muted">
+											<?php  // echo wp_trim_words( $unit->post_content, 50, '...'); ?>
+											</small></p>
+										</div>
+								</div> -->
+								<?php endif; ?>
+
+							</div>
+
+				</div>
+								
+				<div class="tab-pane fade p-3" id="nav-facilitators" role="tabpanel" aria-labelledby="nav-facilitators-tab">
+					<?php $facilitators = get_field('facilitators');
+					if ($facilitators):?>
+						<div class="card-deck scrolling-wrapper-flexbox">
+							<?php $noOfFacilitators = sizeof($facilitators);
+							foreach($facilitators as $fac){?>
+								<div class="card shadow-sm <?php if($noOfFacilitators == 1){echo "mx-auto";} ?>" data-toggle="modal" data-target="#facilitator_<?php echo $fac->ID?>">
+									<figure class="facilitaor-avatar">
+									<?php echo get_the_post_thumbnail($fac->ID, 'medium', ['class' =>"card-img-top"]); ?>
+									</figure>
+										<div class="facilitator-details">
+											<h5><?php echo $fac->post_title; ?></h5>
+											<p class="m-0">
+												<small class="text-muted">
+												<?php 
+															$facilitatorUnitName = get_field('unit_name', $fac->post_Id);
+															if($facilitatorUnitName):
+																$facilitatorsUnitStr = array();
+																foreach($facilitatorUnitName as $unitName){
+																		$facilitatorsUnitStr[] = $unitName->post_title;
+															} 
+															echo implode(",",$facilitatorsUnitStr);
+															endif;
+												?>
+												</small>
+											</p>
+										</div>
+								</div>
+							<?php } 
+							else:
+							?>
+						</div>
+					<?php endif; ?>
+				</div>
+
+				<h3 class="h3 my-4">Contact Information</h3>
+				<div class="single-workshop-contact p-3">
+					<?php if($units): ?>
+					<?php foreach($units as $unit){ ?>
+						<div class="card">
+							
+							<span class="card-body">
+								<h5 class="card-title">
+								<?php
+
+								$contactName = get_field('contact_person_name', $unit->ID);
+								echo( $contactName);
+								?>
+								</h5>
+								<table class="table table-borderless">
+									<tbody>	
+									<tr>
+										<td class="pl-0">
+											<?php $unitContactDynamic = get_field("contact_phone_number", $unit->ID);
+											echo '<a href="tel:'.$unitContactDynamic.'">'.$unitContactDynamic.'</a>' ?>
+										</td>
+									</tr>
+								
+								
+									<tr>
+										
+										<td class="pl-0">
+											<?php $unitEmailDynamic = get_field("contact_email", $unit->ID); 
+											echo '<a href="mailto:'.$unitEmailDynamic.'">'.$unitEmailDynamic.'</a>';?>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</span>
+							
+						</div>
+						
+					<?php break; }
+					 endif; ?>
+				</div>	
 
 		   </div> 
-			</div>
+
+		   
 		</div><!--col-md-8-->
 		<div class="col-md-3 offset-md-1">
 		<form method="post" action="" id="preRegistrationForm">
